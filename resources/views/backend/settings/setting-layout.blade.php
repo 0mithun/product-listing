@@ -21,7 +21,7 @@
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="nav-link {{ request()->page == 'website' ? 'active' : '' }}"
                         href="{{ route('setting', 'website') }}">Website</a>
-                    <a class="nav-link {{ request()->page == 'color' ? 'active' : '' }}"
+                    {{-- <a class="nav-link {{ request()->page == 'color' ? 'active' : '' }}"
                         href="{{ route('setting', 'color') }}">Color Picker</a>
                     <a class="nav-link {{ request()->page == 'layout' ? 'active' : '' }}"
                         href="{{ route('setting', 'layout') }}">Layout</a>
@@ -37,7 +37,7 @@
                     <a class="nav-link {{ request()->page == 'currency' ? 'active' : '' }}"
                         href="{{ route('setting', 'currency') }}">Currency</a>
                     <a class="nav-link {{ request()->page == 'theme' ? 'active' : '' }}"
-                        href="{{ route('setting', 'theme') }}">Theme</a>
+                        href="{{ route('setting', 'theme') }}">Theme</a> --}}
                 </div>
             </div>
             <div class="col-10">
@@ -45,7 +45,7 @@
                     <div class="tab-pane fade {{ request()->page == 'website' ? 'show active' : '' }}">
                         @yield('website-settings')
                     </div>
-                    <div class="tab-pane fade {{ request()->page == 'color' ? 'show active' : '' }}">
+                    {{-- <div class="tab-pane fade {{ request()->page == 'color' ? 'show active' : '' }}">
                         @yield('color-picker')
                     </div>
                     <div class="tab-pane fade {{ request()->page == 'layout' ? 'show active' : '' }}" id="layout"
@@ -75,7 +75,7 @@
                     <div class="tab-pane fade {{ request()->page == 'theme' ? 'show active' : '' }}" id="theme"
                         role="tabpanel" aria-labelledby="homee">
                         @yield('theme-setting')
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

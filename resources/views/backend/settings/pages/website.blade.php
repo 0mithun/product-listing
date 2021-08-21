@@ -40,15 +40,10 @@
                                             data-default-file="{{ asset($website_setting->logo_image) }}"
                                             name="logo_image" autocomplete="image">
                                     @else
-                                        <img class="img-circle" src="{{ asset('backend/image/logo-default.png') }}"
-                                            id="logo_image"
-                                            style="border: 3px solid #adb5bd;margin: 0 auto;padding: 3px;height:85px;width:85px;">
+                                        <input type="file" class="form-control dropify"
+                                            data-default-file="{{ asset('backend/image/logo-default.png') }}"
+                                            name="favicon_image">
                                     @endif
-                                </div>
-                                <div class="col-6 mt-4">
-                                    @error('logo_image') <span class="text-danger"
-                                            role="alert"><strong>{{ $message }}</strong></span>
-                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -63,22 +58,14 @@
                                             data-default-file="{{ asset($website_setting->favicon_image) }}"
                                             name="favicon_image">
                                     @else
-                                        <img class="img-circle" src="{{ asset('backend/image/logo-default.png') }}"
-                                            id="favicon_image"
-                                            style="border: 3px solid #adb5bd;margin: 0 auto;padding: 3px;height:85px;width:85px;">
+                                        <input type="file" class="form-control dropify"
+                                            data-default-file="{{ asset('backend/image/logo-default.png') }}"
+                                            name="favicon_image">
                                     @endif
-                                </div>
-                                <div class="col-4 mt-4">
-                                </div>
-                                <div class="col-6 mt-4">
-                                    @error('favicon_image') <span class="text-danger"
-                                            role="alert"><strong>{{ $message }}</strong></span>
-                                    @enderror
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <div class="form-group row">
                         <div class="offset-sm-3 col-sm-9">
                             <button type="submit" class="btn btn-success"><i class="fas fa-sync"></i>

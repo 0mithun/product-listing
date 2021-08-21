@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\WebsiteSettings;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class SettingsController extends Controller
 {
@@ -16,35 +15,37 @@ class SettingsController extends Controller
                 $website_setting = WebsiteSettings::first();
                 return view('backend.settings.pages.website', compact('website_setting'));
                 break;
-            case 'color':
-                return view('backend.settings.pages.color-picker');
-                break;
-            case 'layout':
-                return view('backend.settings.pages.layout');
-                break;
-            case 'language':
-                return view('backend.settings.pages.language');
-                break;
-            case 'payment':
-                return view('backend.settings.pages.payment');
-                break;
-            case 'mail':
-                return view('backend.settings.pages.mail');
-                break;
-            case 'custom':
-                return view('backend.settings.pages.custom');
-                break;
-            case 'currency':
-                return view('backend.settings.pages.currency');
-                break;
-            case 'theme':
-                return view('backend.settings.pages.theme');
-                break;
+                // case 'color':
+                //     return view('backend.settings.pages.color-picker');
+                //     break;
+                // case 'layout':
+                //     return view('backend.settings.pages.layout');
+                //     break;
+                // case 'language':
+                //     return view('backend.settings.pages.language');
+                //     break;
+                // case 'payment':
+                //     return view('backend.settings.pages.payment');
+                //     break;
+                // case 'mail':
+                //     return view('backend.settings.pages.mail');
+                //     break;
+                // case 'custom':
+                //     return view('backend.settings.pages.custom');
+                //     break;
+                // case 'currency':
+                //     return view('backend.settings.pages.currency');
+                //     break;
+                // case 'theme':
+                //     return view('backend.settings.pages.theme');
+                //     break;
             default:
-                $site_settings = WebsiteSettings::all();
-                return view('backend.settings.pages.website', compact('site_settings'));
+                $website_setting = WebsiteSettings::first();
+                return view('backend.settings.pages.website', compact('website_setting'));
                 break;
         }
+
+        return 123;
     }
 
     /**
