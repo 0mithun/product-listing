@@ -9,7 +9,8 @@
         <div class="row pt-3 pb-4">
             <div class="col-md-6 offset-md-3">
                 @foreach ($site_settings as $setting)
-                    <form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
+                    <form class="form-horizontal" action="{{ route('setting.website', $setting->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
                         <div class="form-group row">
@@ -94,7 +95,6 @@
                         </div>
                     </form>
                 @endforeach
-                {{-- {{ route('website.setting.update', $setting->id) }} --}}
             </div>
         </div>
     </div>

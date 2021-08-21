@@ -51,10 +51,10 @@ class SettingsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\WebsiteSettings  $websiteSettings
+     * @param  \App\Models\WebsiteSettings  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function website(Request $request, $id)
     {
         $this->validate($request, [
             'name' => "required",
@@ -85,6 +85,7 @@ class SettingsController extends Controller
             $site_settings->favicon_image = $db_image;
         }
         $site_settings->save();
+
         session()->flash('success', 'Site Settings Content Updated Successfully!');
         return back();
     }

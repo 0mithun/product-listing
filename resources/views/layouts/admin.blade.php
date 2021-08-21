@@ -379,7 +379,7 @@
                                 :subLinkActive="Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') || Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') ? true : false"
                                 icon="fas fa-lock">
                                 @slot('title')
-                                    Others
+                                    User & Role Manage
                                 @endslot
 
                                 @if ($user->can('admin.view') || $user->can('admin.create') || $user->can('admin.edit') || $user->can('admin.delete'))
@@ -400,22 +400,12 @@
                                         </x-sidebar-list>
                                     </ul>
                                 @endif
-                                <ul class="nav nav-treeview">
-                                    {{-- <li class="nav-item">
-                                        <a href="{{ url('setting/website') }}" class="nav-link">
-                                            <i class="nav-icon fas fa-users-cog"></i>
-                                            <p>Settings</p>
-                                        </a>
-                                    </li> --}}
-                                    <x-sidebar-list :linkActive="Route::is('setting')  ? true : false" route="setting"
-                                        parameter="website" icon="fas fa-users-cog">
-                                        Settings
-                                    </x-sidebar-list>
-                                    {{-- || Route::is('setting.create') || Route::is('setting.edit') --}}
-                                </ul>
                             </x-sidebar-dropdown>
                         @endif
-
+                        <x-sidebar-list :linkActive="Route::is('setting')  ? true : false" route="setting"
+                            parameter="website" icon="fas fa-cog">
+                            Settings
+                        </x-sidebar-list>
 
 
                     </ul>

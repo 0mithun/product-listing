@@ -33,8 +33,9 @@ Route::middleware(['auth:super_admin'])->group(function () {
     //Users Route
     Route::resource('user', UserController::class);
 
-    //  Website Settings
+    //====================Settings=========================
     Route::get('settings/{page}', [SettingsController::class, 'index'])->name('setting');
+    Route::put('settings/website/{id}', [SettingsController::class, 'website'])->name('setting.website');
 });
 
 // ========================================================
