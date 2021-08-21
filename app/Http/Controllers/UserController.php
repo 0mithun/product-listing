@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Actions\User\CreateUser;
+use App\Actions\User\UpdateUser;
+use App\Http\Requests\UserFormRequest;
 use App\Models\SuperAdmin;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -63,39 +65,24 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\UserFormRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserFormRequest $request)
     {
         if (is_null($this->user) || !$this->user->can('admin.create')) {
             abort(403, 'Sorry !! You are Unauthorized to store users.');
         }
-        $this->validate($request, [
-            'name' => "required",
-            'email' => "required|unique:super_admins,email",
-            'password' => "required|min:8",
-            'roles' => "required",
-        ]);
 
-        $user = new SuperAdmin();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        if ($request->has('image')) {
-            $image = $request->image;
-            $fileName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            Storage::putFileAs('public/admin', $image, $fileName);
-            $db_image = 'storage/admin/' . $fileName;
-            $user->image = $db_image;
-        }
-        $user->password = bcrypt($request->password);
-        $user->save();
+        try {
+            CreateUser::create($request);
 
-        if ($request->roles) {
-            $user->assignRole($request->roles);
+            flashSuccess('User Created Successfully');
+            return back();
+        } catch (\Throwable $th) {
+            flashError($th->getMessage());
+            return back();
         }
-        session()->flash('success', 'Admin Created Successfully!');
-        return back();
     }
 
     /**
@@ -121,41 +108,22 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserFormRequest $request, $id)
     {
         if (is_null($this->user) || !$this->user->can('admin.edit')) {
             abort(403, 'Sorry !! You are Unauthorized to update users.');
         }
-        $this->validate($request, [
-            'name' => "required",
-            'email' => "required|unique:super_admins,email,$id",
-            'roles' => "required",
-        ]);
 
-        $user = SuperAdmin::findOrFail($id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        if ($request->has('image')) {
-            $image = $request->image;
-            $fileName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            Storage::putFileAs('public/user', $image, $fileName);
-            $db_image = 'storage/user/' . $fileName;
-            $user->image = $db_image;
-        }
-        if ($request->password) {
-            $this->validate($request, [
-                'password' => "min:8",
-            ]);
-            $user->password = bcrypt($request->password);
-        }
-        $user->save();
+        try {
+            $user = SuperAdmin::findOrFail($id);
+            UpdateUser::update($request, $user);
 
-        $user->roles()->detach();
-        if ($request->roles) {
-            $user->assignRole($request->roles);
+            flashSuccess('User Updated Successfully');
+            return back();
+        } catch (\Throwable $th) {
+            flashError($th->getMessage());
+            return back();
         }
-        session()->flash('success', 'User Updated Successfully!');
-        return back();
     }
 
     /**
@@ -175,9 +143,5 @@ class UserController extends Controller
         }
         session()->flash('success', 'User Deleted Successfully!');
         return back();
-    }
-
-    function show()
-    {
     }
 }

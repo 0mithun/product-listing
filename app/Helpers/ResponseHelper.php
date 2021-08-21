@@ -61,7 +61,11 @@ function flashSuccess(string $msg)
  * @param string $msg
  * @return \Illuminate\Http\Response
  */
-function flashError(string $message = 'Something went wrong, please try again')
+function flashError(string $message)
 {
-    session()->flash('error', $message);
+    if (env('APP_DEBUG')) {
+        return session()->flash('error', $message);
+    } else {
+        return session()->flash('error', 'Something went wrong, please try again');
+    }
 }
