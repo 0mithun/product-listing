@@ -36,20 +36,15 @@
                             <label class="col-sm-3 col-form-label">Site Logo</label>
                             <div class="col-sm-9">
                                 <div class="row">
-                                    <div class="col-2">
+                                    <div class="col-6">
                                         @if (file_exists($setting->logo_image))
-                                            <img class="img-circle" src="{{ asset($setting->favicon_image) }}"
-                                                id="logo_image"
-                                                style="border: 3px solid #adb5bd;margin: 0 auto;padding: 3px;height:85px;width:85px;">
+                                            <input type="file" class="form-control dropify" data-default-file="{{ asset($setting->favicon_image) }}" name="logo_image" autocomplete="image"
+                                            onchange="document.getElementById('logo_image').src = window.URL.createObjectURL(this.files[0])">
                                         @else
                                             <img class="img-circle" src="{{ asset('backend/image/logo-default.png') }}"
                                                 id="logo_image"
                                                 style="border: 3px solid #adb5bd;margin: 0 auto;padding: 3px;height:85px;width:85px;">
                                         @endif
-                                    </div>
-                                    <div class="col-4 mt-4">
-                                        <input type="file" name="logo_image" autocomplete="image"
-                                            onchange="document.getElementById('logo_image').src = window.URL.createObjectURL(this.files[0])">
                                     </div>
                                     <div class="col-6 mt-4">
                                         @error('logo_image') <span class="text-danger"
@@ -63,11 +58,10 @@
                             <label class="col-sm-3 col-form-label">Site Favicon</label>
                             <div class="col-sm-9">
                                 <div class="row">
-                                    <div class="col-2">
+                                    <div class="col-6">
                                         @if (file_exists($setting->favicon_image))
-                                            <img class="img-circle" src="{{ asset($setting->logo_image) }}"
-                                                id="favicon_image"
-                                                style="border: 3px solid #adb5bd;margin: 0 auto;padding: 3px;height:85px;width:85px;">
+                                            <input type="file" class="form-control dropify"  data-default-file="{{ asset($setting->logo_image) }}" name="favicon_image" autocomplete="image"
+                                            onchange="document.getElementById('favicon_image').src = window.URL.createObjectURL(this.files[0])">
                                         @else
                                             <img class="img-circle" src="{{ asset('backend/image/logo-default.png') }}"
                                                 id="favicon_image"
@@ -75,8 +69,6 @@
                                         @endif
                                     </div>
                                     <div class="col-4 mt-4">
-                                        <input type="file" name="favicon_image" autocomplete="image"
-                                            onchange="document.getElementById('favicon_image').src = window.URL.createObjectURL(this.files[0])">
                                     </div>
                                     <div class="col-6 mt-4">
                                         @error('favicon_image') <span class="text-danger"
@@ -98,4 +90,15 @@
             </div>
         </div>
     </div>
+@endsection
+@section('style')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.css" integrity="sha512-In/+MILhf6UMDJU4ZhDL0R0fEpsp4D3Le23m6+ujDWXwl3whwpucJG1PEmI3B07nyJx+875ccs+yX2CqQJUxUw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+@endsection
+
+
+@section('script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js" integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $('.dropify').dropify();
+    </script>
 @endsection
