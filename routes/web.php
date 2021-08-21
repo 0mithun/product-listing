@@ -85,17 +85,13 @@ Route::post('mode/change', [ThemeController::class, 'mode_change'])->name('mode.
 //====================All Auth Logout======================
 // ========================================================
 Route::post('auth-logout', function (Request $request) {
-    if ($request->auth === 'candidate') {
-        Auth::guard('candidate')->logout();
-        return redirect()->route('candidate.login');
+    if ($request->auth === 'customer') {
+        Auth::guard('customer')->logout();
+        return redirect()->route('customer.login');
     }
     if ($request->auth === 'company') {
         Auth::guard('company')->logout();
         return redirect()->route('company.login');
-    }
-    if ($request->auth === 'candidate') {
-        Auth::guard('candidate')->logout();
-        return redirect()->route('candidate.login');
     }
     if ($request->auth === 'student') {
         Auth::guard('student')->logout();
@@ -113,5 +109,5 @@ Route::post('auth-logout', function (Request $request) {
 
 
 Route::fallback(function () {
-    return 11;
+    return 'Not found';
 });

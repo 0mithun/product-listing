@@ -18,8 +18,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/dashboard';
-    public const ADMIN = '/admin/home';
-    public const CANDIDATE_HOME = '/candidate/home';
+    public const CUSTOMER_HOME = '/customer/home';
     public const STUDENT_HOME = '/student/home';
     public const TEACHER_HOME = '/teacher/home';
     public const COMPANY_HOME = '/company/home';
@@ -56,10 +55,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/auth/user.php'));
             Route::middleware('web')
                 ->namespace($this->namespace)
-                ->group(base_path('routes/auth/candidate.php'));
-            Route::middleware('web')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/auth/teacher.php'));
+                ->group(base_path('routes/auth/customer.php'));
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/auth/student.php'));

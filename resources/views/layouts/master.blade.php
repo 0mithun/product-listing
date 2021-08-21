@@ -109,40 +109,6 @@
                         @endif
                     </a>
                 </li>
-                {{-- @php
-                    $user = Auth::user();
-                @endphp
-                <li>
-                    <div class="dropdown">
-                        <button class="btn  dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            @if (Auth::user()->image)
-                                <img width="30px" height="30px" class="rounded-circle mr-1"
-                                    src="{{ asset(Auth::user()->image) }}"
-                                    alt="User profile picture">{{ Auth::user()->name }}
-                            @else
-                                <img width="30px" height="30px" class="rounded-circle mr-1"
-                                    src="{{ asset('backend/image/defult.png') }}"
-                                    alt="User profile picture">{{ Auth::user()->name }}
-                            @endif
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                            @if ($user->can('profile.view'))
-                                <a href="{{ route('profile') }}" class="dropdown-item text-primary" type="button"><i
-                                        class="fas fa-user"></i> Profile</a>
-                            @endif
-                            @if ($user->can('profile.edit'))
-                                <a href="{{ route('profile.setting') }}" class="dropdown-item text-primary" type="button"><i
-                                        class="fas fa-user-cog"></i> Setting</a>
-                            @endif
-                            <a class="dropdown-item text-danger" role="button" href="javascript:void(0)"
-                                onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
-                                    class="fas fa-sign-out-alt"></i> Logout</a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> @csrf
-                            </form>
-                        </div>
-                    </div>
-                </li> --}}
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -187,15 +153,15 @@
                         data-widget="treeview" role="menu" data-accordion="false">
 
                         <!-- candidate -->
-                        @auth('candidate')
-                            <x-sidebar-list :linkActive="Route::is('candidate.dashboard') ? true : false"
-                                route="candidate.dashboard" icon="fas fa-home">
+                        @auth('customer')
+                            <x-sidebar-list :linkActive="Route::is('customer.dashboard') ? true : false"
+                                route="customer.dashboard" icon="fas fa-home">
                                 Dashboard
                             </x-sidebar-list>
                             <li class="nav-item">
                                 <form action="{{ route('auth.logout') }}" class="d-inline" method="POST">
                                     @csrf
-                                    <input type="hidden" value="candidate" name="auth">
+                                    <input type="hidden" value="customer" name="auth">
                                     <button type="submit" class="btn btn-primary btn-sm btn-block">Logout</button>
                                 </form>
                             </li>

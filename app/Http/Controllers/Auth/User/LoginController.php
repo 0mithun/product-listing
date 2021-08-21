@@ -17,10 +17,10 @@ class LoginController extends Controller
     protected $redirectTo = RouteServiceProvider::USER_HOME;
 
 
-    public function __construct()
-    {
-        $this->middleware('guest:user')->except('logout');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('guest:user')->except('logout');
+    // }
     protected function guard()
     {
         return Auth::guard('user');
