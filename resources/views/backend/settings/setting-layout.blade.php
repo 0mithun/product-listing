@@ -38,25 +38,6 @@
                         href="{{ route('setting', 'currency') }}">Currency</a>
                     <a class="nav-link {{ request()->page == 'theme' ? 'active' : '' }}"
                         href="{{ route('setting', 'theme') }}">Theme</a>
-                    {{-- <a class="nav-link {{ Route::is('setting.index') ? 'active' : '' }}"
-                        href="{{ route('setting.index') }}">Website</a>
-                    <a class="nav-link {{ Route::is('setting.color') ? 'active' : '' }}"
-                        href="{{ route('setting.color') }}">Color Picker</a>
-                    <a class="nav-link {{ Route::is('setting.layout') ? 'active' : '' }}"
-                        href="{{ route('setting.layout') }}">Layout</a>
-                    <a class="nav-link {{ Route::is('setting.language') ? 'active' : '' }}"
-                        href="{{ route('setting.language') }}">Language</a>
-                    <a class="nav-link {{ Route::is('setting.payment') ? 'active' : '' }}"
-                        href="{{ route('setting.payment') }}">Payment</a>
-                    <a class="nav-link {{ Route::is('setting.mail') ? 'active' : '' }}"
-                        href="{{ route('setting.mail') }}">Mail</a>
-                    <a class="nav-link {{ Route::is('setting.custom') ? 'active' : '' }}"
-                        href="{{ route('setting.custom') }}">Custom Css &
-                        Js</a>
-                    <a class="nav-link {{ Route::is('setting.currency') ? 'active' : '' }}"
-                        href="{{ route('setting.currency') }}">Currency</a>
-                    <a class="nav-link {{ Route::is('setting.theme') ? 'active' : '' }}"
-                        href="{{ route('setting.theme') }}">Theme</a> --}}
                 </div>
             </div>
             <div class="col-10">
