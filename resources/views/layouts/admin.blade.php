@@ -36,9 +36,9 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
-                <li class="nav-item d-none d-sm-inline-block">
+                {{-- <li class="nav-item d-none d-sm-inline-block">
                     <a href="javascript:void(0)" class="nav-link">Home</a>
-                </li>
+                </li> --}}
             </ul>
 
             <!-- Right navbar links -->
@@ -65,7 +65,54 @@
                         </form>
                     </div>
                 </li>
-
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="fas fa-th"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
+                        <span class="dropdown-item dropdown-header">Quick Actions</span>
+                        <div class="dropdown-divider"></div>
+                        <div class="row row-paddingless" style="padding-left: 15px; padding-right: 15px;">
+                            <div class="col-6 p-0 border-bottom border-right">
+                                <a href="#" class="d-block text-center py-3 bg-hover-light"> <i
+                                        class="fas fa-users"></i>
+                                    <span class="w-100 d-block text-muted">Add User</span>
+                                </a>
+                            </div>
+                            <div class="col-6 p-0 border-bottom border-right">
+                                <a href="#" class="d-block text-center py-3 bg-hover-light"> <i class="fas fa-lock"></i>
+                                    <span class="w-100 d-block text-muted">Add Role</span>
+                                </a>
+                            </div>
+                            <div class="col-6 p-0 border-bottom border-right">
+                                <a href="#" class="d-block text-center py-3 bg-hover-light"> <i
+                                        class="fas fa-users"></i>
+                                    <span class="w-100 d-block text-muted">Add User</span>
+                                </a>
+                            </div>
+                            <div class="col-6 p-0 border-bottom border-right">
+                                <a href="#" class="d-block text-center py-3 bg-hover-light"> <i class="fas fa-lock"></i>
+                                    <span class="w-100 d-block text-muted">Add Role</span>
+                                </a>
+                            </div>
+                        </div>
+                        {{-- <a href="#" class="dropdown-item">
+                            <i class="fas fa-envelope mr-2"></i> 4 new messages
+                            <span class="float-right text-muted text-sm">3 mins</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-users mr-2"></i> 8 friend requests
+                            <span class="float-right text-muted text-sm">12 hours</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-file mr-2"></i> 3 new reports
+                            <span class="float-right text-muted text-sm">2 days</span>
+                        </a> --}}
+                        <div class="dropdown-divider"></div>
+                    </div>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                         <i class="fas fa-expand-arrows-alt"></i>
@@ -208,172 +255,6 @@
                             <x-sidebar-list :linkActive="Route::is('home') ? true : false" route="home"
                                 icon="fas fa-tachometer-alt">
                                 Dashboard
-                            </x-sidebar-list>
-                        @endif
-
-                        <!-- Company Module -->
-                        @if (Module::collections()->has('Company'))
-                            <x-sidebar-list
-                                :linkActive="Route::is('module.product.company.index') || Route::is('module.company.index') || Route::is('module.company.create') || Route::is('module.company.edit') ? true : false"
-                                route="module.company.index" icon="fas fa-store">
-                                Company
-                            </x-sidebar-list>
-                        @endif
-                        <!-- Candidate -->
-                        @if (Module::collections()->has('Candidate'))
-                            <x-sidebar-list
-                                :linkActive="Route::is('module.product.candidate.index') || Route::is('module.candidate.index') || Route::is('module.candidate.create') || Route::is('module.candidate.edit') ? true : false"
-                                route="module.candidate.index" icon="fas fa-store">
-                                Candidate
-                            </x-sidebar-list>
-                        @endif
-
-                        @if (Module::collections()->has('Product'))
-                            <x-sidebar-list
-                                :linkActive="Route::is('module.product.gallery.index') || Route::is('module.product.index') || Route::is('module.product.create') || Route::is('module.product.edit') ? true : false"
-                                route="module.product.index" icon="fas fa-box">
-                                Product
-                            </x-sidebar-list>
-                        @endif
-                        @if (Module::collections()->has('Attribute'))
-                            <x-sidebar-list
-                                :linkActive="Route::is('module.attributes.index') || Route::is('module.attributes.create') || Route::is('module.attributes.edit') || Route::is('module.attribute.value.index') || Route::is('module.attribute.value.edit') ? true : false"
-                                route="module.attributes.index" icon="fas fa-plus">
-                                Attributes
-                            </x-sidebar-list>
-                        @endif
-
-                        @if (Module::collections()->has('Category') || Module::collections()->has('Brand'))
-                            <x-sidebar-dropdown
-                                :linkActive="Route::is('module.product.edit') || Route::is('module.category.index') || Route::is('module.category.create') || Route::is('module.category.edit') || Route::is('module.subcategory.index') || Route::is('module.subcategory.create') || Route::is('module.subcategory.edit') ? true : false"
-                                :subLinkActive="Route::is('module.category.index') || Route::is('module.category.create') || Route::is('module.category.edit') || Route::is('module.subcategory.index') || Route::is('module.subcategory.create') || Route::is('module.subcategory.edit') ? true : false"
-                                icon="fas fa-tags">
-                                @slot('title')
-                                    Categories
-                                @endslot
-
-                                <ul class="nav nav-treeview">
-                                    <x-sidebar-list
-                                        :linkActive="Route::is('module.category.index') || Route::is('module.category.create') || Route::is('module.category.edit') ? true : false"
-                                        route="module.category.index" icon="fas fa-circle">
-                                        Category
-                                    </x-sidebar-list>
-                                </ul>
-                                <ul class="nav nav-treeview">
-                                    <x-sidebar-list
-                                        :linkActive="Route::is('module.subcategory.index') || Route::is('module.subcategory.create') || Route::is('module.subcategory.edit') ? true : false"
-                                        route="module.subcategory.index" icon="fas fa-circle">
-                                        Subcategory
-                                    </x-sidebar-list>
-                                </ul>
-                            </x-sidebar-dropdown>
-                        @endif
-                        @if (Module::collections()->has('Brand'))
-                            <x-sidebar-list
-                                :linkActive="Route::is('module.brand.index') || Route::is('module.brand.create') || Route::is('module.brand.edit') ? true : false"
-                                route="module.brand.index" icon="fas fa-tags">
-                                Brand
-                            </x-sidebar-list>
-                        @endif
-                        @if (Module::collections()->has('Blog'))
-                            <x-sidebar-list
-                                :linkActive="Route::is('module.post.index') || Route::is('module.post.create') || Route::is('module.post.edit') ? true : false"
-                                route="module.post.index" icon="fas fa-blog">
-                                Blog
-                            </x-sidebar-list>
-                        @endif
-                        @if (Module::collections()->has('Faq'))
-                            <li class="nav-item">
-                                <a href="{{ route('module.faq.index') }}"
-                                    class="nav-link {{ Route::is('module.faq.index') || Route::is('module.faq.create') || Route::is('module.faq.edit') ? ' active' : '' }}">
-                                    <i class="nav-icon fas fa-blog"></i>
-                                    <p>Faq</p>
-                                </a>
-                            </li>
-                        @endif
-                        @if (Module::collections()->has('Comment'))
-                            <li class="nav-item">
-                                <a href="{{ route('comment.index') }}"
-                                    class="nav-link {{ Route::is('comment.index') || Route::is('comment.create') ? ' active' : '' }}">
-                                    <i class="nav-icon fas fa-comments"></i>
-                                    <p>Comment</p>
-                                </a>
-                            </li>
-                        @endif
-                        @if (Module::collections()->has('Tag'))
-                            <x-sidebar-list
-                                :linkActive="Route::is('module.tag.index') || Route::is('module.tag.create') || Route::is('module.tag.edit') ? true : false"
-                                route="module.tag.index" icon="fas fa-tag">
-                                Tag
-                            </x-sidebar-list>
-                        @endif
-                        @if (Module::collections()->has('Team'))
-                            <x-sidebar-list
-                                :linkActive="Route::is('module.team.index') || Route::is('module.team.create') || Route::is('module.team.edit') ? true : false"
-                                route="module.team.index" icon="fas fa-users">
-                                Team
-                            </x-sidebar-list>
-                        @endif
-                        @if (Module::collections()->has('Priceplan'))
-                            <x-sidebar-list
-                                :linkActive="Route::is('module.priceplan.index') || Route::is('module.priceplan.create') || Route::is('module.priceplan.edit') ? true : false"
-                                route="module.priceplan.index" icon="fas fa-money-check">
-                                Priceplan
-                            </x-sidebar-list>
-                        @endif
-                        @if (Module::collections()->has('Newsletter'))
-                            <x-sidebar-list
-                                :linkActive="Route::is('review.index') || Route::is('review.create') || Route::is('review.edit') ? true : false"
-                                route="review.index" icon="fas fa-star">
-                                Review
-                            </x-sidebar-list>
-                        @endif
-                        @if (Module::collections()->has('Newsletter'))
-                            <x-sidebar-list
-                                :linkActive="Route::is('module.newsletter.index') || Route::is('module.newsletter.create') || Route::is('module.newsletter.edit') ? true : false"
-                                route="module.newsletter.index" icon="fas fa-newspaper">
-                                Newsletter
-                            </x-sidebar-list>
-                        @endif
-                        @if (Module::collections()->has('Portfolio'))
-                            <x-sidebar-list
-                                :linkActive="Route::is('module.portfolio.index') || Route::is('module.portfolio.create') || Route::is('module.portfolio.edit') ? true : false"
-                                route="module.portfolio.index" icon="fas fa-user">
-                                Portfolio
-                            </x-sidebar-list>
-                        @endif
-                        @if (Module::collections()->has('Job'))
-                            <x-sidebar-list
-                                :linkActive="Route::is('module.job.index') || Route::is('module.job.create') || Route::is('module.job.edit') ? true : false"
-                                route="module.job.index" icon="fas fa-briefcase">
-                                Jobs
-                            </x-sidebar-list>
-                        @endif
-                        @if (Module::collections()->has('Testimonial'))
-                            <x-sidebar-list
-                                :linkActive="Route::is('module.testimonial.index') || Route::is('module.testimonial.create') || Route::is('module.testimonial.edit') ? true : false"
-                                route="module.testimonial.index" icon="fas fa-briefcase">
-                                Testimonial
-                            </x-sidebar-list>
-                        @endif
-                        @if (Module::collections()->has('Coupon'))
-                            <x-sidebar-list
-                                :linkActive="Route::is('coupon.index') || Route::is('coupon.create') || Route::is('coupon.edit') ? true : false"
-                                route="coupon.index" icon="fas fa-percentage">
-                                Coupon
-                            </x-sidebar-list>
-                        @endif
-                        @if (Module::collections()->has('Wishlist'))
-                            <x-sidebar-list :linkActive="Route::is('module.wishlist.index') ? true : false"
-                                route="module.wishlist.index" icon="fas fa-heart">
-                                Wishlist
-                            </x-sidebar-list>
-                        @endif
-                        @if (Module::collections()->has('Job'))
-                            <x-sidebar-list
-                                :linkActive="Route::is('module.contact.index') || Route::is('module.contact.create') || Route::is('module.contact.edit') ? true : false"
-                                route="module.contact.index" icon="fas fa-address-book">
-                                Contact
                             </x-sidebar-list>
                         @endif
                         @if ($user->can('admin.view') || $user->can('admin.create') || $user->can('admin.edit') || $user->can('admin.delete') || $user->can('role.view') || $user->can('role.create') || $user->can('role.edit') || $user->can('role.delete'))
