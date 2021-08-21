@@ -7,10 +7,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
+
     <!-- FavIcons -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('backend/dist/img') }}/16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('backend/dist/img') }}/32x32.png">
-    <link rel="icon" type="image/png" sizes="64x64" href="{{ asset('backend/dist/img') }}/64x64.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset(website_setting()->favicon_image) }}">
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -179,9 +178,14 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="{{ route('home') }}" class="brand-link">
-                <img src="{{ asset('backend') }}/image/64x64.png" alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Zakir Soft</span>
+                @if ($logo = website_setting()->logo_image)
+                    <img src="{{ asset($logo) }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                        style="opacity: .8">
+                @else
+                    <img src="{{ asset('backend') }}/image/64x64.png" alt="AdminLTE Logo"
+                        class="brand-image img-circle elevation-3" style="opacity: .8">
+                @endif
+                <span class="brand-text font-weight-light">{{ website_setting()->name }}</span>
             </a>
 
             <!-- Sidebar -->
