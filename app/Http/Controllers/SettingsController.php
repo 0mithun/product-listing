@@ -9,58 +9,42 @@ use Illuminate\Support\Facades\Storage;
 class SettingsController extends Controller
 {
     // Website setting page.
-    public function index()
+    public function index($page)
     {
-        $site_settings = WebsiteSettings::all();
-        return view('backend.settings.pages.website', compact('site_settings'));
-    }
-
-    // color setting.
-    public function color()
-    {
-        return view('backend.settings.pages.color-picker');
-    }
-
-    // color setting.
-    public function layout()
-    {
-        return view('backend.settings.pages.layout');
-    }
-
-    // color setting.
-    public function language()
-    {
-        return view('backend.settings.pages.language');
-    }
-
-    // color setting.
-    public function payment()
-    {
-        return view('backend.settings.pages.payment');
-    }
-
-    // color setting.
-    public function mail()
-    {
-        return view('backend.settings.pages.mail');
-    }
-
-    // color setting.
-    public function custom()
-    {
-        return view('backend.settings.pages.custom');
-    }
-
-    // color setting.
-    public function currency()
-    {
-        return view('backend.settings.pages.currency');
-    }
-
-    // color setting.
-    public function theme()
-    {
-        return view('backend.settings.pages.theme');
+        switch ($page) {
+            case 'website':
+                $site_settings = WebsiteSettings::all();
+                return view('backend.settings.pages.website', compact('site_settings'));
+                break;
+            case 'color':
+                return view('backend.settings.pages.color-picker');
+                break;
+            case 'layout':
+                return view('backend.settings.pages.layout');
+                break;
+            case 'language':
+                return view('backend.settings.pages.language');
+                break;
+            case 'payment':
+                return view('backend.settings.pages.payment');
+                break;
+            case 'mail':
+                return view('backend.settings.pages.mail');
+                break;
+            case 'custom':
+                return view('backend.settings.pages.custom');
+                break;
+            case 'currency':
+                return view('backend.settings.pages.currency');
+                break;
+            case 'theme':
+                return view('backend.settings.pages.theme');
+                break;
+            default:
+                $site_settings = WebsiteSettings::all();
+                return view('backend.settings.pages.website', compact('site_settings'));
+                break;
+        }
     }
 
     /**

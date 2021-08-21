@@ -53,7 +53,8 @@
                         @if (Auth::user()->can('profile.edit'))
                             <div class="row justify-content-center">
                                 <div class="col-md-5">
-                                    <a href="{{ route('setting') }}" class="btn btn-primary btn-block mb-3"><b>Go To
+                                    <a href="{{ route('profile.setting') }}" class="btn btn-primary btn-block mb-3"><b>Go
+                                            To
                                             Settings </b><i class="fa fa-arrow-right"></i> </a>
                                 </div>
                             </div>

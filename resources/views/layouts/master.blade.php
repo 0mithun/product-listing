@@ -132,7 +132,7 @@
                                         class="fas fa-user"></i> Profile</a>
                             @endif
                             @if ($user->can('profile.edit'))
-                                <a href="{{ route('setting') }}" class="dropdown-item text-primary" type="button"><i
+                                <a href="{{ route('profile.setting') }}" class="dropdown-item text-primary" type="button"><i
                                         class="fas fa-user-cog"></i> Setting</a>
                             @endif
                             <a class="dropdown-item text-danger" role="button" href="javascript:void(0)"
@@ -188,8 +188,7 @@
 
                         <!-- candidate -->
                         @auth('candidate')
-                            <x-sidebar-list
-                                :linkActive="Route::is('candidate.dashboard') ? true : false"
+                            <x-sidebar-list :linkActive="Route::is('candidate.dashboard') ? true : false"
                                 route="candidate.dashboard" icon="fas fa-home">
                                 Dashboard
                             </x-sidebar-list>
@@ -204,67 +203,63 @@
 
                         <!-- company -->
                         @auth('company')
-                        <x-sidebar-list
-                            :linkActive="Route::is('company.dashboard') ? true : false"
-                            route="company.dashboard" icon="fas fa-home">
-                            Dashboard
-                        </x-sidebar-list>
-                        <li class="nav-item">
-                            <form action="{{ route('auth.logout') }}" class="d-inline" method="POST">
-                                @csrf
-                                <input type="hidden" value="company" name="auth">
-                                <button type="submit" class="btn btn-primary btn-sm btn-block">Logout</button>
-                            </form>
-                        </li>
-                    @endauth
+                            <x-sidebar-list :linkActive="Route::is('company.dashboard') ? true : false"
+                                route="company.dashboard" icon="fas fa-home">
+                                Dashboard
+                            </x-sidebar-list>
+                            <li class="nav-item">
+                                <form action="{{ route('auth.logout') }}" class="d-inline" method="POST">
+                                    @csrf
+                                    <input type="hidden" value="company" name="auth">
+                                    <button type="submit" class="btn btn-primary btn-sm btn-block">Logout</button>
+                                </form>
+                            </li>
+                        @endauth
 
-                         <!-- teacher -->
-                         @auth('teacher')
-                         <x-sidebar-list
-                             :linkActive="Route::is('teacher.dashboard') ? true : false"
-                             route="teacher.dashboard" icon="fas fa-home">
-                             Dashboard
-                         </x-sidebar-list>
-                         <li class="nav-item">
-                             <form action="{{ route('auth.logout') }}" class="d-inline" method="POST">
-                                 @csrf
-                                 <input type="hidden" value="teacher" name="auth">
-                                 <button type="submit" class="btn btn-primary btn-sm btn-block">Logout</button>
-                             </form>
-                         </li>
-                     @endauth
+                        <!-- teacher -->
+                        @auth('teacher')
+                            <x-sidebar-list :linkActive="Route::is('teacher.dashboard') ? true : false"
+                                route="teacher.dashboard" icon="fas fa-home">
+                                Dashboard
+                            </x-sidebar-list>
+                            <li class="nav-item">
+                                <form action="{{ route('auth.logout') }}" class="d-inline" method="POST">
+                                    @csrf
+                                    <input type="hidden" value="teacher" name="auth">
+                                    <button type="submit" class="btn btn-primary btn-sm btn-block">Logout</button>
+                                </form>
+                            </li>
+                        @endauth
 
 
-                       <!-- user -->
-                       @auth('user')
-                       <x-sidebar-list
-                           :linkActive="Route::is('user.dashboard') ? true : false"
-                           route="user.dashboard" icon="fas fa-home">
-                           Dashboard
-                       </x-sidebar-list>
-                       <li class="nav-item">
-                           <form action="{{ route('auth.logout') }}" class="d-inline" method="POST">
-                               @csrf
-                               <input type="hidden" value="user" name="auth">
-                               <button type="submit" class="btn btn-primary btn-sm btn-block">Logout</button>
-                           </form>
-                       </li>
-                   @endauth
+                        <!-- user -->
+                        @auth('user')
+                            <x-sidebar-list :linkActive="Route::is('user.dashboard') ? true : false" route="user.dashboard"
+                                icon="fas fa-home">
+                                Dashboard
+                            </x-sidebar-list>
+                            <li class="nav-item">
+                                <form action="{{ route('auth.logout') }}" class="d-inline" method="POST">
+                                    @csrf
+                                    <input type="hidden" value="user" name="auth">
+                                    <button type="submit" class="btn btn-primary btn-sm btn-block">Logout</button>
+                                </form>
+                            </li>
+                        @endauth
                         <!-- student -->
                         @auth('student')
-                        <x-sidebar-list
-                            :linkActive="Route::is('student.dashboard') ? true : false"
-                            route="student.dashboard" icon="fas fa-home">
-                            Dashboard
-                        </x-sidebar-list>
-                        <li class="nav-item">
-                            <form action="{{ route('auth.logout') }}" class="d-inline" method="POST">
-                                @csrf
-                                <input type="hidden" value="student" name="auth">
-                                <button type="submit" class="btn btn-primary btn-sm btn-block">Logout</button>
-                            </form>
-                        </li>
-                    @endauth
+                            <x-sidebar-list :linkActive="Route::is('student.dashboard') ? true : false"
+                                route="student.dashboard" icon="fas fa-home">
+                                Dashboard
+                            </x-sidebar-list>
+                            <li class="nav-item">
+                                <form action="{{ route('auth.logout') }}" class="d-inline" method="POST">
+                                    @csrf
+                                    <input type="hidden" value="student" name="auth">
+                                    <button type="submit" class="btn btn-primary btn-sm btn-block">Logout</button>
+                                </form>
+                            </li>
+                        @endauth
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

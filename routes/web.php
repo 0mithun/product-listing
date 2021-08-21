@@ -22,7 +22,7 @@ Route::middleware(['auth:super_admin'])->group(function () {
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('home');
 
     //Profile Route
-    Route::get('/profile/settings', [ProfileController::class, 'setting'])->name('setting');
+    Route::get('/profile/settings', [ProfileController::class, 'setting'])->name('profile.setting');
     Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
     Route::put('/profile/update', [ProfileController::class, 'profile_update'])->name('profile.update');
     Route::put('/profile/password/{id}', [ProfileController::class, 'profile_password_update'])->name('profile.password.update');
@@ -34,18 +34,7 @@ Route::middleware(['auth:super_admin'])->group(function () {
     Route::resource('user', UserController::class);
 
     //  Website Settings
-    Route::prefix('settings')->name('setting.')->group(function () {
-        Route::get('/', [SettingsController::class, 'index'])->name('index');
-        Route::get('/color', [SettingsController::class, 'color'])->name('color');
-        Route::get('/layout', [SettingsController::class, 'layout'])->name('layout');
-        Route::get('/language', [SettingsController::class, 'language'])->name('language');
-        Route::get('/payment', [SettingsController::class, 'payment'])->name('payment');
-        Route::get('/mail', [SettingsController::class, 'mail'])->name('mail');
-        Route::get('/custom', [SettingsController::class, 'custom'])->name('custom');
-        Route::get('/currency', [SettingsController::class, 'currency'])->name('currency');
-        Route::get('/theme', [SettingsController::class, 'theme'])->name('theme');
-    });
-    // Route::resource('website/settings', SettingsController::class, ['names' => 'website.setting']);
+    Route::get('settings/{page}', [SettingsController::class, 'index'])->name('setting');
 });
 
 // ========================================================

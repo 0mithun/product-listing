@@ -6,16 +6,17 @@ use Illuminate\View\Component;
 
 class SidebarList extends Component
 {
-    public $linkActive, $route, $icon;
+    public $linkActive, $route, $parameter, $icon;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($linkActive, $route, $icon)
+    public function __construct($linkActive, $route, $parameter = null, $icon)
     {
         $this->linkActive = $linkActive;
         $this->route = $route;
+        $this->parameter = $parameter;
         $this->icon = $icon;
     }
 

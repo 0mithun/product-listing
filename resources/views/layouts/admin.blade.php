@@ -146,7 +146,7 @@
                         <li class="user-body">
                             <div class="row justify-content-center">
                                 <div class="col-12 text-center">
-                                    <a href="{{ route('setting') }}">Settings</a>
+                                    <a href="{{ route('profile.setting') }}">Settings</a>
                                 </div>
                                 {{-- <div class="col-4 text-center">
                                     <a href="#">Followers</a>
@@ -375,8 +375,8 @@
                         @if ($user->can('admin.view') || $user->can('admin.create') || $user->can('admin.edit') || $user->can('admin.delete') || $user->can('role.view') || $user->can('role.create') || $user->can('role.edit') || $user->can('role.delete'))
 
                             <x-sidebar-dropdown
-                                :linkActive="Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') || Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') || Route::is('website.setting.index') || Route::is('website.setting.create') || Route::is('website.setting.edit') ? true : false"
-                                :subLinkActive="Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') || Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') || Route::is('website.setting.index') || Route::is('website.setting.create') || Route::is('website.setting.edit') ? true : false"
+                                :linkActive="Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') || Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') ? true : false"
+                                :subLinkActive="Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') || Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') ? true : false"
                                 icon="fas fa-lock">
                                 @slot('title')
                                     Others
@@ -400,24 +400,22 @@
                                         </x-sidebar-list>
                                     </ul>
                                 @endif
-                                @if ($user->can('role.view') || $user->can('role.create') || $user->can('role.edit') || $user->can('role.delete'))
-                                    <ul class="nav nav-treeview">
-                                        <x-sidebar-list :linkActive="Route::is('setting.index')  ? true : false"
-                                            route="setting.index" icon="fas fa-users-cog">
-                                            Settings
-                                        </x-sidebar-list>
-                                        {{-- || Route::is('setting.create') || Route::is('setting.edit') --}}
-                                    </ul>
-                                @endif
+                                <ul class="nav nav-treeview">
+                                    {{-- <li class="nav-item">
+                                        <a href="{{ url('setting/website') }}" class="nav-link">
+                                            <i class="nav-icon fas fa-users-cog"></i>
+                                            <p>Settings</p>
+                                        </a>
+                                    </li> --}}
+                                    <x-sidebar-list :linkActive="Route::is('setting')  ? true : false" route="setting"
+                                        parameter="website" icon="fas fa-users-cog">
+                                        Settings
+                                    </x-sidebar-list>
+                                    {{-- || Route::is('setting.create') || Route::is('setting.edit') --}}
+                                </ul>
                             </x-sidebar-dropdown>
                         @endif
-                        @if (Module::collections()->has('Setting'))
-                            <x-sidebar-list
-                                :linkActive="Route::is('module.setting.index') || Route::is('module.setting.create') || Route::is('module.setting.edit') ? true : false"
-                                route="module.setting.index" icon="fas fa-cogs">
-                                Setting
-                            </x-sidebar-list>
-                        @endif
+
 
 
                     </ul>
