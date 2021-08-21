@@ -13,8 +13,8 @@ class SettingsController extends Controller
     {
         switch ($page) {
             case 'website':
-                $site_settings = WebsiteSettings::all();
-                return view('backend.settings.pages.website', compact('site_settings'));
+                $website_setting = WebsiteSettings::first();
+                return view('backend.settings.pages.website', compact('website_setting'));
                 break;
             case 'color':
                 return view('backend.settings.pages.color-picker');
@@ -54,37 +54,30 @@ class SettingsController extends Controller
      * @param  \App\Models\WebsiteSettings  $id
      * @return \Illuminate\Http\Response
      */
-    public function website(Request $request, $id)
+    public function website(Request $request)
     {
         $this->validate($request, [
             'name' => "required",
             'email' => "required",
         ]);
 
-        $site_settings = WebsiteSettings::find($id);
+        $site_settings = WebsiteSettings::first();
         $site_settings->name = $request->name;
         $site_settings->email = $request->email;
-        if ($request->has('logo_image')) {
-            $this->validate($request, [
-                'logo_image' => "required|max:2048",
-            ]);
-            $image = $request->logo_image;
-            $fileName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            Storage::putFileAs('public/website', $image, $fileName);
-            $db_image = 'storage/website/' . $fileName;
-            $site_settings->logo_image = $db_image;
-        }
-        if ($request->has('favicon_image')) {
-            $this->validate($request, [
-                'favicon_image' => "required|max:2048",
-            ]);
-            $image = $request->favicon_image;
-            $fileName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            Storage::putFileAs('public/website', $image, $fileName);
-            $db_image = 'storage/website/' . $fileName;
-            $site_settings->favicon_image = $db_image;
-        }
         $site_settings->save();
+
+        $logo_image = $request->logo_image;
+        $fav_icon = $request->favicon_image;
+
+        if ($logo_image) {
+            $url = uploadImage($logo_image, 'website');
+            $site_settings->update(['logo_image' => $url]);
+        }
+
+        if ($fav_icon) {
+            $url = uploadImage($fav_icon, 'website');
+            $site_settings->update(['favicon_image' => $url]);
+        }
 
         session()->flash('success', 'Site Settings Content Updated Successfully!');
         return back();
