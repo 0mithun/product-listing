@@ -27,11 +27,12 @@
     @yield('style')
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed {{ session('dark_mode') ? 'dark-mode' : '' }}">
+<body class="hold-transition sidebar-mini layout-fixed">
+    {{-- {{ session('dark_mode') ? 'dark-mode' : '' }} --}}
     <div class="wrapper">
         <!-- Navbar -->
-        <nav
-            class="main-header navbar navbar-expand navbar-light {{ session('dark_mode') ? 'navbar-dark' : 'navbar-white' }}">
+        <nav id="nav" class="main-header navbar navbar-expand navbar-light">
+            {{-- {{ session('dark_mode') ? 'navbar-dark' : 'navbar-white' }} --}}
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -98,20 +99,6 @@
                                 </a>
                             </div>
                         </div>
-                        {{-- <a href="#" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 4 new messages
-                            <span class="float-right text-muted text-sm">3 mins</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-users mr-2"></i> 8 friend requests
-                            <span class="float-right text-muted text-sm">12 hours</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-file mr-2"></i> 3 new reports
-                            <span class="float-right text-muted text-sm">2 days</span>
-                        </a> --}}
                         <div class="dropdown-divider"></div>
                     </div>
                 </li>
@@ -121,40 +108,36 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <form action="{{ route('mode.change') }}" method="post" id="mode_form">
+                    {{-- <form action="{{ route('mode.change') }}" method="post" id="mode_form">
                         @csrf
                         @if (session('dark_mode'))
                             <input type="hidden" name="mode" value="0">
                         @else
                             <input type="hidden" name="mode" value="1">
                         @endif
-                    </form>
-                    <a onclick="$('#mode_form').submit()" class="nav-link" href="#" role="button">
-                        @if (session('dark_mode'))
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                                stroke-linejoin="round" class="icon icon-tabler icon-tabler-brightness-down">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                <circle cx="12" cy="12" r="3"></circle>
-                                <line x1="12" y1="5" x2="12" y2="5.01"></line>
-                                <line x1="17" y1="7" x2="17" y2="7.01"></line>
-                                <line x1="19" y1="12" x2="19" y2="12.01"></line>
-                                <line x1="17" y1="17" x2="17" y2="17.01"></line>
-                                <line x1="12" y1="19" x2="12" y2="19.01"></line>
-                                <line x1="7" y1="17" x2="7" y2="17.01"></line>
-                                <line x1="5" y1="12" x2="5" y2="12.01"></line>
-                                <line x1="7" y1="7" x2="7" y2="7.01"></line>
-                            </svg>
-                        @else
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                                stroke-linejoin="round" class="icon icon-tabler icon-tabler-moon">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                <path
-                                    d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z">
-                                </path>
-                            </svg>
-                        @endif
+                    </form> --}}
+                    <a id="mode_change" class="nav-link" href="javascript:void(0)" role="button">
+                        <svg id="dark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                            stroke-linejoin="round" class="icon icon-tabler icon-tabler-brightness-down">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <line x1="12" y1="5" x2="12" y2="5.01"></line>
+                            <line x1="17" y1="7" x2="17" y2="7.01"></line>
+                            <line x1="19" y1="12" x2="19" y2="12.01"></line>
+                            <line x1="17" y1="17" x2="17" y2="17.01"></line>
+                            <line x1="12" y1="19" x2="12" y2="19.01"></line>
+                            <line x1="7" y1="17" x2="7" y2="17.01"></line>
+                            <line x1="5" y1="12" x2="5" y2="12.01"></line>
+                            <line x1="7" y1="7" x2="7" y2="7.01"></line>
+                        </svg>
+                        <svg id="light" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                            stroke-linejoin="round" class="icon icon-tabler icon-tabler-moon">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z">
+                            </path>
+                        </svg>
                     </a>
                 </li>
                 @php
@@ -377,11 +360,30 @@
             }
         });
 
+        // Navbar Collapse Toggle
         var isNavCollapse = JSON.parse(localStorage.getItem("sidebar_collapse"))
         isNavCollapse ? $('body').addClass('sidebar-collapse') : null;
 
         $('#nav_collapse').on('click', function() {
             localStorage.setItem("sidebar_collapse", isNavCollapse == true ? false : true);
+        });
+
+        // Mode Change Toggle
+        var isDarkMode = JSON.parse(localStorage.getItem("dark_mode"))
+        isDarkMode ? $('body').addClass('dark-mode') : null;
+        isDarkMode ? $('#nav').addClass('navbar-dark') : null;
+
+        if (isDarkMode) {
+            isDarkMode ? $('#dark').addClass('d-block') : 'd-none';
+            isDarkMode ? $('#light').addClass('d-none') : 'd-block';
+        } else {
+            isDarkMode ? $('#dark').addClass('d-none') : 'd-block';
+            isDarkMode ? $('#light').addClass('d-block') : 'd-none';
+        }
+
+        $('#mode_change').on('click', function() {
+            localStorage.setItem("dark_mode", isDarkMode == true ? false : true);
+            window.location.reload();
         });
     </script>
     <!-- Custom Script -->
