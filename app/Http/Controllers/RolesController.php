@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Actions\Role\CreateRole;
+use App\Actions\Role\UpdateRole;
+use App\Http\Requests\RoleFormRequest;
 use App\Models\SuperAdmin;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
@@ -55,28 +56,24 @@ class RolesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  RoleFormRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoleFormRequest $request)
     {
         if (is_null($this->user) || !$this->user->can('role.create')) {
             abort(403, 'Sorry !! You are Unauthorized to create any role.');
         }
-        $this->validate($request, [
-            'name' => "required|unique:roles,name",
-        ], [
-            'name.required' => 'The role name field is required!',
-            'name.unique' => 'This role has already been taken!'
-        ]);
 
-        $role = Role::create(['name' => $request->name]);
-        if (!empty($request->permissions)) {
-            $role->syncPermissions($request->permissions);
+        try {
+            CreateRole::create($request);
+
+            flashSuccess('Role Created Successfully');
+            return back();
+        } catch (\Throwable $th) {
+            flashError($th->getMessage());
+            return back();
         }
-
-        session()->flash('success', 'Role Created Successfully!');
-        return back();
     }
 
     /**
@@ -85,45 +82,40 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
         if (is_null($this->user) || !$this->user->can('role.edit')) {
             abort(403, 'Sorry !! You are Unauthorized to edit any role.');
         }
-        $role = Role::findById($id);
+
         $permissions = Permission::all();
         $permission_groups = SuperAdmin::getPermissionGroup();
+
         return view('backend.roles.edit', compact('permissions', 'permission_groups', 'role'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  RoleFormRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RoleFormRequest $request, Role $role)
     {
         if (is_null($this->user) || !$this->user->can('role.edit')) {
             abort(403, 'Sorry !! You are Unauthorized to delete any role.');
         }
-        $this->validate($request, [
-            'name' => "required|unique:roles,name,$id",
-        ], [
-            'name.required' => 'The role name field is required!',
-            'name.unique' => 'This role has already been taken!'
-        ]);
 
-        $role = Role::findById($id);
-        if (!empty($request->permissions)) {
-            $role->name = $request->name;
-            $role->save();
-            $role->syncPermissions($request->permissions);
+        try {
+            UpdateRole::update($request, $role);
+
+            flashSuccess('Role Updated Successfully');
+            return back();
+        } catch (\Throwable $th) {
+            flashError($th->getMessage());
+            return back();
         }
-
-        session()->flash('success', 'Role Updated Successfully!');
-        return back();
     }
 
     /**
@@ -132,16 +124,22 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
         if (is_null($this->user) || !$this->user->can('role.delete')) {
             abort(403, 'Unauthorized Access');
         }
-        $role = Role::findById($id);
-        if (!is_null($role)) {
-            $role->delete();
+
+        try {
+            if (!is_null($role)) {
+                $role->delete();
+            }
+
+            flashSuccess('Role Deleted Successfully');
+            return back();
+        } catch (\Throwable $th) {
+            flashError($th->getMessage());
+            return back();
         }
-        session()->flash('success', 'Role Deleted Successfully!');
-        return back();
     }
 }

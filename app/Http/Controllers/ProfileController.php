@@ -18,8 +18,6 @@ class ProfileController extends Controller
         });
     }
 
-    //
-
     /**
      * Profile View.
      *
