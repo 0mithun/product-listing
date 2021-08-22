@@ -33,7 +33,7 @@ class UserFormRequest extends FormRequest
         } else {
             return [
                 'name' => "required",
-                'email' => "required|unique:super_admins,email,{$this->id}",
+                'email' => "required|unique:super_admins,email,{$this->user->id}",
                 'roles' => "required",
             ];
         }

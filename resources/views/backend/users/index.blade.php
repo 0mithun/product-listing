@@ -73,7 +73,7 @@
                                     </div>
                                 </div>
                             @empty
-                                <div>
+                                <div class="test-center">
                                     No User found!
                                 </div>
                             @endforelse

@@ -6,11 +6,9 @@ use App\Actions\User\CreateUser;
 use App\Actions\User\UpdateUser;
 use App\Http\Requests\UserFormRequest;
 use App\Models\SuperAdmin;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class UserController extends Controller
@@ -91,12 +89,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(SuperAdmin $user)
     {
         if (is_null($this->user) || !$this->user->can('admin.edit')) {
             abort(403, 'Sorry !! You are Unauthorized to edit users.');
         }
-        $user = SuperAdmin::findOrFail($id);
+
         $roles = Role::all();
         return view('backend.users.edit', compact('roles', 'user'));
     }
@@ -108,14 +106,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserFormRequest $request, $id)
+    public function update(UserFormRequest $request, SuperAdmin $user)
     {
         if (is_null($this->user) || !$this->user->can('admin.edit')) {
             abort(403, 'Sorry !! You are Unauthorized to update users.');
         }
 
         try {
-            $user = SuperAdmin::findOrFail($id);
             UpdateUser::update($request, $user);
 
             flashSuccess('User Updated Successfully');
@@ -132,16 +129,22 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(SuperAdmin $user)
     {
         if (is_null($this->user) || !$this->user->can('admin.delete')) {
             abort(403, 'Sorry !! You are Unauthorized to delete users.');
         }
-        $user = SuperAdmin::find($id);
-        if (!is_null($user)) {
-            $user->delete();
+
+        try {
+            if (!is_null($user)) {
+                $user->delete();
+            }
+
+            flashSuccess('User Deleted Successfully');
+            return back();
+        } catch (\Throwable $th) {
+            flashError($th->getMessage());
+            return back();
         }
-        session()->flash('success', 'User Deleted Successfully!');
-        return back();
     }
 }
