@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ asset('backend') }}/dist/css/adminlte.min.css">
     <!-- Toastr -->
     <link rel="stylesheet" type="text/css" href="{{ asset('backend') }}/plugins/toastr/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/zakirsoft.css') }}">
     <!-- Custom Link -->
     @yield('style')
 </head>
@@ -227,11 +228,11 @@
             <!-- Brand Logo -->
             <a href="{{ route('home') }}" class="brand-link">
                 @if ($logo = website_setting()->logo_image)
-                    <img src="{{ asset($logo) }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                    <img src="{{ asset($logo) }}" alt="AdminLTE Logo" class="img-circle elevation-3"
                         style="opacity: .8">
                 @else
                     <img src="{{ asset('backend') }}/image/64x64.png" alt="AdminLTE Logo"
-                        class="brand-image img-circle elevation-3" style="opacity: .8">
+                        class="img-circle elevation-3" style="opacity: .8">
                 @endif
                 <span class="brand-text font-weight-light">{{ website_setting()->name }}</span>
             </a>
