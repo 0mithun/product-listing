@@ -52,11 +52,6 @@ Route::get('/admin/login', [App\Http\Controllers\Admin\LoginController::class, '
 Route::post('/admin/login', [App\Http\Controllers\Admin\LoginController::class, 'login'])->name('admin.login');
 
 // ========================================================
-//====================Mode change==========================
-// ========================================================
-Route::post('mode/change', [ThemeController::class, 'mode_change'])->name('mode.change');
-
-// ========================================================
 //====================Artisan command======================
 // ========================================================
 

@@ -70,7 +70,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fas fa-th"></i>
+                        <i class="fas fa-plus"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
                         <span class="dropdown-item dropdown-header">Quick Actions</span>
