@@ -88,4 +88,11 @@ class SettingsController extends Controller
             return back();
         }
     }
+
+    public function layoutChange()
+    {
+        $layout = request()->layout;
+        session(['layout_mode' => $layout]);
+        return back();
+    }
 }

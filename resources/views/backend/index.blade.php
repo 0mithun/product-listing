@@ -1,3 +1,4 @@
+{{-- @extends('layouts.top-nav') --}}
 @extends('layouts.admin')
 @section('title') Dashboard @endsection
 @section('breadcrumbs')
