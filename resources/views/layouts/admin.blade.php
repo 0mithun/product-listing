@@ -374,11 +374,15 @@
         isDarkMode ? $('#nav').addClass('navbar-dark') : null;
 
         if (isDarkMode) {
-            isDarkMode ? $('#dark').addClass('d-block') : 'd-none';
-            isDarkMode ? $('#light').addClass('d-none') : 'd-block';
+            $('#dark').removeClass('d-none')
+            $('#dark').addClass('d-block')
+            $('#light').removeClass('d-block')
+            $('#light').addClass('d-none')
         } else {
-            isDarkMode ? $('#dark').addClass('d-none') : 'd-block';
-            isDarkMode ? $('#light').addClass('d-block') : 'd-none';
+            $('#light').removeClass('d-none')
+            $('#light').addClass('d-block')
+            $('#dark').removeClass('d-block')
+            $('#dark').addClass('d-none')
         }
 
         $('#mode_change').on('click', function() {
