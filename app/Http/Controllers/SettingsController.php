@@ -15,30 +15,30 @@ class SettingsController extends Controller
                 $website_setting = WebsiteSettings::first();
                 return view('backend.settings.pages.website', compact('website_setting'));
                 break;
-                // case 'color':
-                //     return view('backend.settings.pages.color-picker');
-                //     break;
-                // case 'layout':
-                //     return view('backend.settings.pages.layout');
-                //     break;
-                // case 'language':
-                //     return view('backend.settings.pages.language');
-                //     break;
-                // case 'payment':
-                //     return view('backend.settings.pages.payment');
-                //     break;
-                // case 'mail':
-                //     return view('backend.settings.pages.mail');
-                //     break;
-                // case 'custom':
-                //     return view('backend.settings.pages.custom');
-                //     break;
-                // case 'currency':
-                //     return view('backend.settings.pages.currency');
-                //     break;
-                // case 'theme':
-                //     return view('backend.settings.pages.theme');
-                //     break;
+            case 'layout':
+                return view('backend.settings.pages.layout');
+                break;
+            case 'color':
+                return view('backend.settings.pages.color-picker');
+                break;
+            case 'language':
+                return view('backend.settings.pages.language');
+                break;
+            case 'payment':
+                return view('backend.settings.pages.payment');
+                break;
+            case 'mail':
+                return view('backend.settings.pages.mail');
+                break;
+            case 'custom':
+                return view('backend.settings.pages.custom');
+                break;
+            case 'currency':
+                return view('backend.settings.pages.currency');
+                break;
+            case 'theme':
+                return view('backend.settings.pages.theme');
+                break;
             default:
                 $website_setting = WebsiteSettings::first();
                 return view('backend.settings.pages.website', compact('website_setting'));
@@ -62,25 +62,30 @@ class SettingsController extends Controller
             'email' => "required",
         ]);
 
-        $site_settings = WebsiteSettings::first();
-        $site_settings->name = $request->name;
-        $site_settings->email = $request->email;
-        $site_settings->save();
+        try {
+            $site_settings = WebsiteSettings::first();
+            $site_settings->name = $request->name;
+            $site_settings->email = $request->email;
+            $site_settings->save();
 
-        $logo_image = $request->logo_image;
-        $fav_icon = $request->favicon_image;
+            $logo_image = $request->logo_image;
+            $fav_icon = $request->favicon_image;
 
-        if ($logo_image) {
-            $url = uploadImage($logo_image, 'website');
-            $site_settings->update(['logo_image' => $url]);
+            if ($logo_image) {
+                $url = uploadImage($logo_image, 'website');
+                $site_settings->update(['logo_image' => $url]);
+            }
+
+            if ($fav_icon) {
+                $url = uploadImage($fav_icon, 'website');
+                $site_settings->update(['favicon_image' => $url]);
+            }
+
+            flashSuccess('Site Settings Content Updated Successfully');
+            return back();
+        } catch (\Throwable $th) {
+            flashError($th->getMessage());
+            return back();
         }
-
-        if ($fav_icon) {
-            $url = uploadImage($fav_icon, 'website');
-            $site_settings->update(['favicon_image' => $url]);
-        }
-
-        session()->flash('success', 'Site Settings Content Updated Successfully!');
-        return back();
     }
 }
