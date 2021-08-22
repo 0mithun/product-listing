@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileUpdate
 {
+    /**
+     * Profile Update.
+     *
+     * @param object $request
+     * @return boolean
+     */
     public static function update(object $request)
     {
         if ($request->isPasswordChange) {
@@ -22,6 +28,12 @@ class ProfileUpdate
         }
     }
 
+    /**
+     * Profile data Update.
+     *
+     * @param object $request
+     * @return boolean
+     */
     protected static function profile_data(object $request)
     {
         $user = SuperAdmin::find(auth()->id());
@@ -37,6 +49,12 @@ class ProfileUpdate
         return true;
     }
 
+    /**
+     * Password  Update.
+     *
+     * @param object $request
+     * @return boolean
+     */
     protected static function change_password(object $request)
     {
         $password_check = Hash::check($request->current_password, auth()->user()->password);

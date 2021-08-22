@@ -18,7 +18,13 @@ class ProfileController extends Controller
         });
     }
 
-    // Setting Section
+    //
+
+    /**
+     * Profile View.
+     *
+     * @return void
+     */
     public function profile()
     {
         if (is_null($this->user) || !$this->user->can('profile.view')) {
@@ -28,6 +34,11 @@ class ProfileController extends Controller
         return view('backend.profile.index', compact('user'));
     }
 
+    /**
+     * Profile Setting.
+     *
+     * @return void
+     */
     public function setting()
     {
         if (is_null($this->user) || !$this->user->can('profile.edit')) {
@@ -37,6 +48,13 @@ class ProfileController extends Controller
         return view('backend.profile.setting', compact('user'));
     }
 
+
+    /**
+     * Profile Update.
+     *
+     * @param ProfileRequest $request
+     * @return \Illuminate\Http\Response
+     */
     public function profile_update(ProfileRequest $request)
     {
         if (is_null($this->user) || !$this->user->can('profile.edit')) {
