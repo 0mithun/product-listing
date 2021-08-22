@@ -17,6 +17,8 @@
                     <div class="card-header">
                         <h5 class="card-title m-0">Left Navigation Layout</h5>
                     </div>
+                    <img height="200px" width="600px" src="{{ asset('backend/image/setting/left-nav.png') }}"
+                        class="card-img-top img-fluid" alt="top nav">
                     <div class="card-body">
                         @if (session('layout_mode') === 'left_nav')
                             <a href="javascript:void(0)" onclick="layoutChange('top_nav')"
@@ -33,6 +35,8 @@
                     <div class="card-header">
                         <h5 class="card-title m-0">Top Navigation Layout</h5>
                     </div>
+                    <img height="200px" width="600px" src="{{ asset('backend/image/setting/top-nav.png') }}"
+                        class="card-img-top img-fluid" alt="top nav">
                     <div class="card-body">
                         @if (session('layout_mode') === 'top_nav')
                             <a href="javascript:void(0)" onclick="layoutChange('left_nav')"

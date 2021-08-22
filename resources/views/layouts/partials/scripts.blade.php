@@ -51,6 +51,11 @@
     isDarkMode ? $('body').addClass('dark-mode') : null;
     var layout_mode = '{{ session('layout_mode') }}';
 
+    if (layout_mode == 'top_nav') {
+        $('#nav').addClass('navbar-light')
+        $('#nav').removeClass('navbar-dark')
+    }
+
     if (isDarkMode) {
         $('#dark').removeClass('d-none')
         $('#dark').addClass('d-block')
@@ -73,10 +78,7 @@
         }
     }
 
-    if (layout_mode == 'top_nav') {
-        $('#nav').addClass('navbar-light')
-        $('#nav').removeClass('navbar-dark')
-    }
+
 
     $('#mode_change').on('click', function() {
         localStorage.setItem("dark_mode", isDarkMode == true ? false : true);
