@@ -49,7 +49,7 @@
     // Mode Change Toggle
     var isDarkMode = JSON.parse(localStorage.getItem("dark_mode"))
     isDarkMode ? $('body').addClass('dark-mode') : null;
-    // isDarkMode ?  : null;
+    var layout_mode = '{{ session('layout_mode') }}';
 
     if (isDarkMode) {
         $('#dark').removeClass('d-none')
@@ -57,14 +57,23 @@
         $('#light').removeClass('d-block')
         $('#light').addClass('d-none')
 
-        $('#nav').removeClass('navbar-light')
-        $('#nav').addClass('navbar-dark')
+        if (layout_mode != 'top_nav') {
+            $('#nav').removeClass('navbar-light')
+            $('#nav').addClass('navbar-dark')
+        }
     } else {
         $('#light').removeClass('d-none')
         $('#light').addClass('d-block')
         $('#dark').removeClass('d-block')
         $('#dark').addClass('d-none')
 
+        if (layout_mode != 'top_nav') {
+            $('#nav').addClass('navbar-light')
+            $('#nav').removeClass('navbar-dark')
+        }
+    }
+
+    if (layout_mode == 'top_nav') {
         $('#nav').addClass('navbar-light')
         $('#nav').removeClass('navbar-dark')
     }
