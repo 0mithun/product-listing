@@ -36,13 +36,13 @@
 
                         </div>
                         <form class="form-horizontal" action="{{ route('profile.update') }}" method="POST"
-                            enctype="multipart/form-data">
+                            enctype="multipart/form-data" autocomplete="off">
                             @method('PUT')
                             @csrf
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Name</label>
                                 <div class="col-sm-9">
-                                    <input name="name" value="{{ $auth->name }}" type="text"
+                                    <input required name="name" value="{{ $auth->name }}" type="text"
                                         class="form-control @error('name') is-invalid @enderror"
                                         placeholder="Enter New Name">
                                     @error('name') <span class="invalid-feedback"
@@ -52,7 +52,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Email</label>
                                 <div class="col-sm-9">
-                                    <input name="email" value="{{ $auth->email }}" type="email"
+                                    <input required name="email" value="{{ $auth->email }}" type="email"
                                         class="form-control @error('email') is-invalid @enderror"
                                         placeholder="Enter New Email">
                                     @error('email') <span class="invalid-feedback"

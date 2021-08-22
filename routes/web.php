@@ -7,7 +7,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Social\SocialLoginController;
-use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\SettingsController;
 
 Route::get('/', function () {
