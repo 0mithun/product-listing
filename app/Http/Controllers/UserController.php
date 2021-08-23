@@ -26,9 +26,11 @@ class UserController extends Controller
 
     public function dashboard()
     {
+        session(['layout_mode' => 'left_nav']);
         if (is_null($this->user) || !$this->user->can('dashboard.view')) {
             abort(403, 'Sorry !! You are Unauthorized to view dashboard.');
         }
+
         return view('backend.index');
     }
 

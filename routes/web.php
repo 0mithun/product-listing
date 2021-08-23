@@ -9,10 +9,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Social\SocialLoginController;
 use App\Http\Controllers\SettingsController;
 
-Route::get('/top-nav', function () {
-    return view('layouts.top-nav');
-});
-
 Route::get('/', function () {
     return redirect(route('login'));
     // return view('welcome');
@@ -53,13 +49,11 @@ Route::get('auth/{provider}/callback', [SocialLoginController::class, 'callback'
 Route::get('/admin/home', [App\Http\Controllers\AdminController::class, 'index']);
 Route::get('/admin/login', [App\Http\Controllers\Admin\LoginController::class, 'showLoginForm'])->name('login.admin');
 Route::post('/admin/login', [App\Http\Controllers\Admin\LoginController::class, 'login'])->name('admin.login');
+
 // ========================================================
 //====================Setting==============================
 // ========================================================
 Route::put('/site/layout', [SettingsController::class, 'layoutChange'])->name('layout.change');
-
-
-
 
 
 // ========================================================
