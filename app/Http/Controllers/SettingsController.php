@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SettingFormRequest;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 
@@ -52,40 +53,6 @@ class SettingsController extends Controller
      * @param  \App\Models\WebsiteSettings  $id
      * @return \Illuminate\Http\Response
      */
-    public function website(Request $request)
-    {
-        $this->validate($request, [
-            'name' => "required",
-            'email' => "required",
-        ]);
-
-        try {
-            $site_settings = Setting::first();
-            $site_settings->name = $request->name;
-            $site_settings->email = $request->email;
-            $site_settings->save();
-
-            $logo_image = $request->logo_image;
-            $fav_icon = $request->favicon_image;
-
-            if ($logo_image) {
-                $url = uploadImage($logo_image, 'website');
-                $site_settings->update(['logo_image' => $url]);
-            }
-
-            if ($fav_icon) {
-                $url = uploadImage($fav_icon, 'website');
-                $site_settings->update(['favicon_image' => $url]);
-            }
-
-            flashSuccess('Site Settings Content Updated Successfully');
-            return back();
-        } catch (\Throwable $th) {
-            flashError($th->getMessage());
-            return back();
-        }
-    }
-
     public function layoutChange()
     {
         $layout = request()->layout;
@@ -97,25 +64,56 @@ class SettingsController extends Controller
     {
         try {
             switch ($page) {
+                case 'website':
+                    $this->validate($request, [
+                        'name' => "required",
+                        'email' => "required",
+                    ]);
+
+                    $this->websiteUpdate($request);
+                    $message = 'Site Settings Content';
+                    break;
                 case 'color':
                     $this->colorUpdate($request);
-                    flashSuccess('Color Setting Updated Successfully');
-                    return back();
+                    $message = 'Color Setting';
                     break;
                 case 'custom':
                     $this->custumCSSJSUpdate($request);
-                    flashSuccess('Custom Setting Updated Successfully');
-                    return back();
+                    $message = 'Custom Setting';
                     break;
                 default:
                     abort(404);
             }
+
+            flashSuccess($message . ' Updated Successfully');
+            return back();
         } catch (\Throwable $th) {
             flashError($th->getMessage());
             return back();
         }
     }
 
+
+    public function websiteUpdate($request)
+    {
+        // Website update
+        $site_settings = Setting::first()->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+
+        if ($logo_image = $request->logo_image) {
+            $url = uploadImage($logo_image, 'website');
+            $site_settings->update(['logo_image' => $url]);
+        }
+
+        if ($fav_icon = $request->favicon_image) {
+            $url = uploadImage($fav_icon, 'website');
+            $site_settings->update(['favicon_image' => $url]);
+        }
+
+        return true;
+    }
 
     public function colorUpdate($request)
     {
