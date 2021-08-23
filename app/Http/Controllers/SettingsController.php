@@ -62,6 +62,7 @@ class SettingsController extends Controller
      */
     public function update(Request $request, $page)
     {
+        // return $request;
         try {
             switch ($page) {
                 case 'website':
@@ -129,7 +130,16 @@ class SettingsController extends Controller
      */
     public function colorUpdate($request)
     {
-        return Setting::first()->update(['slider_color' => $request->slider_color]);
+        $setting = Setting::first();
+        if ($request->sidebar_color) {
+            $setting->sidebar_color = $request->sidebar_color;
+        }
+        if ($request->nav_color) {
+            $setting->nav_color = $request->nav_color;
+        }
+        $setting->save();
+
+        return true;
     }
 
     /**

@@ -22,7 +22,8 @@ class CreateSettingsTable extends Migration
             $table->string('header_css')->nullable();
             $table->string('header_script')->nullable();
             $table->string('body_script')->nullable();
-            $table->string('slider_color')->default('#343a40');
+            $table->string('sidebar_color')->nullable();
+            $table->string('nav_color')->nullable();
             $table->timestamps();
         });
     }

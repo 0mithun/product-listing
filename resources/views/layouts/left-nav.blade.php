@@ -17,7 +17,8 @@
     @endphp
     <div class="wrapper">
         <!-- Navbar -->
-        <nav id="nav" class="main-header navbar navbar-expand navbar-light">
+        <nav id="nav" class="main-header navbar navbar-expand navbar-light"
+            style="background-color:{{ setting()->nav_color ? setting()->nav_color : '#f8f9fa' }}">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">

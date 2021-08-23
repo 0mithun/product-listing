@@ -7,22 +7,33 @@
             <h3 class="card-title" style="line-height: 36px;">Color Picker</h3>
         </div>
         <div class="row pt-3 pb-4">
-            <div class="col-3">
-                <form action="{{ route('setting', 'color') }}" method="post">
-                    @csrf
-                    @method('PUT')
-                    <div class="card">
-                        <div class="card-header">Slider Color</div>
-                        <div class="card-body">
-                            <div class="sidebar-color-picker"></div>
-                            <input id="slider_color" type="hidden" name="slider_color">
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary btn-block">Update</button>
-                        </div>
+            <form id="color_picker_form" action="" method="post">
+                @csrf
+                @method('PUT')
+                <input id="sidebar_color_id" type="hidden" name="sidebar_color">
+                <input id="nav_color_id" type="hidden" name="nav_color">
+            </form>
+
+            <div class="col-2">
+                <div class="card">
+                    <div class="card-header">Slider Color</div>
+                    <div class="card-body">
+                        <div class="sidebar-color-picker"></div>
                     </div>
-                </form>
+                </div>
             </div>
+            <div class="col-2">
+                <div class="card">
+                    <div class="card-header">Nav Color</div>
+                    <div class="card-body">
+                        <div class="navbar-color-picker"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button onclick="$('#color_picker_form').submit()" type="submit"
+                class="btn btn-primary btn-block">Update</button>
         </div>
     </div>
 @endsection
@@ -36,10 +47,43 @@
 @section('script')
     <script src="{{ asset('backend/plugins/pickr') }}/pickr.min.js"></script>
     <script>
+        // Sidebar Color Change
         const sidebarPickr = Pickr.create({
             el: ".sidebar-color-picker",
             theme: "classic",
-            default: '{{ setting()->slider_color }}',
+            default: '{{ setting()->sidebar_color ? setting()->sidebar_color : '#343a40' }}',
+
+            components: {
+                preview: true,
+                opacity: true,
+                hue: true,
+
+                interaction: {
+                    hex: true,
+                    rgba: true,
+                    cmyk: true,
+                    input: true,
+                    save: true,
+                    clear: true,
+                }
+            }
+        });
+        sidebarPickr.on('change', (color, source, instance) => {
+            $("#sidebar").css("backgroundColor", color.toRGBA().toString(0));
+            $("#sidebar_color_id").val(color.toRGBA().toString(0));
+        }).on('save', (color, instance) => {
+            $("#sidebar").css("backgroundColor", color.toRGBA().toString(0));
+            $("#sidebar_color_id").val(color.toRGBA().toString(0));
+            sidebarPickr.hide();
+        }).on('clear', instance => {
+            sidebarPickr.hide();
+        });
+
+        // Navbar Color Change
+        const NavbarPickr = Pickr.create({
+            el: ".navbar-color-picker",
+            theme: "classic",
+            default: '{{ setting()->nav_color ? setting()->nav_color : '#f8f9fa' }}',
 
             components: {
                 preview: true,
@@ -57,16 +101,15 @@
             }
         });
 
-        sidebarPickr.on('change', (color, source, instance) => {
-            $("#sidebar").css("backgroundColor", color.toRGBA().toString(0));
-            $("#slider_color").val(color.toRGBA().toString(0));
+        NavbarPickr.on('change', (color, source, instance) => {
+            $("#nav").css("backgroundColor", color.toRGBA().toString(0));
+            $("#nav_color_id").val(color.toRGBA().toString(0));
         }).on('save', (color, instance) => {
-            $("#sidebar").css("backgroundColor", color.toRGBA().toString(0));
-            $("#slider_color").val(color.toRGBA().toString(0));
-            sidebarPickr.hide();
+            $("#nav").css("backgroundColor", color.toRGBA().toString(0));
+            $("#nav_color_id").val(color.toRGBA().toString(0));
+            NavbarPickr.hide();
         }).on('clear', instance => {
-            $("#sidebar").css("backgroundColor", " #343a40");
-            sidebarPickr.hide();
+            NavbarPickr.hide();
         });
     </script>
 @endsection
