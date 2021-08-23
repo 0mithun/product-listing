@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SettingFormRequest;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 
@@ -46,13 +45,7 @@ class SettingsController extends Controller
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\WebsiteSettings  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function layoutChange()
     {
         $layout = request()->layout;
@@ -60,6 +53,13 @@ class SettingsController extends Controller
         return back();
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string $page
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request, $page)
     {
         try {
@@ -94,6 +94,12 @@ class SettingsController extends Controller
     }
 
 
+    /**
+     * Website Data Update.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return boolean
+     */
     public function websiteUpdate($request)
     {
         // Website update
@@ -115,11 +121,23 @@ class SettingsController extends Controller
         return true;
     }
 
+    /**
+     * color Data Update.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return boolean
+     */
     public function colorUpdate($request)
     {
         return Setting::first()->update(['slider_color' => $request->slider_color]);
     }
 
+    /**
+     * custom js and css Data Update.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return boolean
+     */
     public function custumCSSJSUpdate($request)
     {
         $custom_css_js = $request->only(['header_css', 'header_script', 'body_script']);
