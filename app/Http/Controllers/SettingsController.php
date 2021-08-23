@@ -10,9 +10,10 @@ class SettingsController extends Controller
     // Website setting page.
     public function index($page)
     {
+        $website_setting = WebsiteSettings::first();
+
         switch ($page) {
             case 'website':
-                $website_setting = WebsiteSettings::first();
                 return view('backend.settings.pages.website', compact('website_setting'));
                 break;
             case 'layout':
@@ -21,31 +22,27 @@ class SettingsController extends Controller
             case 'color':
                 return view('backend.settings.pages.color-picker');
                 break;
-            case 'language':
-                return view('backend.settings.pages.language');
-                break;
-            case 'payment':
-                return view('backend.settings.pages.payment');
-                break;
-            case 'mail':
-                return view('backend.settings.pages.mail');
-                break;
             case 'custom':
                 return view('backend.settings.pages.custom');
                 break;
-            case 'currency':
-                return view('backend.settings.pages.currency');
-                break;
-            case 'theme':
-                return view('backend.settings.pages.theme');
-                break;
+                // case 'language':
+                //     return view('backend.settings.pages.language');
+                //     break;
+                // case 'payment':
+                //     return view('backend.settings.pages.payment');
+                //     break;
+                // case 'mail':
+                //     return view('backend.settings.pages.mail');
+                //     break;
+                // case 'currency':
+                //     return view('backend.settings.pages.currency');
+                //     break;
+                // case 'theme':
+                //     return view('backend.settings.pages.theme');
+                //     break;
             default:
-                $website_setting = WebsiteSettings::first();
-                return view('backend.settings.pages.website', compact('website_setting'));
-                break;
+                abort(404);
         }
-
-        return 123;
     }
 
     /**

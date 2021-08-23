@@ -25,19 +25,20 @@
                         href="{{ route('setting', 'layout') }}">Layout</a>
                     <a class="nav-link {{ request()->page == 'color' ? 'active' : '' }}"
                         href="{{ route('setting', 'color') }}">Color Picker</a>
-                    <a class="nav-link {{ request()->page == 'language' ? 'active' : '' }}"
+                    <a class="nav-link {{ request()->page == 'custom' ? 'active' : '' }}"
+                        href="{{ route('setting', 'custom') }}">Custom Css &
+                        Js</a>
+                    {{-- <a class="nav-link {{ request()->page == 'language' ? 'active' : '' }}"
                         href="{{ route('setting', 'language') }}">Language</a>
                     <a class="nav-link {{ request()->page == 'payment' ? 'active' : '' }}"
                         href="{{ route('setting', 'payment') }}">Payment</a>
                     <a class="nav-link {{ request()->page == 'mail' ? 'active' : '' }}"
-                        href="{{ route('setting', 'mail') }}">Mail</a>
-                    <a class="nav-link {{ request()->page == 'custom' ? 'active' : '' }}"
-                        href="{{ route('setting', 'custom') }}">Custom Css &
-                        Js</a>
-                    <a class="nav-link {{ request()->page == 'currency' ? 'active' : '' }}"
+                        href="{{ route('setting', 'mail') }}">Mail</a> --}}
+
+                    {{-- <a class="nav-link {{ request()->page == 'currency' ? 'active' : '' }}"
                         href="{{ route('setting', 'currency') }}">Currency</a>
                     <a class="nav-link {{ request()->page == 'theme' ? 'active' : '' }}"
-                        href="{{ route('setting', 'theme') }}">Theme</a>
+                        href="{{ route('setting', 'theme') }}">Theme</a> --}}
                 </div>
             </div>
             <div class="col-10">
@@ -52,7 +53,11 @@
                     <div class="tab-pane fade {{ request()->page == 'color' ? 'show active' : '' }}">
                         @yield('color-picker')
                     </div>
-                    <div class="tab-pane fade {{ request()->page == 'language' ? 'show active' : '' }}" id="language"
+                    <div class="tab-pane fade {{ request()->page == 'custom' ? 'show active' : '' }}" id="custom"
+                        role="tabpanel" aria-labelledby="homee">
+                        @yield('custom-setting')
+                    </div>
+                    {{-- <div class="tab-pane fade {{ request()->page == 'language' ? 'show active' : '' }}" id="language"
                         role="tabpanel" aria-labelledby="homee">
                         @yield('language-setting')
                     </div>
@@ -64,18 +69,14 @@
                         role="tabpanel" aria-labelledby="homee">
                         @yield('mail-setting')
                     </div>
-                    <div class="tab-pane fade {{ request()->page == 'custom' ? 'show active' : '' }}" id="custom"
-                        role="tabpanel" aria-labelledby="homee">
-                        @yield('custom-setting')
-                    </div>
-                    <div class="tab-pane fade {{ request()->page == 'currency' ? 'show active' : '' }}" id="currency"
+                     <div class="tab-pane fade {{ request()->page == 'currency' ? 'show active' : '' }}" id="currency"
                         role="tabpanel" aria-labelledby="homee">
                         @yield('currency-setting')
                     </div>
                     <div class="tab-pane fade {{ request()->page == 'theme' ? 'show active' : '' }}" id="theme"
                         role="tabpanel" aria-labelledby="homee">
                         @yield('theme-setting')
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
