@@ -61,13 +61,9 @@
     <div class="row">
         <div class="col-6">
             <!-- BAR CHART -->
-            <div class="card card-success">
+            <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Sales and Invest Overview</h3>
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                    </div>
                 </div>
                 <div class="card-body">
                     <div class="chart">
@@ -79,14 +75,9 @@
             <!-- /.card -->
         </div>
         <div class="col-6">
-            <div class="card card-danger">
+            <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Browser Overview</h3>
-
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                    </div>
                 </div>
                 <div class="card-body">
                     <canvas id="donutChart" style="height:230px; min-height:230px"></canvas>
@@ -98,7 +89,7 @@
     <div class="row">
         <div class="col-6">
             <div class="card">
-                <div class="card-header bg-primary">
+                <div class="card-header">
                     Top Pages
                 </div>
                 <div class="card-body">
@@ -133,7 +124,7 @@
         </div>
         <div class="col-6">
             <div class="card">
-                <div class="card-header bg-info">
+                <div class="card-header">
                     Top Browsers
                 </div>
                 <div class="card-body">
