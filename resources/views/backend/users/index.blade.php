@@ -20,7 +20,7 @@
                         @endif
                     </div>
                     <div class="card-body">
-                        <div class="row">
+                        <div class="row justify-content-center">
                             @forelse ($users as $user)
                                 <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
                                     <div class="card bg-light d-flex flex-fill">
@@ -34,11 +34,6 @@
                                                 <div class="col-7 mt-5">
                                                     <h2 class="lead"><b>{{ $user->name }}</b></h2>
                                                     <p class="text-muted text-sm"><b>Email: </b> {{ $user->email }}</p>
-                                                    {{-- <ul class="ml-4 mb-0 fa-ul text-muted">
-                                                        <li class="small"><span class="fa-li"><i
-                                                                    class="fas fa-lg fa-building"></i></span> Address: Demo
-                                                            Street 123, Demo City 04312, NJ</li>
-                                                    </ul> --}}
                                                 </div>
                                                 <div class="col-5 text-center">
                                                     <img src="{{ $user->image }}" alt="user-avatar"
@@ -73,8 +68,9 @@
                                     </div>
                                 </div>
                             @empty
-                                <div class="test-center">
-                                    No User found!
+                                <div class="col-6 text-center">
+                                    <x-not-found title="Nothing found" subtitle="There is no users found in this page."
+                                        route="user.create" />
                                 </div>
                             @endforelse
                         </div>

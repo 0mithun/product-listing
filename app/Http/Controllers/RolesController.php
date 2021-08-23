@@ -34,7 +34,7 @@ class RolesController extends Controller
         if (is_null($this->user) || !$this->user->can('role.view')) {
             abort(403, 'Sorry !! You are Unauthorized to view any role.');
         }
-        $roles = Role::SimplePaginate(10);
+        $roles = Role::where('id', '!=', 1)->SimplePaginate(10);
         return view('backend.roles.index', compact('roles'));
     }
 
