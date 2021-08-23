@@ -16,6 +16,12 @@
         $user = Auth::user();
     @endphp
     <div class="wrapper">
+        {{-- <div x-text="darkMode">
+            asdsad
+        </div> --}}
+        {{-- <template x-if="darkMode">
+            <div>Contents...</div>
+        </template> --}}
         <!-- Navbar -->
         <nav id="nav" class="main-header navbar navbar-expand navbar-light"
             style="background-color:{{ setting()->nav_color ? setting()->nav_color : '#f8f9fa' }}">

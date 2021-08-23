@@ -34,10 +34,8 @@
             </div>
         </div>
         <div class="card-footer text-center">
-            <button style="
-                                                                                                                        width: 250px;
-                                                                                                                    "
-                onclick="$('#color_picker_form').submit()" type="submit" class="btn btn-primary">Update</button>
+            <button style="width: 250px;" onclick="$('#color_picker_form').submit()" type="submit"
+                class="btn btn-primary">Update</button>
         </div>
     </div>
 @endsection

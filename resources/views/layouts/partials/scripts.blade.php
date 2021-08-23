@@ -70,6 +70,28 @@
         window.location.reload();
     });
 </script>
+{{-- <script>
+    function backedData() {
+        return {
+            darkMode: JSON.parse(localStorage.getItem("dark_mode")),
+            navBGColor: '{{ setting()->nav_color ? setting()->nav_color : '#f8f9fa' }}',
+            showMessage() {
+                console.log(this.navBGColor);
+                // console.log(JSON.parse(localStorage.getItem("dark_mode")))
+
+            }
+            // saveData() {
+            //     if (this.form.name.length && this.form.email.length) {
+            //         this.students.push({
+            //             name: this.form.name,
+            //             email: this.form.email
+            //         })
+            //         this.resetForm()
+            //     }
+            // }
+        }
+    }
+</script> --}}
 <!-- Custom Script -->
 @yield('script')
 

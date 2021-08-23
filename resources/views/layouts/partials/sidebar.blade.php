@@ -1,5 +1,7 @@
 <aside id="sidebar" class="main-sidebar sidebar-dark-primary elevation-4"
     style="background-color: {{ setting()->sidebar_color ? setting()->sidebar_color : '#343a40' }}">
+
+
     <!-- Brand Logo -->
     <a href="{{ route('home') }}" class="brand-link">
         @if (file_exists(setting()->logo_image))
