@@ -13,7 +13,7 @@
                     @method('PUT')
                     @csrf
                     <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Site Name</label>
+                        <label class="col-sm-3 col-form-label">{{ setting()->name }}</label>
                         <div class="col-sm-9">
                             <input value="{{ $setting->name }}" name="name" type="text"
                                 class="form-control @error('name') is-invalid @enderror" placeholder="Enter Site Name">
@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Site Email</label>
+                        <label class="col-sm-3 col-form-label">{{ setting()->email }}</label>
                         <div class="col-sm-9">
                             <input value="{{ $setting->email }}" name="email" type="email"
                                 class="form-control @error('email') is-invalid @enderror" placeholder="Enter Site Email">

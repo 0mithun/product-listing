@@ -103,20 +103,24 @@ class SettingsController extends Controller
      */
     public function websiteUpdate($request)
     {
+        $setting = Setting::first();
+
         // Website update
-        $site_settings = Setting::first()->update([
+        $setting->update([
             'name' => $request->name,
             'email' => $request->email,
         ]);
 
         if ($logo_image = $request->logo_image) {
             $url = uploadImage($logo_image, 'website');
-            $site_settings->update(['logo_image' => $url]);
+            deleteImage($setting->logo_image);
+            $setting->update(['logo_image' => $url]);
         }
 
         if ($fav_icon = $request->favicon_image) {
             $url = uploadImage($fav_icon, 'website');
-            $site_settings->update(['favicon_image' => $url]);
+            deleteImage($setting->favicon_image);
+            $setting->update(['favicon_image' => $url]);
         }
 
         return true;
@@ -130,16 +134,8 @@ class SettingsController extends Controller
      */
     public function colorUpdate($request)
     {
-        $setting = Setting::first();
-        if ($request->sidebar_color) {
-            $setting->sidebar_color = $request->sidebar_color;
-        }
-        if ($request->nav_color) {
-            $setting->nav_color = $request->nav_color;
-        }
-        $setting->save();
-
-        return true;
+        $color = $request->only(['sidebar_color', 'nav_color']);
+        return Setting::first()->update($color);
     }
 
     /**

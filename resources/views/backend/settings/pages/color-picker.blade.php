@@ -10,8 +10,10 @@
             <form id="color_picker_form" action="" method="post">
                 @csrf
                 @method('PUT')
-                <input id="sidebar_color_id" type="hidden" name="sidebar_color">
-                <input id="nav_color_id" type="hidden" name="nav_color">
+                <input id="sidebar_color_id" type="hidden" name="sidebar_color"
+                    value="{{ setting()->sidebar_color ? setting()->sidebar_color : '#343a40' }}">
+                <input id="nav_color_id" type="hidden" name="nav_color"
+                    value="{{ setting()->nav_color ? setting()->nav_color : '#f8f9fa' }}">
             </form>
 
             <div class="col-2">
@@ -31,9 +33,11 @@
                 </div>
             </div>
         </div>
-        <div class="card-footer">
-            <button onclick="$('#color_picker_form').submit()" type="submit"
-                class="btn btn-primary btn-block">Update</button>
+        <div class="card-footer text-center">
+            <button style="
+                                                                                                                        width: 250px;
+                                                                                                                    "
+                onclick="$('#color_picker_form').submit()" type="submit" class="btn btn-primary">Update</button>
         </div>
     </div>
 @endsection
@@ -47,11 +51,14 @@
 @section('script')
     <script src="{{ asset('backend/plugins/pickr') }}/pickr.min.js"></script>
     <script>
+        var sidebarColor = '{{ setting()->sidebar_color ? setting()->sidebar_color : '#343a40' }}';
+        var navbarColor = '{{ setting()->nav_color ? setting()->nav_color : '#f8f9fa' }}';
+
         // Sidebar Color Change
         const sidebarPickr = Pickr.create({
             el: ".sidebar-color-picker",
             theme: "classic",
-            default: '{{ setting()->sidebar_color ? setting()->sidebar_color : '#343a40' }}',
+            default: sidebarColor,
 
             components: {
                 preview: true,
@@ -76,6 +83,7 @@
             $("#sidebar_color_id").val(color.toRGBA().toString(0));
             sidebarPickr.hide();
         }).on('clear', instance => {
+            // $("#sidebar").css("backgroundColor", sidebarColor);
             sidebarPickr.hide();
         });
 
@@ -83,7 +91,7 @@
         const NavbarPickr = Pickr.create({
             el: ".navbar-color-picker",
             theme: "classic",
-            default: '{{ setting()->nav_color ? setting()->nav_color : '#f8f9fa' }}',
+            default: navbarColor,
 
             components: {
                 preview: true,
@@ -109,6 +117,7 @@
             $("#nav_color_id").val(color.toRGBA().toString(0));
             NavbarPickr.hide();
         }).on('clear', instance => {
+            $("#nav").css("backgroundColor", navbarColor);
             NavbarPickr.hide();
         });
     </script>

@@ -20,11 +20,11 @@
         <nav id="nav" class="main-header navbar navbar-expand-md navbar-light navbar-white">
             <div class="container">
                 <a href="{{ route('home') }}" class="navbar-brand">
-                    @if ($logo = setting()->logo_image)
-                        <img src="{{ asset($logo) }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                            style="opacity: .8">
+                    @if (file_exists(setting()->logo_image))
+                        <img src="{{ asset(setting()->logo_image) }}" alt="AdminLTE Logo"
+                            class="brand-image img-circle elevation-3" style="opacity: .8">
                     @else
-                        <img src="{{ asset('backend') }}/image/64x64.png" alt="AdminLTE Logo"
+                        <img src="{{ asset('backend/image/logo-default.png') }}" alt="AdminLTE Logo"
                             class="brand-image img-circle elevation-3" style="opacity: .8">
                     @endif
 

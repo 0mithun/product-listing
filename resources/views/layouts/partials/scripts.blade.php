@@ -4,6 +4,8 @@
 <script src="{{ asset('backend') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE -->
 <script src="{{ asset('backend') }}/dist/js/adminlte.js"></script>
+<!-- Alpine js -->
+<script defer src="{{ asset('backend') }}/plugins/alpinejs/alpine.min.js"></script>
 <!-- toastr notification -->
 <script src="{{ asset('backend') }}/plugins/toastr/toastr.min.js"> </script>
 <script>

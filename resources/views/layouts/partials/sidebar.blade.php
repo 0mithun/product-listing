@@ -2,11 +2,12 @@
     style="background-color: {{ setting()->sidebar_color ? setting()->sidebar_color : '#343a40' }}">
     <!-- Brand Logo -->
     <a href="{{ route('home') }}" class="brand-link">
-        @if ($logo = setting()->logo_image)
-            <img src="{{ asset($logo) }}" alt="AdminLTE Logo" class="img-circle elevation-3" style="opacity: .8">
-        @else
-            <img src="{{ asset('backend') }}/image/64x64.png" alt="AdminLTE Logo" class="img-circle elevation-3"
+        @if (file_exists(setting()->logo_image))
+            <img src="{{ asset(setting()->logo_image) }}" alt="AdminLTE Logo" class="img-circle elevation-3"
                 style="opacity: .8">
+        @else
+            <img src="{{ asset('backend/image/logo-default.png') }}" alt="AdminLTE Logo"
+                class="img-circle elevation-3" style="opacity: .8">
         @endif
         <span class="brand-text font-weight-light">{{ setting()->name }}</span>
     </a>
