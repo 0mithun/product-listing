@@ -10,23 +10,21 @@ $user = auth()->user();
         <div class="dropdown-divider"></div>
         <div class="row row-paddingless" style="padding-left: 15px; padding-right: 15px;">
             <div class="col-6 p-0 border-bottom border-right">
-                <a href="#" class="d-block text-center py-3 bg-hover-light"> <i class="fas fa-users"></i>
+                <a href="{{ route('user.create') }}" class="d-block text-center py-3 bg-hover-light"> <i
+                        class="fas fa-users"></i>
                     <span class="w-100 d-block text-muted">Add User</span>
                 </a>
             </div>
             <div class="col-6 p-0 border-bottom border-right">
-                <a href="#" class="d-block text-center py-3 bg-hover-light"> <i class="fas fa-lock"></i>
+                <a href="{{ route('role.create') }}" class="d-block text-center py-3 bg-hover-light"> <i
+                        class="fas fa-lock"></i>
                     <span class="w-100 d-block text-muted">Add Role</span>
                 </a>
             </div>
-            <div class="col-6 p-0 border-bottom border-right">
-                <a href="#" class="d-block text-center py-3 bg-hover-light"> <i class="fas fa-users"></i>
-                    <span class="w-100 d-block text-muted">Add User</span>
-                </a>
-            </div>
-            <div class="col-6 p-0 border-bottom border-right">
-                <a href="#" class="d-block text-center py-3 bg-hover-light"> <i class="fas fa-lock"></i>
-                    <span class="w-100 d-block text-muted">Add Role</span>
+            <div class="col-12 p-0 border-bottom border-right">
+                <a href="{{ route('setting', 'website') }}" class="d-block text-center py-3 bg-hover-light"> <i
+                        class="fas fa-cog"></i>
+                    <span class="w-100 d-block text-muted">Setting</span>
                 </a>
             </div>
         </div>
