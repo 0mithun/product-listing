@@ -7,7 +7,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Social\SocialLoginController;
-use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\SettingsController;
 
 Route::get('/', function () {
@@ -24,7 +23,7 @@ Route::middleware(['auth:super_admin'])->group(function () {
     //Profile Route
     Route::get('/profile/settings', [ProfileController::class, 'setting'])->name('profile.setting');
     Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
-    Route::put('/profile/update', [ProfileController::class, 'profile_update'])->name('profile.update');
+    Route::put('/profile', [ProfileController::class, 'profile_update'])->name('profile.update');
     Route::put('/profile/password/{id}', [ProfileController::class, 'profile_password_update'])->name('profile.password.update');
 
     //Roles Route
@@ -33,8 +32,9 @@ Route::middleware(['auth:super_admin'])->group(function () {
     //Users Route
     Route::resource('user', UserController::class);
 
-    //  Website Settings
+    //====================Settings=========================
     Route::get('settings/{page}', [SettingsController::class, 'index'])->name('setting');
+    Route::put('settings/website', [SettingsController::class, 'website'])->name('setting.website');
 });
 
 // ========================================================
@@ -51,9 +51,10 @@ Route::get('/admin/login', [App\Http\Controllers\Admin\LoginController::class, '
 Route::post('/admin/login', [App\Http\Controllers\Admin\LoginController::class, 'login'])->name('admin.login');
 
 // ========================================================
-//====================Mode change==========================
+//====================Setting==============================
 // ========================================================
-Route::post('mode/change', [ThemeController::class, 'mode_change'])->name('mode.change');
+Route::put('/site/layout', [SettingsController::class, 'layoutChange'])->name('layout.change');
+
 
 // ========================================================
 //====================Artisan command======================
@@ -84,17 +85,13 @@ Route::post('mode/change', [ThemeController::class, 'mode_change'])->name('mode.
 //====================All Auth Logout======================
 // ========================================================
 Route::post('auth-logout', function (Request $request) {
-    if ($request->auth === 'candidate') {
-        Auth::guard('candidate')->logout();
-        return redirect()->route('candidate.login');
+    if ($request->auth === 'customer') {
+        Auth::guard('customer')->logout();
+        return redirect()->route('customer.login');
     }
     if ($request->auth === 'company') {
         Auth::guard('company')->logout();
         return redirect()->route('company.login');
-    }
-    if ($request->auth === 'candidate') {
-        Auth::guard('candidate')->logout();
-        return redirect()->route('candidate.login');
     }
     if ($request->auth === 'student') {
         Auth::guard('student')->logout();
@@ -112,5 +109,5 @@ Route::post('auth-logout', function (Request $request) {
 
 
 Route::fallback(function () {
-    return 11;
+    return 'Not found';
 });

@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SuperAdmin;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
+use App\Actions\Profile\ProfileUpdate;
+use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -21,7 +18,11 @@ class ProfileController extends Controller
         });
     }
 
-    // /Setting Section
+    /**
+     * Profile View.
+     *
+     * @return void
+     */
     public function profile()
     {
         if (is_null($this->user) || !$this->user->can('profile.view')) {
@@ -31,6 +32,11 @@ class ProfileController extends Controller
         return view('backend.profile.index', compact('user'));
     }
 
+    /**
+     * Profile Setting.
+     *
+     * @return void
+     */
     public function setting()
     {
         if (is_null($this->user) || !$this->user->can('profile.edit')) {
@@ -40,52 +46,32 @@ class ProfileController extends Controller
         return view('backend.profile.setting', compact('user'));
     }
 
-    public function profile_update(Request $request, SuperAdmin $user)
+
+    /**
+     * Profile Update.
+     *
+     * @param ProfileRequest $request
+     * @return \Illuminate\Http\Response
+     */
+    public function profile_update(ProfileRequest $request)
     {
         if (is_null($this->user) || !$this->user->can('profile.edit')) {
             abort(403, 'Sorry !! You are Unauthorized to profile settings.');
         }
-        $id = Auth::user()->id;
-        $this->validate($request, [
-            'name' => "required",
-            'email' => "required|unique:users,email,$id",
-        ]);
 
-        $user = SuperAdmin::find(Auth::user()->id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        if ($request->has('image')) {
-            $image = $request->image;
-            $fileName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            Storage::putFileAs('public/user', $image, $fileName);
-            $db_image = 'storage/user/' . $fileName;
-            $user->image = $db_image;
-        }
-        $user->save();
-        session()->flash('success', 'Role Updated Successfully!');
-        return back();
-    }
+        try {
+            $profile = ProfileUpdate::update($request);
 
-    public function profile_password_update(Request $request, $id)
-    {
-        if (is_null($this->user) || !$this->user->can('profile.edit')) {
-            abort(403, 'Sorry !! You are Unauthorized to profile settings.');
+            if ($profile) {
+                flashSuccess('Profile Updated Successfully');
+                return back();
+            } else {
+                flashError('Current password does not match');
+                return back();
+            }
+        } catch (\Throwable $th) {
+            flashError($th->getMessage());
+            return back();
         }
-        $request->validate([
-            'current_password' => 'required',
-            'password' => 'required|string|min:8|confirmed',
-            'password_confirmation' => 'required',
-        ]);
-
-        $password_check = Hash::check($request->current_password, Auth::user()->password);
-        if ($password_check) {
-            $user = SuperAdmin::findOrFail($id);
-            $user->update([
-                'password' => bcrypt($request->password),
-                'updated_at' => Carbon::now(),
-            ]);
-        }
-        session()->flash('success', 'Role Updated Successfully!');
-        return back();
     }
 }

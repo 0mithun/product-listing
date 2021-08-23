@@ -7,6 +7,7 @@ use App\Models\Company;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\Candidate;
+use App\Models\Customer;
 use Illuminate\Database\Seeder;
 
 class AllAuthSeeder extends Seeder
@@ -18,20 +19,6 @@ class AllAuthSeeder extends Seeder
      */
     public function run()
     {
-        // candidate
-        // $candidate = new Candidate();
-        // $candidate->name = 'Candidate';
-        // $candidate->email = 'candidate@mail.com';
-        // $candidate->password = bcrypt('password');
-        // $candidate->save();
-
-        // company
-        // $company = new Company();
-        // $company->name = 'Company';
-        // $company->email = 'company@mail.com';
-        // $company->password = bcrypt('password');
-        // $company->save();
-
         // student
         $student = new Student();
         $student->name = 'student';
@@ -50,6 +37,13 @@ class AllAuthSeeder extends Seeder
         $user = new User();
         $user->name = 'user';
         $user->email = 'user@mail.com';
+        $user->password = bcrypt('password');
+        $user->save();
+
+        // customer
+        $user = new Customer();
+        $user->name = 'customer';
+        $user->email = 'customer@mail.com';
         $user->password = bcrypt('password');
         $user->save();
     }

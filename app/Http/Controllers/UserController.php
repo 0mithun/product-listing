@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Actions\User\CreateUser;
+use App\Actions\User\UpdateUser;
+use App\Http\Requests\UserFormRequest;
 use App\Models\SuperAdmin;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class UserController extends Controller
@@ -26,9 +26,11 @@ class UserController extends Controller
 
     public function dashboard()
     {
+        session(['layout_mode' => 'left_nav']);
         if (is_null($this->user) || !$this->user->can('dashboard.view')) {
             abort(403, 'Sorry !! You are Unauthorized to view dashboard.');
         }
+
         return view('backend.index');
     }
 
@@ -63,39 +65,24 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\UserFormRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserFormRequest $request)
     {
         if (is_null($this->user) || !$this->user->can('admin.create')) {
             abort(403, 'Sorry !! You are Unauthorized to store users.');
         }
-        $this->validate($request, [
-            'name' => "required",
-            'email' => "required|unique:super_admins,email",
-            'password' => "required|min:8",
-            'roles' => "required",
-        ]);
 
-        $user = new SuperAdmin();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        if ($request->has('image')) {
-            $image = $request->image;
-            $fileName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            Storage::putFileAs('public/admin', $image, $fileName);
-            $db_image = 'storage/admin/' . $fileName;
-            $user->image = $db_image;
-        }
-        $user->password = bcrypt($request->password);
-        $user->save();
+        try {
+            CreateUser::create($request);
 
-        if ($request->roles) {
-            $user->assignRole($request->roles);
+            flashSuccess('User Created Successfully');
+            return back();
+        } catch (\Throwable $th) {
+            flashError($th->getMessage());
+            return back();
         }
-        session()->flash('success', 'Admin Created Successfully!');
-        return back();
     }
 
     /**
@@ -104,12 +91,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(SuperAdmin $user)
     {
         if (is_null($this->user) || !$this->user->can('admin.edit')) {
             abort(403, 'Sorry !! You are Unauthorized to edit users.');
         }
-        $user = SuperAdmin::findOrFail($id);
+
         $roles = Role::all();
         return view('backend.users.edit', compact('roles', 'user'));
     }
@@ -121,41 +108,21 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserFormRequest $request, SuperAdmin $user)
     {
         if (is_null($this->user) || !$this->user->can('admin.edit')) {
             abort(403, 'Sorry !! You are Unauthorized to update users.');
         }
-        $this->validate($request, [
-            'name' => "required",
-            'email' => "required|unique:super_admins,email,$id",
-            'roles' => "required",
-        ]);
 
-        $user = SuperAdmin::findOrFail($id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        if ($request->has('image')) {
-            $image = $request->image;
-            $fileName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            Storage::putFileAs('public/user', $image, $fileName);
-            $db_image = 'storage/user/' . $fileName;
-            $user->image = $db_image;
-        }
-        if ($request->password) {
-            $this->validate($request, [
-                'password' => "min:8",
-            ]);
-            $user->password = bcrypt($request->password);
-        }
-        $user->save();
+        try {
+            UpdateUser::update($request, $user);
 
-        $user->roles()->detach();
-        if ($request->roles) {
-            $user->assignRole($request->roles);
+            flashSuccess('User Updated Successfully');
+            return back();
+        } catch (\Throwable $th) {
+            flashError($th->getMessage());
+            return back();
         }
-        session()->flash('success', 'User Updated Successfully!');
-        return back();
     }
 
     /**
@@ -164,20 +131,22 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(SuperAdmin $user)
     {
         if (is_null($this->user) || !$this->user->can('admin.delete')) {
             abort(403, 'Sorry !! You are Unauthorized to delete users.');
         }
-        $user = SuperAdmin::find($id);
-        if (!is_null($user)) {
-            $user->delete();
-        }
-        session()->flash('success', 'User Deleted Successfully!');
-        return back();
-    }
 
-    function show()
-    {
+        try {
+            if (!is_null($user)) {
+                $user->delete();
+            }
+
+            flashSuccess('User Deleted Successfully');
+            return back();
+        } catch (\Throwable $th) {
+            flashError($th->getMessage());
+            return back();
+        }
     }
 }

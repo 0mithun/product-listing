@@ -1,3 +1,4 @@
+{{-- @extends('layouts.top-nav') --}}
 @extends('layouts.admin')
 @section('title') Dashboard @endsection
 @section('breadcrumbs')
@@ -62,7 +63,7 @@
             <!-- BAR CHART -->
             <div class="card card-success">
                 <div class="card-header">
-                    <h3 class="card-title">Bar Chart</h3>
+                    <h3 class="card-title">Sales and Invest Overview</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
                         </button>
@@ -80,7 +81,7 @@
         <div class="col-6">
             <div class="card card-danger">
                 <div class="card-header">
-                    <h3 class="card-title">Donut Chart</h3>
+                    <h3 class="card-title">Browser Overview</h3>
 
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
@@ -171,7 +172,7 @@
         var areaChartData = {
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
             datasets: [{
-                    label: 'Digital Goods',
+                    label: 'Sales',
                     backgroundColor: 'rgba(60,141,188,0.9)',
                     borderColor: 'rgba(60,141,188,0.8)',
                     pointRadius: false,
@@ -182,7 +183,7 @@
                     data: [28, 48, 40, 19, 86, 27, 90]
                 },
                 {
-                    label: 'Electronics',
+                    label: 'Invest',
                     backgroundColor: 'rgba(210, 214, 222, 1)',
                     borderColor: 'rgba(210, 214, 222, 1)',
                     pointRadius: false,

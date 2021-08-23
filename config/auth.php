@@ -19,9 +19,9 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'candidate' => [
+        'customer' => [
             'driver' => 'session',
-            'provider' => 'candidates',
+            'provider' => 'customers',
         ],
         'teacher' => [
             'driver' => 'session',
@@ -57,9 +57,9 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-        'candidates' => [
+        'customers' => [
             'driver' => 'eloquent',
-            'model' => Modules\Company\Entities\Candidate::class,
+            'model' => App\Models\Customer::class,
         ],
         'teachers' => [
             'driver' => 'eloquent',
@@ -100,8 +100,8 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-        'candidates' => [
-            'provider' => 'candidates',
+        'customers' => [
+            'provider' => 'customers',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

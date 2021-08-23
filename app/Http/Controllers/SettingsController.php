@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\WebsiteSettings;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class SettingsController extends Controller
 {
@@ -13,14 +12,14 @@ class SettingsController extends Controller
     {
         switch ($page) {
             case 'website':
-                $site_settings = WebsiteSettings::all();
-                return view('backend.settings.pages.website', compact('site_settings'));
-                break;
-            case 'color':
-                return view('backend.settings.pages.color-picker');
+                $website_setting = WebsiteSettings::first();
+                return view('backend.settings.pages.website', compact('website_setting'));
                 break;
             case 'layout':
                 return view('backend.settings.pages.layout');
+                break;
+            case 'color':
+                return view('backend.settings.pages.color-picker');
                 break;
             case 'language':
                 return view('backend.settings.pages.language');
@@ -41,51 +40,59 @@ class SettingsController extends Controller
                 return view('backend.settings.pages.theme');
                 break;
             default:
-                $site_settings = WebsiteSettings::all();
-                return view('backend.settings.pages.website', compact('site_settings'));
+                $website_setting = WebsiteSettings::first();
+                return view('backend.settings.pages.website', compact('website_setting'));
                 break;
         }
+
+        return 123;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\WebsiteSettings  $websiteSettings
+     * @param  \App\Models\WebsiteSettings  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function website(Request $request)
     {
         $this->validate($request, [
             'name' => "required",
             'email' => "required",
         ]);
 
-        $site_settings = WebsiteSettings::find($id);
-        $site_settings->name = $request->name;
-        $site_settings->email = $request->email;
-        if ($request->has('logo_image')) {
-            $this->validate($request, [
-                'logo_image' => "required|max:2048",
-            ]);
-            $image = $request->logo_image;
-            $fileName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            Storage::putFileAs('public/website', $image, $fileName);
-            $db_image = 'storage/website/' . $fileName;
-            $site_settings->logo_image = $db_image;
+        try {
+            $site_settings = WebsiteSettings::first();
+            $site_settings->name = $request->name;
+            $site_settings->email = $request->email;
+            $site_settings->save();
+
+            $logo_image = $request->logo_image;
+            $fav_icon = $request->favicon_image;
+
+            if ($logo_image) {
+                $url = uploadImage($logo_image, 'website');
+                $site_settings->update(['logo_image' => $url]);
+            }
+
+            if ($fav_icon) {
+                $url = uploadImage($fav_icon, 'website');
+                $site_settings->update(['favicon_image' => $url]);
+            }
+
+            flashSuccess('Site Settings Content Updated Successfully');
+            return back();
+        } catch (\Throwable $th) {
+            flashError($th->getMessage());
+            return back();
         }
-        if ($request->has('favicon_image')) {
-            $this->validate($request, [
-                'favicon_image' => "required|max:2048",
-            ]);
-            $image = $request->favicon_image;
-            $fileName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            Storage::putFileAs('public/website', $image, $fileName);
-            $db_image = 'storage/website/' . $fileName;
-            $site_settings->favicon_image = $db_image;
-        }
-        $site_settings->save();
-        session()->flash('success', 'Site Settings Content Updated Successfully!');
+    }
+
+    public function layoutChange()
+    {
+        $layout = request()->layout;
+        session(['layout_mode' => $layout]);
         return back();
     }
 }
