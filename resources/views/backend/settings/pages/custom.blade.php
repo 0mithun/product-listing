@@ -19,6 +19,7 @@
                                     rows="5">{{ $setting->header_css }}</textarea>
                                 @error('name')<span class="invalid-feedback"
                                     role="alert"><strong>{{ $message }}</strong></span>@enderror
+                                <span>Write style with style tag</span>
                             </div>
                             <div class="form-group">
                                 <label for="role_name">Header custom script (before head end) </label>
@@ -26,6 +27,8 @@
                                     rows="5">{{ $setting->header_script }}</textarea>
                                 @error('name')<span class="invalid-feedback"
                                     role="alert"><strong>{{ $message }}</strong></span>@enderror
+                                <span>Write script with script tag</span>
+
                             </div>
                             <div class="form-group">
                                 <label for="role_name">Footer custom script (before body end) </label>
@@ -33,6 +36,7 @@
                                     rows="5">{{ $setting->body_script }}</textarea>
                                 @error('name')<span class="invalid-feedback"
                                     role="alert"><strong>{{ $message }}</strong></span>@enderror
+                                <span>Write script with script tag</span>
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-primary">Update</button>
