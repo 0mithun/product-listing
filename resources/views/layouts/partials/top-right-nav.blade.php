@@ -73,9 +73,9 @@ $user = auth()->user();
         @endif
         <span class="d-none d-md-inline">{{ $user->name }}</span>
     </a>
-    <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
+    <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right rounded border-0" style="left: inherit; right: 0px;">
         <!-- User image -->
-        <li class="user-header bg-primary">
+        <li class="user-header bg-primary rounded-top">
             @if ($user->image)
                 <img src="{{ asset($user->image) }}" class="user-image img-circle elevation-2" alt="User Image">
             @else
@@ -90,22 +90,13 @@ $user = auth()->user();
                 <small>Member since {{ $user->created_at->format('M d, Y') }}</small>
             </p>
         </li>
-        <!-- Menu Body -->
-        <li class="user-body">
-            <div class="row justify-content-center">
-                <div class="col-12 text-center">
-                    <a href="{{ route('profile.setting') }}">Settings</a>
-                </div>
-            </div>
-            <!-- /.row -->
-        </li>
         <!-- Menu Footer-->
-        <li class="user-footer">
-            <a href="{{ route('profile') }}" class="btn btn-default btn-flat">Profile</a>
+        <li class="user-footer border-bottom d-flex">
+            <a href="{{ route('profile') }}" class="btn btn-default">Profile</a>
             <a href="javascript:void(0)"
                 onclick="event.preventDefault();document.getElementById('logout-form').submit();"
-                class="btn btn-default btn-flat float-right">Sign out</a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                class="btn btn-default ml-auto">Sign out</a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none invisible">
                 @csrf
             </form>
         </li>
