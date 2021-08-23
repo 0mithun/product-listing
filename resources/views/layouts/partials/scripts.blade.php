@@ -70,3 +70,5 @@
 </script>
 <!-- Custom Script -->
 @yield('script')
+
+{!! setting()->body_script !!}

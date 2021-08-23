@@ -1,10 +1,14 @@
-<div class="empty">
+@php
+$singuler = Str::plural($word, 1);
+$plural = Str::plural($word, 2);
+@endphp
+<div class="empty py-5">
     <div class="empty-img">
         <img src="{{ asset('backend/image') }}/not-found.svg" height="128" alt="">
     </div>
-    <h5 class="mt-1">{{ $title }}</h5>
+    <h5 class="mt-4">No results found</h5>
     <p class="empty-subtitle text-muted">
-        {{ $subtitle }}
+        There is no {{ strtolower($plural) }} found in this page.
     </p>
     <div class="empty-action">
         <a href="{{ route($route) }}" class="btn btn-primary">
@@ -14,7 +18,7 @@
                 <line x1="12" y1="5" x2="12" y2="19"></line>
                 <line x1="5" y1="12" x2="19" y2="12"></line>
             </svg>
-            {{ $btnMessage }}
+            Add your first {{ strtolower($singuler) }}
         </a>
     </div>
 </div>

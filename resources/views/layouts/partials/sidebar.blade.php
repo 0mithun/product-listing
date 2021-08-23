@@ -1,13 +1,13 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('home') }}" class="brand-link">
-        @if ($logo = website_setting()->logo_image)
+        @if ($logo = setting()->logo_image)
             <img src="{{ asset($logo) }}" alt="AdminLTE Logo" class="img-circle elevation-3" style="opacity: .8">
         @else
             <img src="{{ asset('backend') }}/image/64x64.png" alt="AdminLTE Logo" class="img-circle elevation-3"
                 style="opacity: .8">
         @endif
-        <span class="brand-text font-weight-light">{{ website_setting()->name }}</span>
+        <span class="brand-text font-weight-light">{{ setting()->name }}</span>
     </a>
 
     <!-- Sidebar -->

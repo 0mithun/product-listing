@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\WebsiteSettings;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class SettingsController extends Controller
@@ -10,11 +10,11 @@ class SettingsController extends Controller
     // Website setting page.
     public function index($page)
     {
-        $website_setting = WebsiteSettings::first();
+        $setting = Setting::first();
 
         switch ($page) {
             case 'website':
-                return view('backend.settings.pages.website', compact('website_setting'));
+                return view('backend.settings.pages.website', compact('setting'));
                 break;
             case 'layout':
                 return view('backend.settings.pages.layout');
@@ -23,7 +23,7 @@ class SettingsController extends Controller
                 return view('backend.settings.pages.color-picker');
                 break;
             case 'custom':
-                return view('backend.settings.pages.custom');
+                return view('backend.settings.pages.custom', compact('setting'));
                 break;
                 // case 'language':
                 //     return view('backend.settings.pages.language');
@@ -60,7 +60,7 @@ class SettingsController extends Controller
         ]);
 
         try {
-            $site_settings = WebsiteSettings::first();
+            $site_settings = Setting::first();
             $site_settings->name = $request->name;
             $site_settings->email = $request->email;
             $site_settings->save();
@@ -79,6 +79,20 @@ class SettingsController extends Controller
             }
 
             flashSuccess('Site Settings Content Updated Successfully');
+            return back();
+        } catch (\Throwable $th) {
+            flashError($th->getMessage());
+            return back();
+        }
+    }
+
+    public function custom(Request $request)
+    {
+        try {
+            $custom_css_js = $request->only(['header_css', 'header_script', 'body_script']);
+            Setting::first()->update($custom_css_js);
+
+            flashSuccess('Custom Setting Updated Successfully');
             return back();
         } catch (\Throwable $th) {
             flashError($th->getMessage());

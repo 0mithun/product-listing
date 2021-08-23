@@ -6,18 +6,16 @@ use Illuminate\View\Component;
 
 class NotFound extends Component
 {
-    public $title, $subtitle,  $btnMessage, $route;
+    public $word, $route;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(string $title = 'No results found', string $subtitle = "Try adjusting your search or filter to find what you're looking for.", string $btnMessage = 'Add your first user', $route = 'home')
+    public function __construct(string $word = 'User', string $route = 'home')
     {
-        $this->title = $title;
-        $this->subtitle = $subtitle;
-        $this->btnMessage = $btnMessage;
+        $this->word = $word;
         $this->route = $route;
     }
 

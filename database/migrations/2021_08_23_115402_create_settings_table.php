@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWebsiteSettingsTable extends Migration
+class CreateSettingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreateWebsiteSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('website_settings', function (Blueprint $table) {
+        Schema::create('settings', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email');
             $table->string('logo_image')->nullable();
             $table->string('favicon_image')->nullable();
+            $table->string('header_css')->nullable();
+            $table->string('header_script')->nullable();
+            $table->string('body_script')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +33,6 @@ class CreateWebsiteSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('website_settings');
+        Schema::dropIfExists('settings');
     }
 }

@@ -20,7 +20,7 @@
         <nav id="nav" class="main-header navbar navbar-expand-md navbar-light navbar-white">
             <div class="container">
                 <a href="{{ route('home') }}" class="navbar-brand">
-                    @if ($logo = website_setting()->logo_image)
+                    @if ($logo = setting()->logo_image)
                         <img src="{{ asset($logo) }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                             style="opacity: .8">
                     @else
@@ -28,7 +28,7 @@
                             class="brand-image img-circle elevation-3" style="opacity: .8">
                     @endif
 
-                    <span class="brand-text font-weight-light">{{ website_setting()->name }}</span>
+                    <span class="brand-text font-weight-light">{{ setting()->name }}</span>
                 </a>
                 <button class="navbar-toggler order-1" type="button" data-toggle="collapse"
                     data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"

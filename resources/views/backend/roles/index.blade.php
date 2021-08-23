@@ -58,9 +58,7 @@
                                 @empty
                                     <tr>
                                         <td colspan="10" class="text-center">
-                                            <x-not-found title="Nothing found"
-                                                subtitle="There is no roles found in this page."
-                                                btnMessage="Add your first role" route="role.create" />
+                                            <x-not-found word="Role" route="role.create" />
                                         </td>
                                     </tr>
                                 @endforelse

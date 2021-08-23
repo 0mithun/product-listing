@@ -69,8 +69,7 @@
                                 </div>
                             @empty
                                 <div class="col-6 text-center">
-                                    <x-not-found title="Nothing found" subtitle="There is no users found in this page."
-                                        route="user.create" />
+                                    <x-not-found route="user.create" />
                                 </div>
                             @endforelse
                         </div>

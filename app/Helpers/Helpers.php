@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\WebsiteSettings;
+use App\Models\Setting;
 
-function website_setting()
+function setting()
 {
-    return WebsiteSettings::first();
+    return Setting::first();
 }
