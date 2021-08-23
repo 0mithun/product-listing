@@ -86,20 +86,6 @@ class SettingsController extends Controller
         }
     }
 
-    public function custom(Request $request)
-    {
-        try {
-            $custom_css_js = $request->only(['header_css', 'header_script', 'body_script']);
-            Setting::first()->update($custom_css_js);
-
-            flashSuccess('Custom Setting Updated Successfully');
-            return back();
-        } catch (\Throwable $th) {
-            flashError($th->getMessage());
-            return back();
-        }
-    }
-
     public function layoutChange()
     {
         $layout = request()->layout;
@@ -110,13 +96,35 @@ class SettingsController extends Controller
     public function update(Request $request, $page)
     {
         try {
-            Setting::first()->update(['slider_color' => $request->slider_color]);
-
-            flashSuccess('Color Setting Updated Successfully');
-            return back();
+            switch ($page) {
+                case 'color':
+                    $this->colorUpdate($request);
+                    flashSuccess('Color Setting Updated Successfully');
+                    return back();
+                    break;
+                case 'custom':
+                    $this->custumCSSJSUpdate($request);
+                    flashSuccess('Custom Setting Updated Successfully');
+                    return back();
+                    break;
+                default:
+                    abort(404);
+            }
         } catch (\Throwable $th) {
             flashError($th->getMessage());
             return back();
         }
+    }
+
+
+    public function colorUpdate($request)
+    {
+        return Setting::first()->update(['slider_color' => $request->slider_color]);
+    }
+
+    public function custumCSSJSUpdate($request)
+    {
+        $custom_css_js = $request->only(['header_css', 'header_script', 'body_script']);
+        return Setting::first()->update($custom_css_js);
     }
 }
