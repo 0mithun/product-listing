@@ -26,8 +26,8 @@
                     <a class="nav-link {{ request()->page == 'color' ? 'active' : '' }}"
                         href="{{ route('setting', 'color') }}">Color Picker</a>
                     <a class="nav-link {{ request()->page == 'custom' ? 'active' : '' }}"
-                        href="{{ route('setting', 'custom') }}">Custom Css &
-                        Js</a>
+                        href="{{ route('setting', 'custom') }}">Custom CSS &
+                        JS</a>
                     {{-- <a class="nav-link {{ request()->page == 'language' ? 'active' : '' }}"
                         href="{{ route('setting', 'language') }}">Language</a>
                     <a class="nav-link {{ request()->page == 'payment' ? 'active' : '' }}"

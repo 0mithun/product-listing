@@ -1,4 +1,5 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside id="sidebar" class="main-sidebar sidebar-dark-primary elevation-4"
+    style="background-color: {{ setting()->slider_color }}">
     <!-- Brand Logo -->
     <a href="{{ route('home') }}" class="brand-link">
         @if ($logo = setting()->logo_image)
@@ -72,8 +73,6 @@
                     icon="fas fa-cog">
                     Settings
                 </x-sidebar-list>
-
-
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

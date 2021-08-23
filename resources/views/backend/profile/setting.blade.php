@@ -71,8 +71,8 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="change-password-visibility" class="col-sm-3 col-form-label">Password
-                                    Change</label>
+                                <label for="change-password-visibility" class="col-sm-3 col-form-label">Change
+                                    Password?</label>
                                 <div class="col-sm-9 mt-2">
                                     <input type="hidden" value="0" name="isPasswordChange">
                                     <div class="icheck-success d-inline">

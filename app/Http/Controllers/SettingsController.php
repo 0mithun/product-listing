@@ -106,4 +106,17 @@ class SettingsController extends Controller
         session(['layout_mode' => $layout]);
         return back();
     }
+
+    public function update(Request $request, $page)
+    {
+        try {
+            Setting::first()->update(['slider_color' => $request->slider_color]);
+
+            flashSuccess('Color Setting Updated Successfully');
+            return back();
+        } catch (\Throwable $th) {
+            flashError($th->getMessage());
+            return back();
+        }
+    }
 }
