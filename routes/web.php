@@ -38,7 +38,6 @@ Route::middleware(['auth:super_admin'])->group(function () {
     // ========================================================
     Route::get('settings/{page}', [SettingsController::class, 'index'])->name('setting');
     Route::put('settings/{page}', [SettingsController::class, 'update'])->name('setting');
-    // Route::put('settings/website', [SettingsController::class, 'website'])->name('setting.website');
     Route::put('/site/layout', [SettingsController::class, 'layoutChange'])->name('layout.change');
 });
 

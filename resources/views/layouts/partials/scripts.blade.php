@@ -47,51 +47,7 @@
     $('#nav_collapse').on('click', function() {
         localStorage.setItem("sidebar_collapse", isNavCollapse == true ? false : true);
     });
-
-    // Mode Change Toggle
-    var isDarkMode = JSON.parse(localStorage.getItem("dark_mode"))
-    isDarkMode ? $('body').addClass('dark-mode') : null;
-    var layout_mode = '{{ session('layout_mode') }}';
-
-    if (isDarkMode) {
-        $('#dark').removeClass('d-none')
-        $('#dark').addClass('d-block')
-        $('#light').removeClass('d-block')
-        $('#light').addClass('d-none')
-    } else {
-        $('#light').removeClass('d-none')
-        $('#light').addClass('d-block')
-        $('#dark').removeClass('d-block')
-        $('#dark').addClass('d-none')
-    }
-
-    $('#mode_change').on('click', function() {
-        localStorage.setItem("dark_mode", isDarkMode == true ? false : true);
-        window.location.reload();
-    });
 </script>
-{{-- <script>
-    function backedData() {
-        return {
-            darkMode: JSON.parse(localStorage.getItem("dark_mode")),
-            navBGColor: '{{ setting()->nav_color ? setting()->nav_color : '#f8f9fa' }}',
-            showMessage() {
-                console.log(this.navBGColor);
-                // console.log(JSON.parse(localStorage.getItem("dark_mode")))
-
-            }
-            // saveData() {
-            //     if (this.form.name.length && this.form.email.length) {
-            //         this.students.push({
-            //             name: this.form.name,
-            //             email: this.form.email
-            //         })
-            //         this.resetForm()
-            //     }
-            // }
-        }
-    }
-</script> --}}
 <!-- Custom Script -->
 @yield('script')
 

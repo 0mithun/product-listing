@@ -11,13 +11,15 @@
     @include('layouts.partials.styles')
 </head>
 
-<body class="hold-transition sidebar-collapse layout-top-nav">
+<body class="hold-transition sidebar-collapse layout-top-nav {{ setting()->dark_mode ? 'dark-mode' : '' }}">
     @php
         $user = Auth::user();
     @endphp
     <div class="wrapper">
         <!-- Navbar -->
-        <nav id="nav" class="main-header navbar navbar-expand-md navbar-light navbar-white">
+        <nav id="nav"
+            class="main-header navbar navbar-expand-md {{ setting()->dark_mode ? 'navbar-dark navbar-dark' : 'navbar-white navbar-light' }}"
+            style="background-color:{{ setting()->dark_mode ? '' : setting()->nav_color }}">
             <div class="container">
                 <a href="{{ route('home') }}" class="navbar-brand">
                     @if (file_exists(setting()->logo_image))
