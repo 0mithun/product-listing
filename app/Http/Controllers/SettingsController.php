@@ -67,16 +67,23 @@ class SettingsController extends Controller
                     $message = 'Site Settings Content';
                     break;
                 case 'color':
-                    $this->colorUpdate($request);
-                    $message = 'Color Setting';
+                    if (setting()->dark_mode) {
+                        flashWarning("You can't cahnge color.Beacause you're in dark mode.");
+                        return back();
+                    } else {
+                        $this->colorUpdate($request);
+                        $message = 'Color Setting';
+                    }
                     break;
                 case 'custom':
                     $this->custumCSSJSUpdate($request);
                     $message = 'Custom Setting';
                     break;
                 case 'dark_mode':
+
                     $this->modeUpdate($request);
                     $message = 'Mode';
+
                     break;
                 case 'layout':
                     $this->layoutUpdate($request);
