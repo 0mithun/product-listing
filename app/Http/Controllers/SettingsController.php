@@ -82,6 +82,10 @@ class SettingsController extends Controller
                     $this->custumCSSJSUpdate($request);
                     $message = 'Custom Setting';
                     break;
+                case 'dark_mode':
+                    $this->modeUpdate($request);
+                    $message = 'Mode';
+                    break;
                 default:
                     abort(404);
             }
@@ -148,5 +152,17 @@ class SettingsController extends Controller
     {
         $custom_css_js = $request->only(['header_css', 'header_script', 'body_script']);
         return Setting::first()->update($custom_css_js);
+    }
+
+    /**
+     * Mode Update.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return boolean
+     */
+    public function modeUpdate($request)
+    {
+        $dark_mode = $request->only(['dark_mode']);
+        return Setting::first()->update($dark_mode);
     }
 }
