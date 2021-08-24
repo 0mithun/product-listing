@@ -69,3 +69,18 @@ function flashError(string $message)
         return session()->flash('error', 'Something went wrong, please try again');
     }
 }
+
+/**
+ * Response warning flash message.
+ *
+ * @param string $msg
+ * @return \Illuminate\Http\Response
+ */
+function flashWarning(string $message)
+{
+    if (env('APP_DEBUG')) {
+        return session()->flash('warning', $message);
+    } else {
+        return session()->flash('warning', 'please try again');
+    }
+}
