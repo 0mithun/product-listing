@@ -95,4 +95,6 @@
 <!-- Custom Script -->
 @yield('script')
 
-{!! setting()->body_script !!}
+<script> 
+    {!! setting()->body_script !!}
+</script>

@@ -13,5 +13,9 @@
     <!-- Custom Link -->
     @yield('style')
 
-    {!! setting()->header_css !!}
-    {!! setting()->header_script !!}
+    <style>
+        {!! setting()->header_css !!}
+    </style>
+    <script>
+        {!! setting()->header_script !!}
+    </script>
