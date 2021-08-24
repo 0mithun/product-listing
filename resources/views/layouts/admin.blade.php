@@ -1,4 +1,4 @@
-@if (session('layout_mode') === 'left_nav')
+@if (setting()->default_layout)
     @include('layouts.left-nav')
 @else
     @include('layouts.top-nav')

@@ -25,6 +25,7 @@ class CreateSettingsTable extends Migration
             $table->string('sidebar_color')->nullable();
             $table->string('nav_color')->nullable();
             $table->boolean('dark_mode')->default(false);
+            $table->boolean('default_layout')->default(true);
             $table->timestamps();
         });
     }
