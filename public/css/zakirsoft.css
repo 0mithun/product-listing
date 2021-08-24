@@ -24,3 +24,15 @@ a.brand-link img {
     width: 100%;
     object-fit: cover;
 }
+
+.auth-logo {
+    height: 100px;
+    width: 100%;
+}
+
+.auth-logo img {
+    max-height: 100%;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+}

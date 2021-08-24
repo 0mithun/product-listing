@@ -11,13 +11,23 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="{{ asset('backend') }}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('backend') }}/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="{{ asset('css/zakirsoft.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ route('login') }}"><img height="50px" src="{{ asset('backend/image/logo.png') }}" alt=""></a>
+            <a href="{{ route('login') }}" class="d-block">
+                {{-- <img height="50px" src="{{ asset('backend/image/logo.png') }}" alt=""> --}}
+                <div class="auth-logo">
+                    @if (file_exists(setting()->logo_image))
+                        <img src="{{ asset(setting()->logo_image) }}" alt="Zakirsoft Logo">
+                    @else
+                        <img src="{{ asset('backend/image/logo-default.png') }}" alt="Zakirsoft Logo">
+                    @endif
+                </div>
+            </a>
         </div>
         <div class="card">
             <div class="card-body login-card-body">
@@ -67,13 +77,13 @@
                 </p>
                 <hr>
                 <p class="mb-1 d-inline">
-                    <a href="{{ route('social-login','facebook') }}">Facebook</a>
+                    <a class="text-dark" href="{{ route('social-login','facebook') }}">Facebook</a>
                 </p> |
                 <p class="mb-1 d-inline">
-                    <a href="{{ route('social-login','google') }}">Goggle</a>
+                    <a class="text-dark" href="{{ route('social-login','google') }}">Goggle</a>
                 </p> |
                 <p class="mb-1 d-inline">
-                    <a href="{{ route('social-login','github') }}">Github</a>
+                    <a class="text-dark" href="{{ route('social-login','github') }}">Github</a>
                 </p>
             </div>
         </div>
