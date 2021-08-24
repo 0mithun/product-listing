@@ -45,14 +45,6 @@ class SettingsController extends Controller
         }
     }
 
-
-    public function layoutChange()
-    {
-        $layout = request()->layout;
-        session(['layout_mode' => $layout]);
-        return back();
-    }
-
     /**
      * Update the specified resource in storage.
      *
@@ -86,6 +78,10 @@ class SettingsController extends Controller
                     $this->modeUpdate($request);
                     $message = 'Mode';
                     break;
+                case 'layout':
+                    $this->layoutUpdate($request);
+                    $message = 'Layout';
+                    break;
                 default:
                     abort(404);
             }
@@ -96,6 +92,12 @@ class SettingsController extends Controller
             flashError($th->getMessage());
             return back();
         }
+    }
+
+    public function layoutUpdate($request)
+    {
+        $layout = $request->only(['default_layout']);
+        return Setting::first()->update($layout);
     }
 
 
