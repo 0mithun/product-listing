@@ -1,6 +1,5 @@
 @extends('backend.settings.setting-layout')
 @section('title') WebsiteSite Settings @endsection
-
 @section('website-settings')
     <div class="card">
         <div class="card-header">
@@ -35,15 +34,8 @@
                         <div class="col-sm-9">
                             <div class="row">
                                 <div class="col-6">
-                                    @if (file_exists($setting->logo_image))
-                                        <input type="file" class="form-control dropify"
-                                            data-default-file="{{ asset($setting->logo_image) }}" name="logo_image"
-                                            autocomplete="image">
-                                    @else
-                                        <input type="file" class="form-control dropify"
-                                            data-default-file="{{ asset('backend/image/logo-default.png') }}"
-                                            name="logo_image">
-                                    @endif
+                                    <input type="file" class="form-control dropify"
+                                        data-default-file="{{ $setting->logo_image_url }}" name="logo_image">
                                 </div>
                             </div>
                         </div>
@@ -53,14 +45,8 @@
                         <div class="col-sm-9">
                             <div class="row">
                                 <div class="col-6">
-                                    @if (file_exists($setting->favicon_image))
-                                        <input type="file" class="form-control dropify"
-                                            data-default-file="{{ asset($setting->favicon_image) }}" name="favicon_image">
-                                    @else
-                                        <input type="file" class="form-control dropify"
-                                            data-default-file="{{ asset('backend/image/logo-default.png') }}"
-                                            name="favicon_image">
-                                    @endif
+                                    <input type="file" class="form-control dropify"
+                                        data-default-file="{{ $setting->favicon_image_url }}" name="favicon_image">
                                 </div>
                             </div>
                         </div>

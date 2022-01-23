@@ -108,6 +108,7 @@ class SettingsController extends Controller
         $data = $request->only(['name', 'email']);
 
         $setting = Setting::first();
+
         if($request->hasFile('logo_image')){
             $data['logo_image'] = $this->uploadOne($request->logo_image, 'website');
             $this->deleteOne($setting->logo_image);
