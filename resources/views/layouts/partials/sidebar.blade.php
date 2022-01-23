@@ -65,8 +65,7 @@
                         @endif
                     </x-sidebar-dropdown>
                 @endif
-                <x-sidebar-list :linkActive="Route::is('setting')  ? true : false" route="settings.website" parameter="website"
-                    icon="fas fa-cog">
+                <x-sidebar-list :linkActive="Request::is('settings/*')  ? true : false" route="settings.website" icon="fas fa-cog">
                     Settings
                 </x-sidebar-list>
             </ul>

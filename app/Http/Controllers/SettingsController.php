@@ -10,18 +10,42 @@ class SettingsController extends Controller
 {
     use UploadAble;
 
+
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
     public function website()
     {
         return view('backend.settings.pages.website');
     }
+
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
     public function layout()
     {
         return view('backend.settings.pages.layout');
     }
+
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
     public function color()
     {
         return view('backend.settings.pages.color-picker');
     }
+
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
     public function custom()
     {
         return view('backend.settings.pages.custom');
