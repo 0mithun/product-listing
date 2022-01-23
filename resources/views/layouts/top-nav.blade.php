@@ -11,26 +11,26 @@
     @include('layouts.partials.styles')
 </head>
 
-<body class="hold-transition sidebar-collapse layout-top-nav {{ setting()->dark_mode ? 'dark-mode' : '' }}">
+<body class="hold-transition sidebar-collapse layout-top-nav {{ $setting->dark_mode ? 'dark-mode' : '' }}">
     @php
         $user = Auth::user();
     @endphp
     <div class="wrapper">
         <!-- Navbar -->
         <nav id="nav"
-            class="main-header navbar navbar-expand-md {{ setting()->dark_mode ? 'navbar-dark navbar-dark' : 'navbar-white navbar-light' }}"
-            style="background-color:{{ setting()->dark_mode ? '' : setting()->nav_color }}">
+            class="main-header navbar navbar-expand-md {{ $setting->dark_mode ? 'navbar-dark navbar-dark' : 'navbar-white navbar-light' }}"
+            style="background-color:{{ $setting->dark_mode ? '' : $setting->nav_color }}">
             <div class="container">
                 <a href="{{ route('home') }}" class="navbar-brand">
-                    @if (file_exists(setting()->logo_image))
-                        <img src="{{ asset(setting()->logo_image) }}" alt="AdminLTE Logo"
+                    @if (file_exists($setting->logo_image))
+                        <img src="{{ asset($setting->logo_image) }}" alt="AdminLTE Logo"
                             class="brand-image img-circle elevation-3" style="opacity: .8">
                     @else
                         <img src="{{ asset('backend/image/logo-default.png') }}" alt="AdminLTE Logo"
                             class="brand-image img-circle elevation-3" style="opacity: .8">
                     @endif
 
-                    <span class="brand-text font-weight-light">{{ setting()->name }}</span>
+                    <span class="brand-text font-weight-light">{{ $setting->name }}</span>
                 </a>
                 <button class="navbar-toggler order-1" type="button" data-toggle="collapse"
                     data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"

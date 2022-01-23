@@ -21,8 +21,8 @@
             <a href="{{ route('login') }}" class="d-block">
                 {{-- <img height="50px" src="{{ asset('backend/image/logo.png') }}" alt=""> --}}
                 <div class="auth-logo">
-                    @if (file_exists(setting()->logo_image))
-                        <img src="{{ asset(setting()->logo_image) }}" alt="Zakirsoft Logo">
+                    @if (file_exists($setting->logo_image))
+                        <img src="{{ asset($setting->logo_image) }}" alt="Zakirsoft Logo">
                     @else
                         <img src="{{ asset('backend/image/logo-default.png') }}" alt="Zakirsoft Logo">
                     @endif

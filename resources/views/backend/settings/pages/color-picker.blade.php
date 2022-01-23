@@ -1,19 +1,19 @@
 @extends('backend.settings.setting-layout')
 @section('title') WebsiteSite Settings @endsection
 
-@section('color-picker')
+@section('website-settings')
     <div class="card">
         <div class="card-header">
             <h3 class="card-title" style="line-height: 36px;">Color Picker</h3>
         </div>
         <div class="row pt-3 pb-4">
-            <form id="color_picker_form" action="" method="post">
+            <form id="color_picker_form" action="{{ route('settings.update') }}" method="post">
                 @csrf
                 @method('PUT')
                 <input id="sidebar_color_id" type="hidden" name="sidebar_color"
-                    value="{{ setting()->sidebar_color ? setting()->sidebar_color : '#343a40' }}">
+                    value="{{ $setting->sidebar_color ? $setting->sidebar_color : '#343a40' }}">
                 <input id="nav_color_id" type="hidden" name="nav_color"
-                    value="{{ setting()->nav_color ? setting()->nav_color : '#f8f9fa' }}">
+                    value="{{ $setting->nav_color ? $setting->nav_color : '#f8f9fa' }}">
             </form>
 
             <div class="col-2">
@@ -49,8 +49,8 @@
 @section('script')
     <script src="{{ asset('backend/plugins/pickr') }}/pickr.min.js"></script>
     <script>
-        var sidebarColor = '{{ setting()->sidebar_color ? setting()->sidebar_color : '#343a40' }}';
-        var navbarColor = '{{ setting()->nav_color ? setting()->nav_color : '#f8f9fa' }}';
+        var sidebarColor = '{{ $setting->sidebar_color ? $setting->sidebar_color : '#343a40' }}';
+        var navbarColor = '{{ $setting->nav_color ? $setting->nav_color : '#f8f9fa' }}';
 
         // Sidebar Color Change
         const sidebarPickr = Pickr.create({

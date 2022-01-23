@@ -119,7 +119,7 @@
             <a href="{{ route('home') }}" class="brand-link">
                 <img src="{{ asset('backend/image/default.png') }}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">{{ setting()->name }}</span>
+                <span class="brand-text font-weight-light">{{ $setting->name }}</span>
             </a>
 
             <!-- Sidebar -->

@@ -51,6 +51,6 @@
 <!-- Custom Script -->
 @yield('script')
 
-<script> 
-    {!! setting()->body_script !!}
+<script>
+    {!! $setting->body_script !!}
 </script>

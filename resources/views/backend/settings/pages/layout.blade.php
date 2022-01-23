@@ -1,13 +1,13 @@
 @extends('backend.settings.setting-layout')
 @section('title') Layout Settings @endsection
 
-@section('layout')
+@section('website-settings')
     <div class="card">
         <div class="card-header">
             <h3 class="card-title" style="line-height: 36px;">Layout Setting</h3>
         </div>
         <div class="row pt-3 pb-4">
-            <form action="{{ route('setting', 'layout') }}" method="post" id="layout_form">
+            <form action="{{ route('settings.update') }}" method="post" id="layout_form">
                 @csrf
                 @method('PUT')
                 <input type="hidden" name="default_layout" id="layout_mode">
@@ -20,7 +20,7 @@
                     <img height="200px" width="600px" src="{{ asset('backend/image/setting/left-nav.png') }}"
                         class="card-img-top img-fluid" alt="top nav">
                     <div class="card-body">
-                        @if (setting()->default_layout)
+                        @if ($setting->default_layout)
                             <a href="javascript:void(0)" onclick="layoutChange(0)" class="btn btn-danger">Inactivate</a>
                         @else
                             <a href="javascript:void(0)" onclick="layoutChange(1)" class="btn btn-primary">Activate</a>
@@ -36,7 +36,7 @@
                     <img height="200px" width="600px" src="{{ asset('backend/image/setting/top-nav.png') }}"
                         class="card-img-top img-fluid" alt="top nav">
                     <div class="card-body">
-                        @if (setting()->default_layout)
+                        @if ($setting->default_layout)
                             <a href="javascript:void(0)" onclick="layoutChange(0)" class="btn btn-primary">Activate</a>
                         @else
                             <a href="javascript:void(0)" onclick="layoutChange(1)" class="btn btn-danger">Inactivate</a>

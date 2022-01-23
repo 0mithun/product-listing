@@ -11,21 +11,15 @@
     @include('layouts.partials.styles')
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed {{ setting()->dark_mode ? 'dark-mode' : '' }}">
+<body class="hold-transition sidebar-mini layout-fixed {{ $setting->dark_mode ? 'dark-mode' : '' }}">
     @php
         $user = Auth::user();
     @endphp
     <div class="wrapper">
-        {{-- <div x-text="darkMode">
-            asdsad
-        </div> --}}
-        {{-- <template x-if="darkMode">
-            <div>Contents...</div>
-        </template> --}}
         <!-- Navbar -->
         <nav id="nav"
-            class="main-header navbar navbar-expand {{ setting()->dark_mode ? 'navbar-dark navbar-dark' : 'navbar-white navbar-light' }}"
-            style="background-color:{{ setting()->dark_mode ? '' : setting()->nav_color }}">
+            class="main-header navbar navbar-expand {{ $setting->dark_mode ? 'navbar-dark navbar-dark' : 'navbar-white navbar-light' }}"
+            style="background-color:{{ $setting->dark_mode ? '' : $setting->nav_color }}">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">

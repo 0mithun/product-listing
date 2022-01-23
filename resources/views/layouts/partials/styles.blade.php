@@ -1,5 +1,5 @@
     <!-- FavIcons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset(setting()->favicon_image) }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset($setting->favicon_image) }}">
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="{{ asset('css/google-font.css') }}">
@@ -14,8 +14,8 @@
     @yield('style')
 
     <style>
-        {!! setting()->header_css !!}
+        {!! $setting->header_css !!}
     </style>
     <script>
-        {!! setting()->header_script !!}
+        {!! $setting->header_script !!}
     </script>

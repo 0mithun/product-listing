@@ -1,15 +1,15 @@
 <aside id="sidebar" class="main-sidebar sidebar-dark-primary elevation-4"
-    style="background-color: {{ setting()->dark_mode ? '' : setting()->sidebar_color }}">
+    style="background-color: {{ $setting->dark_mode ? '' : $setting->sidebar_color }}">
     <!-- Brand Logo -->
     <a href="{{ route('home') }}" class="brand-link">
-        @if (file_exists(setting()->logo_image))
-            <img src="{{ asset(setting()->logo_image) }}" alt="AdminLTE Logo" class="img-circle elevation-3"
+        @if (file_exists($setting->logo_image))
+            <img src="{{ asset($setting->logo_image) }}" alt="AdminLTE Logo" class="img-circle elevation-3"
                 style="opacity: .8">
         @else
             <img src="{{ asset('backend/image/logo-default.png') }}" alt="AdminLTE Logo"
                 class="img-circle elevation-3" style="opacity: .8">
         @endif
-        <span class="brand-text font-weight-light">{{ setting()->name }}</span>
+        <span class="brand-text font-weight-light">{{ $setting->name }}</span>
     </a>
 
     <!-- Sidebar -->
@@ -70,7 +70,7 @@
                         @endif
                     </x-sidebar-dropdown>
                 @endif
-                <x-sidebar-list :linkActive="Route::is('setting')  ? true : false" route="setting" parameter="website"
+                <x-sidebar-list :linkActive="Route::is('setting')  ? true : false" route="settings.website" parameter="website"
                     icon="fas fa-cog">
                     Settings
                 </x-sidebar-list>

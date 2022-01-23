@@ -8,12 +8,12 @@
         </div>
         <div class="row pt-3 pb-4">
             <div class="col-md-6 offset-md-3">
-                <form class="form-horizontal" action="{{ route('setting', 'website') }}" method="POST"
+                <form class="form-horizontal" action="{{ route('settings.website.update') }}" method="POST"
                     enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
                     <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">{{ setting()->name }}</label>
+                        <label class="col-sm-3 col-form-label">{{ $setting->name }}</label>
                         <div class="col-sm-9">
                             <input value="{{ $setting->name }}" name="name" type="text"
                                 class="form-control @error('name') is-invalid @enderror" placeholder="Enter Site Name">
@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">{{ setting()->email }}</label>
+                        <label class="col-sm-3 col-form-label">{{ $setting->email }}</label>
                         <div class="col-sm-9">
                             <input value="{{ $setting->email }}" name="email" type="email"
                                 class="form-control @error('email') is-invalid @enderror" placeholder="Enter Site Email">
@@ -42,7 +42,7 @@
                                     @else
                                         <input type="file" class="form-control dropify"
                                             data-default-file="{{ asset('backend/image/logo-default.png') }}"
-                                            name="favicon_image">
+                                            name="logo_image">
                                     @endif
                                 </div>
                             </div>

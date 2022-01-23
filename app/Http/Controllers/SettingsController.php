@@ -3,46 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Models\Setting;
+use App\Traits\UploadAble;
 use Illuminate\Http\Request;
 
 class SettingsController extends Controller
 {
-    // Website setting page.
-    public function index($page)
-    {
-        $setting = Setting::first();
+    use UploadAble;
 
-        switch ($page) {
-            case 'website':
-                return view('backend.settings.pages.website', compact('setting'));
-                break;
-            case 'layout':
-                return view('backend.settings.pages.layout');
-                break;
-            case 'color':
-                return view('backend.settings.pages.color-picker');
-                break;
-            case 'custom':
-                return view('backend.settings.pages.custom', compact('setting'));
-                break;
-                // case 'language':
-                //     return view('backend.settings.pages.language');
-                //     break;
-                // case 'payment':
-                //     return view('backend.settings.pages.payment');
-                //     break;
-                // case 'mail':
-                //     return view('backend.settings.pages.mail');
-                //     break;
-                // case 'currency':
-                //     return view('backend.settings.pages.currency');
-                //     break;
-                // case 'theme':
-                //     return view('backend.settings.pages.theme');
-                //     break;
-            default:
-                abort(404);
-        }
+    public function website()
+    {
+        return view('backend.settings.pages.website');
+    }
+    public function layout()
+    {
+        return view('backend.settings.pages.layout');
+    }
+    public function color()
+    {
+        return view('backend.settings.pages.color-picker');
+    }
+    public function custom()
+    {
+        return view('backend.settings.pages.custom');
     }
 
     /**
@@ -114,29 +96,31 @@ class SettingsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return boolean
      */
-    public function websiteUpdate($request)
+    public function websiteUpdate(Request $request)
     {
-        $setting = Setting::first();
-
-        // Website update
-        $setting->update([
-            'name' => $request->name,
-            'email' => $request->email,
+        $request->validate([
+            'name'      =>  ['required'],
+            'email'      =>  ['required'],
+            'logo_image'      =>  ['nullable', 'mimes:png,jpg,svg'],
+            'favicon_image'      =>  ['nullable', 'mimes:png,jpg,svg'],
         ]);
 
-        if ($logo_image = $request->logo_image) {
-            $url = uploadImage($logo_image, 'website');
-            deleteImage($setting->logo_image);
-            $setting->update(['logo_image' => $url]);
+        $data = $request->only(['name', 'email']);
+
+        $setting = Setting::first();
+        if($request->hasFile('logo_image')){
+            $data['logo_image'] = $this->uploadOne($request->logo_image, 'website');
+            $this->deleteOne($setting->logo_image);
         }
 
-        if ($fav_icon = $request->favicon_image) {
-            $url = uploadImage($fav_icon, 'website');
-            deleteImage($setting->favicon_image);
-            $setting->update(['favicon_image' => $url]);
+        if($request->hasFile('favicon_image')){
+            $data['favicon_image'] = $this->uploadOne($request->favicon_image, 'website');
+            $this->deleteOne($setting->favicon_image);
         }
 
-        return true;
+        $setting->update($data);
+
+        return back()->with('success', 'Website setting upadte successfully!');
     }
 
     /**
