@@ -7,10 +7,10 @@
             <h3 class="card-title" style="line-height: 36px;">Layout Setting</h3>
         </div>
         <div class="row pt-3 pb-4">
-            <form action="{{ route('layout.change') }}" method="post" id="layout_form">
+            <form action="{{ route('setting', 'layout') }}" method="post" id="layout_form">
                 @csrf
                 @method('PUT')
-                <input type="hidden" name="layout" id="layout_mode">
+                <input type="hidden" name="default_layout" id="layout_mode">
             </form>
             <div class="col-6">
                 <div class="card">
@@ -20,12 +20,10 @@
                     <img height="200px" width="600px" src="{{ asset('backend/image/setting/left-nav.png') }}"
                         class="card-img-top img-fluid" alt="top nav">
                     <div class="card-body">
-                        @if (session('layout_mode') === 'left_nav')
-                            <a href="javascript:void(0)" onclick="layoutChange('top_nav')"
-                                class="btn btn-danger">Inactivate</a>
+                        @if (setting()->default_layout)
+                            <a href="javascript:void(0)" onclick="layoutChange(0)" class="btn btn-danger">Inactivate</a>
                         @else
-                            <a href="javascript:void(0)" onclick="layoutChange('left_nav')"
-                                class="btn btn-primary">Activate</a>
+                            <a href="javascript:void(0)" onclick="layoutChange(1)" class="btn btn-primary">Activate</a>
                         @endif
                     </div>
                 </div>
@@ -38,12 +36,10 @@
                     <img height="200px" width="600px" src="{{ asset('backend/image/setting/top-nav.png') }}"
                         class="card-img-top img-fluid" alt="top nav">
                     <div class="card-body">
-                        @if (session('layout_mode') === 'top_nav')
-                            <a href="javascript:void(0)" onclick="layoutChange('left_nav')"
-                                class="btn btn-danger">Inactivate</a>
+                        @if (setting()->default_layout)
+                            <a href="javascript:void(0)" onclick="layoutChange(0)" class="btn btn-primary">Activate</a>
                         @else
-                            <a href="javascript:void(0)" onclick="layoutChange('top_nav')"
-                                class="btn btn-primary">Activate</a>
+                            <a href="javascript:void(0)" onclick="layoutChange(1)" class="btn btn-danger">Inactivate</a>
                         @endif
                     </div>
                 </div>

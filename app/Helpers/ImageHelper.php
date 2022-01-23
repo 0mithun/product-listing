@@ -2,13 +2,12 @@
 
 use Illuminate\Support\Facades\Storage;
 
-
 /**
  * image upload
  *
  * @param object $file
  * @param string $path
- * @return void
+ * @return string
  */
 function uploadImage(?object $file, string $path): string
 {

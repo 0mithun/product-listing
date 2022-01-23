@@ -1,13 +1,15 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside id="sidebar" class="main-sidebar sidebar-dark-primary elevation-4"
+    style="background-color: {{ setting()->dark_mode ? '' : setting()->sidebar_color }}">
     <!-- Brand Logo -->
     <a href="{{ route('home') }}" class="brand-link">
-        @if ($logo = website_setting()->logo_image)
-            <img src="{{ asset($logo) }}" alt="AdminLTE Logo" class="img-circle elevation-3" style="opacity: .8">
-        @else
-            <img src="{{ asset('backend') }}/image/64x64.png" alt="AdminLTE Logo" class="img-circle elevation-3"
+        @if (file_exists(setting()->logo_image))
+            <img src="{{ asset(setting()->logo_image) }}" alt="AdminLTE Logo" class="img-circle elevation-3"
                 style="opacity: .8">
+        @else
+            <img src="{{ asset('backend/image/logo-default.png') }}" alt="AdminLTE Logo"
+                class="img-circle elevation-3" style="opacity: .8">
         @endif
-        <span class="brand-text font-weight-light">{{ website_setting()->name }}</span>
+        <span class="brand-text font-weight-light">{{ setting()->name }}</span>
     </a>
 
     <!-- Sidebar -->
@@ -24,19 +26,7 @@
                 </div>
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{ $user->name }}</a>
-            </div>
-        </div>
-
-        <!-- SidebarSearch Form -->
-        <div class="form-inline">
-            <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-sidebar">
-                        <i class="fas fa-search fa-fw"></i>
-                    </button>
-                </div>
+                <a href="{{ route('profile') }}" class="d-block">{{ $user->name }}</a>
             </div>
         </div>
 
@@ -84,8 +74,6 @@
                     icon="fas fa-cog">
                     Settings
                 </x-sidebar-list>
-
-
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

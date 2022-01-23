@@ -61,13 +61,9 @@
     <div class="row">
         <div class="col-6">
             <!-- BAR CHART -->
-            <div class="card card-success">
+            <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Sales and Invest Overview</h3>
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                    </div>
                 </div>
                 <div class="card-body">
                     <div class="chart">
@@ -79,14 +75,9 @@
             <!-- /.card -->
         </div>
         <div class="col-6">
-            <div class="card card-danger">
+            <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Browser Overview</h3>
-
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                    </div>
                 </div>
                 <div class="card-body">
                     <canvas id="donutChart" style="height:230px; min-height:230px"></canvas>
@@ -96,48 +87,68 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-6">
+        <div class="col-8">
             <div class="card">
-                <div class="card-header bg-primary">
-                    Top Pages
+                <div class="card-header">
+                    <h3 class="card-title">Most Visited Pages</h3>
                 </div>
-                <div class="card-body">
-                    <table class="table">
+                <div class="card-table table-responsive p-0">
+                    <table class="table table-vcenter">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Total Views</th>
+                                <th>Page name</th>
+                                <th>Visitors</th>
+                                <th>Unique</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>1</td>
-                                <td>About</td>
-                                <td>51 times</td>
+                                <td>
+                                    /about.html
+                                    <a href="#" class="ms-1" aria-label="Open website">
+                                        <!-- Download SVG icon from http://tabler-icons.io/i/link -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path>
+                                            <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path>
+                                        </svg>
+                                    </a>
+                                </td>
+                                <td class="text-muted">4,896</td>
+                                <td class="text-muted">3,654</td>
+
                             </tr>
                             <tr>
-                                <td>1</td>
-                                <td>Home</td>
-                                <td>25 times</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Profile</td>
-                                <td>99 times</td>
+                                <td>
+                                    /index.html
+                                    <a href="#" class="ms-1" aria-label="Open website">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path>
+                                            <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path>
+                                        </svg>
+                                    </a>
+                                </td>
+                                <td class="text-muted">4,896</td>
+                                <td class="text-muted">3,654</td>
+
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-4">
             <div class="card">
-                <div class="card-header bg-info">
+                <div class="card-header">
                     Top Browsers
                 </div>
-                <div class="card-body">
-                    <table class="table">
+                <div class="card-body table-responsive p-0">
+                    <table class="table ">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -150,15 +161,73 @@
                                 <td>Google Chrome</td>
                             </tr>
                             <tr>
-                                <td>1</td>
+                                <td>2</td>
                                 <td>Edge</td>
                             </tr>
                             <tr>
-                                <td>1</td>
+                                <td>3</td>
                                 <td>Mozila Firefox</td>
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Invoices</h3>
+                </div>
+                <div class="card-body table-responsive p-0">
+                    <div class="table-responsive">
+                        <table class="table table-vcenter">
+                            <thead>
+                                <tr>
+                                    <th class="w-1">No.</th>
+                                    <th>Invoice Subject</th>
+                                    <th>Client</th>
+                                    <th>VAT No.</th>
+                                    <th>Created</th>
+                                    <th>Status</th>
+                                    <th>Price</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="text-muted">001401</span></td>
+                                    <td><a href="invoice.html" class="text-reset" tabindex="-1">Design Works</a></td>
+                                    <td>
+                                        <span class="flag flag-country-us"></span>
+                                        Carlson Limited
+                                    </td>
+                                    <td>
+                                        87956621
+                                    </td>
+                                    <td>
+                                        15 Dec 2017
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success me-1"></span> Paid
+                                    </td>
+                                    <td>$887</td>
+                                    <td class="text-end">
+                                        <div class="btn-group" role="group">
+                                            <button id="btnGroupDrop1" type="button"
+                                                class="btn btn-light border-dark dropdown-toggle" data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">
+                                                Dropdown
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                                <a class="dropdown-item" href="#">Dropdown link</a>
+                                                <a class="dropdown-item" href="#">Dropdown link</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

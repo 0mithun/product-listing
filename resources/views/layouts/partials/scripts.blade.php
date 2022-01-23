@@ -4,6 +4,8 @@
 <script src="{{ asset('backend') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE -->
 <script src="{{ asset('backend') }}/dist/js/adminlte.js"></script>
+<!-- Alpine js -->
+<script defer src="{{ asset('backend') }}/plugins/alpinejs/alpine.min.js"></script>
 <!-- toastr notification -->
 <script src="{{ asset('backend') }}/plugins/toastr/toastr.min.js"> </script>
 <script>
@@ -45,45 +47,10 @@
     $('#nav_collapse').on('click', function() {
         localStorage.setItem("sidebar_collapse", isNavCollapse == true ? false : true);
     });
-
-    // Mode Change Toggle
-    var isDarkMode = JSON.parse(localStorage.getItem("dark_mode"))
-    isDarkMode ? $('body').addClass('dark-mode') : null;
-    var layout_mode = '{{ session('layout_mode') }}';
-
-    if (layout_mode == 'top_nav') {
-        $('#nav').addClass('navbar-light')
-        $('#nav').removeClass('navbar-dark')
-    }
-
-    if (isDarkMode) {
-        $('#dark').removeClass('d-none')
-        $('#dark').addClass('d-block')
-        $('#light').removeClass('d-block')
-        $('#light').addClass('d-none')
-
-        if (layout_mode != 'top_nav') {
-            $('#nav').removeClass('navbar-light')
-            $('#nav').addClass('navbar-dark')
-        }
-    } else {
-        $('#light').removeClass('d-none')
-        $('#light').addClass('d-block')
-        $('#dark').removeClass('d-block')
-        $('#dark').addClass('d-none')
-
-        if (layout_mode != 'top_nav') {
-            $('#nav').addClass('navbar-light')
-            $('#nav').removeClass('navbar-dark')
-        }
-    }
-
-
-
-    $('#mode_change').on('click', function() {
-        localStorage.setItem("dark_mode", isDarkMode == true ? false : true);
-        window.location.reload();
-    });
 </script>
 <!-- Custom Script -->
 @yield('script')
+
+<script> 
+    {!! setting()->body_script !!}
+</script>

@@ -32,9 +32,13 @@ Route::middleware(['auth:super_admin'])->group(function () {
     //Users Route
     Route::resource('user', UserController::class);
 
-    //====================Settings=========================
+
+    // ========================================================
+    //====================Setting==============================
+    // ========================================================
     Route::get('settings/{page}', [SettingsController::class, 'index'])->name('setting');
-    Route::put('settings/website', [SettingsController::class, 'website'])->name('setting.website');
+    Route::put('settings/{page}', [SettingsController::class, 'update'])->name('setting');
+    Route::put('/site/layout', [SettingsController::class, 'layoutChange'])->name('layout.change');
 });
 
 // ========================================================
@@ -49,11 +53,6 @@ Route::get('auth/{provider}/callback', [SocialLoginController::class, 'callback'
 Route::get('/admin/home', [App\Http\Controllers\AdminController::class, 'index']);
 Route::get('/admin/login', [App\Http\Controllers\Admin\LoginController::class, 'showLoginForm'])->name('login.admin');
 Route::post('/admin/login', [App\Http\Controllers\Admin\LoginController::class, 'login'])->name('admin.login');
-
-// ========================================================
-//====================Setting==============================
-// ========================================================
-Route::put('/site/layout', [SettingsController::class, 'layoutChange'])->name('layout.change');
 
 
 // ========================================================

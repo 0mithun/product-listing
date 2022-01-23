@@ -11,13 +11,21 @@
     @include('layouts.partials.styles')
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed {{ setting()->dark_mode ? 'dark-mode' : '' }}">
     @php
         $user = Auth::user();
     @endphp
     <div class="wrapper">
+        {{-- <div x-text="darkMode">
+            asdsad
+        </div> --}}
+        {{-- <template x-if="darkMode">
+            <div>Contents...</div>
+        </template> --}}
         <!-- Navbar -->
-        <nav id="nav" class="main-header navbar navbar-expand navbar-light">
+        <nav id="nav"
+            class="main-header navbar navbar-expand {{ setting()->dark_mode ? 'navbar-dark navbar-dark' : 'navbar-white navbar-light' }}"
+            style="background-color:{{ setting()->dark_mode ? '' : setting()->nav_color }}">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -25,6 +33,18 @@
                             class="fas fa-bars"></i></a>
                 </li>
             </ul>
+            <!-- SEARCH FORM -->
+            <form class="form-inline ml-0 ml-md-3">
+                <div class="input-group input-group-sm">
+                    <input class="form-control form-control-navbar text-dark" type="search" placeholder="Search"
+                        aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-navbar" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
