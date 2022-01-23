@@ -102,20 +102,19 @@ class SettingsController extends Controller
             'name'      =>  ['required'],
             'email'      =>  ['required'],
             'logo_image'      =>  ['nullable', 'mimes:png,jpg,svg'],
-            'favicon_image'      =>  ['nullable', 'mimes:png,jpg,svg'],
+            'favicon_image'      =>  ['nullable', 'mimes:png,ico'],
         ]);
 
         $data = $request->only(['name', 'email']);
-
         $setting = Setting::first();
 
         if($request->hasFile('logo_image')){
-            $data['logo_image'] = $this->uploadOne($request->logo_image, 'website');
+            $data['logo_image'] = $this->uploadOne($request->logo_image, 'website/logo');
             $this->deleteOne($setting->logo_image);
         }
 
         if($request->hasFile('favicon_image')){
-            $data['favicon_image'] = $this->uploadOne($request->favicon_image, 'website');
+            $data['favicon_image'] = $this->uploadOne($request->favicon_image, 'website/logo');
             $this->deleteOne($setting->favicon_image);
         }
 

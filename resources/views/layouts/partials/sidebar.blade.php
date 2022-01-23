@@ -2,13 +2,8 @@
     style="background-color: {{ $setting->dark_mode ? '' : $setting->sidebar_color }}">
     <!-- Brand Logo -->
     <a href="{{ route('home') }}" class="brand-link">
-        @if (file_exists($setting->logo_image))
-            <img src="{{ asset($setting->logo_image) }}" alt="AdminLTE Logo" class="img-circle elevation-3"
+        <img src="{{ $setting->logo_image_url }}" alt="AdminLTE Logo" class="img-circle elevation-3"
                 style="opacity: .8">
-        @else
-            <img src="{{ asset('backend/image/logo-default.png') }}" alt="AdminLTE Logo"
-                class="img-circle elevation-3" style="opacity: .8">
-        @endif
         <span class="brand-text font-weight-light">{{ $setting->name }}</span>
     </a>
 
