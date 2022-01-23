@@ -7,7 +7,7 @@
             <h3 class="card-title" style="line-height: 36px;">Color Picker</h3>
         </div>
         <div class="row pt-3 pb-4">
-            <form id="color_picker_form" action="{{ route('settings.update') }}" method="post">
+            <form id="color_picker_form" action="{{ route('settings.color.update') }}" method="post">
                 @csrf
                 @method('PUT')
                 <input id="sidebar_color_id" type="hidden" name="sidebar_color"

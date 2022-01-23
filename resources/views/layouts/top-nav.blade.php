@@ -22,13 +22,8 @@
             style="background-color:{{ $setting->dark_mode ? '' : $setting->nav_color }}">
             <div class="container">
                 <a href="{{ route('home') }}" class="navbar-brand">
-                    @if (file_exists($setting->logo_image))
-                        <img src="{{ asset($setting->logo_image) }}" alt="AdminLTE Logo"
+                        <img src="{{ $setting->logo_image_url }}" alt="AdminLTE Logo"
                             class="brand-image img-circle elevation-3" style="opacity: .8">
-                    @else
-                        <img src="{{ asset('backend/image/logo-default.png') }}" alt="AdminLTE Logo"
-                            class="brand-image img-circle elevation-3" style="opacity: .8">
-                    @endif
 
                     <span class="brand-text font-weight-light">{{ $setting->name }}</span>
                 </a>

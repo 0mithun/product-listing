@@ -7,7 +7,7 @@
             <h3 class="card-title" style="line-height: 36px;">Layout Setting</h3>
         </div>
         <div class="row pt-3 pb-4">
-            <form action="{{ route('settings.update') }}" method="post" id="layout_form">
+            <form action="{{ route('settings.layout.update') }}" method="post" id="layout_form">
                 @csrf
                 @method('PUT')
                 <input type="hidden" name="default_layout" id="layout_mode">

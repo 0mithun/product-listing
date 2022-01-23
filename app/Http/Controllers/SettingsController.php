@@ -27,67 +27,7 @@ class SettingsController extends Controller
         return view('backend.settings.pages.custom');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  string $page
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $page)
-    {
-        // return $request;
-        try {
-            switch ($page) {
-                case 'website':
-                    $this->validate($request, [
-                        'name' => "required",
-                        'email' => "required",
-                    ]);
 
-                    $this->websiteUpdate($request);
-                    $message = 'Site Settings Content';
-                    break;
-                case 'color':
-                    if (setting()->dark_mode) {
-                        flashWarning("You can't cahnge color.Beacause you're in dark mode.");
-                        return back();
-                    } else {
-                        $this->colorUpdate($request);
-                        $message = 'Color Setting';
-                    }
-                    break;
-                case 'custom':
-                    $this->custumCSSJSUpdate($request);
-                    $message = 'Custom Setting';
-                    break;
-                case 'dark_mode':
-
-                    $this->modeUpdate($request);
-                    $message = 'Mode';
-
-                    break;
-                case 'layout':
-                    $this->layoutUpdate($request);
-                    $message = 'Layout';
-                    break;
-                default:
-                    abort(404);
-            }
-
-            flashSuccess($message . ' Updated Successfully');
-            return back();
-        } catch (\Throwable $th) {
-            flashError($th->getMessage());
-            return back();
-        }
-    }
-
-    public function layoutUpdate($request)
-    {
-        $layout = $request->only(['default_layout']);
-        return Setting::first()->update($layout);
-    }
 
 
     /**
@@ -124,15 +64,29 @@ class SettingsController extends Controller
     }
 
     /**
+     * Update website layout
+     *
+     * @return void
+     */
+    public function layoutUpdate()
+    {
+        Setting::first()->update(request()->only('default_layout'));
+
+        return back()->with('success', 'Website layout upadte successfully!');
+    }
+
+
+    /**
      * color Data Update.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return boolean
      */
-    public function colorUpdate($request)
+    public function colorUpdate()
     {
-        $color = $request->only(['sidebar_color', 'nav_color']);
-        return Setting::first()->update($color);
+        Setting::first()->update(request()->only(['sidebar_color', 'nav_color']));
+
+        return back()->with('success', 'Color setting upadte successfully!');
     }
 
     /**
@@ -141,10 +95,11 @@ class SettingsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return boolean
      */
-    public function custumCSSJSUpdate($request)
+    public function custumCSSJSUpdate()
     {
-        $custom_css_js = $request->only(['header_css', 'header_script', 'body_script']);
-        return Setting::first()->update($custom_css_js);
+        Setting::first()->update(request()->only(['header_css', 'header_script', 'body_script']));
+
+        return back()->with('success', 'Custom css/js upadte successfully!');
     }
 
     /**

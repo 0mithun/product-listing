@@ -10,7 +10,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('settings.update') }}" method="post">
+                        <form action="{{ route('settings.custom.update') }}" method="post">
                             @csrf
                             @method('PUT')
                             <div class="form-group">

@@ -36,17 +36,17 @@ Route::middleware(['auth:super_admin'])->group(function () {
     // ========================================================
     //====================Setting==============================
     // ========================================================
-    // Route::get('settings/{page}', [SettingsController::class, 'index'])->name('setting');
-    // Route::put('settings/{page}', [SettingsController::class, 'update'])->name('setting');
-    // Route::put('/site/layout', [SettingsController::class, 'layoutChange'])->name('layout.change');
     Route::get('settings/website', [SettingsController::class, 'website'])->name('settings.website');
     Route::put('settings/website', [SettingsController::class, 'websiteUpdate'])->name('settings.website.update');
 
     Route::get('settings/layout', [SettingsController::class, 'layout'])->name('settings.layout');
-    Route::get('settings/color', [SettingsController::class, 'color'])->name('settings.color');
-    Route::get('settings/custom', [SettingsController::class, 'custom'])->name('settings.custom');
+    Route::put('settings/layout', [SettingsController::class, 'layoutUpdate'])->name('settings.layout.update');
 
-    Route::put('settings}', [SettingsController::class, 'update'])->name('settings.update');
+    Route::get('settings/color', [SettingsController::class, 'color'])->name('settings.color');
+    Route::put('settings/color', [SettingsController::class, 'colorUpdate'])->name('settings.color.update');
+
+    Route::get('settings/custom', [SettingsController::class, 'custom'])->name('settings.custom');
+    Route::put('settings/custom', [SettingsController::class, 'custumCSSJSUpdate'])->name('settings.custom.update');
 });
 
 // ========================================================
