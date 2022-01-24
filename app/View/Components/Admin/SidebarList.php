@@ -1,21 +1,22 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Admin;
 
 use Illuminate\View\Component;
 
-class SidebarDropdown extends Component
+class SidebarList extends Component
 {
-    public $linkActive, $subLinkActive, $icon;
+    public $linkActive, $route, $parameter, $icon;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($linkActive, $subLinkActive, $icon)
+    public function __construct($linkActive, $route, $parameter = null, $icon)
     {
         $this->linkActive = $linkActive;
-        $this->subLinkActive = $subLinkActive;
+        $this->route = $route;
+        $this->parameter = $parameter;
         $this->icon = $icon;
     }
 
@@ -26,6 +27,6 @@ class SidebarDropdown extends Component
      */
     public function render()
     {
-        return view('components.sidebar-dropdown');
+        return view('components.admin.sidebar-list');
     }
 }

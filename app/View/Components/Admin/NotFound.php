@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Admin;
 
 use Illuminate\View\Component;
 
@@ -26,6 +26,6 @@ class NotFound extends Component
      */
     public function render()
     {
-        return view('components.not-found');
+        return view('components.admin.not-found');
     }
 }

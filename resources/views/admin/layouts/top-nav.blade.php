@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
 
-    @include('layouts.partials.styles')
+    @include('admin.layouts.partials.styles')
 </head>
 
 <body class="hold-transition sidebar-collapse layout-top-nav {{ $setting->dark_mode ? 'dark-mode' : '' }}">
@@ -21,7 +21,7 @@
             class="main-header navbar navbar-expand-md {{ $setting->dark_mode ? 'navbar-dark navbar-dark' : 'navbar-white navbar-light' }}"
             style="background-color:{{ $setting->dark_mode ? '' : $setting->nav_color }}">
             <div class="container">
-                <a href="{{ route('home') }}" class="navbar-brand">
+                <a href="{{ route('admin.dashboard') }}" class="navbar-brand">
                         <img src="{{ $setting->logo_image_url }}" alt="AdminLTE Logo"
                             class="brand-image img-circle elevation-3" style="opacity: .8">
 
@@ -58,14 +58,14 @@
 
                 <!-- Right navbar links -->
                 <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-                    @include('layouts.partials.top-right-nav')
+                    @include('admin.layouts.partials.top-right-nav')
                 </ul>
             </div>
         </nav>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        @include('layouts.partials.sidebar')
+        @include('admin.layouts.partials.sidebar')
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -94,12 +94,12 @@
         <!-- /.control-sidebar -->
 
         <!-- Main Footer -->
-        @include('layouts.partials.footer')
+        @include('admin.layouts.partials.footer')
 
     </div>
     <!-- ./wrapper -->
 
-    @include('layouts.partials.scripts')
+    @include('admin.layouts.partials.scripts')
 </body>
 
 </html>

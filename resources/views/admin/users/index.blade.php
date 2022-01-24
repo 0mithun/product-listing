@@ -66,7 +66,7 @@
                                 @empty
                                     <tr>
                                         <td colspan="10" class="text-center">
-                                            <x-not-found route="user.create" />
+                                            <x-admin.not-found route="user.create" />
                                         </td>
                                     </tr>
                                 @endforelse

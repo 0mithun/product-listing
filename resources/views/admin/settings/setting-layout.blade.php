@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('admin.layouts.app')
 @section('title') Site Settings @endsection
 @section('breadcrumbs')
     <div class="row mb-2 mt-4">

@@ -154,10 +154,10 @@
 
                         <!-- candidate -->
                         @auth('customer')
-                            <x-sidebar-list :linkActive="Route::is('customer.dashboard') ? true : false"
+                            <x-admin.sidebar-list :linkActive="Route::is('customer.dashboard') ? true : false"
                                 route="customer.dashboard" icon="fas fa-home">
                                 Dashboard
-                            </x-sidebar-list>
+                            </x-admin.sidebar-list>
                             <li class="nav-item">
                                 <form action="{{ route('auth.logout') }}" class="d-inline" method="POST">
                                     @csrf
@@ -169,10 +169,10 @@
 
                         <!-- company -->
                         @auth('company')
-                            <x-sidebar-list :linkActive="Route::is('company.dashboard') ? true : false"
+                            <x-admin.sidebar-list :linkActive="Route::is('company.dashboard') ? true : false"
                                 route="company.dashboard" icon="fas fa-home">
                                 Dashboard
-                            </x-sidebar-list>
+                            </x-admin.sidebar-list>
                             <li class="nav-item">
                                 <form action="{{ route('auth.logout') }}" class="d-inline" method="POST">
                                     @csrf
@@ -184,10 +184,10 @@
 
                         <!-- teacher -->
                         @auth('teacher')
-                            <x-sidebar-list :linkActive="Route::is('teacher.dashboard') ? true : false"
+                            <x-admin.sidebar-list :linkActive="Route::is('teacher.dashboard') ? true : false"
                                 route="teacher.dashboard" icon="fas fa-home">
                                 Dashboard
-                            </x-sidebar-list>
+                            </x-admin.sidebar-list>
                             <li class="nav-item">
                                 <form action="{{ route('auth.logout') }}" class="d-inline" method="POST">
                                     @csrf
@@ -200,10 +200,10 @@
 
                         <!-- user -->
                         @auth('user')
-                            <x-sidebar-list :linkActive="Route::is('user.dashboard') ? true : false" route="user.dashboard"
+                            <x-admin.sidebar-list :linkActive="Route::is('user.dashboard') ? true : false" route="user.dashboard"
                                 icon="fas fa-home">
                                 Dashboard
-                            </x-sidebar-list>
+                            </x-admin.sidebar-list>
                             <li class="nav-item">
                                 <form action="{{ route('auth.logout') }}" class="d-inline" method="POST">
                                     @csrf
@@ -214,10 +214,10 @@
                         @endauth
                         <!-- student -->
                         @auth('student')
-                            <x-sidebar-list :linkActive="Route::is('student.dashboard') ? true : false"
+                            <x-admin.sidebar-list :linkActive="Route::is('student.dashboard') ? true : false"
                                 route="student.dashboard" icon="fas fa-home">
                                 Dashboard
-                            </x-sidebar-list>
+                            </x-admin.sidebar-list>
                             <li class="nav-item">
                                 <form action="{{ route('auth.logout') }}" class="d-inline" method="POST">
                                     @csrf

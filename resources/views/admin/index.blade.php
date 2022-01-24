@@ -1,5 +1,5 @@
 {{-- @extends('layouts.top-nav') --}}
-@extends('layouts.admin')
+@extends('admin.layouts.app')
 @section('title') Dashboard @endsection
 @section('breadcrumbs')
     <div class="row mb-2">

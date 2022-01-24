@@ -30,14 +30,14 @@
             <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent nav-legacy nav-flat"
                 data-widget="treeview" role="menu" data-accordion="false">
                 @if ($user->can('dashboard.view'))
-                    <x-sidebar-list :linkActive="Route::is('home') ? true : false" route="home"
+                    <x-admin.sidebar-list :linkActive="Route::is('home') ? true : false" route="home"
                         icon="fas fa-tachometer-alt">
                         Dashboard
-                    </x-sidebar-list>
+                    </x-admin.sidebar-list>
                 @endif
                 @if ($user->can('admin.view') || $user->can('admin.create') || $user->can('admin.edit') || $user->can('admin.delete') || $user->can('role.view') || $user->can('role.create') || $user->can('role.edit') || $user->can('role.delete'))
 
-                    <x-sidebar-dropdown
+                    <x-admin.sidebar-dropdown
                         :linkActive="Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') || Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') ? true : false"
                         :subLinkActive="Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') || Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') ? true : false"
                         icon="fas fa-lock">
@@ -47,27 +47,27 @@
 
                         @if ($user->can('admin.view') || $user->can('admin.create') || $user->can('admin.edit') || $user->can('admin.delete'))
                             <ul class="nav nav-treeview">
-                                <x-sidebar-list
+                                <x-admin.sidebar-list
                                     :linkActive="Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') ? true : false"
                                     route="user.index" icon="fas fa-users">
                                     All Users
-                                </x-sidebar-list>
+                                </x-admin.sidebar-list>
                             </ul>
                         @endif
                         @if ($user->can('role.view') || $user->can('role.create') || $user->can('role.edit') || $user->can('role.delete'))
                             <ul class="nav nav-treeview">
-                                <x-sidebar-list
+                                <x-admin.sidebar-list
                                     :linkActive="Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') ? true : false"
                                     route="role.index" icon="fas fa-lock">
                                     All Roles
-                                </x-sidebar-list>
+                                </x-admin.sidebar-list>
                             </ul>
                         @endif
-                    </x-sidebar-dropdown>
+                    </x-admin.sidebar-dropdown>
                 @endif
-                <x-sidebar-list :linkActive="Request::is('settings/*')  ? true : false" route="settings.website" icon="fas fa-cog">
+                <x-admin.sidebar-list :linkActive="Request::is('settings/*')  ? true : false" route="settings.website" icon="fas fa-cog">
                     Settings
-                </x-sidebar-list>
+                </x-admin.sidebar-list>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

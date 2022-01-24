@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
 
-    @include('layouts.partials.styles')
+    @include('admin.layouts.partials.styles')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed {{ $setting->dark_mode ? 'dark-mode' : '' }}">
@@ -42,13 +42,13 @@
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-                @include('layouts.partials.top-right-nav')
+                @include('admin.layouts.partials.top-right-nav')
             </ul>
         </nav>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        @include('layouts.partials.sidebar')
+        @include('admin.layouts.partials.sidebar')
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -74,11 +74,11 @@
 
 
         <!-- Main Footer -->
-        @include('layouts.partials.footer')
+        @include('admin.layouts.partials.footer')
     </div>
     <!-- ./wrapper -->
 
-    @include('layouts.partials.scripts')
+    @include('admin.layouts.partials.scripts')
 </body>
 
 </html>

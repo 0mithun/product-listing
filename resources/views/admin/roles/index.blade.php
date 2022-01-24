@@ -58,7 +58,7 @@
                                 @empty
                                     <tr>
                                         <td colspan="10" class="text-center">
-                                            <x-not-found word="Role" route="role.create" />
+                                            <x-admin.not-found word="Role" route="role.create" />
                                         </td>
                                     </tr>
                                 @endforelse
