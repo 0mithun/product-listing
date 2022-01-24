@@ -2,7 +2,7 @@
     style="background-color: {{ $setting->dark_mode ? '' : $setting->sidebar_color }}">
     <!-- Brand Logo -->
     <a href="{{ route('admin.dashboard') }}" class="brand-link">
-        <img src="{{ $setting->logo_image_url }}" alt="AdminLTE Logo" class="img-circle elevation-3"
+        <img src="{{ $setting->logo_image_url }}" alt="Logo" class="img-circle elevation-3"
                 style="opacity: .8">
         <span class="brand-text font-weight-light">{{ $setting->name }}</span>
     </a>

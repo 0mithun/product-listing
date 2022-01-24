@@ -28,9 +28,8 @@ Route::middleware(['guest:admin'])->group(function () {
 
 
 Route::middleware(['auth:admin'])->group(function () {
-    Route::get('/home', function(){
-        return 'admin home';
-    });
+    Route::redirect('/', '/dashboard', 301);
+
     //Dashboard Route
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
@@ -59,5 +58,8 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::put('settings/color', [SettingsController::class, 'colorUpdate'])->name('settings.color.update');
 
     Route::get('settings/custom', [SettingsController::class, 'custom'])->name('settings.custom');
-    Route::put('settings/custom', [SettingsController::class, 'custumCSSJSUpdate'])->name('settings.custom.update');
+    Route::put('settings/custom', [SettingsController::class, 'custumCSSJSUpdate'])->name('settings.custom.update')
+    ;
+    Route::get('settings/email', [SettingsController::class, 'email'])->name('settings.email');
+    Route::put('settings/email', [SettingsController::class, 'emailUpdate'])->name('settings.email.update');
 });

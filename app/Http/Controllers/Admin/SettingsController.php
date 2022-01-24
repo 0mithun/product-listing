@@ -138,4 +138,28 @@ class SettingsController extends Controller
         $dark_mode = $request->only(['dark_mode']);
         return Setting::first()->update($dark_mode);
     }
+
+    public function email()
+    {
+        return view('admin.settings.pages.mail');
+    }
+    public function emailUpdate(Request $request)
+    {
+        $path = base_path('.env');
+
+        if (file_exists($path)) {
+            $data = $request->only(['mail_host','mail_port','mail_username', 'mail_password', 'mail_encryption', 'mail_from_name', 'mail_from_name']);
+            foreach ($data as $key => $value) {
+                $key = strtoupper($key);
+                dd(  $key . '=' . env($key), $key . '=' . $value);
+                // dd($key, $value);
+                file_put_contents($path, str_replace(
+                    $key . '=' . env($key), $key . '=' . $value, file_get_contents($path)
+                ));
+            }
+        }
+
+        return back()->with('success', 'Mail configuration update successfully');
+    }
+
 }

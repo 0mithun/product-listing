@@ -28,6 +28,8 @@
                     <a class="nav-link {{ Route::is('settings.custom') ? 'active' : '' }}"
                         href="{{ route('settings.custom') }}">Custom CSS &
                         JS</a>
+                    <a class="nav-link {{ Route::is('settings.email') ? 'active' : '' }}"
+                        href="{{ route('settings.email') }}">Email</a>
                 </div>
             </div>
             <div class="col-10">
