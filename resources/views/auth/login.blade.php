@@ -21,11 +21,7 @@
             <a href="{{ route('login') }}" class="d-block">
                 {{-- <img height="50px" src="{{ asset('backend/image/logo.png') }}" alt=""> --}}
                 <div class="auth-logo">
-                    @if (file_exists($setting->logo_image))
-                        <img src="{{ asset($setting->logo_image) }}" alt="Zakirsoft Logo">
-                    @else
-                        <img src="{{ asset('backend/image/logo-default.png') }}" alt="Zakirsoft Logo">
-                    @endif
+                    <img src="{{ $setting->logo_image_url }}" alt="Zakirsoft Logo">
                 </div>
             </a>
         </div>
@@ -73,7 +69,7 @@
                     </div>
                 </form>
                 <p class="mb-1">
-                    <a href="forgot-password.html">I forgot my password</a>
+                    <a href="{{ route('password.request') }}">I forgot my password</a>
                 </p>
                 <hr>
                 <p class="mb-1 d-inline">
