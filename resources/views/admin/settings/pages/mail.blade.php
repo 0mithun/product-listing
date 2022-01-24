@@ -21,7 +21,7 @@
                     <div class="col-6">
                         <div class="mb-3">
                             <label for="mail_host" class="form-label">{{ __('mail_host') }}</label>
-                            <input type="text" class="form-control @error('host') is-invalid @enderror" id="mail_host" value="{{ config('mail.mailers.smtp.host') }}" name="mail_host">
+                            <input type="text" class="form-control @error('mail_host') is-invalid @enderror" id="mail_host" value="{{ config('mail.mailers.smtp.host') }}" name="mail_host">
                             @error('mail_host') <span class="invalid-feedback" role="alert">{{ $message }}</span> @enderror
                         </div>
                     </div>
@@ -82,13 +82,14 @@
         </div>
         <div class="card-body">
             <div class="d-flex justify-content-center">
-                <form class="form-inline" action="" method="POST">
+                <form class="form-inline" action="{{ route('settings.email.test') }}" method="POST">
                     @csrf
                     <div class="form-group mb-2">
-                       <label for="staticEmail2">{{ __('email_address') }}</label>
+                       <label for="test_email">{{ __('email_address') }}</label>
                     </div>
                     <div class="form-group mx-sm-3 mb-2">
-                      <input name="email" type="email" class="form-control" id="email" placeholder="{{ __('enter_email') }}" style="min-width: 400px">
+                      <input name="test_email" type="email" class="form-control  @error('test_email') is-invalid @enderror" id="test_email" placeholder="{{ __('enter_email') }}" style="min-width: 400px">
+                      @error('test_email') <span class="invalid-feedback" role="alert">{{ $message }}</span> @enderror
                     </div>
                     <button type="submit" class="btn btn-primary mb-2"><i class="far fa-paper-plane"></i> {{ __('send_mail') }}</button>
                 </form>

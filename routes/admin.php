@@ -62,4 +62,5 @@ Route::middleware(['auth:admin'])->group(function () {
     ;
     Route::get('settings/email', [SettingsController::class, 'email'])->name('settings.email');
     Route::put('settings/email', [SettingsController::class, 'emailUpdate'])->name('settings.email.update');
+    Route::post('settings/test-email', [SettingsController::class, 'testEmailSent'])->name('settings.email.test');
 });
