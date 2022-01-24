@@ -118,18 +118,6 @@
                                 </div>
                             </div>
                         </form>
-                        {{-- <form class="form-horizontal" action="{{ route('profile.password.update', $auth->id) }}"
-                            method="POST">
-                            @method('PUT')
-                            @csrf
-
-                            <div class="form-group row">
-                                <div class="offset-sm-3 col-sm-9">
-                                    <button type="submit" class="btn btn-success"><i class="fas fa-sync"></i> Update
-                                        Password</button>
-                                </div>
-                            </div>
-                        </form> --}}
                     </div>
                 </div>
             </div>

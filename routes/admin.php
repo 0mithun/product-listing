@@ -13,7 +13,7 @@ use App\Http\Controllers\Admin\Auth\ResetPasswordController;
 
 
 /**
- * Authentication routes
+ * Auth routes
  */
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.admin');
 Route::post('/login', [LoginController::class, 'login'])->name('admin.login');
@@ -38,7 +38,6 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/profile/settings', [ProfileController::class, 'setting'])->name('profile.setting');
     Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
     Route::put('/profile', [ProfileController::class, 'profile_update'])->name('profile.update');
-    Route::put('/profile/password/{id}', [ProfileController::class, 'profile_password_update'])->name('profile.password.update');
 
     //Roles Route
     Route::resource('role', RolesController::class);

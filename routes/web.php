@@ -47,31 +47,6 @@ Auth::routes();
 //     dd("configuration cleared and cached again");
 // });
 
-// ========================================================
-//====================All Auth Logout======================
-// ========================================================
-// Route::post('auth-logout', function (Request $request) {
-//     if ($request->auth === 'customer') {
-//         Auth::guard('customer')->logout();
-//         return redirect()->route('customer.login');
-//     }
-//     if ($request->auth === 'company') {
-//         Auth::guard('company')->logout();
-//         return redirect()->route('company.login');
-//     }
-//     if ($request->auth === 'student') {
-//         Auth::guard('student')->logout();
-//         return redirect()->route('student.login');
-//     }
-//     if ($request->auth === 'teacher') {
-//         Auth::guard('teacher')->logout();
-//         return redirect()->route('teacher.login');
-//     }
-//     if ($request->auth === 'user') {
-//         Auth::guard('user')->logout();
-//         return redirect()->route('user.login');
-//     }
-// })->name('auth.logout');
 
 
 Route::fallback(function () {
