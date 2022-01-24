@@ -106,7 +106,7 @@ $user = auth()->user();
             <a href="javascript:void(0)"
                 onclick="event.preventDefault();document.getElementById('logout-form').submit();"
                 class="btn btn-default ml-auto">Sign out</a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none invisible">
+            <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none invisible">
                 @csrf
             </form>
         </li>

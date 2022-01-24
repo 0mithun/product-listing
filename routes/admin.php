@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\SettingsController;
 Route::get('/home', [App\Http\Controllers\Admin\LoginController::class, 'index']);
 Route::get('/login', [App\Http\Controllers\Admin\LoginController::class, 'showLoginForm'])->name('login.admin');
 Route::post('/login', [App\Http\Controllers\Admin\LoginController::class, 'login'])->name('admin.login');
+Route::post('/logout', [App\Http\Controllers\Admin\LoginController::class, 'logout'])->name('admin.logout');
 
 
 
