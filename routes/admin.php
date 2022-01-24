@@ -7,17 +7,24 @@ use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SettingsController;
 
+use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
+use App\Http\Controllers\Admin\Auth\ResetPasswordController;
 
 
-Route::get('/home', [App\Http\Controllers\Admin\LoginController::class, 'index']);
-Route::get('/login', [App\Http\Controllers\Admin\LoginController::class, 'showLoginForm'])->name('login.admin');
-Route::post('/login', [App\Http\Controllers\Admin\LoginController::class, 'login'])->name('admin.login');
-Route::post('/logout', [App\Http\Controllers\Admin\LoginController::class, 'logout'])->name('admin.logout');
-
+/**
+ * Authentication routes
+ */
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.admin');
+Route::post('/login', [LoginController::class, 'login'])->name('admin.login');
+Route::post('/logout', [LoginController::class, 'logout'])->name('admin.logout');
+Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('admin.password.email');
+Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('admin.password.request');
+Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('admin.password.update');
+Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('admin.password.reset');
 
 
 Route::middleware(['auth:admin'])->group(function () {
-
     Route::get('/home', function(){
         return 'admin home';
     });

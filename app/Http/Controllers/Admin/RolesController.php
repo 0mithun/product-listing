@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Admin;
-use App\Models\SuperAdmin;
 use App\Actions\Role\CreateRole;
 use App\Actions\Role\UpdateRole;
 use Spatie\Permission\Models\Role;

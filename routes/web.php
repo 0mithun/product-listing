@@ -3,11 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\RolesController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Social\SocialLoginController;
-use App\Http\Controllers\SettingsController;
 
 Route::get('/', function () {
     return view('welcome');

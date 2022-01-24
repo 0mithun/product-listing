@@ -16,23 +16,29 @@
 </head>
 
 <body class="hold-transition login-page">
-    <div class="login-box">
+    <div class="login-box" style="width: 400px;">
         <div class="login-logo">
-            <a href="{{ route('admin.login') }}" class="d-block">
+            <a href="{{ route('login') }}" class="d-block">
+                {{-- <img height="50px" src="{{ asset('backend/image/logo.png') }}" alt=""> --}}
                 <div class="auth-logo">
                     <img src="{{ $setting->logo_image_url }}" alt="Zakirsoft Logo">
                 </div>
             </a>
         </div>
         <div class="card">
+            <div class="card-header">{{ __('Reset Password') }}</div>
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
 
-                <form method="POST" action="{{ route('admin.login') }}">
+                <form method="POST" action="{{ route('admin.password.email') }}">
                     @csrf
                     <div class="input-group mb-3">
                         <input type="email" class="form-control @error('email') is-invalid @enderror" name="email"
-                            value="@if(old('email')) {{ old('email') }} @else {{ 'developer@mail.com' }} @endif" placeholder="Email">
+                            value="{{ old('email') }}" placeholder="Email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -41,35 +47,16 @@
                         @error('email') <span class="invalid-feedback"
                             role="alert"><strong>{{ $message }}</strong></span> @enderror
                     </div>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control @error('password') is-invalid @enderror"
-                            name="password" placeholder="Password" value="password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                        @error('password') <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong></span> @enderror
-                    </div>
+
                     <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" id="remember">
-                                <label for="remember">
-                                    Remember Me
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In <i
-                                    class="fas fa-arrow-right"></i></button>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">
+                                {{ __('Send Password Reset Link') }}
+                            </button>
                         </div>
                     </div>
+
                 </form>
-                <p class="mb-1">
-                    <a href="{{ route('admin.password.request') }}">I forgot my password</a>
-                </p>
             </div>
         </div>
     </div>
@@ -81,3 +68,4 @@
 </body>
 
 </html>
+
