@@ -17,7 +17,7 @@ class RolePermissionSeeder extends Seeder
     {
         //  Create roles
          //  Create roles
-         $roleSuperAdmin = Role::create(['name' => 'superadmin']);
+         $roleSuperAdmin = Role::create(['name' => 'superadmin','guard_name'=>'admin']);
 
          //  permission List as array
          $permissions = [
@@ -65,7 +65,7 @@ class RolePermissionSeeder extends Seeder
 
              for ($j=0; $j < count($permissions[$i]['permissions']); $j++) {
                  // Create Permission
-                 $permission = Permission::create(['name' => $permissions[$i]['permissions'][$j],'group_name' => $permissionGroup]);
+                 $permission = Permission::create(['name' => $permissions[$i]['permissions'][$j],'group_name' => $permissionGroup, 'guard_name'=>'admin']);
                  $roleSuperAdmin->givePermissionTo($permission);
                  $permission->assignRole($roleSuperAdmin);
              }

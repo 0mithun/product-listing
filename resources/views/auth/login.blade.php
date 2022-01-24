@@ -72,7 +72,7 @@
                     <a href="{{ route('password.request') }}">I forgot my password</a>
                 </p>
                 <hr>
-                <p class="mb-1 d-inline">
+                {{-- <p class="mb-1 d-inline">
                     <a class="text-dark" href="{{ route('social-login','facebook') }}">Facebook</a>
                 </p> |
                 <p class="mb-1 d-inline">
@@ -80,7 +80,7 @@
                 </p> |
                 <p class="mb-1 d-inline">
                     <a class="text-dark" href="{{ route('social-login','github') }}">Github</a>
-                </p>
+                </p> --}}
             </div>
         </div>
     </div>

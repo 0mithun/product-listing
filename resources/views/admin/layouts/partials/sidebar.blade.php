@@ -30,7 +30,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent nav-legacy nav-flat"
                 data-widget="treeview" role="menu" data-accordion="false">
                 @if ($user->can('dashboard.view'))
-                    <x-admin.sidebar-list :linkActive="Route::is('home') ? true : false" route="home"
+                    <x-admin.sidebar-list :linkActive="Route::is('admin.dashboard') ? true : false" route="admin.dashboard"
                         icon="fas fa-tachometer-alt">
                         Dashboard
                     </x-admin.sidebar-list>

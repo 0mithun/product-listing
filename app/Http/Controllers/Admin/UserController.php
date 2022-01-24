@@ -9,6 +9,7 @@ use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserFormRequest;
+use App\Models\Admin;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class UserController extends Controller
@@ -19,7 +20,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware(function ($request, $next) {
-            $this->user = Auth::guard('super_admin')->user();
+            $this->user = Auth::guard('admin')->user();
             return $next($request);
         });
     }
@@ -44,7 +45,7 @@ class UserController extends Controller
         if (is_null($this->user) || !$this->user->can('admin.view')) {
             abort(403, 'Sorry !! You are Unauthorized to view users.');
         }
-        $users = SuperAdmin::where('id', '!=', 1)->SimplePaginate(10);
+        $users = Admin::where('id', '!=', 1)->SimplePaginate(10);
         return view('backend.users.index', compact('users'));
     }
 
@@ -91,7 +92,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(SuperAdmin $user)
+    public function edit(Admin $user)
     {
         if (is_null($this->user) || !$this->user->can('admin.edit')) {
             abort(403, 'Sorry !! You are Unauthorized to edit users.');
@@ -108,7 +109,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserFormRequest $request, SuperAdmin $user)
+    public function update(UserFormRequest $request, Admin $user)
     {
         if (is_null($this->user) || !$this->user->can('admin.edit')) {
             abort(403, 'Sorry !! You are Unauthorized to update users.');
@@ -131,7 +132,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SuperAdmin $user)
+    public function destroy(Admin $user)
     {
         if (is_null($this->user) || !$this->user->can('admin.delete')) {
             abort(403, 'Sorry !! You are Unauthorized to delete users.');

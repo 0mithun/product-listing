@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Admin;
 use App\Models\SuperAdmin;
 use App\Actions\Role\CreateRole;
 use App\Actions\Role\UpdateRole;
@@ -20,7 +21,7 @@ class RolesController extends Controller
     public function __construct()
     {
         $this->middleware(function ($request, $next) {
-            $this->user = Auth::guard('super_admin')->user();
+            $this->user = Auth::guard('admin')->user();
             return $next($request);
         });
     }
@@ -35,7 +36,7 @@ class RolesController extends Controller
             abort(403, 'Sorry !! You are Unauthorized to view any role.');
         }
         $roles = Role::SimplePaginate(10);
-        return view('backend.roles.index', compact('roles'));
+        return view('admin.roles.index', compact('roles'));
     }
 
     /**
@@ -49,8 +50,8 @@ class RolesController extends Controller
             abort(403, 'Sorry !! You are Unauthorized to create any role.');
         }
         $permissions = Permission::all();
-        $permission_groups = SuperAdmin::getPermissionGroup();
-        return view('backend.roles.create', compact('permissions', 'permission_groups'));
+        $permission_groups = Admin::getPermissionGroup();
+        return view('admin.roles.create', compact('permissions', 'permission_groups'));
     }
 
     /**
@@ -89,9 +90,9 @@ class RolesController extends Controller
         }
 
         $permissions = Permission::all();
-        $permission_groups = SuperAdmin::getPermissionGroup();
+        $permission_groups = Admin::getPermissionGroup();
 
-        return view('backend.roles.edit', compact('permissions', 'permission_groups', 'role'));
+        return view('admin.roles.edit', compact('permissions', 'permission_groups', 'role'));
     }
 
     /**

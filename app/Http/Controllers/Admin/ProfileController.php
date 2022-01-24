@@ -14,7 +14,7 @@ class ProfileController extends Controller
     public function __construct()
     {
         $this->middleware(function ($request, $next) {
-            $this->user = Auth::guard('super_admin')->user();
+            $this->user = Auth::guard('admin')->user();
             return $next($request);
         });
     }
@@ -30,7 +30,7 @@ class ProfileController extends Controller
             abort(403, 'Sorry !! You are Unauthorized to profile.');
         }
         $user = auth()->user();
-        return view('backend.profile.index', compact('user'));
+        return view('admin.profile.index', compact('user'));
     }
 
     /**
@@ -44,7 +44,7 @@ class ProfileController extends Controller
             abort(403, 'Sorry !! You are Unauthorized to profile settings.');
         }
         $user = auth()->user();
-        return view('backend.profile.setting', compact('user'));
+        return view('admin.profile.setting', compact('user'));
     }
 
 
