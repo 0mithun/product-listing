@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Setting;
 use App\Traits\UploadAble;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class SettingsController extends Controller
 {
@@ -18,7 +19,7 @@ class SettingsController extends Controller
      */
     public function website()
     {
-        return view('backend.settings.pages.website');
+        return view('admin.settings.pages.website');
     }
 
     /**
@@ -28,7 +29,7 @@ class SettingsController extends Controller
      */
     public function layout()
     {
-        return view('backend.settings.pages.layout');
+        return view('admin.settings.pages.layout');
     }
 
     /**
@@ -38,7 +39,7 @@ class SettingsController extends Controller
      */
     public function color()
     {
-        return view('backend.settings.pages.color-picker');
+        return view('admin.settings.pages.color-picker');
     }
 
     /**
@@ -48,7 +49,7 @@ class SettingsController extends Controller
      */
     public function custom()
     {
-        return view('backend.settings.pages.custom');
+        return view('admin.settings.pages.custom');
     }
 
 

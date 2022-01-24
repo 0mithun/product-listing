@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Actions\Profile\ProfileUpdate;
-use App\Http\Requests\ProfileRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ProfileRequest;
+use App\Actions\Profile\ProfileUpdate;
 
 class ProfileController extends Controller
 {

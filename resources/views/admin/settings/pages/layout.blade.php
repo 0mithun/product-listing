@@ -1,4 +1,4 @@
-@extends('backend.settings.setting-layout')
+@extends('admin.settings.setting-layout')
 @section('title') Layout Settings @endsection
 
 @section('website-settings')

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Models\SuperAdmin;
 use App\Actions\User\CreateUser;
 use App\Actions\User\UpdateUser;
-use App\Http\Requests\UserFormRequest;
-use App\Models\SuperAdmin;
-use Illuminate\Routing\Controller;
 use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\UserFormRequest;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class UserController extends Controller

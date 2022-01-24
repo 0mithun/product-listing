@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
@@ -22,5 +23,14 @@ class AdminController extends Controller
     public function index()
     {
         return view('admin.home');
+    }
+
+
+    public function dashboard()
+    {
+        session(['layout_mode' => 'left_nav']);
+        // if (is_null($this->user) || !$this->user->can('dashboard.view'))
+
+        return view('admin.index');
     }
 }

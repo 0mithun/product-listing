@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Models\SuperAdmin;
 use App\Actions\Role\CreateRole;
 use App\Actions\Role\UpdateRole;
-use App\Http\Requests\RoleFormRequest;
-use App\Models\SuperAdmin;
-use Illuminate\Routing\Controller;
 use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\RoleFormRequest;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
