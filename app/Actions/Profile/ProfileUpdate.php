@@ -2,7 +2,7 @@
 
 namespace App\Actions\Profile;
 
-use App\Models\SuperAdmin;
+use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileUpdate
@@ -36,7 +36,7 @@ class ProfileUpdate
      */
     protected static function profile_data(object $request)
     {
-        $user = SuperAdmin::find(auth()->id());
+        $user = Admin::find(auth()->id());
         $user->name = $request->name;
         $user->email = $request->email;
 
@@ -60,7 +60,7 @@ class ProfileUpdate
         $password_check = Hash::check($request->current_password, auth()->user()->password);
 
         if ($password_check) {
-            $user = SuperAdmin::findOrFail(auth()->id());
+            $user = Admin::findOrFail(auth()->id());
             $user->update([
                 'password' => bcrypt($request->password),
                 'updated_at' => now(),

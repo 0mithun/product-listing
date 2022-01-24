@@ -2,13 +2,14 @@
 
 namespace App\Actions\User;
 
-use App\Models\SuperAdmin;
+use App\Models\Admin;
+
 
 class CreateUser
 {
     public static function create(object $request)
     {
-        $user = new SuperAdmin();
+        $user = new Admin();
         $user->name = $request->name;
         $user->email = $request->email;
         if ($image = $request->image) {
