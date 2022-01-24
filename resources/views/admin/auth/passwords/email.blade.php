@@ -18,7 +18,7 @@
 <body class="hold-transition login-page">
     <div class="login-box" style="width: 400px;">
         <div class="login-logo">
-            <a href="{{ route('login') }}" class="d-block">
+            <a href="{{ route('admin.login') }}" class="d-block">
                 {{-- <img height="50px" src="{{ asset('backend/image/logo.png') }}" alt=""> --}}
                 <div class="auth-logo">
                     <img src="{{ $setting->logo_image_url }}" alt="Zakirsoft Logo">
