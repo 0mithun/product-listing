@@ -13,11 +13,7 @@
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
                 <div class="avatar">
-                    @if ($user->image)
-                        <img src="{{ asset($user->image) }}" class="elevation-2" alt="User Image">
-                    @else
-                        <img src="{{ asset('backend/image/default.png') }}" class="elevation-2" alt="User Image">
-                    @endif
+                    <img src="{{$user->image_url }}" class="elevation-2" alt="User Image">
                 </div>
             </div>
             <div class="info">

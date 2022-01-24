@@ -75,23 +75,13 @@ $user = auth()->user();
 </li>
 <li class="nav-item dropdown user-menu">
     <a href="{{ route('profile') }}" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-        @if ($user->image)
-            <img src="{{ asset($user->image) }}" class="user-image img-circle elevation-2" alt="User Image">
-        @else
-            <img src="{{ asset('backend/image/default.png') }}" class="user-image img-circle elevation-2"
-                alt="User Image">
-        @endif
+            <img src="{{ $user->image_url }}" class="user-image img-circle elevation-2" alt="User Image">
         <span class="d-none d-md-inline">{{ $user->name }}</span>
     </a>
     <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right rounded border-0" style="left: inherit; right: 0px;">
         <!-- User image -->
         <li class="user-header bg-primary rounded-top">
-            @if ($user->image)
-                <img src="{{ asset($user->image) }}" class="user-image img-circle elevation-2" alt="User Image">
-            @else
-                <img src="{{ asset('backend/image/default.png') }}" class="user-image img-circle elevation-2"
-                    alt="User Image">
-            @endif
+                <img src="{{  $user->image_url }}" class="user-image img-circle elevation-2" alt="User Image">
             <p>
                 {{ $user->name }} -
                 @foreach ($user->getRoleNames() as $role)

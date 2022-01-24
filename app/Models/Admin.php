@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -74,5 +75,12 @@ class Admin extends Authenticatable
             }
         }
         return $hasPermission;
+    }
+
+    public function getImageUrlAttribute()
+    {
+        $site_url = rtrim(env('APP_URL'), '/');
+
+        return Storage::disk('public')->exists($this->image) ? $site_url.Storage::url($this->image) : $site_url.'/backend/image/default.png';
     }
 }

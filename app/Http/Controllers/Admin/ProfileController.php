@@ -6,9 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ProfileRequest;
 use App\Actions\Profile\ProfileUpdate;
+use App\Traits\UploadAble;
+
+use function Symfony\Component\String\b;
 
 class ProfileController extends Controller
 {
+    use UploadAble;
     public $user;
 
     public function __construct()
@@ -60,19 +64,18 @@ class ProfileController extends Controller
             abort(403, 'Sorry !! You are Unauthorized to profile settings.');
         }
 
-        try {
-            $profile = ProfileUpdate::update($request);
-
-            if ($profile) {
-                flashSuccess('Profile Updated Successfully');
-                return back();
-            } else {
-                flashError('Current password does not match');
-                return back();
-            }
-        } catch (\Throwable $th) {
-            flashError($th->getMessage());
-            return back();
+        $data = $request->only(['name','email']);
+        $user = auth('admin')->user();
+        if($request->hasFile('image')){
+            $data['image'] = $this->uploadOne($request->image, 'user');
+            $this->deleteOne($user->image);
         }
+        if($request->isPasswordChange == 1){
+            $data['password'] = bcrypt($request->password);
+        }
+
+        $user->update($data);
+
+        return back()->with('success', 'Profile update successfully!');
     }
 }

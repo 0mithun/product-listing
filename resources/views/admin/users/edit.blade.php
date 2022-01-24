@@ -17,15 +17,9 @@
 
                         <div class="col-md-6 offset-md-3">
                             <div class="text-center mb-4 pt-2">
-                                @if ($user->image)
-                                    <img width="150px" height="150px" id="image" class="img-circle"
-                                        src="{{ asset($user->image) }}" alt="User profile picture"
+                                <img width="150px" height="150px" id="image" class="img-circle"
+                                        src="{{ $user->image_url }}" alt="User profile picture"
                                         style="border: 3px solid #adb5bd;margin: 0 auto;padding: 3px;">
-                                @else
-                                    <img width="150px" height="150px" id="image" class="img-circle"
-                                        src="{{ asset('modules/user/dist/img/default.png') }}" alt="User profile picture"
-                                        style="border: 3px solid #adb5bd;margin: 0 auto;padding: 3px;">
-                                @endif
                             </div>
                             <form class="form-horizontal" action="{{ route('user.update', $user->id) }}" method="POST"
                                 enctype="multipart/form-data">

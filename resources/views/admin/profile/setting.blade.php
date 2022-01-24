@@ -24,15 +24,9 @@
                 <div class="col-md-6">
                     <div class="tab-pane active" id="gen_settings">
                         <div class="text-center mb-4">
-                            @if ($auth->image)
-                                <img id="image" class="img-circle" src="{{ asset($auth->image) }}"
+                                <img id="image" class="img-circle" src="{{ $auth->image_url }}"
                                     alt="User profile picture"
                                     style="border: 3px solid #adb5bd;margin: 0 auto;padding: 3px;height:150px;width:150px">
-                            @else
-                                <img class="img-circle" src="{{ asset('backend/image/default.png') }}"
-                                    alt="User profile picture"
-                                    style="border: 3px solid #adb5bd;margin: 0 auto;padding: 3px;height:150px;width:150px">
-                            @endif
 
                         </div>
                         <form class="form-horizontal" action="{{ route('profile.update') }}" method="POST"
