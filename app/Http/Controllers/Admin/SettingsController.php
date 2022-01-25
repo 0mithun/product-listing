@@ -195,9 +195,9 @@ class SettingsController extends Controller
      *
      * @return void
      */
-    public function mode()
+    public function system()
     {
-        return view('admin.settings.pages.mode');
+        return view('admin.settings.pages.system');
     }
 
 
@@ -225,10 +225,27 @@ class SettingsController extends Controller
         if(request()->has('maintenance_mode') && \request('maintenance_mode') == 1){
             Artisan::call('down');
 
-            return back()->with('success', 'Comming soon mode enable successfully!');
+            return back()->with('success', 'Maintenance mode enable successfully!');
         }
 
         return back();
+    }
+
+    public function searchIndexing()
+    {
+        try {
+            if(request()->has('search_engine_indexing') && \request('search_engine_indexing') == 1){
+                $data = "User-agent: *\nDisallow:";
+            }else {
+                $data = "User-agent: *\nDisallow: /";
+            }
+            file_put_contents(\public_path('robots.txt'), $data);
+            Setting::first()->update(['search_engine_indexing'=> request('search_engine_indexing', 0)]);
+
+            return back()->with('success', 'Search Engine Indexing update successfully!');
+        } catch (\Throwable $th) {
+            return back()->with('error','Search Engine Indexing update failed.');
+        }
     }
 
 }

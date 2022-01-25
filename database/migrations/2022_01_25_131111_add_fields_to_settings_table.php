@@ -15,6 +15,7 @@ class AddFieldsToSettingsTable extends Migration
     {
         Schema::table('settings', function (Blueprint $table) {
             $table->boolean('commingsoon_mode')->default(0)->after('dark_mode');
+            $table->boolean('search_engine_indexing')->default(1)->after('dark_mode');
         });
     }
 
@@ -27,6 +28,7 @@ class AddFieldsToSettingsTable extends Migration
     {
         Schema::table('settings', function (Blueprint $table) {
             $table->dropColumn('commingsoon_mode');
+            $table->dropColumn('search_engine_indexing');
         });
     }
 }
