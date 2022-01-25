@@ -28,7 +28,7 @@ Route::middleware(['guest:admin'])->group(function () {
 
 
 Route::middleware(['auth:admin'])->group(function () {
-    Route::redirect('/', '/admin/dashboard', 301);
+    Route::get('/',  [AdminController::class, 'dashboard']);
 
     //Dashboard Route
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
