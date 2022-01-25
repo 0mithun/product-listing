@@ -91,6 +91,7 @@
     "write_script_with_script_tag": "Write script with script tag",
     "footer_custom_script": "Footer custom script",
     "before_body_end": "before body end",
+    "mail_settings": "Mail Settings",
     "mail_driver": "Mail Driver",
     "mail_host": "Mail Host",
     "mail_port": "Mail Port",

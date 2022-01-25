@@ -43,6 +43,7 @@ class TranslationController extends Controller
         session()->put('lang', $lang);
         app()->setLocale($lang);
 
+        // dd(session('lang'));
         return back();
     }
 }

@@ -16,6 +16,9 @@ class SetLangMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+        // dd(session('lang'));
+        // dd(app()->getLocale());
+
         if (session()->has('lang')) {
             app()->setLocale(session()->get('lang'));
         } else {
