@@ -62,5 +62,11 @@ Route::middleware(['auth:admin', 'admin_setlang'])->group(function () {
     ;
     Route::get('settings/email', [SettingsController::class, 'email'])->name('settings.email');
     Route::put('settings/email', [SettingsController::class, 'emailUpdate'])->name('settings.email.update');
+
     Route::post('settings/test-email', [SettingsController::class, 'testEmailSent'])->name('settings.email.test');
+
+    Route::get('settings/mode', [SettingsController::class, 'mode'])->name('settings.mode');
+    Route::put('settings/mode/commingsoon', [SettingsController::class, 'modeCommingsoon'])->name('settings.mode.commingsoon');
+    Route::put('settings/mode/maintaince', [SettingsController::class, 'modeMaintaince'])->name('settings.mode.maintaince');
+
 });

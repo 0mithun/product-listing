@@ -30,6 +30,9 @@
                         JS</a>
                     <a class="nav-link {{ Route::is('settings.email') ? 'active' : '' }}"
                         href="{{ route('settings.email') }}">Email</a>
+
+                    <a class="nav-link {{ Route::is('settings.mode') ? 'active' : '' }}"
+                        href="{{ route('settings.mode') }}">System</a>
                 </div>
             </div>
             <div class="col-10">

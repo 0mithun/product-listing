@@ -188,4 +188,46 @@ class SettingsController extends Controller
         }
     }
 
+
+
+    /**
+     * View Website mode page
+     *
+     * @return void
+     */
+    public function mode()
+    {
+        return view('admin.settings.pages.mode');
+    }
+
+
+    /**
+     * Commingsoon mode enable/disable
+     *
+     * @return void
+     */
+    public function modeCommingsoon()
+    {
+        Setting::first()->update(['commingsoon_mode'=> request('commingsoon_mode', 0)]);
+
+        return back()->with('success', 'Comming soon mode enable successfully!');
+    }
+
+
+    /**
+     * Maintance mode enable
+     *
+     * @return void
+     */
+    public function modeMaintaince()
+    {
+        if(request()->has('maintenance_mode') && \request('maintenance_mode') == 1){
+            Artisan::call('down');
+
+            return back()->with('success', 'Comming soon mode enable successfully!');
+        }
+
+        return back();
+    }
+
 }

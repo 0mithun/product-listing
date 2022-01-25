@@ -27,6 +27,10 @@
                 <a href="{{ url('/lang/bn') }}" class="text-sm text-gray-700 underline">Bangla</a>
                 <a href="{{ url('/lang/bh') }}" class="text-sm text-gray-700 underline">Bihari</a>
             </div>
+            <hr>
+            {{ dd($setting) }}
+            <hr>
+
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth

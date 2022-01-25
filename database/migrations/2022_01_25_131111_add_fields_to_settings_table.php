@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateThemesTable extends Migration
+class AddFieldsToSettingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateThemesTable extends Migration
      */
     public function up()
     {
-        Schema::create('themes', function (Blueprint $table) {
-            $table->id();
-            $table->boolean('dark_mode')->default(false);
-            $table->timestamps();
+        Schema::table('settings', function (Blueprint $table) {
+            $table->boolean('commingsoon_mode')->default(0)->after('dark_mode');
         });
     }
 
@@ -27,6 +25,8 @@ class CreateThemesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('themes');
+        Schema::table('settings', function (Blueprint $table) {
+            $table->dropColumn('commingsoon_mode');
+        });
     }
 }
