@@ -37,7 +37,6 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            'setlang'
         ],
 
         'api' => [
@@ -63,6 +62,7 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'setlang' => \Modules\Language\Http\Middleware\SetLangMiddleware::class,
+        'admin_setlang' => \Modules\Language\Http\Middleware\AdminSetLangMiddleware::class,
+        'frontend_setlang' => \Modules\Language\Http\Middleware\FrontendSetLangMiddleware::class,
     ];
 }

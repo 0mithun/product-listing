@@ -5,7 +5,7 @@ use Modules\Language\Http\Controllers\LanguageController;
 use Modules\Language\Http\Controllers\TranslationController;
 
 
-Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
+Route::middleware(['auth:admin', 'admin_setlang'])->prefix('admin')->group(function () {
     Route::prefix('language')->group(function () {
         // translation form show
         Route::get('/{code}', [TranslationController::class, 'langView'])->name('language.view');

@@ -5,7 +5,7 @@ namespace Modules\Language\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class SetLangMiddleware
+class AdminSetLangMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,11 +16,8 @@ class SetLangMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        // dd(session('lang'));
-        // dd(app()->getLocale());
-
-        if (session()->has('lang')) {
-            app()->setLocale(session()->get('lang'));
+        if (session()->has('admin_lang')) {
+            app()->setLocale(session()->get('admin_lang'));
         } else {
             app()->setLocale('default');
         }

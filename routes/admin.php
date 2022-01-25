@@ -19,7 +19,7 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.adm
 Route::post('/login', [LoginController::class, 'login'])->name('admin.login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('admin.logout');
 
-Route::middleware(['guest:admin'])->group(function () {
+Route::middleware(['guest:admin', 'admin_setlang'])->group(function () {
     Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('admin.password.email');
     Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('admin.password.request');
     Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('admin.password.update');
@@ -27,7 +27,7 @@ Route::middleware(['guest:admin'])->group(function () {
 });
 
 
-Route::middleware(['auth:admin'])->group(function () {
+Route::middleware(['auth:admin', 'admin_setlang'])->group(function () {
     Route::redirect('/', '/dashboard', 301);
 
     //Dashboard Route

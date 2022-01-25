@@ -22,6 +22,11 @@
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+            <div class="hidden fixed top-0 left-0 px-6 py-4 sm:block">
+                <a href="{{ url('/lang/default') }}" class="text-sm text-gray-700 underline">English</a>
+                <a href="{{ url('/lang/bn') }}" class="text-sm text-gray-700 underline">Bangla</a>
+                <a href="{{ url('/lang/bh') }}" class="text-sm text-gray-700 underline">Bihari</a>
+            </div>
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
@@ -37,6 +42,9 @@
             @endif
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
+                    {{ __('lang_test') }}
+                </div>
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                     <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
                         <g clip-path="url(#clip0)" fill="#EF3B2D">
