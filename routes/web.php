@@ -63,3 +63,9 @@ Route::middleware(['frontend_setlang'])->group(function () {
 Route::fallback(function () {
     return 'Not found';
 });
+
+
+// Route::get('admin/live', function(){
+//     return 'maintaince mode enable url';
+// });
+
