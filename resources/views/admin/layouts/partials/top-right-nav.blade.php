@@ -43,11 +43,11 @@ $user = auth()->user();
           </svg>
     </a>
     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right" style="left: inherit; right: 0px;">
-        <a class="dropdown-item {{ session('lang') === 'default' ? 'active' : '' }}" href="{{ route('changeLanguage', 'default') }}">
+        <a class="dropdown-item {{ session('admin_lang') === 'default' ? 'active' : '' }}" href="{{ route('changeLanguage', 'default') }}">
             English (default)
         </a>
         @foreach (languages() as $lang)
-            <a class="dropdown-item {{ session('lang') === $lang->code ? 'active' : '' }}" href="{{ route('changeLanguage', $lang->code) }}">
+            <a class="dropdown-item {{ session('admin_lang') === $lang->code ? 'active' : '' }}" href="{{ route('changeLanguage', $lang->code) }}">
                 {{ $lang->name }}
             </a>
         @endforeach
