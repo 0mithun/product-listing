@@ -35,6 +35,11 @@
                       <input class="form-check-input" type="checkbox" name="maintenance_mode" id="maintenance_mode" value="1"  @if($setting->maintenance_mode == 1) checked  @endif>
                       <label class="form-check-label" for="maintenance_mode">Maintenance Mode</label>
                     </div>
+                    <span class="help-text">Live Mode Enable URL:
+                        <span class="badge badge-dark">
+                            {{  env('APP_MAINTENCE_MODE_DISABLE_URL', '/admin/site/live')  }}
+                        </span>
+                    </span>
                 </div>
                 <div class="row">
                     <div class="col-4">
