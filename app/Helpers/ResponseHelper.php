@@ -61,7 +61,7 @@ function flashSuccess(string $msg)
  * @param string $msg
  * @return \Illuminate\Http\Response
  */
-function flashError(string $message)
+function flashError(string $message = null)
 {
     if (env('APP_DEBUG')) {
         return session()->flash('error', $message);

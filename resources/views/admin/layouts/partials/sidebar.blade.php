@@ -64,6 +64,9 @@
                 <x-admin.sidebar-list :linkActive="Request::is('settings/*')  ? true : false" route="settings.website" icon="fas fa-cog">
                     Settings
                 </x-admin.sidebar-list>
+                <x-admin.sidebar-list :linkActive="Request::is('languages/*')  ? true : false" route="language.index" icon="fas fa-language">
+                    Language
+                </x-admin.sidebar-list>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

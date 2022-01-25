@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->setLocale(session('lang') ?? 'en' ) }}">
 
 <head>
     <meta charset="utf-8">
