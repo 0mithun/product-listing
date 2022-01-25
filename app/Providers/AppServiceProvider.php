@@ -27,6 +27,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
 
-        view()->share('setting', Setting::first());
+        $setting = Setting::first();
+        view()->share('setting', $setting);
+        session()->put('commingsoon_mode', $setting->commingsoon_mode);
     }
 }

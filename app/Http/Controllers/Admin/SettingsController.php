@@ -209,6 +209,7 @@ class SettingsController extends Controller
     public function modeCommingsoon()
     {
         Setting::first()->update(['commingsoon_mode'=> request('commingsoon_mode', 0)]);
+        session()->put('commingsoon_mode', request('commingsoon_mode', 0));
 
         return back()->with('success', 'Comming soon mode enable successfully!');
     }

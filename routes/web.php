@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
-Route::middleware(['frontend_setlang'])->group(function () {
+Route::middleware(['frontend_setlang', 'commingsoon'])->group(function () {
 
     Route::get('/', function () {
         return view('welcome');
@@ -19,6 +19,7 @@ Route::middleware(['frontend_setlang'])->group(function () {
 
         return back();
     });
+
 });
 
 
