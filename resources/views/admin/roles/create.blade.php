@@ -49,7 +49,7 @@
                                                 </div>
                                                 <div class="col-9 role-{{ $i }}-management-checkbox">
                                                     @php
-                                                        $permissionss = App\Models\SuperAdmin::getpermissionsByGroupName($group->name);
+                                                        $permissionss = App\Models\Admin::getpermissionsByGroupName($group->name);
                                                         $j = 1;
                                                     @endphp
                                                     @foreach ($permissionss as $permission)

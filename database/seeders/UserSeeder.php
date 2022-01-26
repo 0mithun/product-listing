@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Admin;
-use App\Models\SuperAdmin;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;

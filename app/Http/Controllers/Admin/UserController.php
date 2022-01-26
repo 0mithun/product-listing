@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\SuperAdmin;
 use App\Actions\User\CreateUser;
 use App\Actions\User\UpdateUser;
 use Spatie\Permission\Models\Role;

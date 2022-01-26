@@ -25,19 +25,19 @@
                                 <div class="form-group">
                                     <label>Permission</label> <br>
                                     <div class="custom-control custom-checkbox">
-                                        <input {{ App\Models\SuperAdmin::roleHasPermission($role,$permissions) ? 'checked':'' }} class="custom-control-input" type="checkbox" id="permission_all" value="1">
+                                        <input {{ App\Models\Admin::roleHasPermission($role,$permissions) ? 'checked':'' }} class="custom-control-input" type="checkbox" id="permission_all" value="1">
                                         <label for="permission_all" class="custom-control-label">All</label>
                                     </div><hr>
                                     @php $i=1; @endphp
                                     @foreach ($permission_groups as $group)
                                         @php
-                                            $permissionss = App\Models\SuperAdmin::getpermissionsByGroupName($group->name);
+                                            $permissionss = App\Models\Admin::getpermissionsByGroupName($group->name);
                                             $j = 1;
                                         @endphp
                                         <div class="row">
                                             <div class="col-3">
                                                 <div class="custom-control custom-checkbox">
-                                                    <input {{ App\Models\SuperAdmin::roleHasPermission($role,$permissions) ? 'checked':'' }} class="custom-control-input" type="checkbox" id="{{ $i }}management" onclick="CheckPermissionByGroup('role-{{ $i }}-management-checkbox',this)" value="2">
+                                                    <input {{ App\Models\Admin::roleHasPermission($role,$permissions) ? 'checked':'' }} class="custom-control-input" type="checkbox" id="{{ $i }}management" onclick="CheckPermissionByGroup('role-{{ $i }}-management-checkbox',this)" value="2">
                                                     <label for="{{ $i }}management" class="custom-control-label text-capitalize" >{{ $group->name }}</label>
                                                 </div>
                                             </div>

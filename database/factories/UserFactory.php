@@ -13,7 +13,7 @@ class UserFactory extends Factory
      *
      * @var string
      */
-    protected $model = SuperAdmin::class;
+    protected $model = Admin::class;
 
     /**
      * Define the model's default state.
