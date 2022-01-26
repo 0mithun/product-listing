@@ -26,14 +26,14 @@ class UserFormRequest extends FormRequest
         if ($this->method() == 'POST') {
             return [
                 'name' => "required",
-                'email' => "required|unique:super_admins,email",
+                'email' => "required|unique:admins,email",
                 'password' => "required|min:8",
                 'roles' => "required",
             ];
         } else {
             return [
                 'name' => "required",
-                'email' => "required|unique:super_admins,email,{$this->user->id}",
+                'email' => "required|unique:admins,email,{$this->user->id}",
                 'roles' => "required",
             ];
         }
