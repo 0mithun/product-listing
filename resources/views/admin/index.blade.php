@@ -1,10 +1,10 @@
 {{-- @extends('layouts.top-nav') --}}
 @extends('admin.layouts.app')
-@section('title') Dashboard @endsection
+@section('title') {{ __('dashboard') }} @endsection
 @section('breadcrumbs')
     <div class="row mb-2">
         <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0">{{ __('dashboard') }}</h1>
         </div>
 
     </div>

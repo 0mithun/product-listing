@@ -106,5 +106,16 @@
     "go_to_link": "Go To Link",
     "admin": "Admin",
     "choose_an_image": "Choose an image",
-    "lang_test": "Language English"
+    "lang_test": "Language English",
+    "remember_me": "Remember Me",
+    "sign_in": "Sign In",
+    "i_forgot_my_password": "I forgot my password",
+    "sign_in_to_start_your_session": "Sign in to start your session",
+    "confirm_password": "Confirm Password",
+    "please_confirm_your_password_before_continuing.": "Please confirm your password before continuing.",
+    "forgot_your_password":"Forgot Your Password?",
+    "reset_password":"Reset Password",
+    "Send_Password_Reset_Link":"Send Password Reset Link",
+    "E_Mail_Address": "E-Mail Address"
+
 }

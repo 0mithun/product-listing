@@ -19,14 +19,13 @@
     <div class="login-box" style="width: 400px;">
         <div class="login-logo">
             <a href="{{ route('admin.login') }}" class="d-block">
-                {{-- <img height="50px" src="{{ asset('backend/image/logo.png') }}" alt=""> --}}
                 <div class="auth-logo">
                     <img src="{{ $setting->logo_image_url }}" alt="Zakirsoft Logo">
                 </div>
             </a>
         </div>
         <div class="card">
-            <div class="card-header">{{ __('Reset Password') }}</div>
+            <div class="card-header">{{ __('reset_password') }}</div>
             <div class="card-body login-card-body">
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">
@@ -51,7 +50,7 @@
                     <div class="row">
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary">
-                                {{ __('Send Password Reset Link') }}
+                                {{ __('Send_Password_Reset_Link') }}
                             </button>
                         </div>
                     </div>

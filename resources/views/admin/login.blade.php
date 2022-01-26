@@ -26,7 +26,7 @@
         </div>
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+                <p class="login-box-msg">{{ __('sign_in_to_start_your_session') }}</p>
 
                 <form method="POST" action="{{ route('admin.login') }}">
                     @csrf
@@ -57,18 +57,18 @@
                             <div class="icheck-primary">
                                 <input type="checkbox" id="remember">
                                 <label for="remember">
-                                    Remember Me
+                                    {{ __('remember_me') }}
                                 </label>
                             </div>
                         </div>
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In <i
+                            <button type="submit" class="btn btn-primary btn-block">{{ __('sign_in') }} <i
                                     class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>
                 </form>
                 <p class="mb-1">
-                    <a href="{{ route('admin.password.request') }}">I forgot my password</a>
+                    <a href="{{ route('admin.password.request') }}">{{ __('i_forgot_my_password') }}</a>
                 </p>
             </div>
         </div>
