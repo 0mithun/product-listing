@@ -9,7 +9,8 @@ use App\Http\Controllers\Auth\SocialLoginController;
 Route::middleware(['frontend_setlang'])->group(function () {
 
     Route::get('/', function () {
-        return view('welcome');
+        // return view('welcome');
+        return view('home');
     });
 
     Auth::routes();

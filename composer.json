@@ -20,7 +20,8 @@
         "laravel/ui": "^3.1",
         "msztorc/laravel-env": "^1.2",
         "nwidart/laravel-modules": "^8.2",
-        "spatie/laravel-permission": "^3.17"
+        "spatie/laravel-permission": "^3.17",
+        "weblagence/laravel-facebook-pixel": "^1.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
