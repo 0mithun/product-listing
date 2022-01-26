@@ -176,6 +176,12 @@ class SettingsController extends Controller
         return back()->with('success', 'Mail configuration update successfully');
     }
 
+
+    /**
+     * Send a test email for check mail configuration credentials
+     *
+     * @return void
+     */
     public function testEmailSent()
     {
         request()->validate(['test_email' => ['required', 'email']]);

@@ -78,6 +78,12 @@ class Admin extends Authenticatable
         return $hasPermission;
     }
 
+
+    /**
+     * Backend user image url
+     *
+     * @return string
+     */
     public function getImageUrlAttribute()
     {
         $site_url = rtrim(env('APP_URL'), '/');
