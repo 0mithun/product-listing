@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title') Edit Role @endsection
+@section('title') {{ __('edit_role') }} @endsection
 
 @section('content')
 <div class="container-fluid">
@@ -8,8 +8,8 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title" style="line-height: 36px;">Edit Role</h3>
-                    <a href="{{ route('role.index') }}" class="btn bg-primary float-right d-flex align-items-center justify-content-center"><i class="fas fa-arrow-left"></i>&nbsp;Back</a>
+                    <h3 class="card-title" style="line-height: 36px;">{{ __('edit_role') }}</h3>
+                    <a href="{{ route('role.index') }}" class="btn bg-primary float-right d-flex align-items-center justify-content-center"><i class="fas fa-arrow-left"></i>{{ __('arrow_back') }}</a>
                 </div>
                 <div class="row">
                     <div class="col-md-6 offset-md-3">
@@ -18,12 +18,12 @@
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="role_name">Role Name</label>
+                                    <label for="role_name">{{ __('role_name') }}</label>
                                     <input value="{{ $role->name }}" name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="role_name" placeholder="Enter Role Name">
                                     @error('name')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Permission</label> <br>
+                                    <label>{{ __('permission') }}</label> <br>
                                     <div class="custom-control custom-checkbox">
                                         <input {{ App\Models\Admin::roleHasPermission($role,$permissions) ? 'checked':'' }} class="custom-control-input" type="checkbox" id="permission_all" value="1">
                                         <label for="permission_all" class="custom-control-label">All</label>
@@ -56,7 +56,7 @@
                                     @endforeach
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-success"><i class="fa fa-sync"></i> Update</button>
+                                    <button type="submit" class="btn btn-success"><i class="fa fa-sync"></i> {{ __('update') }}</button>
                                 </div>
                             </div>
                         </form>

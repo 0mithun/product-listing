@@ -132,6 +132,11 @@
     "change_password": "Change Password?",
     "current_password": "Current Password",
     "new_password": "New Password",
-    "update_profile": "Update Profile"
-
+    "update_profile": "Update Profile",
+    "arrow_back": "&nbsp;Back",
+    "all": "All",
+    "edit_role": "Edit Role",
+    "roles": "Roles",
+    "sl": "SL",
+    "action": "Action"
 }

@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title') Roles @endsection
+@section('title') {{ __('roles') }} @endsection
 
 @section('content')
     <div class="container-fluid">
@@ -7,20 +7,20 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title" style="line-height: 36px;">Roles List</h3>
+                        <h3 class="card-title" style="line-height: 36px;">{{ __('roles_list') }}}</h3>
                         @if (Auth::user()->can('role.create'))
                             <a href="{{ route('role.create') }}"
                                 class="btn bg-primary float-right d-flex align-items-center justify-content-center"><i
-                                    class="fas fa-plus"></i>&nbsp;Create Role</a>
+                                    class="fas fa-plus"></i>{{ __('create_role') }}</a>
                         @endif
                     </div>
                     <div class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap">
                             <thead>
                                 <tr>
-                                    <th width="5%">SL</th>
-                                    <th width="20%">Name</th>
-                                    <th>Permission</th>
+                                    <th width="5%">{{ __('sl') }}</th>
+                                    <th width="20%">{{ __('name') }}</th>
+                                    <th>{{ __('permission') }}</th>
                                     @if (Auth::user()->can('role.edit') || Auth::user()->can('role.delete'))
                                         <th width="10%">Action</th>
                                     @endif
