@@ -122,5 +122,16 @@
     "zakirsoft": "zakirsoft.com",
     "english_default": "English (default)",
     "logout": "Logout",
+    "email_address": "Email Address",
+    "registered_at": "Registered At",
+    "profile_updated_at": "Profile Updated At",
+    "go_to_settings": "Go To Settings",
+    "profile_settings": "Profile Settings",
+    "email": "Email",
+    "change_image": "Change Image",
+    "change_password": "Change Password?",
+    "current_password": "Current Password",
+    "new_password": "New Password",
+    "update_profile": "Update Profile"
 
 }

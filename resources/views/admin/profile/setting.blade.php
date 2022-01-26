@@ -1,14 +1,14 @@
 @extends('admin.layouts.app')
-@section('title') Profile Settings @endsection
+@section('title') {{ __('profile_settings')}} @endsection
 @section('breadcrumbs')
     <div class="row mb-2">
         <div class="col-sm-6">
-            <h1 class="m-0">Profile Setting</h1>
+            <h1 class="m-0">{{ __('profile_settings')}}</h1>
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-                <li class="breadcrumb-item active">Profile Settings</li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('home') }}</a></li>
+                <li class="breadcrumb-item active">{{ __('profile_settings')}}</li>
             </ol>
         </div>
     </div>
@@ -34,7 +34,7 @@
                             @method('PUT')
                             @csrf
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Name</label>
+                                <label class="col-sm-3 col-form-label">{{ __('name') }}</label>
                                 <div class="col-sm-9">
                                     <input required name="name" value="{{ $auth->name }}" type="text"
                                         class="form-control @error('name') is-invalid @enderror"
@@ -44,7 +44,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Email</label>
+                                <label class="col-sm-3 col-form-label">{{ __('email') }}</label>
                                 <div class="col-sm-9">
                                     <input required name="email" value="{{ $auth->email }}" type="email"
                                         class="form-control @error('email') is-invalid @enderror"
@@ -54,19 +54,18 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Change Image</label>
+                                <label class="col-sm-3 col-form-label">{{ __('change_image') }}</label>
                                 <div class="col-sm-9">
                                     <div class="custom-file">
                                         <input name="image" autocomplete="image"
                                             onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])"
                                             type="file" class="custom-file-input" id="customFile">
-                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                                        <label class="custom-file-label" for="customFile">{{ __('choose_file') }}</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="change-password-visibility" class="col-sm-3 col-form-label">Change
-                                    Password?</label>
+                                <label for="change-password-visibility" class="col-sm-3 col-form-label">{{ __('change_password') }}</label>
                                 <div class="col-sm-9 mt-2">
                                     <input type="hidden" value="0" name="isPasswordChange">
                                     <div class="icheck-success d-inline">
@@ -80,7 +79,7 @@
                             </div>
                             <div id="password_visibility" class="{{ old('isPasswordChange') ? 'd-block' : 'd-none' }}">
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Current Password</label>
+                                    <label class="col-sm-3 col-form-label">{{ __('current_password') }}</label>
                                     <div class="col-sm-9">
                                         <input name="current_password" type="password"
                                             value="{{ old('current_password') }}"
@@ -91,7 +90,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">New Password</label>
+                                    <label class="col-sm-3 col-form-label">{{ __('new_password')}}</label>
                                     <div class="col-sm-9">
                                         <input name="password" type="password"
                                             class="form-control @error('password') is-invalid @enderror"
@@ -101,7 +100,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Confirm Password</label>
+                                    <label class="col-sm-3 col-form-label">{{ __('confirm_password') }}</label>
                                     <div class="col-sm-9">
                                         <input name="password_confirmation" type="password"
                                             class="form-control @error('password_confirmation') is-invalid @enderror"
@@ -113,8 +112,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="offset-sm-3 col-sm-9">
-                                    <button type="submit" class="btn btn-success"><i class="fas fa-sync"></i> Update
-                                        Profile</button>
+                                    <button type="submit" class="btn btn-success"><i class="fas fa-sync"></i> {{ __('update_profile') }}</button>
                                 </div>
                             </div>
                         </form>
