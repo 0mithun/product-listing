@@ -40,14 +40,14 @@ class SocialLoginController extends Controller
                     if ($user->auth_type == 'email') {
                         $message = 'This email is already associated with an account, pelase reset your password or login with your email and password below.';
                     } else {
-                        $message = 'This email has already registered using ' . $service . '. Please login with ' . ucfirst($service);
+                        $message = 'This email has already registered using ' . $user->auth_type . '. Please login with ' . ucfirst($user->auth_type);
                     }
 
                     return redirect()->route('login')->with('error', $message);
                 }
             }
 
-            Auth::guard('web')->login($user);
+            Auth::guard('user')->login($user);
 
             return redirect('/');
         } catch (\Exception $e) {
