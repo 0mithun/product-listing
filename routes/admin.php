@@ -10,7 +10,7 @@ use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\Auth\ResetPasswordController;
-
+use App\Http\Controllers\Admin\SocialiteController;
 
 /**
  * Auth routes
@@ -70,4 +70,6 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::put('settings/mode/maintaince', [SettingsController::class, 'modeMaintaince'])->name('settings.mode.maintaince');
     Route::put('settings/search/indexing', [SettingsController::class, 'searchIndexing'])->name('settings.search.indexing');
 
+    Route::get('settings/social-login', [SocialiteController::class, 'index'])->name('settings.social.login');
+    Route::put('settings/social-login', [SocialiteController::class, 'update'])->name('settings.social.login.update');
 });

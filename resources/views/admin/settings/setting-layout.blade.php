@@ -33,6 +33,9 @@
 
                     <a class="nav-link {{ Route::is('settings.system') ? 'active' : '' }}"
                         href="{{ route('settings.system') }}">System</a>
+
+                    <a class="nav-link {{ Route::is('settings.social.login') ? 'active' : '' }}"
+                        href="{{ route('settings.social.login') }}">Social Login</a>
                 </div>
             </div>
             <div class="col-10">

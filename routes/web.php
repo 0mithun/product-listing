@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\SocialLoginController;
 
 
 Route::middleware(['frontend_setlang'])->group(function () {
@@ -26,12 +27,8 @@ Route::middleware(['frontend_setlang'])->group(function () {
 // ========================================================
 //====================social Login=========================
 // ========================================================
-// Route::get('login/{provider}', [SocialLoginController::class, 'redirectOnProviders'])->name('social-login');
-// Route::get('auth/{provider}/callback', [SocialLoginController::class, 'callback']);
-
-// ========================================================
-//====================Multi Guard Admin====================
-// ========================================================
+Route::get('login/{provider}', [SocialLoginController::class, 'redirect'])->name('social-login');
+Route::get('auth/{provider}/callback', [SocialLoginController::class, 'callback']);
 
 
 // ========================================================
