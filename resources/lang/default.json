@@ -172,5 +172,10 @@
     "site_settings": "Site Settings",
     "system": "System",
     "social_login": "Social Login",
-    "status": "Status"
+    "status": "Status",
+    "user_create": "User Create",
+    "user_edit": "User Edit",
+    "edit_user": "Edit User",
+    "users_list": "Users List"
+
 }

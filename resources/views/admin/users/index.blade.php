@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title') Users List @endsection
+@section('title') {{ __('users_list') }} @endsection
 
 @section('content')
 
@@ -12,22 +12,22 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title" style="line-height: 36px;">Users List</h3>
+                        <h3 class="card-title" style="line-height: 36px;">{{ __('users_list') }}</h3>
                             <a href="{{ route('user.create') }}"
                                 class="btn bg-primary float-right d-flex align-items-center justify-content-center"><i
-                                    class="fas fa-plus"></i>&nbsp;Create User</a>
+                                    class="fas fa-plus"></i>{{ __('create_user') }}</a>
                     </div>
 
                     <div class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap">
                             <thead>
                                 <tr>
-                                    <th width="5%">SL</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Roles</th>
+                                    <th width="5%">{{ __('sl') }}</th>
+                                    <th>{{ __('name') }}</th>
+                                    <th>{{ __('email') }}</th>
+                                    <th>{{ __('roles') }}</th>
                                     @if ($userr->can('admin.edit') || $userr->can('admin.delete'))
-                                        <th width="10%">Action</th>
+                                        <th width="10%">{{ __('action') }}</th>
                                     @endif
                                 </tr>
                             </thead>

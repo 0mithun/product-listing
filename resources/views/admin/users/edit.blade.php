@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title') User Edit @endsection
+@section('title') {{ __('user_edit') }} @endsection
 
 @section('content')
     <div class="container-fluid">
@@ -8,10 +8,10 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title" style="line-height: 36px;">Edit User</h3>
+                        <h3 class="card-title" style="line-height: 36px;">{{ __('edit_user') }}</h3>
                         <a href="{{ route('user.index') }}"
                             class="btn bg-primary float-right d-flex align-items-center justify-content-center"><i
-                                class="fas fa-arrow-left"></i>&nbsp;Back</a>
+                                class="fas fa-arrow-left"></i>{{ __('arrow_back') }}</a>
                     </div>
                     <div class="row">
 
@@ -26,7 +26,7 @@
                                 @method('PUT')
                                 @csrf
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Name</label>
+                                    <label class="col-sm-3 col-form-label">{{ __('name') }}</label>
                                     <div class="col-sm-9">
                                         <input value="{{ $user->name }}" name="name" type="text"
                                             class="form-control @error('name') is-invalid @enderror"
@@ -36,7 +36,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Email</label>
+                                    <label class="col-sm-3 col-form-label">{{ __('email') }}</label>
                                     <div class="col-sm-9">
                                         <input value="{{ $user->email }}" name="email" type="email"
                                             class="form-control @error('email') is-invalid @enderror"
@@ -46,18 +46,18 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Image</label>
+                                    <label class="col-sm-3 col-form-label">{{ __('image') }}</label>
                                     <div class="col-sm-9">
                                         <div class="custom-file">
                                             <input name="image" autocomplete="image"
                                                 onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])"
                                                 type="file" class="custom-file-input" id="customFile">
-                                            <label class="custom-file-label" for="customFile">Choose file</label>
+                                            <label class="custom-file-label" for="customFile">{{ __('choose_file') }}</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Change Password</label>
+                                    <label class="col-sm-3 col-form-label">{{ __('change_password') }}</label>
                                     <div class="col-sm-9">
                                         <input value="{{ old('password') }}" name="password" type="password"
                                             class="form-control @error('password') is-invalid @enderror"
@@ -68,7 +68,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Assign Roles</label>
+                                    <label class="col-sm-3 col-form-label">{{ __('assign_roles') }}</label>
                                     <div class="col-sm-9">
                                         <select name="roles[]" class="select2bs4 @error('roles') is-invalid @enderror"
                                             multiple="multiple" data-placeholder="Select roles" style="width: 100%;">
@@ -85,7 +85,7 @@
                                 <div class="form-group row">
                                     <div class="offset-sm-3 col-sm-9">
                                         <button type="submit" class="btn btn-primary"><i class="fas fa-sync"></i>
-                                            Update</button>
+                                            {{ __('update') }}</button>
                                     </div>
                                 </div>
                             </form>
