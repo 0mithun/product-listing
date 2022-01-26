@@ -27,6 +27,9 @@ class UserController extends Controller
     public function dashboard()
     {
         session(['layout_mode' => 'left_nav']);
+        if (is_null($this->user) || !$this->user->can('dashboard.view')) {
+            abort(403, 'Sorry !! You are Unauthorized to view dashboard.');
+        }
 
         return view('admin.index');
     }
@@ -38,6 +41,9 @@ class UserController extends Controller
      */
     public function index()
     {
+        if (is_null($this->user) || !$this->user->can('admin.view')) {
+            abort(403, 'Sorry !! You are Unauthorized to view users.');
+        }
         $users = Admin::where('id', '!=', 1)->SimplePaginate(10);
         return view('admin.users.index', compact('users'));
     }
@@ -49,6 +55,9 @@ class UserController extends Controller
      */
     public function create()
     {
+        if (is_null($this->user) || !$this->user->can('admin.create')) {
+            abort(403, 'Sorry !! You are Unauthorized to create users.');
+        }
         $roles = Role::all();
         return view('admin.users.create', compact('roles'));
     }
@@ -61,6 +70,10 @@ class UserController extends Controller
      */
     public function store(UserFormRequest $request)
     {
+        if (is_null($this->user) || !$this->user->can('admin.create')) {
+            abort(403, 'Sorry !! You are Unauthorized to store users.');
+        }
+
         try {
             CreateUser::create($request);
 
@@ -80,6 +93,10 @@ class UserController extends Controller
      */
     public function edit(Admin $user)
     {
+        if (is_null($this->user) || !$this->user->can('admin.edit')) {
+            abort(403, 'Sorry !! You are Unauthorized to edit users.');
+        }
+
         $roles = Role::all();
         return view('admin.users.edit', compact('roles', 'user'));
     }
@@ -93,6 +110,10 @@ class UserController extends Controller
      */
     public function update(UserFormRequest $request, Admin $user)
     {
+        if (is_null($this->user) || !$this->user->can('admin.edit')) {
+            abort(403, 'Sorry !! You are Unauthorized to update users.');
+        }
+
         try {
             UpdateUser::update($request, $user);
 
@@ -112,6 +133,10 @@ class UserController extends Controller
      */
     public function destroy(Admin $user)
     {
+        if (is_null($this->user) || !$this->user->can('admin.delete')) {
+            abort(403, 'Sorry !! You are Unauthorized to delete users.');
+        }
+
         try {
             if (!is_null($user)) {
                 $user->delete();

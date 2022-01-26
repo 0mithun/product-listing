@@ -28,7 +28,7 @@ class Setting extends Model
     {
         $site_url = rtrim(env('APP_URL'), '/');
 
-        return Storage::disk('public')->exists($this->logo_image) ? $site_url.Storage::url($this->logo_image) : $site_url.'/backend/image/logo-default.png';
+        return Storage::disk('public')->exists($this->logo_image) ? $site_url.Storage::url($this->logo_image) : $site_url.'/backend/image/logo.png';
     }
 
 
@@ -36,6 +36,6 @@ class Setting extends Model
     {
         $site_url = rtrim(env('APP_URL'), '/');
 
-        return Storage::disk('public')->exists($this->favicon_image) ? $site_url.Storage::url($this->favicon_image) : $site_url.'/backend/image/logo-default.png';
+        return Storage::disk('public')->exists($this->favicon_image) ? $site_url.Storage::url($this->favicon_image) : $site_url.'/backend/image/logo.png';
     }
 }
