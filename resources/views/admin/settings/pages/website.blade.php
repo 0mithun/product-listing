@@ -3,7 +3,7 @@
 @section('website-settings')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title" style="line-height: 36px;">Settings</h3>
+            <h3 class="card-title" style="line-height: 36px;">{{ __('settings') }}</h3>
         </div>
         <div class="row pt-3 pb-4">
             <div class="col-md-6 offset-md-3">
@@ -12,7 +12,7 @@
                     @method('PUT')
                     @csrf
                     <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Site Name</label>
+                        <label class="col-sm-3 col-form-label">{{ __('site_name') }}</label>
                         <div class="col-sm-9">
                             <input value="{{ $setting->name }}" name="name" type="text"
                                 class="form-control @error('name') is-invalid @enderror" placeholder="Enter Site Name">
@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Email</label>
+                        <label class="col-sm-3 col-form-label">{{ __('email') }}</label>
                         <div class="col-sm-9">
                             <input value="{{ $setting->email }}" name="email" type="email"
                                 class="form-control @error('email') is-invalid @enderror" placeholder="Enter Site Email">
@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Site Logo</label>
+                        <label class="col-sm-3 col-form-label">{{ __('site_logo') }}</label>
                         <div class="col-sm-9">
                             <div class="row">
                                 <div class="col-6">
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Site Favicon</label>
+                        <label class="col-sm-3 col-form-label">{{ __('site_favicon') }}</label>
                         <div class="col-sm-9">
                             <div class="row">
                                 <div class="col-6">
@@ -54,7 +54,7 @@
                     <div class="form-group row">
                         <div class="offset-sm-3 col-sm-9">
                             <button type="submit" class="btn btn-success"><i class="fas fa-sync"></i>
-                                Update</button>
+                                {{ __('update') }}</button>
                         </div>
                     </div>
                 </form>

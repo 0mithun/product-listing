@@ -4,7 +4,7 @@
 @section('website-settings')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title" style="line-height: 36px;">Layout Setting</h3>
+            <h3 class="card-title" style="line-height: 36px;">{{ __('layout_settings') }} </h3>
         </div>
         <div class="row pt-3 pb-4">
             <form action="{{ route('settings.layout.update') }}" method="post" id="layout_form">
@@ -15,15 +15,15 @@
             <div class="col-6">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title m-0">Left Navigation Layout</h5>
+                        <h5 class="card-title m-0">{{ __('left_navigation_layout') }}</h5>
                     </div>
                     <img height="200px" width="600px" src="{{ asset('backend/image/setting/left-nav.png') }}"
                         class="card-img-top img-fluid" alt="top nav">
                     <div class="card-body">
                         @if ($setting->default_layout)
-                            <a href="javascript:void(0)" onclick="layoutChange(0)" class="btn btn-danger">Inactivate</a>
+                            <a href="javascript:void(0)" onclick="layoutChange(0)" class="btn btn-danger">{{ __('inactivate') }}</a>
                         @else
-                            <a href="javascript:void(0)" onclick="layoutChange(1)" class="btn btn-primary">Activate</a>
+                            <a href="javascript:void(0)" onclick="layoutChange(1)" class="btn btn-primary">{{ __('activate') }}</a>
                         @endif
                     </div>
                 </div>
@@ -31,15 +31,15 @@
             <div class="col-6">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title m-0">Top Navigation Layout</h5>
+                        <h5 class="card-title m-0">{{ __('top_navigation_layout') }}</h5>
                     </div>
                     <img height="200px" width="600px" src="{{ asset('backend/image/setting/top-nav.png') }}"
                         class="card-img-top img-fluid" alt="top nav">
                     <div class="card-body">
                         @if ($setting->default_layout)
-                            <a href="javascript:void(0)" onclick="layoutChange(0)" class="btn btn-primary">Activate</a>
+                            <a href="javascript:void(0)" onclick="layoutChange(0)" class="btn btn-primary">{{ __('activate') }}</a>
                         @else
-                            <a href="javascript:void(0)" onclick="layoutChange(1)" class="btn btn-danger">Inactivate</a>
+                            <a href="javascript:void(0)" onclick="layoutChange(1)" class="btn btn-danger">{{ __('inactivate') }}</a>
                         @endif
                     </div>
                 </div>

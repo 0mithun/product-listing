@@ -10,7 +10,7 @@
                 <div class="form-group">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" name="commingsoon_mode" id="commingsoon_mode" value="1" @if($setting->commingsoon_mode == 1) checked  @endif>
-                      <label class="form-check-label" for="commingsoon_mode">Comming Soon Mode</label>
+                      <label class="form-check-label" for="commingsoon_mode">{{ __('comming_soon_mode') }}</label>
                     </div>
                 </div>
 
@@ -32,9 +32,9 @@
                 <div class="form-group">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" name="maintenance_mode" id="maintenance_mode" value="1"  @if($setting->maintenance_mode == 1) checked  @endif>
-                      <label class="form-check-label" for="maintenance_mode">Maintenance Mode</label>
+                      <label class="form-check-label" for="maintenance_mode">{{ __('maintenance_mode') }}</label>
                     </div>
-                    <span class="help-text">Live Mode Enable URL:
+                    <span class="help-text">{{ __('live_mode_enable_url') }}
                         <span class="badge badge-dark">
                             {{  env('APP_MAINTENCE_MODE_DISABLE_URL', '/admin/site/live')  }}
                         </span>
@@ -58,7 +58,7 @@
                 <div class="form-group">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" name="search_engine_indexing" id="search_engine_indexing" value="1" @if($setting->search_engine_indexing == 1) checked  @endif>
-                      <label class="form-check-label" for="search_engine_indexing">Search Engine Indexing</label>
+                      <label class="form-check-label" for="search_engine_indexing">{{ __('search_engine_ndexing') }}</label>
                     </div>
                 </div>
                 <div class="row">
@@ -79,7 +79,7 @@
                 <div class="form-group">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" name="google_analytics" id="google_analytics" value="1" @if($setting->google_analytics == 1) checked  @endif>
-                      <label class="form-check-label" for="google_analytics">Google Analytics</label>
+                      <label class="form-check-label" for="google_analytics">{{ __('google_nalytics') }}</label>
                     </div>
                 </div>
                 <div class="row">
@@ -100,7 +100,7 @@
                 <div class="form-group">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" name="facebook_pixel" id="facebook_pixel" value="1" @if($setting->facebook_pixel == 1) checked  @endif>
-                      <label class="form-check-label" for="facebook_pixel">Facebook Pixels</label>
+                      <label class="form-check-label" for="facebook_pixel">{{ __('facebook_pixels') }}</label>
                     </div>
                 </div>
                 <div class="row">

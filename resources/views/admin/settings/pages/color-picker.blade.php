@@ -4,7 +4,7 @@
 @section('website-settings')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title" style="line-height: 36px;">Color Picker</h3>
+            <h3 class="card-title" style="line-height: 36px;">{{ __('color_settings') }}</h3>
         </div>
         <div class="row pt-3 pb-4">
             <form id="color_picker_form" action="{{ route('settings.color.update') }}" method="post">
@@ -18,7 +18,7 @@
 
             <div class="col-2">
                 <div class="card">
-                    <div class="card-header">Slider Color</div>
+                    <div class="card-header">{{ __('slider_color') }}</div>
                     <div class="card-body">
                         <div class="sidebar-color-picker"></div>
                     </div>
@@ -26,7 +26,7 @@
             </div>
             <div class="col-2">
                 <div class="card">
-                    <div class="card-header">Nav Color</div>
+                    <div class="card-header">{{ __('nav_color') }}</div>
                     <div class="card-body">
                         <div class="navbar-color-picker"></div>
                     </div>
@@ -35,7 +35,7 @@
         </div>
         <div class="card-footer text-center">
             <button style="width: 250px;" onclick="$('#color_picker_form').submit()" type="submit"
-                class="btn btn-primary">Update</button>
+                class="btn btn-primary">{{ __('update')  }}</button>
         </div>
     </div>
 @endsection
