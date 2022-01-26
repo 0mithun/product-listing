@@ -19,6 +19,7 @@ class AdminSetLangMiddleware
         if (session()->has('admin_lang')) {
             app()->setLocale(session()->get('admin_lang'));
         } else {
+            session()->put('admin_lang', 'default');
             app()->setLocale('default');
         }
 

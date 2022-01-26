@@ -19,6 +19,7 @@ class FrontendSetLangMiddleware
         if (session()->has('frontend_lang')) {
             app()->setLocale(session()->get('frontend_lang'));
         } else {
+            session()->put('frontend_lang', 'default');
             app()->setLocale('default');
         }
 
