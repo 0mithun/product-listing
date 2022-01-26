@@ -11,12 +11,16 @@ class Setting extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'email', 'logo_image', 'favicon_image', 'header_css', 'header_script', 'body_script', 'sidebar_color', 'nav_color', 'dark_mode', 'default_layout', 'commingsoon_mode', 'search_engine_indexing'
+        'name', 'email', 'logo_image', 'favicon_image', 'header_css',
+        'header_script', 'body_script', 'sidebar_color', 'nav_color', 'dark_mode',
+        'default_layout', 'commingsoon_mode', 'search_engine_indexing', 'google_analytics', 'facebook_pixel'
     ];
 
     protected $casts = [
         'commingsoon_mode'  =>  'boolean',
         'search_engine_indexing'  =>  'boolean',
+        'google_analytics'  =>  'boolean',
+        'facebook_pixel'  =>  'boolean',
     ];
 
 

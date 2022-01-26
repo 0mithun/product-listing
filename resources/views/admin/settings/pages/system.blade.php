@@ -24,7 +24,6 @@
             </form>
         </div>
     </div>
-    <hr>
     <div class="card">
         <div class="card-body">
             <form action="{{ route('settings.mode.maintaince') }}" method="POST">
@@ -51,7 +50,6 @@
             </form>
         </div>
     </div>
-    <hr>
     <div class="card">
         <div class="card-body">
             <form action="{{ route('settings.search.indexing') }}" method="POST">
@@ -67,6 +65,48 @@
                     <div class="col-4">
                         <div class="mb-3">
                             <button type="submit" class="btn btn-success" onclick="return confirm('Are you sure?')"><i class="fas fa-sync"></i> {{ __('update') }}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <form action="{{ route('settings.google.analytics') }}" method="POST">
+                @method('PUT')
+                @csrf
+                <div class="form-group">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="google_analytics" id="google_analytics" value="1" @if($setting->google_analytics == 1) checked  @endif>
+                      <label class="form-check-label" for="google_analytics">Google Analytics</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-success"><i class="fas fa-sync"></i> {{ __('update') }}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <form action="{{ route('settings.facebook.pixel') }}" method="POST">
+                @method('PUT')
+                @csrf
+                <div class="form-group">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="facebook_pixel" id="facebook_pixel" value="1" @if($setting->facebook_pixel == 1) checked  @endif>
+                      <label class="form-check-label" for="facebook_pixel">Facebook Pixels</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-success"><i class="fas fa-sync"></i> {{ __('update') }}</button>
                         </div>
                     </div>
                 </div>

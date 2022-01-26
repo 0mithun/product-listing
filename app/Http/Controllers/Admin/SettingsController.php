@@ -237,6 +237,11 @@ class SettingsController extends Controller
         return back();
     }
 
+    /**
+     * Update search engine indexing setting
+     *
+     * @return void
+     */
     public function searchIndexing()
     {
         try {
@@ -253,5 +258,34 @@ class SettingsController extends Controller
             return back()->with('error','Search Engine Indexing update failed.');
         }
     }
+
+
+    /**
+     * Update google analytics setting
+     *
+     * @return void
+     */
+    public function googleAnalytics()
+    {
+        Setting::first()->update(['google_analytics'=> request('google_analytics', 0)]);
+        session()->put('google_analytics', request('google_analytics', 0));
+
+        return back()->with('success', 'Google Analytics update successfully!');
+    }
+
+
+    /**
+     * Update facebook pixel setting
+     *
+     * @return void
+     */
+    public function facebookPixel()
+    {
+        Setting::first()->update(['facebook_pixel'=> request('facebook_pixel', 0)]);
+        session()->put('facebook_pixel', request('facebook_pixel', 0));
+
+        return back()->with('success', 'Facebook Pixel update successfully!');
+    }
+
 
 }
