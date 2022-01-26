@@ -28,7 +28,7 @@
                 @if ($user->can('dashboard.view'))
                     <x-admin.sidebar-list :linkActive="Route::is('admin.dashboard') ? true : false" route="admin.dashboard"
                         icon="fas fa-tachometer-alt">
-                        Dashboard
+                        {{ __('dashboard') }}
                     </x-admin.sidebar-list>
                 @endif
                 @if ($user->can('admin.view') || $user->can('admin.create') || $user->can('admin.edit') || $user->can('admin.delete') || $user->can('role.view') || $user->can('role.create') || $user->can('role.edit') || $user->can('role.delete'))
@@ -38,7 +38,7 @@
                         :subLinkActive="Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') || Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') ? true : false"
                         icon="fas fa-lock">
                         @slot('title')
-                            User & Role Manage
+                            {{ __('user_role_manage') }}
                         @endslot
 
                         @if ($user->can('admin.view') || $user->can('admin.create') || $user->can('admin.edit') || $user->can('admin.delete'))
@@ -46,7 +46,7 @@
                                 <x-admin.sidebar-list
                                     :linkActive="Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') ? true : false"
                                     route="user.index" icon="fas fa-users">
-                                    All Users
+                                    {{ __('all_users') }}
                                 </x-admin.sidebar-list>
                             </ul>
                         @endif
@@ -55,17 +55,17 @@
                                 <x-admin.sidebar-list
                                     :linkActive="Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') ? true : false"
                                     route="role.index" icon="fas fa-lock">
-                                    All Roles
+                                    {{ __('all_roles') }}
                                 </x-admin.sidebar-list>
                             </ul>
                         @endif
                     </x-admin.sidebar-dropdown>
                 @endif
                 <x-admin.sidebar-list :linkActive="Request::is('settings/*')  ? true : false" route="settings.website" icon="fas fa-cog">
-                    Settings
+                    {{ __('settings') }}
                 </x-admin.sidebar-list>
                 <x-admin.sidebar-list :linkActive="Request::is('languages/*')  ? true : false" route="language.index" icon="fas fa-language">
-                    Language
+                    {{ __('language') }}
                 </x-admin.sidebar-list>
             </ul>
         </nav>

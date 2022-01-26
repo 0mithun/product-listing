@@ -116,6 +116,11 @@
     "forgot_your_password":"Forgot Your Password?",
     "reset_password":"Reset Password",
     "Send_Password_Reset_Link":"Send Password Reset Link",
-    "E_Mail_Address": "E-Mail Address"
+    "E_Mail_Address": "E-Mail Address",
+    "copyright_copy": "Copyright &copy;",
+    "all_right_reserved": "All rights reserved.",
+    "zakirsoft": "zakirsoft.com",
+    "english_default": "English (default)",
+    "logout": "Logout",
 
 }
