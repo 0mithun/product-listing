@@ -81,6 +81,16 @@
             <form action="{{ route('settings.google.analytics') }}" method="POST">
                 @method('PUT')
                 @csrf
+                <div class="form-group row">
+                    <label class="col-sm-5 col-md-2 col-form-label" for="google_analytics_id">{{ __('google_analytics_id') }}</label>
+                    <div class="col-sm-7 col-md-4">
+                        <input value="{{ env('GOOGLE_ANALYTICS_ID') }}" name="google_analytics_id" type="text"
+                            class="form-control @error('google_analytics_id') is-invalid @enderror"
+                            autocomplete="off">
+                        @error('google_analytics_id') <span class="invalid-feedback"
+                            role="alert"><span>{{ $message }}</span></span> @enderror
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" name="google_analytics" id="google_analytics" value="1" @if($setting->google_analytics == 1) checked  @endif>
@@ -104,6 +114,16 @@
             <form action="{{ route('settings.facebook.pixel') }}" method="POST">
                 @method('PUT')
                 @csrf
+                <div class="form-group row">
+                    <label class="col-sm-5 col-md-2 col-form-label" for="facebook_pixel_id">{{ __('facebook_pixel_id') }}</label>
+                    <div class="col-sm-7 col-md-4">
+                        <input value="{{ env('FACEBOOK_PIXEL_ID') }}" name="facebook_pixel_id" type="text"
+                            class="form-control @error('facebook_pixel_id') is-invalid @enderror"
+                            autocomplete="off">
+                        @error('facebook_pixel_id') <span class="invalid-feedback"
+                            role="alert"><span>{{ $message }}</span></span> @enderror
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" name="facebook_pixel" id="facebook_pixel" value="1" @if($setting->facebook_pixel == 1) checked  @endif>
