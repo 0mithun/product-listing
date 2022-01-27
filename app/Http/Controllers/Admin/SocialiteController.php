@@ -9,6 +9,14 @@ use App\Http\Controllers\Controller;
 
 class SocialiteController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['permission:setting.view|setting.update'])->only(['index']);
+
+        $this->middleware(['permission:setting.update'])->only(['update']);
+    }
+
     /**
      * Display a listing of the resource.
      *
