@@ -116,15 +116,15 @@ $user = auth()->user();
                 @foreach ($user->getRoleNames() as $role)
                     ( <span>{{ ucwords($role) }}</span> )
                 @endforeach
-                <small>Member since {{ $user->created_at->format('M d, Y') }}</small>
+                <small>{{ __('member_since') }} {{ $user->created_at->format('M d, Y') }}</small>
             </p>
         </li>
         <!-- Menu Footer-->
         <li class="user-footer border-bottom d-flex">
-            <a href="{{ route('profile') }}" class="btn btn-default">Profile</a>
+            <a href="{{ route('profile') }}" class="btn btn-default">{{ __('profile') }}</a>
             <a href="javascript:void(0)"
                 onclick="event.preventDefault();document.getElementById('logout-form').submit();"
-                class="btn btn-default ml-auto">Sign out</a>
+                class="btn btn-default ml-auto">{{ __('sign_out') }}</a>
             <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none invisible">
                 @csrf
             </form>
