@@ -133,7 +133,7 @@
     "current_password": "Current Password",
     "new_password": "New Password",
     "update_profile": "Update Profile",
-    "arrow_back": "&nbsp;Back",
+    "arrow_back": "Back",
     "all": "All",
     "edit_role": "Edit Role",
     "roles": "Roles",
@@ -176,6 +176,7 @@
     "user_create": "User Create",
     "user_edit": "User Edit",
     "edit_user": "Edit User",
-    "users_list": "Users List"
+    "users_list": "Users List",
+    "quick_actions": "Quick Actions"
 
 }

@@ -9,31 +9,38 @@ $user = auth()->user();
         <span class="dropdown-item dropdown-header">{{ __('quick_actions') }}</span>
         <div class="dropdown-divider"></div>
         <div class="row row-paddingless" style="padding-left: 15px; padding-right: 15px;">
+            @if (userCan('admin.create'))
             <div class="col-6 p-0 border-bottom border-right">
                 <a href="{{ route('user.create') }}" class="d-block text-center py-3 bg-hover-light"> <i
-                        class="fas fa-users"></i>
+                    class="fas fa-users"></i>
                     <span class="w-100 d-block text-muted">{{ __('add_user') }}</span>
                 </a>
             </div>
+            @endif
+            @if (userCan('role.create'))
             <div class="col-6 p-0 border-bottom border-right">
                 <a href="{{ route('role.create') }}" class="d-block text-center py-3 bg-hover-light"> <i
                         class="fas fa-lock"></i>
                     <span class="w-100 d-block text-muted">{{ __('add_role') }}</span>
                 </a>
             </div>
-            <div class="col-12 p-0 border-bottom border-right">
+            @endif
+
+            @if (userCan('setting.view') || userCan('setting.update') )
+            <div class="col-6 p-0 border-bottom border-right">
                 <a href="{{ route('settings.website') }}" class="d-block text-center py-3 bg-hover-light"> <i
                         class="fas fa-cog"></i>
                     <span class="w-100 d-block text-muted">{{ __('settings') }}</span>
                 </a>
             </div>
+            @endif
         </div>
         <div class="dropdown-divider"></div>
     </div>
 </li>
 <li class="nav-item dropdown">
     <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="{{ $setting->dark_mode ? '#ffffff':'#1f2d3d' }}" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stro`ke-width="1.5" stroke="{{ $setting->dark_mode ? '#ffffff':'#1f2d3d' }}" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
             <path d="M4 5h7" />
             <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
