@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title') {{ __('user_create') }}endsection
+@section('title') {{ __('user_create') }}@endsection
 
 @section('content')
 <div class="container-fluid">
@@ -42,7 +42,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">{{ __('Password') }}</label>
+                                <label class="col-sm-3 col-form-label">{{ __('password') }}</label>
                                 <div class="col-sm-9">
                                     <input value="{{ old('password') }}" name="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Enter New Password">
                                     @error('password') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror

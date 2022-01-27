@@ -22,7 +22,7 @@
                                     <th width="20%">{{ __('name') }}</th>
                                     <th>{{ __('permission') }}</th>
                                     @if (Auth::user()->can('role.edit') || Auth::user()->can('role.delete'))
-                                        <th width="10%">Action</th>
+                                        <th width="10%">{{ __('action') }}</th>
                                     @endif
                                 </tr>
                             </thead>

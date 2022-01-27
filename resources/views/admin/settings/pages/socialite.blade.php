@@ -64,7 +64,7 @@
                 <h3 class="card-title" style="line-height: 36px;">{{ __('facebook_login_credential') }}</h3>
             </div>
             <div class="card-body">
-                <form class="form-horizontal" action="" method="POST"
+                <form class="form-horizontal" action="{{ route('settings.social.login.update') }}" method="POST"
                     enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
@@ -115,7 +115,7 @@
                 <h3 class="card-title" style="line-height: 36px;">{{ __('twitter_login_credential') }}</h3>
             </div>
             <div class="card-body">
-                <form class="form-horizontal" action="" method="POST"
+                <form class="form-horizontal" action="{{ route('settings.social.login.update') }}" method="POST"
                     enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
@@ -167,7 +167,7 @@
                 <h3 class="card-title" style="line-height: 36px;">{{ __('linkedin_login_credential') }}</h3>
             </div>
             <div class="card-body">
-                <form class="form-horizontal" action="" method="POST"
+                <form class="form-horizontal" action="{{ route('settings.social.login.update') }}" method="POST"
                     enctype="multipart/form-data">
                     @method('PUT')
                     @csrf

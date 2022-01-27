@@ -115,8 +115,8 @@
     "please_confirm_your_password_before_continuing.": "Please confirm your password before continuing.",
     "forgot_your_password":"Forgot Your Password?",
     "reset_password":"Reset Password",
-    "Send_Password_Reset_Link":"Send Password Reset Link",
-    "E_Mail_Address": "E-Mail Address",
+    "send_password_reset_link":"Send Password Reset Link",
+    "e_mail_address": "E-Mail Address",
     "copyright_copy": "Copyright &copy;",
     "all_right_reserved": "All rights reserved.",
     "zakirsoft": "zakirsoft.com",
@@ -180,6 +180,8 @@
     "quick_actions": "Quick Actions",
     "google_analytics_id": "Google Analytics ID",
     "facebook_pixel_id": "Facebook Pixel ID",
-    "member_since": "Member since"
+    "member_since": "Member since",
+    "zakir_soft": "Zakir Soft",
+    "log_in":"Log In"
 
 }
