@@ -196,6 +196,9 @@
     "site_commingsoon":"Site Commingsoon",
     "commingsoon":"Comming soon!",
     "congrats_your_email_successfully_sent":"Congrats your email successfully sent",
-    "thanks":"Thanks"
+    "thanks":"Thanks",
+    "system_settings":"System Settings",
+    "layout_settings":"Layout Settings",
+    "color_settings":"Color Settings"
 
 }

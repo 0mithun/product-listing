@@ -1,5 +1,5 @@
 @extends('admin.settings.setting-layout')
-@section('title') {{ __('system_setting') }} @endsection
+@section('title') {{ __('system_settings') }} @endsection
 
 @section('website-settings')
     <div class="card">
