@@ -147,10 +147,12 @@ class SettingsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return boolean
      */
-    public function modeUpdate($request)
+    public function modeUpdate(Request $request)
     {
         $dark_mode = $request->only(['dark_mode']);
-        return Setting::first()->update($dark_mode);
+        Setting::first()->update($dark_mode);
+
+        return back()->with('success', 'Theme upadte successfully!');
     }
 
     public function email()

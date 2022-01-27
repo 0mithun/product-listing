@@ -66,7 +66,7 @@ $user = auth()->user();
     </a>
 </li>
 <li class="nav-item">
-    <form action="" method="post" id="mode_form">
+    <form action="{{ route('settings.mode.update') }}" method="post" id="mode_form">
         @csrf
         @method("PUT")
         @if ($setting->dark_mode)
