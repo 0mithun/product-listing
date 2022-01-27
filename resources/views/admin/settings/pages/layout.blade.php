@@ -19,6 +19,7 @@
                     </div>
                     <img height="200px" width="600px" src="{{ asset('backend/image/setting/left-nav.png') }}"
                         class="card-img-top img-fluid" alt="top nav">
+                    @if (userCan('setting.update'))
                     <div class="card-body">
                         @if ($setting->default_layout)
                             <a href="javascript:void(0)" onclick="layoutChange(0)" class="btn btn-danger">{{ __('inactivate') }}</a>
@@ -26,6 +27,7 @@
                             <a href="javascript:void(0)" onclick="layoutChange(1)" class="btn btn-primary">{{ __('activate') }}</a>
                         @endif
                     </div>
+                    @endif
                 </div>
             </div>
             <div class="col-6">
@@ -35,6 +37,7 @@
                     </div>
                     <img height="200px" width="600px" src="{{ asset('backend/image/setting/top-nav.png') }}"
                         class="card-img-top img-fluid" alt="top nav">
+                    @if (userCan('setting.update'))
                     <div class="card-body">
                         @if ($setting->default_layout)
                             <a href="javascript:void(0)" onclick="layoutChange(0)" class="btn btn-primary">{{ __('activate') }}</a>
@@ -42,6 +45,7 @@
                             <a href="javascript:void(0)" onclick="layoutChange(1)" class="btn btn-danger">{{ __('inactivate') }}</a>
                         @endif
                     </div>
+                    @endif
                 </div>
             </div>
 

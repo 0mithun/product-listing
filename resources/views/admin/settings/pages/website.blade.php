@@ -51,12 +51,14 @@
                             </div>
                         </div>
                     </div>
+                    @if (userCan('setting.update'))
                     <div class="form-group row">
                         <div class="offset-sm-3 col-sm-9">
                             <button type="submit" class="btn btn-success"><i class="fas fa-sync"></i>
                                 {{ __('update') }}</button>
                         </div>
                     </div>
+                    @endif
                 </form>
             </div>
         </div>

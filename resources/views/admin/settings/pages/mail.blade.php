@@ -68,11 +68,13 @@
                         </div>
                     </div>
                 </div>
+                @if (userCan('setting.update'))
                 <div class="mx-auto">
                     <div class="text-center">
                         <button type="submit" class="btn btn-success"><i class="fas fa-sync"></i> {{ __('update') }}</button>
                     </div>
                 </div>
+                @endif
             </form>
         </div>
     </div>
@@ -91,7 +93,9 @@
                       <input name="test_email" type="email" class="form-control  @error('test_email') is-invalid @enderror" id="test_email" placeholder="{{ __('enter_email') }}" style="min-width: 400px">
                       @error('test_email') <span class="invalid-feedback" role="alert">{{ $message }}</span> @enderror
                     </div>
+                    @if (userCan('setting.update'))
                     <button type="submit" class="btn btn-primary mb-2"><i class="far fa-paper-plane"></i> {{ __('send_mail') }}</button>
+                    @endif
                 </form>
             </div>
         </div>

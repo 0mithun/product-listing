@@ -61,12 +61,18 @@
                         @endif
                     </x-admin.sidebar-dropdown>
                 @endif
-                <x-admin.sidebar-list :linkActive="Request::is('settings/*')  ? true : false" route="settings.website" icon="fas fa-cog">
-                    {{ __('settings') }}
-                </x-admin.sidebar-list>
-                <x-admin.sidebar-list :linkActive="Request::is('languages/*')  ? true : false" route="language.index" icon="fas fa-language">
-                    {{ __('language') }}
-                </x-admin.sidebar-list>
+                @if ($user->can('setting.view') || $user->can('setting.update'))
+                    <x-admin.sidebar-list :linkActive="Request::is('settings/*')  ? true : false" route="settings.website" icon="fas fa-cog">
+                        {{ __('settings') }}
+                    </x-admin.sidebar-list>
+                @endif
+
+                @if ($user->can('setting.view') || $user->can('setting.update'))
+                    <x-admin.sidebar-list :linkActive="Request::is('languages/*')  ? true : false" route="language.index" icon="fas fa-language">
+                        {{ __('language') }}
+                    </x-admin.sidebar-list>
+                @endif
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

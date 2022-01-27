@@ -32,12 +32,14 @@
                                         </div>
                                     @endforeach
                                 </div>
+                                @if (userCan('setting.update'))
                                 <div class="row">
                                     <div class="d-flex mx-auto">
                                         <button type="submit" class="lang-btn btn btn-success"><i
                                             class="fas fa-sync"></i>&nbsp; {{ __('update') }}</button>
                                     </div>
                                 </div>
+                                @endif
                             </div>
                         </form>
                     </div>

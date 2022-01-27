@@ -15,6 +15,16 @@ class SettingsController extends Controller
 {
     use UploadAble;
 
+    public function __construct()
+    {
+        $this->middleware(['permission:setting.view|setting.update'])->only(['website', 'layout', 'color', 'custom', 'email', 'system']);
+
+        $this->middleware(['permission:setting.update'])->only(['websiteUpdate', 'layoutUpdate', 'colorUpdate', 'custumCSSJSUpdate',
+        'modeUpdate', 'emailUpdate', 'testEmailSent', 'modeCommingsoon', 'modeMaintaince',
+        'searchIndexing', 'googleAnalytics', 'facebookPixel'
+        ]);
+    }
+
 
     /**
      * Undocumented function

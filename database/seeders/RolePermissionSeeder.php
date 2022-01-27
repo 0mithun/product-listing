@@ -57,6 +57,13 @@ class RolePermissionSeeder extends Seeder
                      'profile.edit',
                  ]
              ],
+             [
+                'group_name' => 'settings',
+                'permissions' => [
+                    'setting.view',
+                    'setting.update',
+                ]
+            ],
          ];
 
          // Assaign Permission
@@ -67,7 +74,7 @@ class RolePermissionSeeder extends Seeder
                  // Create Permission
                  $permission = Permission::create(['name' => $permissions[$i]['permissions'][$j],'group_name' => $permissionGroup, 'guard_name'=>'admin']);
                  $roleSuperAdmin->givePermissionTo($permission);
-                 $permission->assignRole($roleSuperAdmin);
+                //  $permission->assignRole($roleSuperAdmin);
              }
          }
     }

@@ -42,12 +42,14 @@
                             <input type="checkbox" name="google" {{ $socialite->google ? 'checked':'' }}  data-bootstrap-switch value="1">
                         </div>
                     </div>
+                    @if (userCan('setting.update'))
                     <div class="form-group row">
                         <div class="offset-sm-5 col-sm-7">
                             <button type="submit" class="btn btn-success"><i class="fas fa-sync"></i>
                                 {{ __('update') }}</button>
                         </div>
                     </div>
+                    @endif
                 </form>
             </div>
         </div>
@@ -93,12 +95,14 @@
                             <input type="checkbox" {{ $socialite->facebook ? 'checked':'' }} name="facebook" data-bootstrap-switch value="1">
                         </div>
                     </div>
+                    @if (userCan('setting.update'))
                     <div class="form-group row">
                         <div class="offset-sm-5 col-sm-7">
                             <button type="submit" class="btn btn-success"><i class="fas fa-sync"></i>
                                 {{ __('update') }}</button>
                         </div>
                     </div>
+                    @endif
                 </form>
             </div>
         </div>
@@ -142,12 +146,14 @@
                             <input type="checkbox" {{ $socialite->twitter ? 'checked':'' }} name="twitter" data-bootstrap-switch value="1">
                         </div>
                     </div>
+                    @if (userCan('setting.update'))
                     <div class="form-group row">
                         <div class="offset-sm-5 col-sm-7">
                             <button type="submit" class="btn btn-success"><i class="fas fa-sync"></i>
                                 {{ __('update') }}</button>
                         </div>
                     </div>
+                    @endif
                 </form>
             </div>
         </div>
@@ -192,12 +198,14 @@
                             <input type="checkbox" {{ $socialite->linkedin ? 'checked':'' }} name="linkedin" data-bootstrap-switch value="1">
                         </div>
                     </div>
+                    @if (userCan('setting.update'))
                     <div class="form-group row">
                         <div class="offset-sm-5 col-sm-7">
                             <button type="submit" class="btn btn-success"><i class="fas fa-sync"></i>
                                 {{ __('update') }}</button>
                         </div>
                     </div>
+                    @endif
                 </form>
             </div>
         </div>

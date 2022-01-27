@@ -64,6 +64,9 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'admin_setlang' => \Modules\Language\Http\Middleware\AdminSetLangMiddleware::class,
         'frontend_setlang' => \Modules\Language\Http\Middleware\FrontendSetLangMiddleware::class,
-        'commingsoon'   =>  \App\Http\Middleware\CheckCommingSoonMode::class
+        'commingsoon'   =>  \App\Http\Middleware\CheckCommingSoonMode::class,
+        'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+        'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+        'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
     ];
 }

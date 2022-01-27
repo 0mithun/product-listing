@@ -39,12 +39,14 @@
                                             role="alert"><strong>{{ $message }}</strong></span> @enderror
                                     </div>
                                 </div>
+                                @if (userCan('setting.update'))
                                 <div class="form-group row">
                                     <div class="offset-sm-3 col-sm-4">
                                         <button type="submit" class="btn btn-success"><i
                                                 class="fas fa-plus"></i>&nbsp;{{ __('create') }}</button>
                                     </div>
                                 </div>
+                                @endif
                             </form>
                         </div>
                     </div>

@@ -33,10 +33,12 @@
                 </div>
             </div>
         </div>
-        <div class="card-footer text-center">
-            <button style="width: 250px;" onclick="$('#color_picker_form').submit()" type="submit"
+        @if (userCan('setting.update'))
+            <div class="card-footer text-center">
+                <button style="width: 250px;" onclick="$('#color_picker_form').submit()" type="submit"
                 class="btn btn-primary">{{ __('update')  }}</button>
-        </div>
+            </div>
+        @endif
     </div>
 @endsection
 

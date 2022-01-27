@@ -9,9 +9,11 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title" style="line-height: 36px;">{{ __('language_list') }}</h3>
+                        @if (userCan('setting.update'))
                         <a href="{{ route('language.create') }}"
                             class="btn bg-primary float-right d-flex align-items-center justify-content-center"><i
                                 class="fas fa-plus"></i>&nbsp; {{ __('add_language') }}</a>
+                        @endif
                     </div>
                     <div class="card-body table-responsive p-0">
                         <table class="table table-hover text-nowrap table-bordered">
@@ -30,22 +32,30 @@
                                     <td>{{ $language->name }}</td>
                                     <td>{{ $language->code }}</td>
                                     <td class="d-flex justify-content-center align-items-center">
+                                        @if (userCan('setting.update') || userCan('setting.view'))
                                         <a href="{{ route('language.view', $language->code) }}" class="btn btn-secondary mr-2"><i class="fas fa-cog"></i></a>
-                                        <a href="{{ route('language.edit', $language->id) }}" class="btn btn-info mt-0 mr-2"><i class="fas fa-edit"></i></a>
-                                        <form action="{{ route('language.delete', $language->id) }}" class="d-inline" method="POST">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button data-toggle="tooltip" data-placement="top"
-                                            title="{{ __('delete_language') }}"
-                                            onclick="return confirm('{{ __('Are you sure want to delete this item?') }}');"
-                                            class="btn bg-danger"><i class="fas fa-trash"></i></button>
-                                        </form>
+                                        @endif
+                                        @if (userCan('setting.update'))
+                                            <a href="{{ route('language.edit', $language->id) }}" class="btn btn-info mt-0 mr-2"><i class="fas fa-edit"></i></a>
+                                            <form action="{{ route('language.delete', $language->id) }}" class="d-inline" method="POST">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button data-toggle="tooltip" data-placement="top"
+                                                title="{{ __('delete_language') }}"
+                                                onclick="return confirm('{{ __('Are you sure want to delete this item?') }}');"
+                                                class="btn bg-danger"><i class="fas fa-trash"></i></button>
+                                            </form>
+                                        @endif
                                     </td>
                                 </tr>
                                 @empty
                                 <tr>
                                     <td colspan="10" class="text-center">
-                                        <x-admin.not-found word="language" route="language.create" />
+                                        @if (userCan('setting.update'))
+                                            <x-admin.not-found word="language" route="language.create" />
+                                        @else
+                                            <x-admin.not-found word="language" route="" />
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforelse

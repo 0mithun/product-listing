@@ -13,7 +13,7 @@
                       <label class="form-check-label" for="commingsoon_mode">{{ __('comming_soon_mode') }}</label>
                     </div>
                 </div>
-
+                @if (userCan('setting.update'))
                 <div class="row">
                     <div class="col-4">
                         <div class="mb-3">
@@ -21,6 +21,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </form>
         </div>
     </div>
@@ -40,6 +41,7 @@
                         </span>
                     </span>
                 </div>
+                @if (userCan('setting.update'))
                 <div class="row">
                     <div class="col-4">
                         <div class="mb-3">
@@ -47,6 +49,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </form>
         </div>
     </div>
@@ -61,6 +64,7 @@
                       <label class="form-check-label" for="search_engine_indexing">{{ __('search_engine_ndexing') }}</label>
                     </div>
                 </div>
+                @if (userCan('setting.update'))
                 <div class="row">
                     <div class="col-4">
                         <div class="mb-3">
@@ -68,6 +72,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </form>
         </div>
     </div>
@@ -82,6 +87,7 @@
                       <label class="form-check-label" for="google_analytics">{{ __('google_nalytics') }}</label>
                     </div>
                 </div>
+                @if (userCan('setting.update'))
                 <div class="row">
                     <div class="col-4">
                         <div class="mb-3">
@@ -89,6 +95,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </form>
         </div>
     </div>
@@ -103,6 +110,7 @@
                       <label class="form-check-label" for="facebook_pixel">{{ __('facebook_pixels') }}</label>
                     </div>
                 </div>
+                @if (userCan('setting.update'))
                 <div class="row">
                     <div class="col-4">
                         <div class="mb-3">
@@ -110,6 +118,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </form>
         </div>
     </div>

@@ -42,9 +42,11 @@
                                     <span class="invalid-feedback d-block" role="alert"> <strong>{{ $message }}</strong> </span>
                                 @enderror
                             </div>
+                            @if (userCan('setting.update'))
                             <div class="form-group">
                                 <button class="btn btn-primary">{{ __('update') }}</button>
                             </div>
+                            @endif
                         </form>
                     </div>
                 </div>
