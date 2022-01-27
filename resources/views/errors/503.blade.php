@@ -1,5 +1,5 @@
 <!doctype html>
-<title>Site Maintenance</title>
+<title>{{ __('site_maintenance') }}</title>
 <style>
   body { text-align: center; padding: 150px; }
   h1 { font-size: 50px; }
@@ -10,9 +10,9 @@
 </style>
 
 <article>
-    <h1>We&rsquo;ll be back soon!</h1>
+    <h1>{{ __('we_will_be_back_soon') }}</h1>
     <div>
-        <p>Sorry for the inconvenience but we&rsquo;re performing some maintenance at the moment. If you need to you can always <a href="mailto:#">contact us</a>, otherwise we&rsquo;ll be back online shortly!</p>
-        <p>&mdash; The Team</p>
+        <p>{{ __('sorry_for_the_inconvenience') }}<a href="mailto:#">{{ __('contact_us') }}</a>, {{ __('otherwise_we_will_be_back_online_shortly') }}</p>
+        <p>{!! __('dash_team') !!}</p>
     </div>
 </article>

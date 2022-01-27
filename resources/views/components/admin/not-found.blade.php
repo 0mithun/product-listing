@@ -6,9 +6,9 @@ $plural = Str::plural($word, 2);
     <div class="empty-img">
         <img src="{{ asset('backend/image') }}/not-found.svg" height="128" alt="">
     </div>
-    <h5 class="mt-4">No results found</h5>
+    <h5 class="mt-4">{{ __('no_results_found') }}</h5>
     <p class="empty-subtitle text-muted">
-        There is no {{ strtolower($plural) }} found in this page.
+        {{ __('there_is_no') }} {{ strtolower($plural) }} {{__('found_in_this_page')}}
     </p>
     <div class="empty-action">
         @if ($route !== '')
@@ -19,7 +19,7 @@ $plural = Str::plural($word, 2);
                 <line x1="12" y1="5" x2="12" y2="19"></line>
                 <line x1="5" y1="12" x2="19" y2="12"></line>
             </svg>
-            Add your first {{ strtolower($singuler) }}
+            {{ __('add_your_first') }} {{ strtolower($singuler) }}
             </a>
         @endif
     </div>

@@ -1,6 +1,6 @@
 @component('mail::message')
-# Congrats your email successfully sent
+# {{ __('congrats_your_email_successfully_sent') }}
 
-Thanks,<br>
+{{ __('thanks')}} <br>
 {{ config('app.name') }}
 @endcomponent

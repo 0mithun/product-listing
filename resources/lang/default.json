@@ -182,6 +182,20 @@
     "facebook_pixel_id": "Facebook Pixel ID",
     "member_since": "Member since",
     "zakir_soft": "Zakir Soft",
-    "log_in":"Log In"
+    "log_in":"Log In",
+    "no_results_found":"No results found",
+    "there_is_no":"There is no",
+    "found_in_this_page":"found in this page.",
+    "add_your_first":"Add your first",
+    "site_maintenance":"Site Maintenance",
+    "we_will_be_back_soon":"We will be back soon!",
+    "contact_us":"Contact Us",
+    "dash_team":"&mdash; The Team",
+    "otherwise_we_will_be_back_online_shortly":"otherwise we will be back online shortly!",
+    "sorry_for_the_inconvenience":"Sorry for the inconvenience but we&rsquo;re performing some maintenance at the moment. If you need to you can always ",
+    "site_commingsoon":"Site Commingsoon",
+    "commingsoon":"Comming soon!",
+    "congrats_your_email_successfully_sent":"Congrats your email successfully sent",
+    "thanks":"Thanks"
 
 }
