@@ -54,7 +54,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('settings/layout', [SettingsController::class, 'layout'])->name('settings.layout');
     Route::put('settings/layout', [SettingsController::class, 'layoutUpdate'])->name('settings.layout.update');
 
-    Route::put('settings/layout', [SettingsController::class, 'modeUpdate'])->name('settings.mode.update');
+    Route::put('settings/mode', [SettingsController::class, 'modeUpdate'])->name('settings.mode.update');
 
     Route::get('settings/color', [SettingsController::class, 'color'])->name('settings.color');
     Route::put('settings/color', [SettingsController::class, 'colorUpdate'])->name('settings.color.update');
