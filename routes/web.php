@@ -4,25 +4,28 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\SocialLoginController;
-
+use App\Http\Controllers\FrontendController;
 
 Route::middleware(['frontend_setlang'])->group(function () {
 
-    Route::get('/', function () {
-        return view('welcome');
-    });
-    Route::get('/home', function(){
-        return view('home');
-    })->name('home');
+    Route::get('/', [FrontendController::class, 'index'])->name('index');
+    Route::get('/faq', [FrontendController::class, 'faq'])->name('faq');
+    Route::get('/about', [FrontendController::class, 'about'])->name('about');
+    Route::get('/gallery', [FrontendController::class, 'gallery'])->name('gallery');
+    Route::get('/details', [FrontendController::class, 'productDetails'])->name('product.details');
 
-    Auth::routes();
+    // Route::get('/home', function(){
+    //     return view('home');
+    // })->name('home');
 
-    Route::get('/lang/{lang}', function($lang){
-        session()->put('frontend_lang', $lang);
-        app()->setLocale($lang);
+    // Auth::routes();
 
-        return back();
-    });
+    // Route::get('/lang/{lang}', function($lang){
+    //     session()->put('frontend_lang', $lang);
+    //     app()->setLocale($lang);
+
+    //     return back();
+    // });
 
 });
 
@@ -61,6 +64,6 @@ Route::get('auth/{provider}/callback', [SocialLoginController::class, 'callback'
 
 
 
-Route::fallback(function () {
-    return 'Not found';
-});
+// Route::fallback(function () {
+//     return 'Not found';
+// });

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Setting;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,8 +28,12 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
 
-        $setting = Setting::first();
-        view()->share('setting', $setting);
-        session()->put('commingsoon_mode', $setting->commingsoon_mode);
+        if (Schema::hasTable('settings')) {
+            // The "settings" table exists...
+            $setting = Setting::first();
+            view()->share('setting', $setting);
+            session()->put('commingsoon_mode', $setting->commingsoon_mode);
+        }
+
     }
 }
