@@ -312,12 +312,58 @@ a2a_config.icon_color="transparent,#6d6d6d";
 
 
 <script>
-    $('document').ready(function() {
-            $('.navbar-toggler').click(function() {
-                $("#top-menu").toggle('collapse');
-            });
 
-    });
+$('document').ready(function() {
+		$('.navbar-toggler').click(function() {
+			$("#top-menu").toggle('collapse');
+		});
+    	/*$('.dropdown-toggle').mouseenter(function() {
+			$(this).next("ul").toggle('collapse');
+		});*/
+
+      //  alert('Work in Progress');
+
+
+     /*   let dropdowns = document.querySelectorAll('.dropdown-toggle')
+        dropdowns.forEach((dd)=>{
+            dd.addEventListener('mouseenter', function (e) {
+                var el = this.nextElementSibling
+                el.style.display = el.style.display==='block'?'none':'block'
+            })
+
+             dd.addEventListener('mouseleave', function (e) {
+                var el2 = this.nextElementChild
+                el2.style.display = 'none'
+            })
+        })
+
+
+/*$('nav > ul > li').mouseenter(function(e){
+    $('.nav-dropdown').hide();
+    $(this).next('.nav-dropdown').slideToggle();
+    e.stopPropagation();
+});*/
+/*$('nav ul li > a:not(.only-child)').mouseleave(function(e) {
+    $(this).siblings('.nav-dropdown').slideToggle();
+    e.stopPropagation();
+})
+$('html:not(.dropdown-toggle)').mouseenter(function(){
+    $('.nav-dropdown').hide();
+    alert();
+});*/
+/*
+$('#nav-toggle').click(function() {
+    $('nav ul').slideToggle();
+});
+
+$('#nav-toggle').on('click', function() {
+    this.classList.toggle('active');
+});
+*/
+
+
+});
+
 </script>
 
 <style>
@@ -401,6 +447,10 @@ a2a_config.icon_color="transparent,#6d6d6d";
 
 	var yith_magnifier_options = {
 		enableSlider: false,
+
+
+
+
 		showTitle: false,
 		zoomWidth: 'auto',
 		zoomHeight: 'auto',
@@ -532,3 +582,98 @@ a2a_config.icon_color="transparent,#6d6d6d";
 </body>
 
 </html>
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="pswp__bg"></div>
+	<div class="pswp__scroll-wrap">
+		<div class="pswp__container">
+			<div class="pswp__item"></div>
+			<div class="pswp__item"></div>
+			<div class="pswp__item"></div>
+		</div>
+		<div class="pswp__ui pswp__ui--hidden">
+			<div class="pswp__top-bar">
+				<div class="pswp__counter"></div>
+				<button class="pswp__button pswp__button--close" aria-label="Close (Esc)"></button>
+				<button class="pswp__button pswp__button--share" aria-label="Share"></button>
+				<button class="pswp__button pswp__button--fs" aria-label="Toggle fullscreen"></button>
+				<button class="pswp__button pswp__button--zoom" aria-label="Zoom in/out"></button>
+				<div class="pswp__preloader">
+					<div class="pswp__preloader__icn">
+						<div class="pswp__preloader__cut">
+							<div class="pswp__preloader__donut"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+				<div class="pswp__share-tooltip"></div>
+			</div>
+			<button class="pswp__button pswp__button--arrow--left" aria-label="Previous (arrow left)"></button>
+			<button class="pswp__button pswp__button--arrow--right" aria-label="Next (arrow right)"></button>
+			<div class="pswp__caption">
+				<div class="pswp__caption__center"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<link rel='stylesheet' id='dashicons-css'  href='https://hummingbird-ad.com/wp-includes/css/dashicons.min.css?ver=5.9.2' type='text/css' media='all' />
+<style id='dashicons-inline-css' type='text/css'>
+[data-font="Dashicons"]:before {font-family: 'Dashicons' !important;content: attr(data-icon) !important;speak: none !important;font-weight: normal !important;font-variant: normal !important;text-transform: none !important;line-height: 1 !important;font-style: normal !important;-webkit-font-smoothing: antialiased !important;-moz-osx-font-smoothing: grayscale !important;}
+</style>
+<link rel='stylesheet' id='nf-display-css'  href='https://hummingbird-ad.com/wp-content/plugins/ninja-forms/assets/css/display-opinions-light.css?ver=5.9.2' type='text/css' media='all' />
+<link rel='stylesheet' id='nf-font-awesome-css'  href='https://hummingbird-ad.com/wp-content/plugins/ninja-forms/assets/css/font-awesome.min.css?ver=5.9.2' type='text/css' media='all' />
+<script type='text/javascript' src='https://hummingbird-ad.com/wp-content/plugins/woocommerce-payments/vendor/woocommerce/subscriptions-core/assets/js/frontend/single-product.js?ver=3.1.6' id='wcs-single-product-js'></script>
+<script type='text/javascript' src='https://hummingbird-ad.com/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.6.3.1' id='jquery-blockui-js'></script>
+<script type='text/javascript' id='wc-add-to-cart-js-extra'>
+/* <![CDATA[ */
+var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"View cart","cart_url":"https:\/\/hummingbird-ad.com\/cart\/","is_cart":"","cart_redirect_after_add":"no"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://hummingbird-ad.com/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=6.3.1' id='wc-add-to-cart-js'></script>
+<script type='text/javascript' src='https://hummingbird-ad.com/wp-content/plugins/woocommerce/assets/js/flexslider/jquery.flexslider.min.js?ver=2.7.2-wc.6.3.1' id='flexslider-js'></script>
+<script type='text/javascript' src='https://hummingbird-ad.com/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe.min.js?ver=4.1.1-wc.6.3.1' id='photoswipe-js'></script>
+<script type='text/javascript' src='https://hummingbird-ad.com/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe-ui-default.min.js?ver=4.1.1-wc.6.3.1' id='photoswipe-ui-default-js'></script>
+<script type='text/javascript' id='wc-single-product-js-extra'>
+/* <![CDATA[ */
+var wc_single_product_params = {"i18n_required_rating_text":"Please select a rating","review_rating_required":"yes","flexslider":{"rtl":false,"animation":"slide","smoothHeight":true,"directionNav":false,"controlNav":"thumbnails","slideshow":false,"animationSpeed":500,"animationLoop":false,"allowOneSlide":false},"zoom_enabled":"","zoom_options":[],"photoswipe_enabled":"1","photoswipe_options":{"shareEl":false,"closeOnScroll":false,"history":false,"hideAnimationDuration":0,"showAnimationDuration":0},"flexslider_enabled":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://hummingbird-ad.com/wp-content/plugins/woocommerce/assets/js/frontend/single-product.min.js?ver=6.3.1' id='wc-single-product-js'></script>
+<script type='text/javascript' src='https://hummingbird-ad.com/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4-wc.6.3.1' id='js-cookie-js'></script>
+<script type='text/javascript' id='woocommerce-js-extra'>
+/* <![CDATA[ */
+var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://hummingbird-ad.com/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=6.3.1' id='woocommerce-js'></script>
+<script type='text/javascript' id='wc-cart-fragments-js-extra'>
+/* <![CDATA[ */
+var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","cart_hash_key":"wc_cart_hash_81c16365f42a8f7bc54cc9e30870a396","fragment_name":"wc_fragments_81c16365f42a8f7bc54cc9e30870a396","request_timeout":"5000"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://hummingbird-ad.com/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=6.3.1' id='wc-cart-fragments-js'></script>
+<script type='text/javascript' src='https://hummingbird-ad.com/wp-content/plugins/woocommerce/assets/js/prettyPhoto/jquery.prettyPhoto.min.js?ver=3.1.6-wc.6.3.1' id='prettyPhoto-js'></script>
+<script type='text/javascript' id='ywzm-magnifier-js-extra'>
+/* <![CDATA[ */
+var yith_wc_zoom_magnifier_storage_object = {"ajax_url":"https:\/\/hummingbird-ad.com\/wp-admin\/admin-ajax.php","mouse_trap_width":"100%","mouse_trap_height":"100%","stop_immediate_propagation":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://hummingbird-ad.com/wp-content/plugins/yith-woocommerce-zoom-magnifier/assets/js/yith_magnifier.min.js?ver=2.1.1' id='ywzm-magnifier-js'></script>
+<script type='text/javascript' id='ywzm_frontend-js-extra'>
+/* <![CDATA[ */
+var ywzm_data = {"slider_colors_array":{"background":" #ffffff","border":"#000000","arrow":"#000000"},"slider_colors_hover_array":{"background":" #ffffff","border":"#000000","arrow":"#000000"}};
+var ywzm_prettyphoto_data = [];
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://hummingbird-ad.com/wp-content/plugins/yith-woocommerce-zoom-magnifier/assets/js/ywzm_frontend.min.js?ver=2.1.1' id='ywzm_frontend-js'></script>
+<script type='text/javascript' src='https://hummingbird-ad.com/wp-content/plugins/yith-woocommerce-zoom-magnifier/assets/js/init.prettyPhoto.js?ver=5.9.2' id='yith-ywzm-prettyPhoto-init-js'></script>
+<script type='text/javascript' src='https://hummingbird-ad.com/wp-content/plugins/wp-smushit/app/assets/js/smush-lazy-load.min.js?ver=3.9.5' id='smush-lazy-load-js'></script>
+<script type='text/javascript' src='https://hummingbird-ad.com/wp-includes/js/underscore.min.js?ver=1.13.1' id='underscore-js'></script>
+<script type='text/javascript' src='https://hummingbird-ad.com/wp-includes/js/backbone.min.js?ver=1.4.0' id='backbone-js'></script>
+<script type='text/javascript' src='https://hummingbird-ad.com/wp-content/plugins/ninja-forms/assets/js/min/front-end-deps.js?ver=3.6.9' id='nf-front-end-deps-js'></script>
+
+
+
+
+
