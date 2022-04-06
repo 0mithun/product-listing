@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
+
+
 @section('content')
+{{-- {{ $products[0]->getFirstMedia('gallery')->img('',  ['class'=>'red', 'id'=>'ok'])  }} --}}
 
 <section class="page">
     <div class="container ntp">
@@ -19,16 +22,20 @@
 
                                                 <div class="n2-ss-slide-backgrounds n2-ow-all">
                                                     @foreach ($products as $product)
+                                                        @php
+                                                            // echo ($product->getFirstMedia('products'))
+                                                        @endphp
                                                         <div class="n2-ss-slide-background" data-public-id="{{ $loop->iteration }}"
                                                             data-mode="fill">
                                                             <div class="n2-ss-slide-background-image" data-blur="0"
                                                                 data-opacity="100" data-x="50" data-y="50" data-alt=""
                                                                 data-title="">
-                                                                <picture class="skip-lazy" data-skip-lazy="1"><img
-                                                                        src="https://source.unsplash.com/random"
+                                                                {{-- <picture class="skip-lazy" data-skip-lazy="1"><img
+                                                                        src="{{ $product->getMedia('gallery')[0]->getFullUrl() }}"
                                                                         alt="" title="" loading="lazy"
                                                                         class="skip-lazy" data-skip-lazy="1">
-                                                                </picture>
+                                                                </picture> --}}
+                                                                {{ $product->getFirstMedia('gallery')->img('',  ['class'=>'skip-lazy', 'data-skip-lazy'=> 1])  }}
                                                             </div>
                                                             <div data-color="RGBA(255,255,255,0)"
                                                                 style="background-color: RGBA(255,255,255,0);"
