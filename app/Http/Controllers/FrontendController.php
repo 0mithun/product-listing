@@ -55,7 +55,9 @@ class FrontendController extends Controller
      */
     public function gallery()
     {
-        return view('gallery')->with('page_name', 'Gallery');
+        $products = Product::paginate(20);
+
+        return view('gallery', compact('products'))->with('page_name', 'Gallery');
     }
 
 
@@ -66,9 +68,9 @@ class FrontendController extends Controller
      *
      * @return void
      */
-    public function productDetails()
+    public function productDetails(Product $product)
     {
-        return view('product-details')->with('page_name', 'Product Details');
+        return view('product-details', compact('product'))->with('page_name', 'Product Details');
     }
 
 

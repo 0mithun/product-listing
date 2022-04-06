@@ -13,7 +13,7 @@ Route::middleware(['frontend_setlang'])->group(function () {
     Route::get('/faq', [FrontendController::class, 'faq'])->name('faq');
     Route::get('/about', [FrontendController::class, 'about'])->name('about');
     Route::get('/gallery', [FrontendController::class, 'gallery'])->name('gallery');
-    Route::get('/details', [FrontendController::class, 'productDetails'])->name('product.details');
+    Route::get('/details/{product:slug}', [FrontendController::class, 'productDetails'])->name('product.details');
 
     // Route::get('/home', function(){
     //     return view('home');
