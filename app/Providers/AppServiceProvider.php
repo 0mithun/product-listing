@@ -31,8 +31,10 @@ class AppServiceProvider extends ServiceProvider
         if (Schema::hasTable('settings')) {
             // The "settings" table exists...
             $setting = Setting::first();
-            view()->share('setting', $setting);
-            session()->put('commingsoon_mode', $setting->commingsoon_mode);
+            if($setting){
+                view()->share('setting', $setting);
+                session()->put('commingsoon_mode', $setting->commingsoon_mode);
+            }
         }
 
     }

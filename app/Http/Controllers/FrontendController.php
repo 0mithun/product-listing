@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -15,7 +16,9 @@ class FrontendController extends Controller
      */
     public function index()
     {
-        return view('index')->with('page_name', 'Home');
+        $products = Product::limit(5)->get();
+
+        return view('index', compact('products'))->with('page_name', 'Home');
     }
 
 

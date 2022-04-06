@@ -18,7 +18,25 @@
                                             <div class="n2-ss-slider-3 n2-ow" style="">
 
                                                 <div class="n2-ss-slide-backgrounds n2-ow-all">
-                                                    <div class="n2-ss-slide-background" data-public-id="1"
+                                                    @foreach ($products as $product)
+                                                        <div class="n2-ss-slide-background" data-public-id="{{ $loop->iteration }}"
+                                                            data-mode="fill">
+                                                            <div class="n2-ss-slide-background-image" data-blur="0"
+                                                                data-opacity="100" data-x="50" data-y="50" data-alt=""
+                                                                data-title="">
+                                                                <picture class="skip-lazy" data-skip-lazy="1"><img
+                                                                        src="https://source.unsplash.com/random"
+                                                                        alt="" title="" loading="lazy"
+                                                                        class="skip-lazy" data-skip-lazy="1">
+                                                                </picture>
+                                                            </div>
+                                                            <div data-color="RGBA(255,255,255,0)"
+                                                                style="background-color: RGBA(255,255,255,0);"
+                                                                class="n2-ss-slide-background-color"></div>
+                                                        </div>
+                                                    @endforeach
+
+                                                    {{-- <div class="n2-ss-slide-background" data-public-id="1"
                                                         data-mode="fill">
                                                         <div class="n2-ss-slide-background-image" data-blur="0"
                                                             data-opacity="100" data-x="50" data-y="50" data-alt=""
@@ -32,8 +50,8 @@
                                                         <div data-color="RGBA(255,255,255,0)"
                                                             style="background-color: RGBA(255,255,255,0);"
                                                             class="n2-ss-slide-background-color"></div>
-                                                    </div>
-                                                    <div class="n2-ss-slide-background" data-public-id="2"
+                                                    </div> --}}
+                                                    {{-- <div class="n2-ss-slide-background" data-public-id="2"
                                                         data-mode="fill">
                                                         <div class="n2-ss-slide-background-image" data-blur="0"
                                                             data-opacity="100" data-x="50" data-y="50" data-alt=""
@@ -62,13 +80,28 @@
                                                         <div data-color="RGBA(255,255,255,0)"
                                                             style="background-color: RGBA(255,255,255,0);"
                                                             class="n2-ss-slide-background-color"></div>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
+
                                                 <div class="n2-ss-slider-4 n2-ow">
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 600"
                                                         data-related-device="desktopPortrait"
                                                         class="n2-ow n2-ss-preserve-size n2-ss-preserve-size--slider n2-ss-slide-limiter"></svg>
-                                                    <div data-first="1" data-slide-duration="0" data-id="26"
+
+                                                    @foreach ($products as $product)
+                                                        <div data-first="1" data-slide-duration="0" data-id="{{ $product->id }}"
+                                                            data-slide-public-id="{{ $loop->iteration }}" data-title="photo (411)"
+                                                            class="n2-ss-slide n2-ow  n2-ss-slide-{{ $product->id }}">
+                                                            <div role="note" class="n2-ss-slide--focus" tabindex="-1">
+                                                                photo (411)</div>
+                                                            <div
+                                                                class="n2-ss-layers-container n2-ss-slide-limiter n2-ow">
+                                                                <div class="n2-ss-layer n2-ow n-uc-jybtiwGlCjlI"
+                                                                    data-sstype="slide" data-pm="default"></div>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                    {{-- <div data-first="1" data-slide-duration="0" data-id="26"
                                                         data-slide-public-id="1" data-title="photo (411)"
                                                         class="n2-ss-slide n2-ow  n2-ss-slide-26">
                                                         <div role="note" class="n2-ss-slide--focus" tabindex="-1">
@@ -78,8 +111,8 @@
                                                             <div class="n2-ss-layer n2-ow n-uc-jybtiwGlCjlI"
                                                                 data-sstype="slide" data-pm="default"></div>
                                                         </div>
-                                                    </div>
-                                                    <div data-slide-duration="0" data-id="37"
+                                                    </div> --}}
+                                                    {{-- <div data-slide-duration="0" data-id="37"
                                                         data-slide-public-id="2" data-title="photo (374)"
                                                         class="n2-ss-slide n2-ow  n2-ss-slide-37">
                                                         <div role="note" class="n2-ss-slide--focus" tabindex="-1">
@@ -100,7 +133,7 @@
                                                             <div class="n2-ss-layer n2-ow n-uc-XK5t9de1C4Q0"
                                                                 data-sstype="slide" data-pm="default"></div>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
 
                                             </div>

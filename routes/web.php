@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\SocialLoginController;
 use App\Http\Controllers\FrontendController;
+use App\Models\Category;
 
 Route::middleware(['frontend_setlang'])->group(function () {
 
@@ -26,6 +27,11 @@ Route::middleware(['frontend_setlang'])->group(function () {
 
     //     return back();
     // });
+
+    Route::get('/category', function(){
+        $categories =  Category::tree()->get()->toTree();
+        return view('test', compact('categories'));
+    });
 
 });
 
