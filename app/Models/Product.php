@@ -21,23 +21,6 @@ class Product extends Model implements HasMedia
         parent::boot();
         static::created(function($product){
             $product->update(['slug'=> Str::slug($product->title)]);
-
-            // for($i = 0; $i < mt_rand(3, 8); $i++){
-
-            //     $url = 'https://source.unsplash.com/random/300×300';
-            //     $product
-            //     ->addMediaFromUrl($url)
-            //     ->toMediaCollection('gallery')
-            //     // ->toMediaCollection('thumb')
-            //     ;
-
-            //     $url = 'https://source.unsplash.com/random/300×300';
-            //     $product
-            //     ->addMediaFromUrl($url)
-            //     ->toMediaCollection('thumb')
-            //     ;
-            // }
-
         });
     }
 
@@ -48,9 +31,9 @@ class Product extends Model implements HasMedia
             $this->addMediaCollection('gallery')
                 ->withResponsiveImages()
                 ;
-            $this->addMediaCollection('thumb')
-                // ->singleFile()
-            ;
+            // $this->addMediaCollection('thumb')
+            //     // ->singleFile()
+            // ;
         }
 
 

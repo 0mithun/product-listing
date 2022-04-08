@@ -22,7 +22,7 @@
 
                                     <img width="300" height="300" alt=""
                                         class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazyloaded"
-                                        src="{{ $product->getFirstMediaUrl('thumb') }}"
+                                        src="{{ $product->getFirstMediaUrl('gallery', 'thumb') }}"
 
                                     >
 

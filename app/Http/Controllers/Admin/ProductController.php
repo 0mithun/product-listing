@@ -141,6 +141,11 @@ class ProductController extends Controller
         ->withCustomProperties(['alt' => $request->alt])
         ->toMediaCollection('gallery')
         ;
+        // $product
+        // ->addMedia($request->image)
+        // ->withCustomProperties(['alt' => $request->alt])
+        // ->toMediaCollection('thumb')
+        // ;
 
         return redirect()->route('product.images', $product->slug)->with('success', 'Product image add successfully!');
     }
@@ -157,10 +162,12 @@ class ProductController extends Controller
 
         // return $image;
         try {
-            $images  = $product->getMedia('gallery');
+            $gallery  = $product->getMedia('gallery');
+            // $thumb  = $product->getMedia('thumb');
 
-            // dd($images);
-            $images[$image]->delete();
+
+            $gallery[$image]->delete();
+            // $gallery[$image]->delete();
 
             return redirect()->route('product.images', $product->slug)->with('success', 'Product image delete successfully!');
         } catch (Exception $e) {

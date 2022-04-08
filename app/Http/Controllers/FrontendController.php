@@ -57,6 +57,9 @@ class FrontendController extends Controller
     {
         $products = Product::paginate(20);
 
+        $product = Product::find(6);
+
+
         return view('gallery', compact('products'))->with('page_name', 'Gallery');
     }
 
