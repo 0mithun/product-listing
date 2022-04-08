@@ -28,8 +28,13 @@ class Category extends Model
     {
         return [
             [
-                'name' => 'slug_path',
+                'name' => 'name_path',
                 'column' => 'name',
+                'separator' => '/',
+            ],
+            [
+                'name' => 'slug_path',
+                'column' => 'slug',
                 'separator' => '/',
             ],
         ];

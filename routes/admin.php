@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\Auth\ResetPasswordController;
+use App\Http\Controllers\Admin\CatetgoryController;
 use App\Http\Controllers\Admin\SocialiteController;
 
 /**
@@ -43,6 +44,7 @@ Route::middleware(['auth:admin'])->group(function () {
 
     //Users Route
     Route::resource('user', UserController::class);
+    Route::resource('categories', CatetgoryController::class)->except('show');
 
 
     // ========================================================
