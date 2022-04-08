@@ -47,7 +47,7 @@ class ProductController extends Controller
     {
         $product = Product::create($request->only(['category_id', 'title', 'description', 'dimension', 'origin', 'price', 'metadata']));
 
-        return redirect()->route('products.index')->with('success', 'Product create successfully!');
+        return redirect()->route('product.images', $product->slug)->with('success', 'Product create successfully!');
     }
 
     /**
@@ -91,7 +91,7 @@ class ProductController extends Controller
 
        $product->update($request->only(['category_id', 'title', 'description', 'dimension', 'origin', 'price', 'metadata']) + ['slug'=> Str::slug($request->title)]);
 
-       return redirect()->route('products.index')->with('success', 'Product update successfully!');
+       return redirect()->route('product.images', $product->slug)->with('success', 'Product update successfully!');
     }
 
     /**

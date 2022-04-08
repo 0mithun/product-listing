@@ -31,6 +31,7 @@
                                                                         alt="" title="" loading="lazy"
                                                                         class="skip-lazy" data-skip-lazy="1">
                                                                 </picture> --}}
+
                                                                 {{ $product->getFirstMedia('gallery')->img('',  ['class'=>'skip-lazy', 'data-skip-lazy'=> 1])  }}
                                                             </div>
                                                             <div data-color="RGBA(255,255,255,0)"
@@ -294,4 +295,13 @@
     <link rel="stylesheet" type="text/css"
         href="{{ asset('plugins') }}/smart-slider/css/smartslider.min.css?ver=4180a0be"
         media="all">
+
+        <style>
+                    .n2-ss-slider .n2-ss-slide-background-image img {
+                width: 100%!important;
+                height: 100%!important;
+                object-fit: contain;
+                color: RGBA(0,0,0,0);
+}
+        </style>
 @endpush
