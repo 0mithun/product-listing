@@ -32,7 +32,7 @@ blockquote strong, blockquote cite{color:#333;font-weight:bold;}
 hr{background:#ccc;border:0;height:1px;}
 
 button {padding:10px 20px;}
-button, input[type="button"], button[type="submit"], 
+button, input[type="button"], button[type="submit"],
 .wp-block-button__link{padding:10px 20px;color:#fff;font-size:.8rem !important;font-weight:600;text-transform:uppercase;margin:1em 0;display:block;background:#333;border:0;letter-spacing:1px;}
 input[type="button"]{color:#fff;background:#333;border:0;}
 button a{color:#fff;}
@@ -45,7 +45,7 @@ input, textarea, select{padding: 10px;height: auto;font-size:.8rem;}
 .text-left p.btn, .text-left p.btn a {margin:20px 0;padding:0;display:inline-block;}
 
 /* NF */
-.nf-form-fields-required, .nf-error .nf-error-msg, 
+.nf-form-fields-required, .nf-error .nf-error-msg,
 .nf-error.field-wrap .nf-field-element:after,
 .nf-pass.field-wrap .nf-field-element:after
 {display:none;}
@@ -126,7 +126,7 @@ ol.flex-control-nav.flex-control-thumbs li {list-style: none; padding: 0 3px 6px
 /*Archive */
 article{padding-bottom:10px;margin-bottom:3vh;}
 article.card{margin-bottom:5em;}
-article.main img{width:100%;}	  
+article.main img{width:100%;}
 article img{height:auto;width:auto;max-height: 200px; max-width: 100%;}
 artcle img:hover{opacity: 0.9;}
 article h3{font-size:.9rem;margin:10px auto 10px;max-width:200px;}
@@ -171,7 +171,21 @@ iframe{max-width:100%;}
 	.dropdown-submenu.dropdown-menu{top:0;}
 	.dropdown-submenu{top:0;left:100%;padding:0;margin:0;list-style:none;}
 	.dropdown-item:focus, .dropdown-item:hover {background:none;text-decoration:underline;color:inherit;}
-	.dropdown:hover .dropdown-menu, .dropdown2:hover .dropdown-submenu{display:block !important;}
+
+	.dropdown:hover .dropdown-menu, .dropdown2:hover > .dropdown-submenu{
+        display:block !important;
+    }
+
+	 .dropdown-submenu li:hover > .dropdown-submenu{
+        display:block !important;
+    }
+
+    .dropdown2 {
+        position: relative;
+    }
+    .dropdown-submenu li {
+        position: relative;
+    }
 	header .container {border-bottom: 1px solid #999;  padding: 20px 0 30px;}
 	.navbar-toggler{display:none;}
 	.header{padding:15px 15px 30px;}

@@ -4,12 +4,10 @@
     <div class="container" style="padding-top:0px; padding-bottom:0px;">
         <div class="row">
             <div class="col-md-12">
+                <p id="breadcrumbs">
+                    {!! nestedPathPrintWithLink($category->name_path) !!}
+                </p>
 
-                <p id="breadcrumbs"><span><span><a href="https://hummingbird-ad.com/">Home</a> › <span><a
-                                    href="https://hummingbird-ad.com/gallery/">Gallery</a> › <span><a
-                                        href="https://hummingbird-ad.com/collections/vases/">Vases</a> › <strong
-                                        class="breadcrumb_last" aria-current="page">Anchovy Pattern Sphere
-                                        Vase</strong></span></span></span></span></p>
             </div>
         </div>
     </div>
@@ -91,8 +89,9 @@
 
                         </div>
                         <div class="col-md-5 col-sm-6 col-xs-12 product-desc ">
+
                             <h2>{{ $product->title }}</h2>
-                            {{ $product->description  }}
+                            {!! $product->description  !!}
                             <ul class="details"><small>
                                     <li><strong>Dimensions - </strong>{{ $product->dimension }}</li>
                                     <li>

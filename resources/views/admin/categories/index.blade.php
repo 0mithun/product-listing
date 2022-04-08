@@ -36,7 +36,7 @@ $user = auth()->user();
                                     <td class="text-center">{{ $category->name }}</td>
                                     <td class="text-center">
                                         {{-- {!!  nestedPathPrint($category->name_path) !!} --}}
-                                        {{ nestedPathRemoveLast($category->name_path)  }}
+                                        {{ nestedPathRemoveLast($category)  }}
                                     </td>
                                     {{-- @if (userCan('category.update') || userCan('category.delete')) --}}
                                     <td class="text-center">

@@ -4,7 +4,10 @@
     <div class="container" style="padding-top:0px; padding-bottom:0px;">
         <div class="row">
             <div class="col-md-12">
-                <p id="breadcrumbs"><span><span><a href="{{ route('index') }}">Home</a> › <strong class="breadcrumb_last" aria-current="page">Gallery</strong></span></span></p>
+                <p id="breadcrumbs">
+                    {!! nestedPathPrintWithLink($category->name_path) !!}
+                    {{-- <span><span><a href="{{ route('index') }}">Home</a> › <strong class="breadcrumb_last" aria-current="page">Gallery</strong></span></span> --}}
+                </p>
             </div>
         </div>
     </div>

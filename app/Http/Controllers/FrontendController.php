@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -56,11 +57,9 @@ class FrontendController extends Controller
     public function gallery()
     {
         $products = Product::paginate(20);
+        $category = Category::where('id', 1)->tree()->first();
 
-        $product = Product::find(6);
-
-
-        return view('gallery', compact('products'))->with('page_name', 'Gallery');
+        return view('gallery', compact('products', 'category'))->with('page_name', 'Gallery');
     }
 
 
@@ -73,9 +72,17 @@ class FrontendController extends Controller
      */
     public function productDetails(Product $product)
     {
-        return view('product-details', compact('product'))->with('page_name', 'Product Details');
+        $category = Category::where('id', $product->category_id)->tree()->first();
+
+        return view('product-details', compact('product', 'category'))->with('page_name', 'Product Details');
     }
 
 
+    public function getProductByCategory(Category $category)
+    {
+        $products = $category->products()->paginate(20);
+
+        return view('gallery', compact('products'))->with('page_name', 'Gallery');
+    }
 
 }

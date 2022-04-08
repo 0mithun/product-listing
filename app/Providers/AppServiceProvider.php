@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Setting;
+use App\Models\Category;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -35,6 +36,11 @@ class AppServiceProvider extends ServiceProvider
                 view()->share('setting', $setting);
                 session()->put('commingsoon_mode', $setting->commingsoon_mode);
             }
+        }
+        if (Schema::hasTable('categories')) {
+            $category_list = Category::tree()->whereNotNull('parent_id')->get()->toTree();
+
+            view()->share('category_list', $category_list);
         }
 
     }
