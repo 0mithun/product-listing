@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\Auth\ResetPasswordController;
 use App\Http\Controllers\Admin\CatetgoryController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SocialiteController;
 
 /**
@@ -45,6 +46,10 @@ Route::middleware(['auth:admin'])->group(function () {
     //Users Route
     Route::resource('user', UserController::class);
     Route::resource('categories', CatetgoryController::class)->except('show');
+    Route::resource('products', ProductController::class);
+    Route::get('product/images/{slug}', [ProductController::class, 'images'])->name('product.images');
+    Route::post('product/images/{slug}', [ProductController::class, 'imagesAdd'])->name('product.images.add');
+    Route::get('product/images/{slug}/image/{image}', [ProductController::class, 'imagesDelete'])->name('product.images.delete');
 
 
     // ========================================================

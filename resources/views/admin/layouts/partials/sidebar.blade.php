@@ -42,6 +42,11 @@
                         {{ __('categories') }}
                     </x-admin.sidebar-list>
                 {{-- @endif  --}}
+                {{-- @if ($user->can('categories.view') || $user->can('categories.update')) --}}
+                    <x-admin.sidebar-list :linkActive="Request::is('products/*')  ? true : false" route="products.index" icon="fas fa-cog">
+                        {{ __('products') }}
+                    </x-admin.sidebar-list>
+                {{-- @endif  --}}
 
             </ul>
         </nav>

@@ -48,7 +48,7 @@ function reverseNestedPath($string, $seperator = '/'){
     return array_reverse($items);
 }
 
-function nestedPathPrint($string, $seperator = '/', $remove_last = false)
+function nestedPathPrint($string,  $remove_last = false, $seperator = '/')
 {
     $items = explode($seperator, $string);
 
@@ -70,4 +70,12 @@ function nestedPathPrint($string, $seperator = '/', $remove_last = false)
 
     return $formatedString;
 
+}
+
+function nestedPathRemoveLast($string, $seperator = '/'){
+    $items = explode($seperator, $string);
+
+    array_pop($items);
+
+    return implode($seperator, $items);
 }

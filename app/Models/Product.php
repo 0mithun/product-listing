@@ -14,7 +14,7 @@ class Product extends Model implements HasMedia
     use HasFactory, InteractsWithMedia;
 
     protected $fillable  = [
-        'category_id', 'title', 'slug', 'description', 'dimension', 'origin', 'price'
+        'category_id', 'title', 'slug', 'description', 'dimension', 'origin', 'price', 'metadata'
     ];
 
     public static function boot(){
@@ -22,21 +22,21 @@ class Product extends Model implements HasMedia
         static::created(function($product){
             $product->update(['slug'=> Str::slug($product->title)]);
 
-            for($i = 0; $i < mt_rand(3, 8); $i++){
+            // for($i = 0; $i < mt_rand(3, 8); $i++){
 
-                $url = 'https://source.unsplash.com/random/300×300';
-                $product
-                ->addMediaFromUrl($url)
-                ->toMediaCollection('gallery')
-                // ->toMediaCollection('thumb')
-                ;
+            //     $url = 'https://source.unsplash.com/random/300×300';
+            //     $product
+            //     ->addMediaFromUrl($url)
+            //     ->toMediaCollection('gallery')
+            //     // ->toMediaCollection('thumb')
+            //     ;
 
-                $url = 'https://source.unsplash.com/random/300×300';
-                $product
-                ->addMediaFromUrl($url)
-                ->toMediaCollection('thumb')
-                ;
-            }
+            //     $url = 'https://source.unsplash.com/random/300×300';
+            //     $product
+            //     ->addMediaFromUrl($url)
+            //     ->toMediaCollection('thumb')
+            //     ;
+            // }
 
         });
     }
@@ -66,6 +66,11 @@ class Product extends Model implements HasMedia
                 ->width(200)
                 ->height(200)
                 ;
+        }
+
+        public function category()
+        {
+            return $this->belongsTo(Category::class);
         }
 
 

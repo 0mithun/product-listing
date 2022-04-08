@@ -23,12 +23,13 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'category_id'       =>  Category::where('id', '!=', 1)->inRandomOrder()->first()->first()->id,
+            'category_id'       =>  Category::where('id', '!=', 1)->inRandomOrder()->first()->id,
             'title'     =>  $this->faker->unique()->sentence,
             'description'       =>  $this->faker->paragraph(),
             'dimension' =>  $this->faker->name,
             'origin'        =>  $this->faker->country(),
-            'price'     =>  $this->faker->numberBetween(100, 500)
+            'price'     =>  $this->faker->numberBetween(100, 500),
+            'metadata'  =>  $this->faker->paragraph(2)
         ];
     }
 }
