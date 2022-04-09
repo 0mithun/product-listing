@@ -17,6 +17,8 @@ class SettingSeeder extends Seeder
         $setting = new Setting();
         $setting->name = "Site Name";
         $setting->email = "example@mail.com";
+        $setting->about = "lorem255";
+        $setting->copyright_text = "&copy; copyright all right reserved";
         $setting->save();
     }
 }

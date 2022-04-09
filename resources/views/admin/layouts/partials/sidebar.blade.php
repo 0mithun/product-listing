@@ -31,6 +31,12 @@
                         {{ __('dashboard') }}
                     </x-admin.sidebar-list>
                 @endif
+                {{-- @if ($user->can('dashboard.view')) --}}
+                    <x-admin.sidebar-list :linkActive="Route::is('settings.about.update') ? true : false" route="settings.about.update"
+                        icon="fas fa-tachometer-alt">
+                        {{ __('about') }}
+                    </x-admin.sidebar-list>
+                {{-- @endif --}}
 
                 @if ($user->can('setting.view') || $user->can('setting.update'))
                     <x-admin.sidebar-list :linkActive="Request::is('settings/*')  ? true : false" route="settings.website" icon="fas fa-cog">

@@ -45,8 +45,7 @@
             </div>
         </div>
         <div class="row copy">
-            <div class=" col-xs-12"><small style="font-size:11px;">
-                    &copy; 2022&nbsp;Hummingbird Art &amp; Design.</strong> All rights reserved. </small>
+            <div class=" col-xs-12"><small style="font-size:11px;">{!! $setting->copyright_text !!}</small>
             </div>
         </div>
     </div>

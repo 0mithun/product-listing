@@ -107,6 +107,27 @@ class SettingsController extends Controller
      *
      * @return void
      */
+    public function about()
+    {
+        return view('admin.about.index');
+    }
+    /**
+     * Update website layout
+     *
+     * @return void
+     */
+    public function aboutUpdate()
+    {
+        Setting::first()->update(request()->only('about'));
+
+        return back()->with('success', 'About layout upadte successfully!');
+    }
+
+    /**
+     * Update website layout
+     *
+     * @return void
+     */
     public function layoutUpdate()
     {
         Setting::first()->update(request()->only('default_layout'));

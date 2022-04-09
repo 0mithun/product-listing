@@ -3,14 +3,14 @@
 @section('content')
     <section class="page">
         <div class="container ntp">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d53656.50856443947!2d-96.814766!3d32.804672!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e9eb56e4b90dd%3A0x381b048d3f6c2628!2sDallas%2C%20TX%2075219!5e0!3m2!1sen!2sus!4v1649520380601!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            {{ $setting->map_text  }}
             <div class="wp-container-1 wp-block-group">
                 <div class="wp-block-group__inner-container">
                     <div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
-                    <p class="has-text-align-center"><strong>Hummingbird Art <small>&amp;</small> Design is locatedin:</strong></p>
-                    <p class="has-text-align-center">Dallas, Texas 75219 – USA<br><span
-                        style="font-size: inherit;">214.739.3939</span><br><a href="mailto:info@hummingbird-ad.com"
-                        target="_blank" rel="noreferrer noopener">info@hummingbird-ad.com</a></p>
+                    <p class="has-text-align-center"><strong>{{ $setting->name }} is locatedin:</strong></p>
+                    <p class="has-text-align-center">{{ $setting->street }}, {{ $setting->city }} {{ $setting->postal_code }} – {{ $setting->country }}<br><span
+                        style="font-size: inherit;">{{ $setting->phone }}</span><br><a href="{{ $setting->email }}"
+                        target="_blank" rel="noreferrer noopener">{{ $setting->email }}</a></p>
                     <p class="has-text-align-center">HOURS<br>Monday – Saturday from 10:00am – 5:00pm, and by appointment.</p>
                 </div>
             </div>
