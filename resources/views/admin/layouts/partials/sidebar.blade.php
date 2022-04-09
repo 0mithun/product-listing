@@ -48,6 +48,49 @@
                     </x-admin.sidebar-list>
                 {{-- @endif  --}}
 
+                {{-- <x-sidebar-list
+                    :linkActive="Route::is('module.contact.index') || Route::is('module.contact.create') || Route::is('module.contact.edit') ? true : false"
+                    route="module.contact.index" icon="fas fa-circle">
+                    {{ __('contact') }}
+                </x-sidebar-list> --}}
+
+                <x-sidebar-dropdown
+                    :linkActive="Route::is('module.faq.index') || Route::is('module.faq.create') || Route::is('module.faq.edit') ? true : false"
+                    :subLinkActive="Route::is('module.faq.category.index') || Route::is('module.faq.category.create') || Route::is('module.faq.category.edit') || Route::is('module.faq.index') || Route::is('module.faq.create') || Route::is('module.faq.edit') ? true : false"
+                    icon="far fa-list-alt">
+                    @slot('title')
+                    {{ __('others') }}
+                    @endslot
+{{--
+                    @if (Module::collections()->has('Contact') && userCan('contact.view') && $contact_enable)
+                    <ul class="nav nav-treeview">
+                        <x-sidebar-list
+                            :linkActive="Route::is('module.contact.index') || Route::is('module.contact.create') || Route::is('module.contact.edit') ? true : false"
+                            route="module.contact.index" icon="fas fa-circle">
+                            {{ __('contact') }}
+                        </x-sidebar-list>
+                    </ul>
+                    @endif --}}
+                    @if (userCan('faqcategory.view') && $faq_enable)
+                    <ul class="nav nav-treeview">
+                        <x-sidebar-list
+                            :linkActive="Route::is('module.faq.category.index') || Route::is('module.faq.category.create') || Route::is('module.faq.category.edit') ? true : false"
+                            route="module.faq.category.index" icon="fas fa-circle">
+                            {{ __('faq_category') }}
+                        </x-sidebar-list>
+                    </ul>
+                    @endif
+                    @if (userCan('faq.view') && $faq_enable)
+                    <ul class="nav nav-treeview">
+                        <x-sidebar-list
+                            :linkActive="Route::is('module.faq.index') || Route::is('module.faq.create') || Route::is('module.faq.edit') ? true : false"
+                            route="module.faq.index" icon="fas fa-circle">
+                            {{ __('faq') }}
+                        </x-sidebar-list>
+                    </ul>
+                    @endif
+                </x-sidebar-dropdown>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
