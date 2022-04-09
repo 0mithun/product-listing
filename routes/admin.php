@@ -12,7 +12,6 @@ use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\Auth\ResetPasswordController;
 use App\Http\Controllers\Admin\CatetgoryController;
 use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\SocialiteController;
 
 /**
  * Auth routes
@@ -81,6 +80,4 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::put('settings/google-analytics', [SettingsController::class, 'googleAnalytics'])->name('settings.google.analytics');
     Route::put('settings/facebook-pixel', [SettingsController::class, 'facebookPixel'])->name('settings.facebook.pixel');
 
-    Route::get('settings/social-login', [SocialiteController::class, 'index'])->name('settings.social.login');
-    Route::put('settings/social-login', [SocialiteController::class, 'update'])->name('settings.social.login.update');
 });
