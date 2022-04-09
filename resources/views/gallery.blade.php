@@ -23,7 +23,7 @@
                                 <a href="{{ route('product.details', $product->slug) }}"
                                     title="{{ $product->title }}">
 
-                                    <img width="300" height="300" alt=""
+                                    <img width="300" height="300" alt="{{ $product->metadata  }}"
                                         class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazyloaded"
                                         src="{{ $product->getFirstMediaUrl('gallery', 'thumb') }}"
 

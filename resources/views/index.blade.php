@@ -26,13 +26,17 @@
                                                             <div class="n2-ss-slide-background-image" data-blur="0"
                                                                 data-opacity="100" data-x="50" data-y="50" data-alt=""
                                                                 data-title="">
-                                                                {{-- <picture class="skip-lazy" data-skip-lazy="1"><img
-                                                                        src="{{ $product->getMedia('gallery')[0]->getFullUrl() }}"
-                                                                        alt="" title="" loading="lazy"
-                                                                        class="skip-lazy" data-skip-lazy="1">
-                                                                </picture> --}}
 
-                                                                {{ $product->getFirstMedia('gallery')->img('',  ['class'=>'skip-lazy', 'data-skip-lazy'=> 1])  }}
+
+                                                                @if (is_null($product->getFirstMedia('gallery')))
+                                                                    <picture class="skip-lazy" data-skip-lazy="1"><img
+                                                                        src="{{ $product->getFirstMediaUrl('gallery') }}"
+                                                                        alt="{{ $product->metadata }}" title="{{ $product->metadata }}" loading="lazy"
+                                                                        class="skip-lazy" data-skip-lazy="1">
+                                                                </picture>
+                                                                @else
+                                                                    {{ $product->getFirstMedia('gallery')->img('',  ['class'=>'skip-lazy', 'data-skip-lazy'=> 1, 'alt'=>$product->metadata, 'title'=>$product->metadata ])  }}
+                                                                @endif
                                                             </div>
                                                             <div data-color="RGBA(255,255,255,0)"
                                                                 style="background-color: RGBA(255,255,255,0);"

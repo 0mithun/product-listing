@@ -17,7 +17,7 @@ class FrontendController extends Controller
      */
     public function index()
     {
-        $products = Product::limit(5)->get();
+        $products = Product::limit(10)->get();
 
         return view('index', compact('products'))->with('page_name', 'Home');
     }
@@ -78,11 +78,29 @@ class FrontendController extends Controller
     }
 
 
+
+    /**
+     * Get products by category
+     *
+     * @param Category $category
+     * @return void
+     */
     public function getProductByCategory(Category $category)
     {
         $products = $category->products()->paginate(20);
 
         return view('gallery', compact('products'))->with('page_name', 'Gallery');
+    }
+
+
+    /**
+     * Get contact view page
+     *
+     * @return void
+     */
+    public function contact()
+    {
+        return view('contact');
     }
 
 }

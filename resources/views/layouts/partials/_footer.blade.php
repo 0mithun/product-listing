@@ -44,7 +44,7 @@
                 </ul>
             </div>
             <div class="col-md-3 col-xs-12">
-                <h5><a href="/contact">Contact</a></h5>
+                <h5><a href="{{ route('contact') }}">Contact</a></h5>
                 <div class="icons">
                     <a target="_blank" href="https://www.facebook.com/HummingbirdArtandDesign"><img
                             src="{{ asset('img/facebook.png') }}"></a>

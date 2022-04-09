@@ -24,12 +24,12 @@
                                     <a
                                         href="{{ $product->getFirstMediaUrl('gallery') }}"
                                         itemprop="image" class="yith_magnifier_zoom woocommerce-main-image"
-                                        title="Vignoli3a">
+                                        title="{{ $product->title  }}">
                                         {{-- <img width="600" height="573" alt=""
                                             class="attachment-shop_single size-shop_single wp-post-image lazyload"
                                             src="https://hummingbird-ad.com/wp-content/uploads/2021/06/Vignoli3a-1.jpg" /> --}}
 
-                                        {{ $product->getFirstMedia('gallery')->img('',  ['class'=>'attachment-shop_single size-shop_single wp-post-image lazyloa'])  }}
+                                        {{ $product->getFirstMedia('gallery')->img('',  ['class'=>'attachment-shop_single size-shop_single wp-post-image lazyloa', 'alt'=>$product->metadata, 'title'=>$product->title ])  }}
                                     </a>
                                 </div>
                                 <div class="expand-button-hidden" style="display: none;">

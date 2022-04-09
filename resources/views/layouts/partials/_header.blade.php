@@ -31,7 +31,7 @@
                 <nav class="navbar links">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+                            <a class="nav-link dropdown-toggle" href="{{ route('gallery') }}" id="navbarDropdown1" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Gallery
                             </a>

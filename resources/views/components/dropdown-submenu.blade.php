@@ -1,7 +1,3 @@
-
-@php
-    // dd($childCategories)
-@endphp
 @if ($childCategories->count())
     <ul class="dropdown-submenu">
         @foreach ($childCategories as $category)
