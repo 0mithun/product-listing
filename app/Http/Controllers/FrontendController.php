@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Modules\Faq\Entities\Faq;
+use Modules\Faq\Entities\FaqCategory;
 
 class FrontendController extends Controller
 {
@@ -43,7 +45,9 @@ class FrontendController extends Controller
      */
     public function faq()
     {
-        return view('faq')->with('page_name', 'FAQS');
+        $faq_categories = FaqCategory::with('faqs')->orderBy('order')->get();
+
+        return view('faq', compact('faq_categories'))->with('page_name', 'FAQS');
     }
 
 
