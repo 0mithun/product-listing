@@ -5,8 +5,10 @@
         <div class="row">
             <div class="col-md-12">
                 <p id="breadcrumbs">
+                    @php
+                        // dd($category)
+                    @endphp
                     {!! nestedPathPrintWithLink($category->name_path) !!}
-                    {{-- <span><span><a href="{{ route('index') }}">Home</a> › <strong class="breadcrumb_last" aria-current="page">Gallery</strong></span></span> --}}
                 </p>
             </div>
         </div>
@@ -14,10 +16,8 @@
     <section id="main" class="single-product">
         <section class="products">
             <div class="container">
-
                 <ul class="products columns-4">
                     <div class="row">
-
                         @foreach ($products as $product)
                             <article class="col-md-3 col-6 product text-center">
                                 <a href="{{ route('product.details', $product->slug) }}"
@@ -26,9 +26,7 @@
                                     <img width="300" height="300" alt="{{ $product->metadata  }}"
                                         class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazyloaded"
                                         src="{{ $product->getFirstMediaUrl('gallery', 'thumb') }}"
-
                                     >
-
                                     <h3>{{ $product->title }}</h3>
                                 </a>
                             </article>

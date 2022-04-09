@@ -7,7 +7,6 @@
                 <p id="breadcrumbs">
                     {!! nestedPathPrintWithLink($category->name_path) !!}
                 </p>
-
             </div>
         </div>
     </div>
@@ -78,15 +77,8 @@
                                     </svg>
 
                                 </div>
-
-
-
                                 <x-image-gallery :product="$product" />
-
                             </div>
-
-
-
                         </div>
                         <div class="col-md-5 col-sm-6 col-xs-12 product-desc ">
 
@@ -94,27 +86,16 @@
                             {!! $product->description  !!}
                             <ul class="details"><small>
                                     <li><strong>Dimensions - </strong>{{ $product->dimension }}</li>
-                                    <li>
-                                        <strong>Origin -</strong> {{ $product->origin }}
-                                    </li>
-                                    <li>
-                                        <strong>Price -</strong> {{ $product->price ? '$'.$product->price : 'Please contact for pricing.' }}
-
-                                    </li>
+                                    <li><strong>Origin -</strong> {{ $product->origin }}</li>
+                                    <li><strong>Price -</strong> {{ $product->price ? '$'.$product->price : 'Please contact for pricing.' }}</li>
                                 </small>
                             </ul>
                             <button id="inq" type="button" data-bs-toggle="modal" data-bs-target="#pi">Contact Us</button>
                             <input type="hidden" id="inqp" name="inqp"
                                 value="https://hummingbird-ad.com/wp-content/uploads/2021/06/Vignoli3a-1.jpg">
-
                             <x-add-to-any />
                         </div>
                     </div>
-
-
-
-
-
                     <div class="modal" tabindex="-1" role="dialog" id="pi">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
@@ -129,11 +110,8 @@
                                         Notice: JavaScript is required for this content.</noscript>
                                     <div id="nf-form-6-cont" class="nf-form-cont" aria-live="polite"
                                         aria-labelledby="nf-form-title-6" aria-describedby="nf-form-errors-6" role="form">
-
                                         <div class="nf-loading-spinner"></div>
-
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -176,10 +154,6 @@
             </div>
         </div>
     </section>
-
-
-
-
     <script type='text/javascript'
         src='{{ asset('plugins') }}/flexslider/jquery.flexslider.min.js'
         id='flexslider-js'></script>

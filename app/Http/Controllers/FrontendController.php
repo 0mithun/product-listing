@@ -72,7 +72,7 @@ class FrontendController extends Controller
      */
     public function productDetails(Product $product)
     {
-        $category = Category::where('id', $product->category_id)->tree()->first();
+        $product_category = Category::where('id', $product->category_id)->tree()->first();
 
         return view('product-details', compact('product', 'category'))->with('page_name', 'Product Details');
     }
@@ -85,11 +85,12 @@ class FrontendController extends Controller
      * @param Category $category
      * @return void
      */
-    public function getProductByCategory(Category $category)
+    public function getProductByCategory($category)
     {
+        $category = Category::where('slug', $category)->tree()->firstOrFail();
         $products = $category->products()->paginate(20);
 
-        return view('gallery', compact('products'))->with('page_name', 'Gallery');
+        return view('gallery', compact('products', 'category'))->with('page_name', 'Gallery');
     }
 
 

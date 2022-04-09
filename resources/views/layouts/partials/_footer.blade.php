@@ -21,26 +21,15 @@
             <div class="col-md-3 col-xs-12">
                 <h5>Gallery</h5>
                 <ul>
-                    <li><a href="/gallery">View All</a></li>
-                    <li><a href="https://hummingbird-ad.com/gallery/medium/ceramics/">Italian Ceramics</a></li>
-                    <li><a href="https://hummingbird-ad.com/collections/jewelry/">Jewelry</a></li>
+                    <li><a href="{{ route('gallery') }}">View All</a></li>
                 </ul>
             </div>
             <div class="col-md-3 col-xs-12">
                 <h5>Collections</h5>
                 <ul>
-                    <li><a href="https://hummingbird-ad.com/collections/bowls/">Bowls</a></li>
-                    <li><a
-                            href="https://hummingbird-ad.com/collections/accessories/candle-holders/">Candleholders</a>
-                    </li>
-                    <li><a href="https://hummingbird-ad.com/collections/center-plates-decorative-plates/">Center
-                            Plates/Decorative Plates</a></li>
-                    <li><a href="https://hummingbird-ad.com/collections/accessories/holiday-ornaments/">Holiday
-                            Ornaments</a></li>
-                    <li><a href="https://hummingbird-ad.com/collections/jewelry/">Jewelry</a></li>
-                    <li><a href="https://hummingbird-ad.com/collections/jewelry/necklaces/">Necklaces</a></li>
-                    <li><a href="https://hummingbird-ad.com/collections/tableware/">Tableware</a></li>
-                    <li><a href="https://hummingbird-ad.com/collections/vases/">Vases</a></li>
+                    @foreach ($category_list as $cat)
+                    <li><a href="{{ route('category.product', $cat->slug) }}">{{ $cat->name }}</a></li>
+                    @endforeach
                 </ul>
             </div>
             <div class="col-md-3 col-xs-12">
@@ -59,9 +48,6 @@
             <div class=" col-xs-12"><small style="font-size:11px;">
                     &copy; 2022&nbsp;Hummingbird Art &amp; Design.</strong> All rights reserved. </small>
             </div>
-
-
         </div>
-
     </div>
 </footer>
