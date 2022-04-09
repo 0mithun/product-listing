@@ -17,7 +17,6 @@ class CreateFaqCategoriesTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('slug')->unique();
-            $table->string('icon');
             $table->integer('order')->unsigned()->default(0);
             $table->timestamps();
         });

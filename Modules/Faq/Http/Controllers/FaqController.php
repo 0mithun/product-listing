@@ -22,14 +22,6 @@ class FaqController extends Controller
      */
     public function index($slug = null)
     {
-        if (!userCan('faq.view')) {
-            return abort(403);
-        }
-
-        if (!enableModule('faq')) {
-            abort(404);
-        }
-
         $faq_category = FaqCategory::select('id', 'name', 'slug')->get();
 
         if ($slug) {
@@ -52,13 +44,6 @@ class FaqController extends Controller
      */
     public function create()
     {
-        if (!userCan('faq.create')) {
-            return abort(403);
-        }
-
-        if (!enableModule('faq')) {
-            abort(404);
-        }
         $faq_categories = FaqCategory::oldest('order')->get();
         return view('faq::create', compact('faq_categories'));
     }
@@ -70,9 +55,6 @@ class FaqController extends Controller
      */
     public function store(FaqFormRequest $request)
     {
-        if (!userCan('faq.create')) {
-            return abort(403);
-        }
         $request->validate([
             'faq_category_id' => "required",
             'question' => "required",
@@ -97,12 +79,6 @@ class FaqController extends Controller
      */
     public function edit(Faq $faq)
     {
-        if (!userCan('faq.update')) {
-            return abort(403);
-        }
-        if (!enableModule('faq')) {
-            abort(404);
-        }
         $faq_categories = FaqCategory::oldest('order')->get();
         return view('faq::edit', compact('faq', 'faq_categories'));
     }
@@ -115,9 +91,6 @@ class FaqController extends Controller
      */
     public function update(FaqFormRequest $request, Faq $faq)
     {
-        if (!userCan('faq.update')) {
-            return abort(403);
-        }
         $faq = UpdateFaq::update($request, $faq);
 
         if ($faq) {
@@ -136,10 +109,6 @@ class FaqController extends Controller
      */
     public function destroy(Faq $faq)
     {
-        if (!userCan('faq.delete')) {
-            return abort(403);
-        }
-
         $faq = DeleteFaq::delete($faq);
 
         if ($faq) {

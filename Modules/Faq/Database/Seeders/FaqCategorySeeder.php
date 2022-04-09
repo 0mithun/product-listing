@@ -20,27 +20,22 @@ class FaqCategorySeeder extends Seeder
         FaqCategory::create([
             'name' => 'Mobile',
             'slug' => 'mobile',
-            'icon' => 'fas fa-mobile-alt'
         ]);
         FaqCategory::create([
             'name' => 'Computer',
             'slug' => 'computer',
-            'icon' => 'fas fa-laptop'
         ]);
         FaqCategory::create([
             'name' => 'Car',
             'slug' => 'car',
-            'icon' => 'fas fa-car'
         ]);
         FaqCategory::create([
             'name' => 'Food',
             'slug' => 'food',
-            'icon' => 'fas fa-apple-alt'
         ]);
         FaqCategory::create([
             'name' => 'Clothes',
             'slug' => 'clothes',
-            'icon' => 'fas fa-tshirt'
         ]);
     }
 }

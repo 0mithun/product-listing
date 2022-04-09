@@ -1,4 +1,4 @@
-@extends('layouts.backend.admin')
+@extends('admin.layouts.app')
 @section('title') {{ __('faq_category_list') }} @endsection
 
 @section('content')
@@ -20,7 +20,6 @@
                             <thead>
                               <tr>
                                 <th width="5%">{{ __('sl') }}</th>
-                                <th>{{ __('icon') }}</th>
                                 <th>{{ __('name') }}</th>
                                 @if (userCan('faqcategory.update') || userCan('faqcategory.delete'))
                                 <th width="10%">{{ __('actions') }}</th>
@@ -31,7 +30,6 @@
                                 @forelse ($faqCategories as $faqCategory)
                                 <tr data-id="{{ $faqCategory->id }}">
                                     <th>{{ $loop->iteration }}</th>
-                                    <th><i class="{{ $faqCategory->icon }}"></i></th>
                                     <th>{{ $faqCategory->name }}</th>
                                     @if (userCan('faqcategory.update') || userCan('faqcategory.delete'))
                                     <td >
@@ -59,7 +57,7 @@
                                 @empty
                                 <tr>
                                     <td colspan="10" class="text-center">
-                                        <x-not-found word="Faq Category" route="module.faq.category.create" />
+                                        <x-admin.not-found word="Faq Category" route="module.faq.category.create" />
                                     </td>
                                 </tr>
                                 @endforelse

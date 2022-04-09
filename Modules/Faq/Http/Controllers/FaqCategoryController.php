@@ -17,12 +17,6 @@ class FaqCategoryController extends Controller
      */
     public function index()
     {
-        if (!userCan('faqcategory.view')) {
-            return abort(403);
-        }
-        if (!enableModule('faq')) {
-            abort(404);
-        }
         $data['faqCategories'] = FaqCategory::oldest('order')->get();
         return view('faq::faqcategory.index', $data);
     }
@@ -33,12 +27,6 @@ class FaqCategoryController extends Controller
      */
     public function create()
     {
-        if (!userCan('faqcategory.create')) {
-            return abort(403);
-        }
-        if (!enableModule('faq')) {
-            abort(404);
-        }
         return view('faq::faqcategory.create');
     }
 
@@ -49,12 +37,6 @@ class FaqCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        if (!userCan('faqcategory.create')) {
-            return abort(403);
-        }
-        if (!enableModule('faq')) {
-            abort(404);
-        }
         $request->validate([
             'name' => 'required|alpha_spaces|unique:faq_categories,name',
             'icon' => 'required',
@@ -77,9 +59,6 @@ class FaqCategoryController extends Controller
      */
     public function edit(FaqCategory $faq_category)
     {
-        if (!userCan('faqcategory.update')) {
-            return abort(403);
-        }
         return view('faq::faqcategory.edit', compact('faq_category'));
     }
 
@@ -92,9 +71,6 @@ class FaqCategoryController extends Controller
      */
     public function update(Request $request, FaqCategory $faq_category)
     {
-        if (!userCan('faqcategory.update')) {
-            return abort(403);
-        }
         $request->validate([
             'name' => "required|alpha_spaces|unique:faq_categories,name,{$faq_category->id}"
         ]);
@@ -116,10 +92,6 @@ class FaqCategoryController extends Controller
      */
     public function destroy(FaqCategory $faq_category)
     {
-        if (!userCan('faqcategory.delete')) {
-            return abort(403);
-        }
-
         $faq_category->delete();
 
         flashSuccess('Faq Category Successfully Deleted');
@@ -133,9 +105,6 @@ class FaqCategoryController extends Controller
      */
     public function updateOrder(Request $request)
     {
-        if (!userCan('faqcategory.update')) {
-            return abort(403);
-        }
         try {
             SortingFaqCategory::sort($request);
             return response()->json(['message' => 'Faq Category Sorted Successfully!']);

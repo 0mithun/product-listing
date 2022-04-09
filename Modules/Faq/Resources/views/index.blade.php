@@ -1,4 +1,4 @@
-@extends('layouts.backend.admin')
+@extends('admin.layouts.app')
 @section('title') {{ __('faq_list') }} @endsection
 @section('content')
 <div class="text-right mb-3">

@@ -1,4 +1,4 @@
-@extends('layouts.backend.admin')
+@extends('admin.layouts.app')
 @section('title') {{ __('edit_faq') }} @endsection
 @section('content')
     <div class="container-fluid">
