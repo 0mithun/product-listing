@@ -8,8 +8,8 @@ use Modules\Faq\Http\Controllers\FaqController;
 Route::middleware(['auth:admin', 'admin_setlang'])->prefix('admin')->group(function () {
     // Faq Routes
     Route::prefix('admin/faq')->group(function () {
+        Route::get('/', [FaqController::class, 'index'])->name('module.faq.index');
         Route::get('/add', [FaqController::class, 'create'])->name('module.faq.create');
-        Route::get('/{slug?}', [FaqController::class, 'index'])->name('module.faq.index');
         Route::post('/add', [FaqController::class, 'store'])->name('module.faq.store');
         Route::get('/edit/{faq}', [FaqController::class, 'edit'])->name('module.faq.edit');
         Route::put('/update/{faq}', [FaqController::class, 'update'])->name('module.faq.update');

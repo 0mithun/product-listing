@@ -49,9 +49,6 @@
                                             style="font-size: 13px;">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
-
-
-
                                 <div class="form-group row">
                                     <div class="offset-sm-3 col-sm-4">
                                         <button type="submit" class="btn btn-success">

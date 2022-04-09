@@ -20,19 +20,17 @@ class FaqController extends Controller
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index($slug = null)
+    public function index()
     {
         $faq_category = FaqCategory::select('id', 'name', 'slug')->get();
 
-        if ($slug) {
-            $faqs = $faqs = Faq::whereHas('faq_category', function ($q) use ($slug) {
-                $q->where('slug', $slug);
+        if (request('category') && !is_null(request('category'))) {
+             $faqs = Faq::whereHas('faq_category', function ($q){
+                $q->where('slug', request('category'));
             })
-                ->get();
+            ->get();
         } else {
-            if ($faq_category->count() > 0) {
-                $faqs = Faq::where('faq_category_id', $faq_category->first()->id)->get();
-            }
+            $faqs = Faq::where('faq_category_id', $faq_category->first()->id)->get();
         }
 
         return view('faq::index', compact('faq_category', 'faqs'));
@@ -65,7 +63,7 @@ class FaqController extends Controller
 
         if ($faq) {
             flashSuccess('Faq Created Successfully');
-            return back();
+            return redirect(route('module.faq.index'));
         } else {
             flashError();
             return back();

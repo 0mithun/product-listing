@@ -23,10 +23,12 @@
                                         @error('name') <span class="invalid-feedback" role="alert">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-success">
-                                        <i class="fas fa-plus"></i>&nbsp; {{ __("create") }}
-                                    </button>
+                                <div class="form-group row">
+                                    <div class="col-9 offset-md-3">
+                                        <button type="submit" class="btn btn-success">
+                                            <i class="fas fa-plus"></i>&nbsp; {{ __("create") }}
+                                        </button>
+                                    </div>
                                 </div>
                             </form>
                         </div>

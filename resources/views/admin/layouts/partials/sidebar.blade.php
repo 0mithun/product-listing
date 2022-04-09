@@ -59,19 +59,8 @@
                     :subLinkActive="Route::is('module.faq.category.index') || Route::is('module.faq.category.create') || Route::is('module.faq.category.edit') || Route::is('module.faq.index') || Route::is('module.faq.create') || Route::is('module.faq.edit') ? true : false"
                     icon="far fa-list-alt">
                     @slot('title')
-                    {{ __('others') }}
+                    {{ __('Faq') }}
                     @endslot
-{{--
-                    @if (Module::collections()->has('Contact') && userCan('contact.view') && $contact_enable)
-                    <ul class="nav nav-treeview">
-                        <x-sidebar-list
-                            :linkActive="Route::is('module.contact.index') || Route::is('module.contact.create') || Route::is('module.contact.edit') ? true : false"
-                            route="module.contact.index" icon="fas fa-circle">
-                            {{ __('contact') }}
-                        </x-sidebar-list>
-                    </ul>
-                    @endif --}}
-                    {{-- @if (userCan('faqcategory.view') && $faq_enable) --}}
                     <ul class="nav nav-treeview">
                         <x-admin.sidebar-list
                             :linkActive="Route::is('module.faq.category.index') || Route::is('module.faq.category.create') || Route::is('module.faq.category.edit') ? true : false"
@@ -79,8 +68,6 @@
                             {{ __('faq_category') }}
                         </x-admin.sidebar-list>
                     </ul>
-                    {{-- @endif --}}
-                    {{-- @if (userCan('faq.view') && $faq_enable) --}}
                     <ul class="nav nav-treeview">
                         <x-admin.sidebar-list
                             :linkActive="Route::is('module.faq.index') || Route::is('module.faq.create') || Route::is('module.faq.edit') ? true : false"
@@ -88,7 +75,6 @@
                             {{ __('faq') }}
                         </x-admin.sidebar-list>
                     </ul>
-                    {{-- @endif --}}
                 </x-admin.sidebar-dropdown>
 
             </ul>

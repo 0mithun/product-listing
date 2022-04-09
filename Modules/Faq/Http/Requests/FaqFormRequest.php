@@ -15,7 +15,7 @@ class FaqFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'question' => "required|alpha_spaces",
+            'question' => "required",
             'answer' => "required",
             'faq_category_id' => "required",
         ];

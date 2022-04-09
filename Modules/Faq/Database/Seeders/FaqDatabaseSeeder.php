@@ -17,6 +17,6 @@ class FaqDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        Faq::factory(50)->create();
+        Faq::factory(20)->create();
     }
 }

@@ -38,18 +38,16 @@ class FaqCategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|alpha_spaces|unique:faq_categories,name',
-            'icon' => 'required',
+            'name' => 'required|unique:faq_categories,name',
         ]);
 
         FaqCategory::create([
             'name' => $request->name,
             'slug' => Str::slug($request->name),
-            'icon' => $request->icon
         ]);
 
         flashSuccess('Faq Category Successfully Created');
-        return back();
+        return redirect()->route('module.faq.category.index');
     }
 
     /**
@@ -72,13 +70,12 @@ class FaqCategoryController extends Controller
     public function update(Request $request, FaqCategory $faq_category)
     {
         $request->validate([
-            'name' => "required|alpha_spaces|unique:faq_categories,name,{$faq_category->id}"
+            'name' => "required|unique:faq_categories,name,{$faq_category->id}"
         ]);
 
         $faq_category->update([
             'name' => $request->name,
             'slug' => Str::slug($request->name),
-            'icon' => $request->icon
         ]);
 
         flashSuccess('Faq Category Successfully Updated');
