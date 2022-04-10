@@ -121,7 +121,7 @@ class FrontendController extends Controller
      */
     public function productPrint(Product $product)
     {
-        return view('mails.product-submit', compact('product'));
+        return view('print', compact('product'));
     }
 
 

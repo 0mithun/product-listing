@@ -30,16 +30,19 @@
                             <div class="images">
 
                                 <div class="woocommerce-product-gallery__image ">
-                                    <a
-                                        href="{{ $product->getFirstMediaUrl('gallery') }}"
-                                        itemprop="image" class="yith_magnifier_zoom woocommerce-main-image"
-                                        title="{{ $product->title  }}">
-                                        {{-- <img width="600" height="573" alt=""
-                                            class="attachment-shop_single size-shop_single wp-post-image lazyload"
-                                            src="https://hummingbird-ad.com/wp-content/uploads/2021/06/Vignoli3a-1.jpg" /> --}}
+                                    @if ($product->getMedia('gallery')->count() > 0)
+                                        <a
+                                            href="{{ $product->getFirstMediaUrl('gallery') }}"
+                                            itemprop="image" class="yith_magnifier_zoom woocommerce-main-image"
+                                            title="{{ $product->title  }}">
+                                            {{-- <img width="600" height="573" alt=""
+                                                class="attachment-shop_single size-shop_single wp-post-image lazyload"
+                                                src="https://hummingbird-ad.com/wp-content/uploads/2021/06/Vignoli3a-1.jpg" /> --}}
 
-                                        {{ $product->getFirstMedia('gallery')->img('',  ['class'=>'attachment-shop_single size-shop_single wp-post-image lazyloa', 'alt'=>$product->metadata, 'title'=>$product->title ])  }}
-                                    </a>
+                                            {{ $product->getFirstMedia('gallery')->img('',  ['class'=>'attachment-shop_single size-shop_single wp-post-image lazyloa', 'alt'=>$product->metadata, 'title'=>$product->title ])  }}
+                                        </a>
+
+                                    @endif
                                 </div>
                                 <div class="expand-button-hidden" style="display: none;">
                                     <svg width="19px" height="19px" viewBox="0 0 19 19" version="1.1"

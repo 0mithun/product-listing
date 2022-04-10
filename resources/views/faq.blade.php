@@ -37,14 +37,7 @@
 <meta name="twitter:data1" content="1 minute" />
 @endsection
 
-
-
-@push('header_scripts')
-
-@endpush
-
 @push('footer_scripts')
-
 <script>
     $(document).ready(function() {
         var count = 1;

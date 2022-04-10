@@ -5,9 +5,6 @@
         <div class="row">
             <div class="col-md-12">
                 <p id="breadcrumbs">
-                    @php
-                        // dd($category)
-                    @endphp
                     {!! nestedPathPrintWithLink($category->name_path) !!}
                 </p>
             </div>
@@ -18,7 +15,7 @@
             <div class="container">
                 <ul class="products columns-4">
                     <div class="row">
-                        @foreach ($products as $product)
+                        @forelse ($products as $product)
                             <article class="col-md-3 col-6 product text-center">
                                 <a href="{{ route('product.details', $product->slug) }}"
                                     title="{{ $product->title }}">
@@ -30,22 +27,15 @@
                                     <h3>{{ $product->title }}</h3>
                                 </a>
                             </article>
-                        @endforeach
+
+                        @empty
+                            <h3>No Products Found.</h3>
+                        @endforelse
                     </div>
                 </ul>
                 <div class=" d-flex justify-content-center">
                     {{ $products->links() }}
-
                 </div>
-                {{-- <nav class="woocommerce-pagination">
-                    <ul class="page-numbers">
-                        <li><span aria-current="page" class="page-numbers current">1</span></li>
-                        <li><a class="page-numbers" href="https://hummingbird-ad.com/gallery/page/2/">2</a></li>
-                        <li><a class="page-numbers" href="https://hummingbird-ad.com/gallery/page/3/">3</a></li>
-                        <li><a class="next page-numbers" href="https://hummingbird-ad.com/gallery/page/2/">→</a></li>
-                    </ul>
-                </nav> --}}
-
             </div>
         </section>
     </section>
@@ -69,13 +59,3 @@
 <meta name="twitter:data1" content="1 minute" />
 @endsection
 
-
-
-@push('header_scripts')
-@endpush
-
-@push('footer_scripts')
-@endpush
-
-@push('styles')
-@endpush

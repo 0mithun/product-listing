@@ -4,14 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Zakir Soft | Log in</title>
+    <title>Log in</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="{{ asset('backend') }}/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="{{ asset('backend') }}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('backend') }}/dist/css/adminlte.min.css">
-    <link rel="stylesheet" href="{{ asset('css/zakirsoft.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 
@@ -21,7 +21,7 @@
             <a href="{{ route('login') }}" class="d-block">
                 {{-- <img height="50px" src="{{ asset('backend/image/logo.png') }}" alt=""> --}}
                 <div class="auth-logo">
-                    <img src="{{ $setting->logo_image_url }}" alt="Zakirsoft Logo">
+                    <img src="{{ $setting->logo_image_url }}" alt="Logo">
                 </div>
             </a>
         </div>
@@ -33,7 +33,7 @@
                     @csrf
                     <div class="input-group mb-3">
                         <input type="email" class="form-control @error('email') is-invalid @enderror" name="email"
-                            value="@if(old('email')) {{ old('email') }} @else {{ 'developer@mail.com' }} @endif" placeholder="Email">
+                            value="@if(old('email')) {{ old('email') }} @endif" placeholder="Email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>

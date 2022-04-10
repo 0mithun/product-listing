@@ -119,7 +119,6 @@
     "e_mail_address": "E-Mail Address",
     "copyright_copy": "Copyright &copy;",
     "all_right_reserved": "All rights reserved.",
-    "zakirsoft": "zakirsoft.com",
     "english_default": "English (default)",
     "logout": "Logout",
     "email_address": "Email Address",
@@ -181,7 +180,6 @@
     "google_analytics_id": "Google Analytics ID",
     "facebook_pixel_id": "Facebook Pixel ID",
     "member_since": "Member since",
-    "zakir_soft": "Zakir Soft",
     "log_in":"Log In",
     "no_results_found":"No results found",
     "there_is_no":"There is no",
@@ -238,6 +236,6 @@
     "alt"  :    "Alt Text",
     "add_image": "Add Image",
     "submit_products": "Submit Products",
-    "submitted_lists": "Submitted Lists"
+    "products": "Products"
 
 }

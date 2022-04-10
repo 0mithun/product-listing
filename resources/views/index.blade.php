@@ -286,10 +286,6 @@
 </script>
 @endpush
 
-@push('footer_scripts')
-
-@endpush
-
 @push('styles')
     <link rel="stylesheet" type="text/css"
         href="{{ asset('plugins') }}/smart-slider/css/smartslider.min.css?ver=4180a0be"

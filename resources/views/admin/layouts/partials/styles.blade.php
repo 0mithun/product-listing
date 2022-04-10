@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('backend') }}/dist/css/adminlte.min.css">
     <!-- Toastr -->
     <link rel="stylesheet" type="text/css" href="{{ asset('backend') }}/plugins/toastr/toastr.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/zakirsoft.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
     <!-- Custom Link -->
     @yield('style')
 
