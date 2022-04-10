@@ -76,7 +76,7 @@ class FrontendController extends Controller
      */
     public function productDetails(Product $product)
     {
-        $product_category = Category::where('id', $product->category_id)->tree()->first();
+        $category = Category::where('id', $product->category_id)->tree()->first();
 
         return view('product-details', compact('product', 'category'))->with('page_name', 'Product Details');
     }
@@ -106,6 +106,12 @@ class FrontendController extends Controller
     public function contact()
     {
         return view('contact');
+    }
+
+
+    public function productPrint(Product $product)
+    {
+        return view('print', compact('product'));
     }
 
 }

@@ -94,7 +94,6 @@ class RolePermissionSeeder extends Seeder
                 'group_name' => 'contact',
                 'permissions' => [
                     // contact permission
-                    'contact.create',
                     'contact.view',
                     'contact.edit',
                     'contact.delete',

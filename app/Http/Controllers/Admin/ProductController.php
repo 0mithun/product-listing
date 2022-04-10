@@ -13,6 +13,14 @@ use Exception;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:product.view|product.edit|product.delete'])->only(['index',]);
+        $this->middleware(['permission:product.view'])->only(['show',]);
+        $this->middleware(['permission:product.create'])->only(['create', 'store']);
+        $this->middleware(['permission:product.edit'])->only(['edit', 'update']);
+        $this->middleware(['permission:product.delete'])->only(['delete',]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -58,9 +66,11 @@ class ProductController extends Controller
      */
     public function show($slug)
     {
-        $product = Product::firstOrFail($slug);
+        $product = Product::where(['slug'=> $slug])->firstOrFail();
+        $category = Category::where('id', $product->category_id)->tree()->first();
 
-        return view('admin.products.show', compact('product'));
+        // return view('admin.products.show', compact('product'));
+        return view('product-details', compact('product', 'category'));
     }
 
     /**

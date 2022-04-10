@@ -92,8 +92,8 @@
                             </ul>
                             <button id="inq" type="button" data-bs-toggle="modal" data-bs-target="#pi">Contact Us</button>
                             <input type="hidden" id="inqp" name="inqp"
-                                value="https://hummingbird-ad.com/wp-content/uploads/2021/06/Vignoli3a-1.jpg">
-                            <x-add-to-any />
+                                value="{{ $product->getFirstMediaUrl('gallery')  }}">
+                            <x-add-to-any :product="$product" />
                         </div>
                     </div>
                     <div class="modal" tabindex="-1" role="dialog" id="pi">
@@ -226,28 +226,18 @@
 @endsection
 
 @section('meta')
-    <meta property="og:title" content="Anchovy Pattern Sphere Vase | Hummingbird Art & Design">
-    <meta property="og:description" content='This very beautiful sphere vase was created by Sara and Ivana Vignoli, sisters who have carried on their time-honored family tradition of working with ceramics in Faenza, Italy - an important center of European ceramic production.  Inspiration for their limited series, museum-quality, pieces is from classical Byzantine, Roman and Islamic cultures.  These decorative themes are combined with a modern and distinctive production technique which involves glazes and very high kiln temperatures.  Each piece is an unique work of art and a modern reinterpretation of history. This form of this vase is inspired by ancient Roman amphora vessels. Various shades of blue, bronze, copper, navy, red and yellow/hand-painted ceramic.	  Dimensions - W10.75" x H11.25".
-                Origin - Italy.'>
-    <meta property="og:image" content="https://hummingbird-ad.com/wp-content/uploads/2021/06/Vignoli3a-1.jpg">
-    <meta property="og:url" content="https://hummingbird-ad.com/gallery/anchovy-pattern-sphere-vase?c=i">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:type" content="product" />
-    <meta property="og:site_name" content="Humming Bird" />
-    <meta property="og:availability" content="instock" />
 
+    <meta name="description" content="{{ $product->metadata }}" />
+    <link rel="canonical" href="{{ route('product.details', $product->slug) }}" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="Anchovy Pattern Sphere Vase" />
-    <meta property="og:description"
-        content="This very beautiful sphere vase was created by Sara and Ivana Vignoli, sisters who have carried on their time-honored family tradition of working with ceramics in Faenza, Italy &#8211; an important center of European ceramic production.  Inspiration for their limited series, museum-quality, pieces is from classical Byzantine, Roman and Islamic cultures.  These decorative themes are [&hellip;]" />
-    <meta property="og:url" content="https://hummingbird-ad.com/gallery/anchovy-pattern-sphere-vase/" />
-    <meta property="og:site_name" content="Hummingbird Art &amp; Design" />
-    <meta property="article:publisher" content="https://www.facebook.com/HummingbirdArtandDesign" />
-    <meta property="article:modified_time" content="2021-12-19T01:05:20+00:00" />
-    <meta property="og:image" content="https://hummingbird-ad.com/wp-content/uploads/2021/06/Vignoli3a-1-1024x977.jpg" />
-    <meta property="og:image:width" content="1024" />
-    <meta property="og:image:height" content="977" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{ $product->title }}" />
+    <meta property="og:description" content="{{ $product->metadata }}" />
+    <meta property="og:url" content="{{ route('product.details', $product->slug) }}" />
+    <meta property="og:site_name" content="{{ $setting->name }}" />
+    <meta property="og:image" content="{{ $product->getFirstMediaUrl('gallery') }}" />
+    <meta property="og:image:width" content="2560" />
+    <meta property="og:image:height" content="1707" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:label1" content="Est. reading time" />
@@ -294,257 +284,21 @@
         href='{{ asset('plugins') }}/prettyphoto/prettyPhoto.css' type='text/css'
         media='all' />
 
-    <style id='ywzm-prettyPhoto-inline-css' type='text/css'>
-        div.pp_woocommerce a.pp_contract,
-        div.pp_woocommerce a.pp_expand {
-            content: unset !important;
-            background-color: white;
-            width: 25px;
-            height: 25px;
-            margin-top: 5px;
-            margin-left: 5px;
-        }
-
-        div.pp_woocommerce a.pp_contract,
-        div.pp_woocommerce a.pp_expand:hover {
-            background-color: white;
-        }
-
-        div.pp_woocommerce a.pp_contract,
-        div.pp_woocommerce a.pp_contract:hover {
-            background-color: white;
-        }
-
-        a.pp_expand:before,
-        a.pp_contract:before {
-            content: unset !important;
-        }
-
-        a.pp_expand .expand-button-hidden svg,
-        a.pp_contract .expand-button-hidden svg {
-            width: 25px;
-            height: 25px;
-            padding: 5px;
-        }
-
-        .expand-button-hidden path {
-            fill: black;
-        }
-
-    </style>
     <link rel='stylesheet' id='ywzm-magnifier-css'
         href='{{ asset('plugins') }}/zoom-magnifier/yith_magnifier.css?ver=2.1.1'
         type='text/css' media='all' />
     <link rel='stylesheet' id='ywzm_frontend-css'
         href='{{ asset('plugins') }}/zoom-magnifier/frontend.css?ver=2.1.1'
         type='text/css' media='all' />
-    <style id='ywzm_frontend-inline-css' type='text/css'>
-        #slider-prev,
-        #slider-next {
-            background-color: #ffffff;
-            border: 2px solid #000000;
-            width: 25px !important;
-            height: 25px !important;
-        }
 
-        .yith_slider_arrow span {
-            width: 25px !important;
-            height: 25px !important;
-        }
-
-        #slider-prev:hover,
-        #slider-next:hover {
-            background-color: #ffffff;
-            border: 2px solid #000000;
-        }
-
-        .thumbnails.slider path:hover {
-            fill: #000000;
-        }
-
-        .thumbnails.slider path {
-            fill: #000000;
-            width: 25px !important;
-            height: 25px !important;
-        }
-
-        .thumbnails.slider svg {
-            width: 22px;
-            height: 22px;
-        }
-
-
-        div.pp_woocommerce a.yith_expand {
-            background-color: white;
-            width: 25px;
-            height: 25px;
-            top: 10px;
-            bottom: initial;
-            left: initial;
-            right: 10px;
-            border-radius: 0%;
-        }
-
-        .expand-button-hidden svg {
-            width: 25px;
-            height: 25px;
-        }
-
-        .expand-button-hidden path {
-            fill: black;
-        }
-
-    </style>
     <link rel='stylesheet' id='addtoany-css'
         href='{{ asset('css')  }}/addtoany.min.css?ver=1.16' type='text/css'
         media='all' />
     <link rel='stylesheet' id='dashicons-css' href='{{ asset('css')  }}/dashicons.min.css?ver=5.9.2'
         type='text/css' media='all' />
-    <style id='dashicons-inline-css' type='text/css'>
-        [data-font="Dashicons"]:before {
-            font-family: 'Dashicons' !important;
-            content: attr(data-icon) !important;
-            speak: none !important;
-            font-weight: normal !important;
-            font-variant: normal !important;
-            text-transform: none !important;
-            line-height: 1 !important;
-            font-style: normal !important;
-            -webkit-font-smoothing: antialiased !important;
-            -moz-osx-font-smoothing: grayscale !important;
-        }
-
-    </style>
-
 
 
     <style>
-        .no-js img.lazyload {
-            display: none;
-        }
-
-        figure.wp-block-image img.lazyloading {
-            min-width: 150px;
-        }
-
-        .lazyload,
-        .lazyloading {
-            opacity: 0;
-        }
-
-        .lazyloaded {
-            opacity: 1;
-            transition: opacity 400ms;
-            transition-delay: 0ms;
-        }
-
-    </style>
-    <noscript>
-        <style>
-            .woocommerce-product-gallery {
-                opacity: 1 !important;
-            }
-
-        </style>
-    </noscript>
-    <style type="text/css" id="wp-custom-css">
-        .modal-body>h2 {
-            margin-left: 4px !important;
-        }
-
-    </style>
-    <style>
-        .product:hover>a>h3 {
-            text-decoration: underline;
-        }
-
-        .a2a_button_print {
-            display: none !important;
-        }
-
-        #uds:hover {
-            text-decoration: underline;
-        }
-
-        .flex-active {
-            padding: 3px;
-            border: solid 1px #000;
-        }
-
-        .flex-control-thumbs>li>img {
-            padding: 3px;
-        }
-
-        #breadcrumbs {
-            font-size: 12px;
-            color: #000;
-        }
-
-        .yith_magnifier_zoom {
-            text-align: center !important;
-        }
-
-        .attachment-shop_single {
-            display: inline-block !important;
-        }
-
-        .expand-button-hidden,
-        .yith_expand,
-        .yith_slider_arrow {
-            display: none !important;
-        }
-
-        .yith_magnifier_thumbnail {
-            width: auto !important;
-        }
-
-        ul>li>.active-thumbnail {
-            padding: 1px;
-            border: Solid 1px #000;
-        }
-
-        .yith_magnifier_zoom_magnifier {
-            width: 280px !important;
-            height: 280px !important;
-            top: 70px !important;
-            left: 50px;
-            border: solid 5px #000 !important;
-        }
-
-        .wp-post-image {
-            width: 80% !important;
-            max-height: auto !important !important;
-            min-height: auto !important;
-            height: auto !important;
-        }
-
-        .yith_magnifier_mousetrap {
-            cursor: url("{{ asset('img/magnifier.png') }}"), auto !important;
-        }
-
-        footer>div>div>div>ul>li:nth-child(5) {
-            display: none !important
-        }
-
-        footer>div>div>div>ul>li>a {
-            font-size: .9rem !important;
-        }
-
-        footer>div>div>div>div>ul>li>a {
-            font-size: .9rem !important;
-        }
-
-        .page-numbers>li>span {
-            font-weight: bold;
-        }
-
-        .a2a_label {
-            display: none;
-        }
-
-        span.a2a_label {
-            display: none !important;
-        }
-
+            div.pp_woocommerce a.pp_contract,div.pp_woocommerce a.pp_expand{content:unset!important;background-color:#fff;width:25px;height:25px;margin-top:5px;margin-left:5px}div.pp_woocommerce a.pp_contract,div.pp_woocommerce a.pp_expand:hover{background-color:#fff}div.pp_woocommerce a.pp_contract,div.pp_woocommerce a.pp_contract:hover{background-color:#fff}a.pp_contract:before,a.pp_expand:before{content:unset!important}a.pp_contract .expand-button-hidden svg,a.pp_expand .expand-button-hidden svg{width:25px;height:25px;padding:5px}.expand-button-hidden path{fill:black}#slider-next,#slider-prev{background-color:#fff;border:2px solid #000;width:25px!important;height:25px!important}.yith_slider_arrow span{width:25px!important;height:25px!important}#slider-next:hover,#slider-prev:hover{background-color:#fff;border:2px solid #000}.thumbnails.slider path:hover{fill:#000000}.thumbnails.slider path{fill:#000000;width:25px!important;height:25px!important}.thumbnails.slider svg{width:22px;height:22px}div.pp_woocommerce a.yith_expand{background-color:#fff;width:25px;height:25px;top:10px;bottom:initial;left:initial;right:10px;border-radius:0}.expand-button-hidden svg{width:25px;height:25px}.expand-button-hidden path{fill:black}[data-font=Dashicons]:before{font-family:Dashicons!important;content:attr(data-icon)!important;speak:none!important;font-weight:400!important;font-variant:normal!important;text-transform:none!important;line-height:1!important;font-style:normal!important;-webkit-font-smoothing:antialiased!important;-moz-osx-font-smoothing:grayscale!important}.no-js img.lazyload{display:none}figure.wp-block-image img.lazyloading{min-width:150px}.lazyload,.lazyloading{opacity:0}.lazyloaded{opacity:1;transition:opacity .4s;transition-delay:0s}.modal-body>h2{margin-left:4px!important}.product:hover>a>h3{text-decoration:underline}.a2a_button_print{display:none!important}#uds:hover{text-decoration:underline}.flex-active{padding:3px;border:solid 1px #000}.flex-control-thumbs>li>img{padding:3px}#breadcrumbs{font-size:12px;color:#000}.yith_magnifier_zoom{text-align:center!important}.attachment-shop_single{display:inline-block!important}.expand-button-hidden,.yith_expand,.yith_slider_arrow{display:none!important}.yith_magnifier_thumbnail{width:auto!important}ul>li>.active-thumbnail{padding:1px;border:Solid 1px #000}.yith_magnifier_zoom_magnifier{width:280px!important;height:280px!important;top:70px!important;left:50px;border:solid 5px #000!important}.wp-post-image{width:80%!important;max-height:auto !important!important;min-height:auto!important;height:auto!important}.yith_magnifier_mousetrap{cursor:url("{{ asset('img/magnifier.png') }}"),auto!important}footer>div>div>div>ul>li:nth-child(5){display:none!important}footer>div>div>div>ul>li>a{font-size:.9rem!important}footer>div>div>div>div>ul>li>a{font-size:.9rem!important}.page-numbers>li>span{font-weight:700}.a2a_label{display:none}span.a2a_label{display:none!important}
     </style>
 @endpush

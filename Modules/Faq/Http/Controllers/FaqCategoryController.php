@@ -11,6 +11,14 @@ use Modules\Faq\Entities\FaqCategory;
 
 class FaqCategoryController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['permission:faq.category.view|faq.category.edit|faq.category.delete'])->only(['index',]);
+        $this->middleware(['permission:faq.category.create'])->only(['create', 'store']);
+        $this->middleware(['permission:faq.category.edit'])->only(['edit', 'update', 'updateOrder']);
+        $this->middleware(['permission:faq.category.delete'])->only(['delete',]);
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable

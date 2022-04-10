@@ -16,6 +16,15 @@ use Modules\Faq\Entities\FaqCategory;
 class FaqController extends Controller
 {
     use ValidatesRequests;
+
+    public function __construct()
+    {
+        $this->middleware(['permission:product.view|product.edit|product.delete'])->only(['index',]);
+
+        $this->middleware(['permission:product.create'])->only(['create', 'store']);
+        $this->middleware(['permission:product.edit'])->only(['edit', 'update']);
+        $this->middleware(['permission:product.delete'])->only(['delete',]);
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable

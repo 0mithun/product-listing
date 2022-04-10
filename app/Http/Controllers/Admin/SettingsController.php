@@ -23,6 +23,8 @@ class SettingsController extends Controller
         'modeUpdate', 'emailUpdate', 'testEmailSent', 'modeCommingsoon', 'modeMaintaince',
         'searchIndexing', 'googleAnalytics', 'facebookPixel'
         ]);
+
+        $this->middleware(['permission:about.update'])->only(['about','aboutUpdate']);
     }
 
 
