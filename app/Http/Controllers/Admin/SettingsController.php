@@ -84,7 +84,7 @@ class SettingsController extends Controller
             'favicon_image'      =>  ['nullable', 'mimes:png,ico'],
         ]);
 
-        $data = $request->only(['name', 'email']);
+        $data = $request->only(['name', 'email', 'phone', 'copyright_text', 'map_text', 'full_address', 'facebook', 'twitter', 'instagram', 'pinterest', 'meta_keyword', 'meta_description']);
         $setting = Setting::first();
 
         if($request->hasFile('logo_image')){
@@ -95,6 +95,10 @@ class SettingsController extends Controller
         if($request->hasFile('favicon_image')){
             $data['favicon_image'] = $this->uploadOne($request->favicon_image, 'website/logo');
             $this->deleteOne($setting->favicon_image);
+        }
+        if($request->hasFile('og_image')){
+            $data['og_image'] = $this->uploadOne($request->og_image, 'website/logo');
+            $this->deleteOne($setting->og_image);
         }
 
         $setting->update($data);

@@ -11,7 +11,7 @@ class Setting extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'about','description',  'email','meta_keyword', 'street', 'city', 'postal_code', 'country',
+        'name', 'about','meta_keyword',  'email','meta_description',
         'full_address','phone', 'facebook','twitter','instagram', 'pinterest', 'logo_image', 'favicon_image', 'og_image',  'header_css',
         'header_script', 'body_script', 'sidebar_color', 'nav_color', 'dark_mode',
         'default_layout', 'commingsoon_mode', 'search_engine_indexing', 'google_analytics', 'facebook_pixel', 'copyright_text', 'map_text'
