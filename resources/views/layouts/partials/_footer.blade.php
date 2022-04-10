@@ -35,12 +35,18 @@
             <div class="col-md-3 col-xs-12">
                 <h5><a href="{{ route('contact') }}">Contact</a></h5>
                 <div class="icons">
-                    <a target="_blank" href="https://www.facebook.com/HummingbirdArtandDesign"><img
-                            src="{{ asset('img/facebook.png') }}"></a>
-                    <a target="_blank" href="https://www.instagram.com/hummingbird.ad/"><img
-                            src="{{ asset('img/instagram.png') }}"></a>
-                    <a target="_blank" href="https://www.pinterest.com/hummingbirdad/"><img
-                            src="{{ asset('img/pinterest.png')  }}"></a>
+                    @if (!is_null($setting->facebook))
+                    <a target="_blank" href="{{ $setting->facebook }}"><img src="{{ asset('img/facebook.png') }}"></a>
+                    @endif
+                    @if (!is_null($setting->twitter))
+                    <a target="_blank" href="{{ $setting->twitter }}"><img src="{{ asset('img/twitter.png') }}"></a>
+                    @endif
+                    @if (!is_null($setting->instagram))
+                    <a target="_blank" href="{{ $setting->instagram }}"><img src="{{ asset('img/instagram.png') }}"></a>
+                    @endif
+                    @if (!is_null($setting->pinterest))
+                    <a target="_blank" href="{{ $setting->pinterest }}"><img src="{{ asset('img/pinterest.png')  }}"></a>
+                    @endif
                 </div>
             </div>
         </div>

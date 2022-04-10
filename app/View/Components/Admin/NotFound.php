@@ -13,7 +13,7 @@ class NotFound extends Component
      *
      * @return void
      */
-    public function __construct(string $word = 'User', string $route = 'home')
+    public function __construct(string $word = 'User', string $route = 'index')
     {
         $this->word = $word;
         $this->route = $route;

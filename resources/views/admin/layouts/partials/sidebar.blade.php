@@ -33,7 +33,7 @@
                 @endif
                 {{-- @if ($user->can('dashboard.view')) --}}
                     <x-admin.sidebar-list :linkActive="Route::is('settings.about.update') ? true : false" route="settings.about.update"
-                        icon="fas fa-tachometer-alt">
+                        icon="fas fa-info-circle">
                         {{ __('about') }}
                     </x-admin.sidebar-list>
                 {{-- @endif --}}
@@ -44,26 +44,26 @@
                     </x-admin.sidebar-list>
                 @endif
                 {{-- @if ($user->can('categories.view') || $user->can('categories.update')) --}}
-                    <x-admin.sidebar-list :linkActive="Request::is('categories/*')  ? true : false" route="categories.index" icon="fas fa-cog">
+                    <x-admin.sidebar-list :linkActive="Request::is('categories/*')  ? true : false" route="categories.index" icon="fas fa-book">
                         {{ __('categories') }}
                     </x-admin.sidebar-list>
                 {{-- @endif  --}}
                 {{-- @if ($user->can('categories.view') || $user->can('categories.update')) --}}
-                    <x-admin.sidebar-list :linkActive="Request::is('products/*')  ? true : false" route="products.index" icon="fas fa-cog">
+                    <x-admin.sidebar-list :linkActive="Request::is('products/*')  ? true : false" route="products.index" icon="fas fa-tag">
                         {{ __('products') }}
                     </x-admin.sidebar-list>
                 {{-- @endif  --}}
 
-                {{-- <x-sidebar-list
+                <x-admin.sidebar-list
                     :linkActive="Route::is('module.contact.index') || Route::is('module.contact.create') || Route::is('module.contact.edit') ? true : false"
-                    route="module.contact.index" icon="fas fa-circle">
+                    route="module.contact.index" icon="fas fa-envelope">
                     {{ __('contact') }}
-                </x-sidebar-list> --}}
+                </x-admin.sidebar-list>
 
                 <x-admin.sidebar-dropdown
                     :linkActive="Route::is('module.faq.index') || Route::is('module.faq.create') || Route::is('module.faq.edit') ? true : false"
                     :subLinkActive="Route::is('module.faq.category.index') || Route::is('module.faq.category.create') || Route::is('module.faq.category.edit') || Route::is('module.faq.index') || Route::is('module.faq.create') || Route::is('module.faq.edit') ? true : false"
-                    icon="far fa-list-alt">
+                    icon="fas fa-question">
                     @slot('title')
                     {{ __('Faq') }}
                     @endslot
