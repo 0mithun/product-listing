@@ -92,6 +92,7 @@
                 </x-admin.sidebar-list>
                 @endif
 
+
                 @if($user->can('faq.view') || $user->can('faq.edit') || $user->can('faq.create') || $user->can('faq.delete')  || $user->can('faq.category.create') || $user->can('faq.category.view')  || $user->can('faq.category.edit')  || $user->can('faq.category.delete'))
                     <x-admin.sidebar-dropdown
                         :linkActive="Route::is('module.faq.index') || Route::is('module.faq.create') || Route::is('module.faq.edit') ? true : false"
@@ -119,6 +120,13 @@
                         </ul>
                         @endif
                     </x-admin.sidebar-dropdown>
+                @endif
+                @if ($user->can('contact.view') || $user->can('contact.edit'))
+                <x-admin.sidebar-list
+                    :linkActive="Route::is('admin.dashboard') ? true : false"
+                    route="product.submits" icon="fas fa-universal-access">
+                    {{ __('submit_products') }}
+                </x-admin.sidebar-list>
                 @endif
 
             </ul>

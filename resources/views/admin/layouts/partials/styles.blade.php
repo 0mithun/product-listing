@@ -14,6 +14,13 @@
     @yield('style')
 
     <style>
+
+    .text-center.paginations {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
         {!! $setting->header_css !!}
     </style>
     <script>

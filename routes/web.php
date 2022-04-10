@@ -12,6 +12,7 @@ Route::middleware(['frontend_setlang'])->group(function () {
     Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
     Route::get('/details/{product:slug}', [FrontendController::class, 'productDetails'])->name('product.details');
     Route::get('/print/{product:slug}', [FrontendController::class, 'productPrint'])->name('product.print');
+    Route::post('/send-email/{product:slug}', [FrontendController::class, 'sendEmail'])->name('product.send.email');
     Route::get('/collections/{category}', [FrontendController::class, 'getProductByCategory'])->name('category.product');
 
     // Route::get('/home', function(){

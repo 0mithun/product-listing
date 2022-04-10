@@ -24,7 +24,7 @@ class SettingsController extends Controller
         'searchIndexing', 'googleAnalytics', 'facebookPixel'
         ]);
 
-        $this->middleware(['permission:about.update'])->only(['about','aboutUpdate']);
+        $this->middleware(['permission:about.edit'])->only(['about','aboutUpdate']);
     }
 
 

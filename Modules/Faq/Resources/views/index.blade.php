@@ -65,5 +65,12 @@
         </div>
         @endforeach
     </div>
+    @if ($faqs->count() > 0)
+        <div class="card-footer ">
+            <div class="d-flex justify-content-center">
+                {{ $faqs->links() }}
+            </div>
+        </div>
+    @endif
 </div>
 @endsection

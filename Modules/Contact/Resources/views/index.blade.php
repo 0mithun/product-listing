@@ -43,7 +43,7 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $contact->name }}</td>
                                     <td>{{ $contact->email }}</td>
-                                    <td>{{ $contact->created_at }}</td>
+                                    <td>{{ $contact->created_at->format('Y-m-d') }}</td>
                                     @if (userCan('contact.delete') || userCan('contact.view'))
                                         <td class="d-flex justify-content-center align-items-center">
                                             @if (userCan('contact.view'))
@@ -72,6 +72,13 @@
                             </tbody>
                         </table>
                     </div>
+                    @if ($contacts->count() > 0)
+                        <div class="card-footer ">
+                            <div class="d-flex justify-content-center">
+                                {{ $contacts->links() }}
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

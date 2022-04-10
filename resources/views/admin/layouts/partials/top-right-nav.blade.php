@@ -39,7 +39,7 @@ $user = auth()->user();
     </div>
 </li>
 <li class="nav-item dropdown">
-    <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
+    {{-- <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stro`ke-width="1.5" stroke="{{ $setting->dark_mode ? '#ffffff':'#1f2d3d' }}" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
             <path d="M4 5h7" />
@@ -48,7 +48,7 @@ $user = auth()->user();
             <path d="M12 20l4 -9l4 9" />
             <path d="M19.1 18h-6.2" />
           </svg>
-    </a>
+    </a> --}}
     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right" style="left: inherit; right: 0px;">
         <a class="dropdown-item {{ session('admin_lang') === 'default' ? 'active' : '' }}" href="{{ route('changeLanguage', 'default') }}">
             {{ __('english_default') }}

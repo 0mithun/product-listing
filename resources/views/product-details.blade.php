@@ -8,6 +8,16 @@
                     {!! nestedPathPrintWithLink($category->name_path) !!}
                 </p>
             </div>
+            @if (session('success'))
+                <div class="col-md-12">
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                </div>
+            @endif
+            @if ($errors->any())
+                <div class="col-md-12">
+                    <div class="alert alert-danger">Please complete all fields. </div>
+                </div>
+            @endif
         </div>
     </div>
     <section class="single-product">
@@ -106,13 +116,44 @@
                                 </div>
                                 <div class="modal-body">
                                     <h2>Contact</h2>
-                                    <noscript class="ninja-forms-noscript-message">
-                                        Notice: JavaScript is required for this content.</noscript>
-                                    <div id="nf-form-6-cont" class="nf-form-cont" aria-live="polite"
-                                        aria-labelledby="nf-form-title-6" aria-describedby="nf-form-errors-6" role="form">
-                                        <div class="nf-loading-spinner"></div>
-                                    </div>
+                                    <form method="POST" action="{{ route('product.send.email', $product->slug) }}">
+                                        @csrf
+                                        <div class="form-row">
+                                          <div class="form-group col-md-12">
+                                            <label for="name">Name</label>
+                                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Name" id="name">
+                                            @error('name')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                          </div>
+                                          <br>
+                                          <div class="form-group col-md-12">
+                                            <label for="email">Email</label>
+                                            <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email" id="email">
+                                            @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-group">
+                                          <label for="message">Address</label>
+                                          <textarea rows="5" class="form-control @error('message') is-invalid @enderror" id="message" placeholder="Message" name="message" style="max-height: initial"></textarea>
+                                            @error('message')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <br>
+                                        <button type="submit" class="btn btn-primary">SUBMIT</button>
+                                    </form>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -301,4 +342,31 @@
     <style>
             div.pp_woocommerce a.pp_contract,div.pp_woocommerce a.pp_expand{content:unset!important;background-color:#fff;width:25px;height:25px;margin-top:5px;margin-left:5px}div.pp_woocommerce a.pp_contract,div.pp_woocommerce a.pp_expand:hover{background-color:#fff}div.pp_woocommerce a.pp_contract,div.pp_woocommerce a.pp_contract:hover{background-color:#fff}a.pp_contract:before,a.pp_expand:before{content:unset!important}a.pp_contract .expand-button-hidden svg,a.pp_expand .expand-button-hidden svg{width:25px;height:25px;padding:5px}.expand-button-hidden path{fill:black}#slider-next,#slider-prev{background-color:#fff;border:2px solid #000;width:25px!important;height:25px!important}.yith_slider_arrow span{width:25px!important;height:25px!important}#slider-next:hover,#slider-prev:hover{background-color:#fff;border:2px solid #000}.thumbnails.slider path:hover{fill:#000000}.thumbnails.slider path{fill:#000000;width:25px!important;height:25px!important}.thumbnails.slider svg{width:22px;height:22px}div.pp_woocommerce a.yith_expand{background-color:#fff;width:25px;height:25px;top:10px;bottom:initial;left:initial;right:10px;border-radius:0}.expand-button-hidden svg{width:25px;height:25px}.expand-button-hidden path{fill:black}[data-font=Dashicons]:before{font-family:Dashicons!important;content:attr(data-icon)!important;speak:none!important;font-weight:400!important;font-variant:normal!important;text-transform:none!important;line-height:1!important;font-style:normal!important;-webkit-font-smoothing:antialiased!important;-moz-osx-font-smoothing:grayscale!important}.no-js img.lazyload{display:none}figure.wp-block-image img.lazyloading{min-width:150px}.lazyload,.lazyloading{opacity:0}.lazyloaded{opacity:1;transition:opacity .4s;transition-delay:0s}.modal-body>h2{margin-left:4px!important}.product:hover>a>h3{text-decoration:underline}.a2a_button_print{display:none!important}#uds:hover{text-decoration:underline}.flex-active{padding:3px;border:solid 1px #000}.flex-control-thumbs>li>img{padding:3px}#breadcrumbs{font-size:12px;color:#000}.yith_magnifier_zoom{text-align:center!important}.attachment-shop_single{display:inline-block!important}.expand-button-hidden,.yith_expand,.yith_slider_arrow{display:none!important}.yith_magnifier_thumbnail{width:auto!important}ul>li>.active-thumbnail{padding:1px;border:Solid 1px #000}.yith_magnifier_zoom_magnifier{width:280px!important;height:280px!important;top:70px!important;left:50px;border:solid 5px #000!important}.wp-post-image{width:80%!important;max-height:auto !important!important;min-height:auto!important;height:auto!important}.yith_magnifier_mousetrap{cursor:url("{{ asset('img/magnifier.png') }}"),auto!important}footer>div>div>div>ul>li:nth-child(5){display:none!important}footer>div>div>div>ul>li>a{font-size:.9rem!important}footer>div>div>div>div>ul>li>a{font-size:.9rem!important}.page-numbers>li>span{font-weight:700}.a2a_label{display:none}span.a2a_label{display:none!important}
     </style>
+     <link rel="stylesheet" href="{{ asset('ninjaform.css') }}">
+     <style>
+         .container.ntp {
+             text-align: center;
+         }
+
+         .nf-error-wrap.nf-error {
+         text-align: left;
+         color: red;
+         margin-top: 5px;
+     }
+
+
+     .submit-btn {
+        background: #333;
+        border: 0;
+        color: #f7f7f7;
+        transition: all .5s;
+
+        /* background: #f7f7f7; */
+        /* border: 1px solid #c4c4c4; */
+        border-radius: 0;
+        box-shadow: none;
+        color: #787878;
+        transition: all .5s;
+     }
+     </style>
 @endpush

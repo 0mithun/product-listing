@@ -50,6 +50,8 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('product/images/{slug}', [ProductController::class, 'imagesAdd'])->name('product.images.add');
     Route::get('product/images/{slug}/image/{image}', [ProductController::class, 'imagesDelete'])->name('product.images.delete');
 
+    Route::get('product/submits', [ProductController::class, 'submitedProducts'])->name('product.submits');
+
 
     // ========================================================
     //====================Setting==============================

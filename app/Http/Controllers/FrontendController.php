@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ProductSubmitEmail;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\ProductSubmit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Modules\Faq\Entities\Faq;
 use Modules\Faq\Entities\FaqCategory;
 
@@ -109,9 +112,40 @@ class FrontendController extends Controller
     }
 
 
+
+    /**
+     * Print view product
+     *
+     * @param Product $product
+     * @return void
+     */
     public function productPrint(Product $product)
     {
-        return view('print', compact('product'));
+        return view('mails.product-submit', compact('product'));
+    }
+
+
+
+
+    /**
+     * Send product email
+     *
+     * @param Product $product
+     * @return void
+     */
+    public function sendEmail(Request $request, Product $product)
+    {
+        $request->validate([
+            'name'      =>  ['required'],
+            'email'      =>  ['required', 'email'],
+            'message'      =>  ['required', ],
+        ]);
+
+        ProductSubmit::create($request->all());
+
+        Mail::to($request->email)->send(new ProductSubmitEmail($product));
+
+        return redirect()->back()->with('success', 'Product submit successfully');
     }
 
 }

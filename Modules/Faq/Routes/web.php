@@ -5,7 +5,7 @@ use Modules\Faq\Http\Controllers\FaqCategoryController;
 use Modules\Faq\Http\Controllers\FaqController;
 
 
-Route::middleware(['auth:admin', 'admin_setlang'])->prefix('admin')->group(function () {
+Route::middleware(['auth:admin', 'admin_setlang'])->group(function () {
     // Faq Routes
     Route::prefix('admin/faq')->group(function () {
         Route::get('/', [FaqController::class, 'index'])->name('module.faq.index');

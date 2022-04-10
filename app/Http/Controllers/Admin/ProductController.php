@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductCreateRequest;
 use App\Http\Requests\ProductUpdateRequest;
+use App\Models\ProductSubmit;
 use Exception;
 
 class ProductController extends Controller
@@ -183,5 +184,13 @@ class ProductController extends Controller
         } catch (Exception $e) {
             return redirect()->route('product.images', $product->slug)->with('error', 'Product image delete failed!');
         }
+    }
+
+
+    public function submitedProducts()
+    {
+        $submits =  ProductSubmit::paginate(10);
+
+        return view('admin.products.submit-products', compact('submits'));
     }
 }

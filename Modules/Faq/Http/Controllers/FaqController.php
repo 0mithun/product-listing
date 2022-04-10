@@ -37,9 +37,9 @@ class FaqController extends Controller
              $faqs = Faq::whereHas('faq_category', function ($q){
                 $q->where('slug', request('category'));
             })
-            ->get();
+            ->paginate(10)->withQueryString();
         } else {
-            $faqs = Faq::where('faq_category_id', $faq_category->first()->id)->get();
+            $faqs = Faq::where('faq_category_id', $faq_category->first()->id)->paginate(10)->withQueryString();
         }
 
         return view('faq::index', compact('faq_category', 'faqs'));

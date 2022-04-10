@@ -46,10 +46,10 @@
     <script src="{{ asset('backend') }}/dist/js/ckeditor.js"></script>
     <script>
         ClassicEditor
-            .create(document.querySelector('#description'))
+            .create(document.querySelector('#about'))
             .then( editor => {
                 editor.editing.view.change(writer=>{
-                    writer.setStyle('min-height', '150px', editor.editing.view.document.getRoot());
+                    writer.setStyle('min-height', '350px', editor.editing.view.document.getRoot());
                 })
             } )
             .catch(error => {
