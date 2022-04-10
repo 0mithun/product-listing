@@ -31,57 +31,95 @@
                         {{ __('dashboard') }}
                     </x-admin.sidebar-list>
                 @endif
-                {{-- @if ($user->can('dashboard.view')) --}}
-                    <x-admin.sidebar-list :linkActive="Route::is('settings.about.update') ? true : false" route="settings.about.update"
+                @if ($user->can('admin.view') || $user->can('admin.create') || $user->can('admin.edit') || $user->can('admin.delete') || $user->can('role.view') || $user->can('role.create') || $user->can('role.edit') || $user->can('role.delete'))
+
+                <x-admin.sidebar-dropdown
+                    :linkActive="Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') || Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') ? true : false"
+                    :subLinkActive="Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') || Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') ? true : false"
+                    icon="fas fa-lock">
+                    @slot('title')
+                        {{ __('user_role_manage') }}
+                    @endslot
+
+                    @if ($user->can('admin.view') || $user->can('admin.create') || $user->can('admin.edit') || $user->can('admin.delete'))
+                        <ul class="nav nav-treeview">
+                            <x-admin.sidebar-list
+                                :linkActive="Route::is('user.index') || Route::is('user.create') || Route::is('user.edit') ? true : false"
+                                route="user.index" icon="fas fa-users">
+                                {{ __('all_users') }}
+                            </x-admin.sidebar-list>
+                        </ul>
+                    @endif
+                    @if ($user->can('role.view') || $user->can('role.create') || $user->can('role.edit') || $user->can('role.delete'))
+                        <ul class="nav nav-treeview">
+                            <x-admin.sidebar-list
+                                :linkActive="Route::is('role.index') || Route::is('role.create') || Route::is('role.edit') ? true : false"
+                                route="role.index" icon="fas fa-lock">
+                                {{ __('all_roles') }}
+                            </x-admin.sidebar-list>
+                        </ul>
+                    @endif
+                </x-admin.sidebar-dropdown>
+            @endif
+                @if ($user->can('dashboard.view'))
+                    <x-admin.sidebar-list :linkActive="Route::is('settings.about.edit') ? true : false" route="settings.about.update"
                         icon="fas fa-info-circle">
                         {{ __('about') }}
                     </x-admin.sidebar-list>
-                {{-- @endif --}}
+                @endif
 
-                @if ($user->can('setting.view') || $user->can('setting.update'))
+                @if ($user->can('setting.view') || $user->can('setting.edit'))
                     <x-admin.sidebar-list :linkActive="Request::is('settings/*')  ? true : false" route="settings.website" icon="fas fa-cog">
                         {{ __('settings') }}
                     </x-admin.sidebar-list>
                 @endif
-                {{-- @if ($user->can('categories.view') || $user->can('categories.update')) --}}
+                @if ($user->can('category.view') || $user->can('category.edit'))
                     <x-admin.sidebar-list :linkActive="Request::is('categories/*')  ? true : false" route="categories.index" icon="fas fa-book">
                         {{ __('categories') }}
                     </x-admin.sidebar-list>
-                {{-- @endif  --}}
-                {{-- @if ($user->can('categories.view') || $user->can('categories.update')) --}}
+                @endif
+                @if ($user->can('product.view') || $user->can('product.edit'))
                     <x-admin.sidebar-list :linkActive="Request::is('products/*')  ? true : false" route="products.index" icon="fas fa-tag">
                         {{ __('products') }}
                     </x-admin.sidebar-list>
-                {{-- @endif  --}}
+                @endif
 
+                @if ($user->can('contact.view') || $user->can('contact.edit'))
                 <x-admin.sidebar-list
                     :linkActive="Route::is('module.contact.index') || Route::is('module.contact.create') || Route::is('module.contact.edit') ? true : false"
                     route="module.contact.index" icon="fas fa-envelope">
                     {{ __('contact') }}
                 </x-admin.sidebar-list>
+                @endif
 
-                <x-admin.sidebar-dropdown
-                    :linkActive="Route::is('module.faq.index') || Route::is('module.faq.create') || Route::is('module.faq.edit') ? true : false"
-                    :subLinkActive="Route::is('module.faq.category.index') || Route::is('module.faq.category.create') || Route::is('module.faq.category.edit') || Route::is('module.faq.index') || Route::is('module.faq.create') || Route::is('module.faq.edit') ? true : false"
-                    icon="fas fa-question">
-                    @slot('title')
-                    {{ __('Faq') }}
-                    @endslot
-                    <ul class="nav nav-treeview">
-                        <x-admin.sidebar-list
-                            :linkActive="Route::is('module.faq.category.index') || Route::is('module.faq.category.create') || Route::is('module.faq.category.edit') ? true : false"
-                            route="module.faq.category.index" icon="fas fa-circle">
-                            {{ __('faq_category') }}
-                        </x-admin.sidebar-list>
-                    </ul>
-                    <ul class="nav nav-treeview">
-                        <x-admin.sidebar-list
-                            :linkActive="Route::is('module.faq.index') || Route::is('module.faq.create') || Route::is('module.faq.edit') ? true : false"
-                            route="module.faq.index" icon="fas fa-circle">
-                            {{ __('faq') }}
-                        </x-admin.sidebar-list>
-                    </ul>
-                </x-admin.sidebar-dropdown>
+                @if($user->can('faq.view') || $user->can('faq.edit') || $user->can('faq.create') || $user->can('faq.delete')  || $user->can('faq.category.create') || $user->can('faq.category.view')  || $user->can('faq.category.edit')  || $user->can('faq.category.delete'))
+                    <x-admin.sidebar-dropdown
+                        :linkActive="Route::is('module.faq.index') || Route::is('module.faq.create') || Route::is('module.faq.edit') ? true : false"
+                        :subLinkActive="Route::is('module.faq.category.index') || Route::is('module.faq.category.create') || Route::is('module.faq.category.edit') || Route::is('module.faq.index') || Route::is('module.faq.create') || Route::is('module.faq.edit') ? true : false"
+                        icon="fas fa-question">
+                        @slot('title')
+                        {{ __('Faq') }}
+                        @endslot
+                        @if($user->can('faq.category.create') || $user->can('faq.category.view')  || $user->can('faq.category.edit')  || $user->can('faq.category.delete'))
+                        <ul class="nav nav-treeview">
+                            <x-admin.sidebar-list
+                                :linkActive="Route::is('module.faq.category.index') || Route::is('module.faq.category.create') || Route::is('module.faq.category.edit') ? true : false"
+                                route="module.faq.category.index" icon="fas fa-circle">
+                                {{ __('faq_category') }}
+                            </x-admin.sidebar-list>
+                        </ul>
+                        @endif
+                        @if ($user->can('faq.view') || $user->can('faq.edit') || $user->can('faq.create') || $user->can('faq.delete') )
+                        <ul class="nav nav-treeview">
+                            <x-admin.sidebar-list
+                                :linkActive="Route::is('module.faq.index') || Route::is('module.faq.create') || Route::is('module.faq.edit') ? true : false"
+                                route="module.faq.index" icon="fas fa-circle">
+                                {{ __('faq') }}
+                            </x-admin.sidebar-list>
+                        </ul>
+                        @endif
+                    </x-admin.sidebar-dropdown>
+                @endif
 
             </ul>
         </nav>

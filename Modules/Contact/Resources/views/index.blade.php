@@ -8,10 +8,12 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title" style="line-height: 36px;">{{ __('contact_list') }}</h3>
-                        @if ($contacts->count() > 0)
-                            <button onclick="return confirm('Are you sure you want to delete selected items?');" id="selected_item_delete" class="btn btn-danger mr-3 float-right">
-                                <i class="fas fa-trash"></i>
-                            </button>
+                        @if (userCan('contact.delete'))
+                            @if ($contacts->count() > 0)
+                                <button onclick="return confirm('Are you sure you want to delete selected items?');" id="selected_item_delete" class="btn btn-danger mr-3 float-right">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            @endif
                         @endif
                     </div>
                     <div class="card-body table-responsive p-0">
@@ -26,7 +28,9 @@
                                         <th>{{ __('name') }}</th>
                                         <th>{{ __('email') }}</th>
                                         <th>{{ __('date') }}</th>
-                                        <th width="10%">{{ __('actions') }}</th>
+                                        @if (userCan('contact.delete') || userCan('contact.view'))
+                                            <th width="10%">{{ __('actions') }}</th>
+                                        @endif
                                     </tr>
                                 </thead>
                             @endif
@@ -40,17 +44,23 @@
                                     <td>{{ $contact->name }}</td>
                                     <td>{{ $contact->email }}</td>
                                     <td>{{ $contact->created_at }}</td>
-                                    <td class="d-flex justify-content-center align-items-center">
-                                        <button contact_id="{{ $contact->id }}" type="submit" onclick="contactDetail({{ json_encode($contact) }})" title="{{ __('view_message') }}" class="btn btn-sm bg-info mr-1 msgBtn"><i class="far fa-envelope-open"></i></button>
-                                        <form action="{{ route('module.contact.destroy', $contact->id) }}"
-                                            method="POST" class="d-inline">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button title="{{ __('delete_contact') }}" onclick="return confirm('{{ __('Are you sure want to delete this item?') }}');" class="btn btn-sm bg-danger">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </form>
-                                    </td>
+                                    @if (userCan('contact.delete') || userCan('contact.view'))
+                                        <td class="d-flex justify-content-center align-items-center">
+                                            @if (userCan('contact.view'))
+                                            <button contact_id="{{ $contact->id }}" type="submit" onclick="contactDetail({{ json_encode($contact) }})" title="{{ __('view_message') }}" class="btn btn-sm bg-info mr-1 msgBtn"><i class="far fa-envelope-open"></i></button>
+                                            @endif
+                                            @if (userCan('contact.delete'))
+                                            <form action="{{ route('module.contact.destroy', $contact->id) }}"
+                                                method="POST" class="d-inline">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button title="{{ __('delete_contact') }}" onclick="return confirm('{{ __('Are you sure want to delete this item?') }}');" class="btn btn-sm bg-danger">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
+                                            @endif
+                                        </td>
+                                    @endif
                                 </tr>
                                 @empty
                                 <tr>
