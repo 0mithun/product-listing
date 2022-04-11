@@ -38,7 +38,6 @@ class CreateSettingsTable extends Migration
             $table->boolean('commingsoon_mode')->default(0);
             $table->boolean('search_engine_indexing')->default(1);
             $table->boolean('google_analytics')->default(0);
-            $table->boolean('facebook_pixel')->default(0);
             $table->boolean('default_layout')->default(true);
             $table->string('copyright_text')->nullable();
             $table->text('map_text')->nullable();

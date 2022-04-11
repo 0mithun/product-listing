@@ -2,9 +2,6 @@
 <html>
 
 <head>
-    @if ($setting->facebook_pixel)
-        @include('facebook-pixel::head')
-    @endif
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
@@ -34,9 +31,6 @@
 
 
 <body>
-    @if ($setting->facebook_pixel)
-        @include('facebook-pixel::body')
-    @endif
     @include('layouts.partials._header')
 
     @yield('content')

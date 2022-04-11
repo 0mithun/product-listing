@@ -21,7 +21,7 @@ class SettingsController extends Controller
 
         $this->middleware(['permission:setting.update'])->only(['websiteUpdate', 'layoutUpdate', 'colorUpdate', 'custumCSSJSUpdate',
         'modeUpdate', 'emailUpdate', 'testEmailSent', 'modeCommingsoon', 'modeMaintaince',
-        'searchIndexing', 'googleAnalytics', 'facebookPixel'
+        'searchIndexing', 'googleAnalytics',
         ]);
 
         $this->middleware(['permission:about.edit'])->only(['about','aboutUpdate']);
@@ -317,21 +317,6 @@ class SettingsController extends Controller
     }
 
 
-    /**
-     * Update facebook pixel setting
-     *
-     * @return void
-     */
-    public function facebookPixel()
-    {
-        $env = new Env();
-        $env->setValue(strtoupper('FACEBOOK_PIXEL_ID'), request('facebook_pixel_id',''));
-
-        Setting::first()->update(['facebook_pixel'=> request('facebook_pixel', 0)]);
-        session()->put('facebook_pixel', request('facebook_pixel', 0));
-
-        return back()->with('success', 'Facebook Pixel update successfully!');
-    }
 
 
 }

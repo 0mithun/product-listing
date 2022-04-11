@@ -83,6 +83,5 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::put('settings/mode/maintaince', [SettingsController::class, 'modeMaintaince'])->name('settings.mode.maintaince');
     Route::put('settings/search/indexing', [SettingsController::class, 'searchIndexing'])->name('settings.search.indexing');
     Route::put('settings/google-analytics', [SettingsController::class, 'googleAnalytics'])->name('settings.google.analytics');
-    Route::put('settings/facebook-pixel', [SettingsController::class, 'facebookPixel'])->name('settings.facebook.pixel');
 
 });
