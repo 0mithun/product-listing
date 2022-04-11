@@ -141,9 +141,9 @@ class FrontendController extends Controller
             'message'      =>  ['required', ],
         ]);
 
-        ProductSubmit::create($request->all());
+        $submitted = ProductSubmit::create($request->all());
 
-        Mail::to($request->email)->send(new ProductSubmitEmail($product));
+        Mail::to($request->email)->send(new ProductSubmitEmail($product, $submitted));
 
         return redirect()->back()->with('success', 'Product submit successfully');
     }

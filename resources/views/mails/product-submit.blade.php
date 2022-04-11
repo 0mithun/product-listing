@@ -32,7 +32,7 @@
 <body style="font-family: 'Inter', sans-serif; padding:11px;">
     <h4 align="center"
         style="font-size: 1.6rem; font-weight: 500; text-transform: capitalize; margin-bottom: 11px; font-family:lora;   margin-top:25px;">
-        Hello, John Doe</h3>
+        Hello, {{ $submitted->name }}</h3>
 
     <h3 align="center"
         style="font-size: 1.6rem; font-weight: 500; text-transform: uppercase; margin-bottom: 11px; font-family:lora; text-decoration:underline; margin-top:25px;">

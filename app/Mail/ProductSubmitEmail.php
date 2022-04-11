@@ -13,15 +13,17 @@ class ProductSubmitEmail extends Mailable implements ShouldQueue
 
 
     public $product;
+    public $submitted;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($product)
+    public function __construct($product, $submitted)
     {
         $this->product = $product;
+        $this->submitted = $submitted;
     }
 
     /**

@@ -5,7 +5,9 @@
         <div class="row">
             <div class="col-md-12">
                 <p id="breadcrumbs">
-                    {!! nestedPathPrintWithLink($category->name_path) !!}
+                    @if(!is_null($category))
+                        {!! nestedPathPrintWithLink($category->name_path) !!}
+                    @endif
                 </p>
             </div>
         </div>
