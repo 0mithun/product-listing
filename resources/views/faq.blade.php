@@ -10,7 +10,7 @@
                     <h2>{{ $faq_category->name }}</h2>
                     @foreach ($faq_category->faqs as $faq)
                         <h4 href="" data-toggle="collapse">{{ $faq->question }}</h4>
-                        <p class="collapse ">{{ $faq->answer }}</p>
+                        <p class="collapse ">{!! $faq->answer !!}</p>
                     @endforeach
                 @endforeach
             </div>

@@ -9,7 +9,7 @@
                 <nav class="navbar links">
                     <ul class="navbar-nav right">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggler" href="/collections" id="navbarDropdown" role="button"> Collections </a>
+                            <a class="nav-link dropdown-toggler" href="#" id="navbarDropdown" role="button"> Collections </a>
                             <ul class="dropdown-menu">
                                 @foreach ($category_list as $category)
                                 <li class="dropdown2">

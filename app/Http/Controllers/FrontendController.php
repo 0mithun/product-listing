@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ProductSubmitAdmin;
 use App\Mail\ProductSubmitEmail;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\ProductSubmit;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Modules\Faq\Entities\Faq;
@@ -143,7 +145,11 @@ class FrontendController extends Controller
 
         $submitted = ProductSubmit::create($request->all());
 
+        $setting = Setting::first();
+
         Mail::to($request->email)->send(new ProductSubmitEmail($product, $submitted));
+        Mail::to($setting->email)->send(new ProductSubmitAdmin($product, $submitted));
+
 
         return redirect()->back()->with('success', 'Product submit successfully');
     }

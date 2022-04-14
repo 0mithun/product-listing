@@ -3,7 +3,7 @@
 @section('content')
     <section class="page">
         <div class="container ntp">
-            {{ $setting->about  }}
+            {!! $setting->about  !!}
         </div>
     </section>
 @endsection
