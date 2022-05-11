@@ -44,7 +44,8 @@ class ContactController extends Controller
         ]);
 
         Contact::create($request->all());
-        return back();
+
+        return back()->with('success', 'Contact submit successfully!');
     }
 
     /**

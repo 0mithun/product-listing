@@ -14,7 +14,11 @@ class Product extends Model implements HasMedia
     use HasFactory, InteractsWithMedia;
 
     protected $fillable  = [
-        'category_id', 'title', 'slug', 'description', 'dimension', 'origin', 'price', 'metadata'
+        'category_id', 'title', 'slug', 'description', 'dimension', 'origin', 'price', 'metadata', 'home_page'
+    ];
+
+    protected $casts = [
+        'home_page'     =>  'boolean'
     ];
 
     public static function boot(){

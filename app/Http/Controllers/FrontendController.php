@@ -24,9 +24,14 @@ class FrontendController extends Controller
      */
     public function index()
     {
-        $products = Product::limit(10)->get();
+        $products = Product::where('home_page', true)->get();
+        // $all_products = Product::with('category')->get();
 
-        return view('index', compact('products'))->with('page_name', 'Home');
+        $categories = Category::whereHas('products')->get();
+
+        // dd($categories);
+
+        return view('index', compact('products', 'categories'))->with('page_name', 'Home');
     }
 
 
@@ -65,7 +70,7 @@ class FrontendController extends Controller
      */
     public function gallery()
     {
-        $products = Product::paginate(20);
+        $products = Product::where('home_page', 1)->paginate(20);
         $category = Category::where('id', 1)->tree()->first();
 
         return view('gallery', compact('products', 'category'))->with('page_name', 'Gallery');

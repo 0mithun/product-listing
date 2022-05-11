@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontendController;
 
@@ -14,6 +15,10 @@ Route::middleware(['frontend_setlang'])->group(function () {
     Route::get('/print/{product:slug}', [FrontendController::class, 'productPrint'])->name('product.print');
     Route::post('/send-email/{product:slug}', [FrontendController::class, 'sendEmail'])->name('product.send.email');
     Route::get('/collections/{category}', [FrontendController::class, 'getProductByCategory'])->name('category.product');
+
+    Route::get('/gallery/{category:slug}', [CategoryController::class, 'categories']);
+    Route::get('/gallery/{category:slug}/{subcategory}', [CategoryController::class, 'subcategories']);
+    Route::get('/gallery/{category:slug}/{subcategory}/{product:slug}', [CategoryController::class, 'product']);
 
     // Route::get('/home', function(){
     //     return view('home');

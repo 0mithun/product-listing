@@ -1,6 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container" style="padding-top:0px; padding-bottom:0px;">
+    <div class="row">
+
+        @if (session('success'))
+            <div class="col-md-12">
+                <div class="alert alert-success">{{ session('success') }}</div>
+            </div>
+        @endif
+        @if ($errors->any())
+            <div class="col-md-12">
+                <div class="alert alert-danger">Please complete all fields. </div>
+            </div>
+        @endif
+    </div>
+</div>
     <section class="page">
         <div class="container ntp">
             {{ $setting->map_text  }}

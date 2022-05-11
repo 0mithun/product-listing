@@ -91,6 +91,10 @@
                             role="alert"><span>{{ $message }}</span></span> @enderror
                     </div>
                 </div>
+                <div class="form-group form-check row">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                  </div>
                 <div class="form-group">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" name="google_analytics" id="google_analytics" value="1" @if($setting->google_analytics == 1) checked  @endif>

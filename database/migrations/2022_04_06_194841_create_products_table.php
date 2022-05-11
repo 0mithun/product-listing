@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->string('origin');
             $table->decimal('price')->nullable();
             $table->text('metadata')->nullable();
+            $table->boolean('home_page')->default(false);
             $table->timestamps();
         });
     }

@@ -54,7 +54,7 @@ class ProductController extends Controller
      */
     public function store(ProductCreateRequest $request)
     {
-        $product = Product::create($request->only(['category_id', 'title', 'description', 'dimension', 'origin', 'price', 'metadata']));
+        $product = Product::create($request->only(['category_id', 'title', 'description', 'dimension', 'origin', 'price', 'metadata', 'home_page']));
 
         return redirect()->route('product.images', $product->slug)->with('success', 'Product create successfully!');
     }
@@ -100,7 +100,7 @@ class ProductController extends Controller
     {
         $product = Product::where(['slug'=> $slug])->firstOrFail();
 
-       $product->update($request->only(['category_id', 'title', 'description', 'dimension', 'origin', 'price', 'metadata']) + ['slug'=> Str::slug($request->title)]);
+       $product->update($request->only(['category_id', 'title', 'description', 'dimension', 'origin', 'price', 'metadata', 'home_page']) + ['slug'=> Str::slug($request->title)]);
 
        return redirect()->route('product.images', $product->slug)->with('success', 'Product update successfully!');
     }

@@ -90,6 +90,13 @@
                                             role="alert"><strong>{{ $message }}</strong></span> @enderror
                                     </div>
                                 </div>
+                                <div class="form-group form-check">
+                                    <div class="col-sm-12 offset-sm-3">
+                                        <input type="checkbox" class="form-check-input" id="home_page" name="home_page" value="1" @if (old('home_page')) checked @endif>
+                                        <label class="form-check-label" for="home_page">Home Page</label>
+                                    </div>
+                                </div>
+
 
                                 <div class="form-group row">
                                     <div class="offset-sm-3 col-sm-4">
