@@ -113,6 +113,14 @@ function nestedPathPrintWithLink($string,  $seperator = '/')
     return $links;
 }
 
+
+/**
+ * Remove last path from string
+ *
+ * @param string $string
+ * @param string $seperator
+ * @return void
+ */
 function nestedPathRemoveLast($string, $seperator = '/'){
     $items = explode($seperator, $string);
 
@@ -121,6 +129,15 @@ function nestedPathRemoveLast($string, $seperator = '/'){
     return implode($seperator, $items);
 }
 
+
+
+/**
+ * Remove first path from slug
+ *
+ * @param string $string
+ * @param string $seperator
+ * @return void
+ */
 function nestedPathRemoveFirst($string, $seperator = '/'){
     $items = explode($seperator, $string);
 

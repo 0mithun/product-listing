@@ -46,6 +46,8 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::resource('user', UserController::class);
     Route::resource('categories', CatetgoryController::class)->except('show');
     Route::resource('products', ProductController::class);
+    Route::post('/product/description/upload', [ProductController::class, 'descriptionUpload'])->name('product.description.upload');
+
     Route::get('product/images/{slug}', [ProductController::class, 'images'])->name('product.images');
     Route::post('product/images/{slug}', [ProductController::class, 'imagesAdd'])->name('product.images.add');
     Route::get('product/images/{slug}/image/{image}', [ProductController::class, 'imagesDelete'])->name('product.images.delete');

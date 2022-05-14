@@ -10,10 +10,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductCreateRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Models\ProductSubmit;
+use App\Traits\UploadAble;
 use Exception;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
+    use UploadAble;
+
+
     public function __construct()
     {
         $this->middleware(['permission:product.view|product.edit|product.delete'])->only(['index',]);
@@ -192,5 +197,29 @@ class ProductController extends Controller
         $submits =  ProductSubmit::paginate(10);
 
         return view('admin.products.submit-products', compact('submits'));
+    }
+
+
+    public function descriptionUpload(Request $request)
+    {
+        $request->validate([
+            'upload'     =>  ['mimes:png,jpg', 'max:1024'],
+        ]);
+
+        // return $request->all();
+
+
+
+        $filename = $this->uploadOne($request->file('upload'));
+
+
+        $CKEditorFuncNum = $request->input('CKEditorFuncNum');
+        $url = Storage::disk('public')->url($filename);
+        $msg = 'Image successfully uploaded';
+        $re = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
+
+        // Render HTML output
+        @header('Content-type: text/html; charset=utf-8');
+        echo $re;
     }
 }

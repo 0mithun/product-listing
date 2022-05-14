@@ -119,7 +119,7 @@
 
 
 @section('script')
-    <script src="{{ asset('backend') }}/dist/js/ckeditor.js"></script>
+    {{-- <script src="{{ asset('backend') }}/dist/js/ckeditor.js"></script>
     <script>
         ClassicEditor
             .create(document.querySelector('#description'))
@@ -131,5 +131,13 @@
             .catch(error => {
                 console.error(error);
             });
+    </script> --}}
+
+    <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace( 'description', {
+            filebrowserUploadUrl: "{{ route('product.description.upload', ['_token' => csrf_token() ]) }}",
+            filebrowserUploadMethod: 'form'
+        });
     </script>
 @endsection
