@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@php
+    // dd($category)
+@endphp
 
 @section('content')
     <div class="container" style="padding-top:0px; padding-bottom:0px;">
@@ -6,7 +9,7 @@
             <div class="col-md-12">
                 <p id="breadcrumbs">
                     @if(!is_null($category))
-                        {!! nestedPathPrintWithLink($category->name_path) !!}
+                        {!! nestedPathPrintWithLink($category->slug_path) !!}
                     @endif
                 </p>
             </div>

@@ -16,9 +16,9 @@ Route::middleware(['frontend_setlang'])->group(function () {
     Route::post('/send-email/{product:slug}', [FrontendController::class, 'sendEmail'])->name('product.send.email');
     Route::get('/collections/{category}', [FrontendController::class, 'getProductByCategory'])->name('category.product');
 
-    Route::get('/gallery/{category:slug}', [CategoryController::class, 'categories']);
-    Route::get('/gallery/{category:slug}/{subcategory}', [CategoryController::class, 'subcategories']);
-    Route::get('/gallery/{category:slug}/{subcategory}/{product:slug}', [CategoryController::class, 'product']);
+    // Route::get('/gallery/{category:slug}', [CategoryController::class, 'categories']);
+    // Route::get('/gallery/{category:slug}/{subcategory}', [CategoryController::class, 'subcategories']);
+    // Route::get('/gallery/{category:slug}/{subcategory}/{product:slug}', [CategoryController::class, 'product']);
 
     // Route::get('/home', function(){
     //     return view('home');
@@ -37,5 +37,9 @@ Route::middleware(['frontend_setlang'])->group(function () {
     //     $categories =  Category::tree()->get()->toTree();
     //     return view('test', compact('categories'));
     // });
+
+    // Route::get('/gallery/{slug}/{slugName?}', [CategoryController::class, 'slug'])->where('slugNum', '(.*)');
+    Route::get('/gallery/{slugName}', [CategoryController::class, 'slug'])->where('slugName', '(.*)')->name('slug.view');
+
 
 });

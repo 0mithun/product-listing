@@ -75,16 +75,38 @@ function nestedPathPrint($string,  $remove_last = false, $seperator = '/')
 
 function nestedPathPrintWithLink($string,  $seperator = '/')
 {
+    // $names = explode($seperator, $string);
+    // $total = count($names);
+    // $links = sprintf('<span><a href="%s">%s</a></span>', route('index'), 'Home');
+    // for($i=0; $i < $total; $i++){
+    //     if($i == ($total - 1)){
+    //         $links .= sprintf(' › <span><strong><a href="%s">%s</a></strong></span>', route('category.product', Str::slug($names[$i])), $names[$i]);
+    //     }else {
+    //         $links .= sprintf(' › <span><a href="%s">%s</a></span>', route('category.product', Str::slug($names[$i])), $names[$i]);
+    //     }
+    // }
+
+    // $links = rtrim($links, ' ›');
+
+    // return $links;
+
+    //"gallery/alisha-pollich/terrance-spencer/magali-schiller"
+
     $names = explode($seperator, $string);
     $total = count($names);
-    $links = sprintf('<span><a href="%s">%s</a></span>', route('index'), 'Home');
-    for($i=0; $i < $total; $i++){
+    $links = '';
+    for($i=count($names) -1; $i >= 0; $i--){
+        $slug=  join('/', $names);
+        $slug_name = ucwords(str_replace('-', ' ', $names[$i]));
         if($i == ($total - 1)){
-            $links .= sprintf(' › <span><strong><a href="%s">%s</a></strong></span>', route('category.product', Str::slug($names[$i])), $names[$i]);
+            $links = sprintf(' › <span><strong><a href="%s">%s</a></strong></span>', route('slug.view', $slug), $slug_name).$links;
         }else {
-            $links .= sprintf(' › <span><a href="%s">%s</a></span>', route('category.product', Str::slug($names[$i])), $names[$i]);
+            $links = sprintf(' › <span><a href="%s">%s</a></span>', route('slug.view', $slug), $slug_name).$links;
         }
+        array_pop($names);
     }
+
+    $links = sprintf('<span><a href="%s">%s</a></span>', route('index'), 'Home').$links;
 
     $links = rtrim($links, ' ›');
 

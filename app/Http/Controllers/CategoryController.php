@@ -36,4 +36,27 @@ class CategoryController extends Controller
 
         return view('product-details', compact('product', 'category'));
     }
+
+
+
+    public function slug($slugName){
+        $slugs = explode('/', $slugName);
+
+        if(count($slugs)){
+            $slug = array_pop($slugs);
+
+            if($product = Product::whereSlug($slug)->first()){
+                $category = Category::where('id', $product->category_id)->tree()->first();
+
+                return view('product-details', compact('product', 'category'))->with('page_name', 'Product Details');
+            }else if($category = Category::where('slug', $slug)->tree()->first()){
+                $products = $category->products()->paginate(20);
+
+                return view('gallery', compact('products', 'category'))->with('page_name', 'Gallery');
+            }
+            abort(404);
+        }
+
+        abort(404);
+    }
 }

@@ -1,3 +1,7 @@
+{{-- @php
+    dd($category_list)
+@endphp --}}
+
 <header class="header">
     <div class="container no-pad">
         <div class="row align-top">
