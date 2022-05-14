@@ -45,7 +45,7 @@
 
     <h3 align="center"
         style="font-size: 1.6rem; font-weight: 500; text-transform: uppercase; margin-bottom: 11px; font-family:lora; text-decoration:underline; margin-top:25px;">
-        <a href="{{ route('product.details', $product->slug) }}">{{ $product->title }}</a>  </h3>
+        <a href="{{ route('slug.view', nestedPathRemoveFirst($category->slug_path).'/'. $product->slug) }}">{{ $product->title }}</a>  </h3>
     <div align="center" style="margin-top:15px;">
         <div>
             @foreach ($product->getMedia('gallery') as $media)

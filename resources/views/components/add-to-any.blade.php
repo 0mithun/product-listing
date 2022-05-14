@@ -1,7 +1,7 @@
 <div class="addtoany_shortcode">
-    <div class="a2a_kit a2a_kit_size_20 addtoany_list" data-a2a-url="{{ route('product.details', $product->slug) }}"
+    <div class="a2a_kit a2a_kit_size_20 addtoany_list" data-a2a-url="{{ route('slug.view', nestedPathRemoveFirst($category->slug_path).'/'. $product->slug) }}"
         data-a2a-title="Anchovy Pattern Sphere Vase" style="line-height: 20px;"><a class="a2a_button_email"
-            href="mailto:?subject={{ $setting->name }}&body=Hi: Look what I have found! {{ route('product.details', $product->slug) }}"
+            href="mailto:?subject={{ $setting->name }}&body=Hi: Look what I have found! {{ route('slug.view', nestedPathRemoveFirst($category->slug_path).'/'. $product->slug) }}"
             title="Email" rel="nofollow noopener" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_email"
                 style="background-color: transparent; width: 20px; line-height: 20px; height: 20px; background-size: 20px; border-radius: 3px;"><svg
                     focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
@@ -9,7 +9,7 @@
                         d="M26 21.25v-9s-9.1 6.35-9.984 6.68C15.144 18.616 6 12.25 6 12.25v9c0 1.25.266 1.5 1.5 1.5h17c1.266 0 1.5-.22 1.5-1.5zm-.015-10.765c0-.91-.265-1.235-1.485-1.235h-17c-1.255 0-1.5.39-1.5 1.3l.015.14s9.035 6.22 10 6.56c1.02-.395 9.985-6.7 9.985-6.7l-.015-.065z">
                     </path>
                 </svg></span><span class="a2a_label">Email</span></a><a class="a2a_button_facebook"
-            href="https://facebook.com/sharer.php?u={{ route('product.details', $product->slug) }}" title="Facebook"
+            href="https://facebook.com/sharer.php?u={{ route('slug.view', nestedPathRemoveFirst($category->slug_path).'/'. $product->slug) }}" title="Facebook"
             rel="nofollow noopener" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_facebook"
                 style="background-color: transparent; width: 20px; line-height: 20px; height: 20px; background-size: 20px; border-radius: 3px;"><svg
                     focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
@@ -17,7 +17,7 @@
                         d="M17.78 27.5V17.008h3.522l.527-4.09h-4.05v-2.61c0-1.182.33-1.99 2.023-1.99h2.166V4.66c-.375-.05-1.66-.16-3.155-.16-3.123 0-5.26 1.905-5.26 5.405v3.016h-3.53v4.09h3.53V27.5h4.223z">
                     </path>
                 </svg></span><span class="a2a_label">Facebook</span></a><a class="a2a_button_twitter"
-            href="http://twitter.com/share?text=Hey: Look what I have found!{{ route('product.details', $product->slug) }}/"
+            href="http://twitter.com/share?text=Hey: Look what I have found!&url={{ route('slug.view', nestedPathRemoveFirst($category->slug_path).'/'. $product->slug) }}/"
             title="Twitter" rel="nofollow noopener" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_twitter"
                 style="background-color: transparent; width: 20px; line-height: 20px; height: 20px; background-size: 20px; border-radius: 3px;"><svg
                     focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
@@ -25,7 +25,7 @@
                         d="M28 8.557a9.913 9.913 0 01-2.828.775 4.93 4.93 0 002.166-2.725 9.738 9.738 0 01-3.13 1.194 4.92 4.92 0 00-3.593-1.55 4.924 4.924 0 00-4.794 6.049c-4.09-.21-7.72-2.17-10.15-5.15a4.942 4.942 0 00-.665 2.477c0 1.71.87 3.214 2.19 4.1a4.968 4.968 0 01-2.23-.616v.06c0 2.39 1.7 4.38 3.952 4.83-.414.115-.85.174-1.297.174-.318 0-.626-.03-.928-.086a4.935 4.935 0 004.6 3.42 9.893 9.893 0 01-6.114 2.107c-.398 0-.79-.023-1.175-.068a13.953 13.953 0 007.55 2.213c9.056 0 14.01-7.507 14.01-14.013 0-.213-.005-.426-.015-.637.96-.695 1.795-1.56 2.455-2.55z">
                     </path>
                 </svg></span><span class="a2a_label">Twitter</span></a><a class="a2a_button_pinterest"
-            href="https://pinterest.com/pin/create/button/?url={{ route('product.details', $product->slug) }}"
+            href="https://pinterest.com/pin/create/button/?url={{ route('slug.view', nestedPathRemoveFirst($category->slug_path).'/'. $product->slug) }}"
             title="Pinterest" rel="nofollow noopener" target="_blank"><span
                 class="a2a_svg a2a_s__default a2a_s_pinterest"
                 style="background-color: transparent; width: 20px; line-height: 20px; height: 20px; background-size: 20px; border-radius: 3px;"><svg

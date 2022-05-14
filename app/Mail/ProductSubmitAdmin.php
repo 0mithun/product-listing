@@ -12,6 +12,7 @@ class ProductSubmitAdmin extends Mailable implements ShouldQueue
     use Queueable, SerializesModels;
 
     public $product;
+    public $category;
     public $submitted;
 
     /**
@@ -19,9 +20,10 @@ class ProductSubmitAdmin extends Mailable implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($product, $submitted)
+    public function __construct($product, $category, $submitted)
     {
         $this->product = $product;
+        $this->category = $category;
         $this->submitted = $submitted;
     }
 

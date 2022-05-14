@@ -13,6 +13,7 @@ class ProductSubmitEmail extends Mailable implements ShouldQueue
 
 
     public $product;
+    public $category;
     public $submitted;
 
     /**
@@ -20,9 +21,10 @@ class ProductSubmitEmail extends Mailable implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($product, $submitted)
+    public function __construct($product, $category, $submitted)
     {
         $this->product = $product;
+        $this->category = $category;
         $this->submitted = $submitted;
     }
 

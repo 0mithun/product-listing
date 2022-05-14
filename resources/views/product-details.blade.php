@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12">
                 <p id="breadcrumbs">
-                    {!! nestedPathPrintWithLink($category->name_path) !!}
+                    {!! nestedPathPrintWithLink($category->slug_path) !!}
                 </p>
             </div>
             @if (session('success'))
@@ -106,7 +106,7 @@
                             <button id="inq" type="button" data-bs-toggle="modal" data-bs-target="#pi">Contact Us</button>
                             <input type="hidden" id="inqp" name="inqp"
                                 value="{{ $product->getFirstMediaUrl('gallery')  }}">
-                            <x-add-to-any :product="$product" />
+                            <x-add-to-any :product="$product" :category="$category" />
                         </div>
                     </div>
                     <div class="modal" tabindex="-1" role="dialog" id="pi">
@@ -272,12 +272,12 @@
 @section('meta')
 
     <meta name="description" content="{{ $product->metadata }}" />
-    <link rel="canonical" href="{{ route('product.details', $product->slug) }}" />
+    <link rel="canonical" href="{{ route('slug.view', nestedPathRemoveFirst($category->slug_path).'/'. $product->slug) }}" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="{{ $product->title }}" />
     <meta property="og:description" content="{{ $product->metadata }}" />
-    <meta property="og:url" content="{{ route('product.details', $product->slug) }}" />
+    <meta property="og:url" content="{{ route('slug.view', nestedPathRemoveFirst($category->slug_path).'/'. $product->slug) }}" />
     <meta property="og:site_name" content="{{ $setting->name }}" />
     <meta property="og:image" content="{{ $product->getFirstMediaUrl('gallery') }}" />
     <meta property="og:image:width" content="2560" />

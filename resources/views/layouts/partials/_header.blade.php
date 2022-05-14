@@ -1,7 +1,3 @@
-{{-- @php
-    dd($category_list)
-@endphp --}}
-
 <header class="header">
     <div class="container no-pad">
         <div class="row align-top">
@@ -17,7 +13,7 @@
                             <ul class="dropdown-menu">
                                 @foreach ($category_list as $category)
                                 <li class="dropdown2">
-                                    <a class="dropdown-item" href="{{ route('category.product', $category->slug) }}">{{ $category->name }}</a>
+                                    <a class="dropdown-item" href="{{ route('slug.view',nestedPathRemoveFirst($category->slug_path)) }}">{{ $category->name }}</a>
                                     <x-dropdown-submenu :child_categories="$category->children" />
                                 </li>
                                 @endforeach

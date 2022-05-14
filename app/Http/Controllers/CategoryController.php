@@ -10,32 +10,32 @@ class CategoryController extends Controller
 {
 
 
-    public function categories(Category $category)
-    {
-        $categories = Category::with(['products'])->where('parent_id', $category->id)->paginate(10);
+    // public function categories(Category $category)
+    // {
+    //     $categories = Category::with(['products'])->where('parent_id', $category->id)->paginate(10);
 
-        return view('category', compact('categories'));
-    }
-
-
-    public function subcategories(Category $category, $slug)
-    {
-        $subcategory = Category::where('slug', $slug)->firstOrFail();
-
-        $categories = Category::with(['products'])->where('parent_id', $subcategory->id)->paginate(10);
-
-        return view('category', compact('categories'));
-    }
+    //     return view('category', compact('categories'));
+    // }
 
 
-    public function product(Category $category, $subcategory, Product $product)
-    {
-        Category::where('slug', $subcategory)->firstOrFail();
+    // public function subcategories(Category $category, $slug)
+    // {
+    //     $subcategory = Category::where('slug', $slug)->firstOrFail();
 
-        $category = Category::where('id', $product->category_id)->tree()->first();
+    //     $categories = Category::with(['products'])->where('parent_id', $subcategory->id)->paginate(10);
 
-        return view('product-details', compact('product', 'category'));
-    }
+    //     return view('category', compact('categories'));
+    // }
+
+
+    // public function product(Category $category, $subcategory, Product $product)
+    // {
+    //     Category::where('slug', $subcategory)->firstOrFail();
+
+    //     $category = Category::where('id', $product->category_id)->tree()->first();
+
+    //     return view('product-details', compact('product', 'category'));
+    // }
 
 
 
@@ -50,10 +50,13 @@ class CategoryController extends Controller
 
                 return view('product-details', compact('product', 'category'))->with('page_name', 'Product Details');
             }else if($category = Category::where('slug', $slug)->tree()->first()){
-                $products = $category->products()->paginate(20);
+                $categry_ids = ($category->descendantsAndSelf()->get()->pluck('id')->toArray());
+
+                $products = Product::whereIn('category_id', $categry_ids)->paginate(20);
 
                 return view('gallery', compact('products', 'category'))->with('page_name', 'Gallery');
             }
+
             abort(404);
         }
 

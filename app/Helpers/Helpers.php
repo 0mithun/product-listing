@@ -99,9 +99,9 @@ function nestedPathPrintWithLink($string,  $seperator = '/')
         $slug=  join('/', $names);
         $slug_name = ucwords(str_replace('-', ' ', $names[$i]));
         if($i == ($total - 1)){
-            $links = sprintf(' › <span><strong><a href="%s">%s</a></strong></span>', route('slug.view', $slug), $slug_name).$links;
+            $links = sprintf(' › <span><strong><a href="%s">%s</a></strong></span>', route('slug.view', nestedPathRemoveFirst($slug)), $slug_name).$links;
         }else {
-            $links = sprintf(' › <span><a href="%s">%s</a></span>', route('slug.view', $slug), $slug_name).$links;
+            $links = sprintf(' › <span><a href="%s">%s</a></span>', route('slug.view', nestedPathRemoveFirst($slug)), $slug_name).$links;
         }
         array_pop($names);
     }
@@ -117,6 +117,14 @@ function nestedPathRemoveLast($string, $seperator = '/'){
     $items = explode($seperator, $string);
 
     array_pop($items);
+
+    return implode($seperator, $items);
+}
+
+function nestedPathRemoveFirst($string, $seperator = '/'){
+    $items = explode($seperator, $string);
+
+    array_shift($items);
 
     return implode($seperator, $items);
 }

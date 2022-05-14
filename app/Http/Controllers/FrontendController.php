@@ -79,33 +79,33 @@ class FrontendController extends Controller
 
 
 
-      /**
-     * return frontend product details page
-     *
-     * @return void
-     */
-    public function productDetails(Product $product)
-    {
-        $category = Category::where('id', $product->category_id)->tree()->first();
+    //   /**
+    //  * return frontend product details page
+    //  *
+    //  * @return void
+    //  */
+    // public function productDetails(Product $product)
+    // {
+    //     $category = Category::where('id', $product->category_id)->tree()->first();
 
-        return view('product-details', compact('product', 'category'))->with('page_name', 'Product Details');
-    }
+    //     return view('product-details', compact('product', 'category'))->with('page_name', 'Product Details');
+    // }
 
 
 
-    /**
-     * Get products by category
-     *
-     * @param Category $category
-     * @return void
-     */
-    public function getProductByCategory($category)
-    {
-        $category = Category::where('slug', $category)->tree()->firstOrFail();
-        $products = $category->products()->paginate(20);
+    // /**
+    //  * Get products by category
+    //  *
+    //  * @param Category $category
+    //  * @return void
+    //  */
+    // public function getProductByCategory($category)
+    // {
+    //     $category = Category::where('slug', $category)->tree()->firstOrFail();
+    //     $products = $category->products()->paginate(20);
 
-        return view('gallery', compact('products', 'category'))->with('page_name', 'Gallery');
-    }
+    //     return view('gallery', compact('products', 'category'))->with('page_name', 'Gallery');
+    // }
 
 
     /**
@@ -152,8 +152,10 @@ class FrontendController extends Controller
 
         $setting = Setting::first();
 
-        Mail::to($request->email)->send(new ProductSubmitEmail($product, $submitted));
-        Mail::to($setting->email)->send(new ProductSubmitAdmin($product, $submitted));
+        $category = Category::where('id', $product->category_id)->tree()->first();
+
+        Mail::to($request->email)->send(new ProductSubmitEmail($product, $category, $submitted));
+        Mail::to($setting->email)->send(new ProductSubmitAdmin($product, $category,  $submitted));
 
 
         return redirect()->back()->with('success', 'Product submit successfully');

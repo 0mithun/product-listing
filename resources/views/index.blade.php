@@ -11,7 +11,7 @@
                     <h3>{{ $category->name }}</h3>
                     @foreach ($category->products as $product)
                         <article class="col-md-3 col-6 product text-center">
-                            <a href="{{ route('product.details', $product->slug) }}"
+                            <a href="{{ route('slug.view', nestedPathRemoveFirst($category->slug_path).'/'. $product->slug) }}"
                                 title="{{ $product->title }}">
 
                                 <img width="300" height="300" alt="{{ $product->metadata  }}"

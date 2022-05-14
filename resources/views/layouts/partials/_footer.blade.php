@@ -28,7 +28,7 @@
                 <h5>Collections</h5>
                 <ul>
                     @foreach ($category_list as $cat)
-                    <li><a href="{{ route('category.product', $cat->slug) }}">{{ $cat->name }}</a></li>
+                    <li><a href="{{ route('slug.view', nestedPathRemoveFirst($cat->slug_path)) }}">{{ $cat->name }}</a></li>
                     @endforeach
                 </ul>
             </div>

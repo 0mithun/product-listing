@@ -1,8 +1,4 @@
 @extends('layouts.app')
-@php
-    // dd($category)
-@endphp
-
 @section('content')
     <div class="container" style="padding-top:0px; padding-bottom:0px;">
         <div class="row">
@@ -22,7 +18,7 @@
                     <div class="row">
                         @forelse ($products as $product)
                             <article class="col-md-3 col-6 product text-center">
-                                <a href="{{ route('product.details', $product->slug) }}"
+                                <a href="{{ route('slug.view', nestedPathRemoveFirst($category->slug_path).'/'. $product->slug) }}"
                                     title="{{ $product->title }}">
 
                                     <img width="300" height="300" alt="{{ $product->metadata  }}"
