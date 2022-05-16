@@ -94,7 +94,14 @@
                                 </div>
                                 <div class="form-group form-check">
                                     <div class="col-sm-12 offset-sm-3">
-                                        <input type="checkbox" class="form-check-input" id="home_page" name="home_page" value="1" @if ($product->home_page) checked @endif>
+
+                                        @if ($product->home_page)
+                                            <input type="checkbox" class="form-check-input" id="home_page" name="home_page" value="1" disabled @if ($product->home_page) checked @endif>
+                                        @else
+                                            <input type="checkbox" class="form-check-input" id="home_page" name="home_page" value="1" @if ($product->home_page) checked @endif>
+                                        @endif
+
+
                                         <label class="form-check-label" for="home_page">Home Page</label>
                                     </div>
                                 </div>
