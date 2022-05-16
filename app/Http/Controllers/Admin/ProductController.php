@@ -210,7 +210,7 @@ class ProductController extends Controller
 
 
 
-        $filename = $this->uploadOne($request->file('upload'));
+        $filename = $this->uploadOne($request->file('upload') , 'product_description');
 
 
         $CKEditorFuncNum = $request->input('CKEditorFuncNum');

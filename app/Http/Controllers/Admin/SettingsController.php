@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Storage;
 
 class SettingsController extends Controller
 {
@@ -128,6 +129,30 @@ class SettingsController extends Controller
 
         return back()->with('success', 'About layout upadte successfully!');
     }
+
+    public function aboutUpload(Request $request)
+    {
+        $request->validate([
+            'upload'     =>  ['mimes:png,jpg', 'max:1024'],
+        ]);
+
+        // return $request->all();
+
+
+
+        $filename = $this->uploadOne($request->file('upload') , 'about');
+
+
+        $CKEditorFuncNum = $request->input('CKEditorFuncNum');
+        $url = Storage::disk('public')->url($filename);
+        $msg = 'Image successfully uploaded';
+        $re = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
+
+        // Render HTML output
+        @header('Content-type: text/html; charset=utf-8');
+        echo $re;
+    }
+
 
     /**
      * Update website layout

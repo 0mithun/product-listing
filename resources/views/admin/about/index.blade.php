@@ -43,7 +43,7 @@
 
 
 @section('script')
-    <script src="{{ asset('backend') }}/dist/js/ckeditor.js"></script>
+    {{-- <script src="{{ asset('backend') }}/dist/js/ckeditor.js"></script>
     <script>
         ClassicEditor
             .create(document.querySelector('#about'))
@@ -55,5 +55,14 @@
             .catch(error => {
                 console.error(error);
             });
-    </script>
+    </script> --}}
+
+<script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace( 'about', {
+        filebrowserUploadUrl: "{{ route('settings.about.upload', ['_token' => csrf_token() ]) }}",
+        filebrowserUploadMethod: 'form'
+    })
+    ;
+</script>
 @endsection

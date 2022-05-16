@@ -63,6 +63,7 @@ Route::middleware(['auth:admin'])->group(function () {
 
     Route::get('settings/about', [SettingsController::class, 'about'])->name('settings.about');
     Route::put('settings/about', [SettingsController::class, 'aboutUpdate'])->name('settings.about.update');
+    Route::post('settings/about/upload', [SettingsController::class, 'aboutUpload'])->name('settings.about.upload');
 
     Route::get('settings/layout', [SettingsController::class, 'layout'])->name('settings.layout');
     Route::put('settings/layout', [SettingsController::class, 'layoutUpdate'])->name('settings.layout.update');
