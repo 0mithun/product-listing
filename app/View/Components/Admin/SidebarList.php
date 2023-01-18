@@ -12,7 +12,7 @@ class SidebarList extends Component
      *
      * @return void
      */
-    public function __construct($linkActive, $route, $parameter = null, $icon)
+    public function __construct($linkActive, $route, $parameter = null, $icon = null)
     {
         $this->linkActive = $linkActive;
         $this->route = $route;
